@@ -6,4 +6,7 @@ class Player < ActiveRecord::Base
 	belongs_to :game
 	belongs_to :continent
 	has_many :match_results, as: :contestant
+	# many bets can be made on a single player (Starcraft only at time of writing)
+	# and the player is referenced in the bet model as winner
+	has_many :bets, as: :winner 
 end

@@ -5,4 +5,5 @@ class Team < ActiveRecord::Base
 	has_many :team_players
 	has_many :players, through: :team_players
 	has_many :match_results, as: :contestant
+	has_many :bets, as: :winner
 end
