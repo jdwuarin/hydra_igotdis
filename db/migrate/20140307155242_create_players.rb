@@ -7,7 +7,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :player_position
       t.date :date_of_birth
       t.integer :continent
-      t.integer :game
+      t.integer :game_id
 
       t.timestamps
     end

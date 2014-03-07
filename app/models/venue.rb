@@ -1,5 +1,6 @@
 class Venue < ActiveRecord::Base
 
-	has_many :tounrnaments
+	has_many :tournaments
 	
+	validates :name, presence: true
 end
