@@ -8,6 +8,7 @@ gem 'pg', '0.15.1'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'devise', '3.2.3'
 gem 'rails_best_practices'
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

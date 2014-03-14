@@ -21,3 +21,13 @@ rails generate migration add_index_to_games_name
 
 # undoing a migration 
 bundle exec rake db:rollback
+
+#add admin flag to User model
+rails generate migration add_admin_flag_to_users admin:bool
+
+#for activeadmin
+rails g active_admin:install              # creates the AdminUser class (What I did)
+rails g active_admin:install User         # uses an existing class
+rails g active_admin:install --skip-users # if devise already installed
+
+rails generate active_admin:resource # to generate admin resource for a model
