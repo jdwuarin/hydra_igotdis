@@ -10,7 +10,7 @@ bundle exec rake db:seed
 # adding a column to a model
 rails generate migration add_something_to_games something:integer
 
-# reomve a column from a model
+# reomove a column from a model
 rails generate migration remove_something_from_games something:integer
 
 # destroying a migration

@@ -11,11 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307155242) do
+ActiveRecord::Schema.define(version: 20140313130235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "bet_histories", force: true do |t|
+    t.integer  "match_id"
+    t.integer  "winner_id"
+    t.string   "winner_type"
+    t.decimal  "odds"
+    t.integer  "user_id"
+    t.decimal  "bet_size"
+    t.decimal  "filled_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bets", force: true do |t|
     t.integer  "match_id"
@@ -58,6 +70,7 @@ ActiveRecord::Schema.define(version: 20140307155242) do
     t.integer  "tournament_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "date"
   end
 
   create_table "player_positions", force: true do |t|

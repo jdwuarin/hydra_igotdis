@@ -4,6 +4,6 @@ class PlayerPosition < ActiveRecord::Base
 	has_many :players
 
 	validates :name, presence: true
-	validates :game_is, presence: true
-	validates :game, presence: true
+	validates :game_id, presence: true
+	validates_presence_of :game
 end

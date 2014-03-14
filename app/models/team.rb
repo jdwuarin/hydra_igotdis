@@ -10,6 +10,6 @@ class Team < ActiveRecord::Base
 	validates :name, presence: true
 	validates :continent_id, presence: true
 	validates :game_id, presence: true
-	validates :continent, presence: true
-	validates :game, presence: true
+	validates_presence_of :continent
+	validates_presence_of :game
 end

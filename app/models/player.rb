@@ -1,7 +1,7 @@
 class Player < ActiveRecord::Base
 
 	has_one :team_player
-	has_one :team through: teamp_player
+	has_one :team, through: :team_player
 	belongs_to :player_position
 	belongs_to :game
 	belongs_to :continent
@@ -12,6 +12,6 @@ class Player < ActiveRecord::Base
 
 	validates :user_name, presence: true
 	validates :game_id, presence: true
-	validates :game, presence: true
+	validates_presence_of :game
 	
 end

@@ -1,9 +1,16 @@
-<div class="center hero-unit">
-  <h1>Welcome to GGbets</h1>
+<% if !user_signed_in? %>
 
-  <h2>
-    This is the home page for GGbets.
-  </h2>
+	<div class="center hero-unit">
 
-  <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-large btn-primary" %>
-</div>
+		
+		  <h1>Welcome to GGbets</h1>
+		  <h2>
+		    This is the home page for GGbets.
+		  </h2>
+		  <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-large btn-primary" %>
+
+	</div>
+
+<% else %>
+
+<% end %>

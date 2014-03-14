@@ -5,6 +5,6 @@ class TeamPlayer < ActiveRecord::Base
 
 	validates :team_id, presence: true
 	validates :player_id, presence: true
-	validates :team, presence: true
-	validates :player, presence: true
+	validates_presence_of :team
+	validates_presence_of :player
 end
