@@ -26,7 +26,6 @@ class MatchResult < ActiveRecord::Base
 
 
 	def check_related_match_result
-		puts "I am here"
 		match = self.match
 		# find the corresponding match if it exists
 		related_match_result = MatchResult.find_or_create_by(

@@ -1,7 +1,7 @@
 class TeamPlayer < ActiveRecord::Base
 
-	belongs_to :TeamPlayer
-	belongs_to :Player
+	belongs_to :teamPlayer
+	belongs_to :player
 
 	validates :team_id, presence: true
 	validates :player_id, presence: true
