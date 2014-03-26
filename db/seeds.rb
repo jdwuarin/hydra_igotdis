@@ -71,11 +71,13 @@ MatchResult.find_or_create_by(
 	contestant_type: player1.class.name, oponent_type: player2.class.name)
 
 Bet.find_or_create_by(
-	odds: 1.2, bet_size: 10, 
+	odds: "3:1", bet_size: 10, 
 	match_id: 1, winner_id: 2, 
 	winner_type: Player.name, 
-	user_id: 1, filled_size: 0)
+	user_id: 1)
 
+# params = { match: {id: 7, tournament_id: 1, match_results_attributes: [{ match_id: 7, contestant_id: player1.id, oponent_id: player2.id, contestant_type: player1.class.name, oponent_type: player2.class.name}]}}
 
-
+# for activeadmin user
+# AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
 

@@ -12,4 +12,12 @@ class Team < ActiveRecord::Base
 	validates :game_id, presence: true
 	validates_presence_of :continent
 	validates_presence_of :game
+
+	accepts_nested_attributes_for :team_players
+	accepts_nested_attributes_for :players
+
+	def to_s()
+		"Team: " + self.name + ", Game: " + Game.find(game_id).name
+	end
+
 end

@@ -13,5 +13,9 @@ class Player < ActiveRecord::Base
 	validates :user_name, presence: true
 	validates :game_id, presence: true
 	validates_presence_of :game
+
+	def to_s()
+		"Player: " + self.user_name + ", Game: " + Game.find(game_id).name
+	end
 	
 end
