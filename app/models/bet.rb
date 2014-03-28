@@ -28,24 +28,6 @@ class OddsFormatIsValid < ActiveModel::Validator
 end
 
 
-def normalize_and_get_matching_odds(odds_string)
-  # we then compute the wanted betting odds level
-  # we are assuming here that odds are calculated against a team/player
-  # i.e if I quote 3:1 I am betting 3 to 1 agains a team/player winning
-  odds_array = odds_string.split(":")
-  odds_against = Integer(odds_array[0])
-  odds_for = Integer(odds_array[1])
-  divisor = odds_agains.gcd(odds_for) #should almost always be 1
-
-  odds_against /= divisor
-  odds_for /= divisor
-  true_odds = odds_against.to_s.concat(":").concat(odds_for.to_s)
-  matching_odds = odds_for.to_s.concat(":").concat(odds_against.to_s)
-
-  return true_odds, matching_odds
-end
-
-
 class Bet < ActiveRecord::Base
 
   belongs_to :match
@@ -65,7 +47,7 @@ class Bet < ActiveRecord::Base
   validates_with WinnerParticipatedInMatch
   validates_with OddsFormatIsValid
 
-  before_save :try_filling_related_bets
+  after_create :try_filling_related_bets
 
 
   def try_filling_related_bets
@@ -76,15 +58,47 @@ class Bet < ActiveRecord::Base
     # we already have the match we want, so we get the wanted winner
     oponent_id = MatchResult.find_by(
       match_id: self.match_id,
-      contestant_id = self.winner_id).contestant_id
+      contestant_id = self.winner_id).oponent_id
 
-    self.odds, matching_odds = normalize_and_get_matching_odds(self.odds)
+    self.odds, matching_odds = self.normalize_set_filled_max_and_get_matching_odds
+
+    matching_bets = Bet.where(winner_id: oponent_id,
+                              odds: matching_odss,
+                              filled: false).order(:created_at)
+    matched_quantity = self.update_matching_bets(matching_bets)
 
 
-    if self.winner != nil
-      related_match_result.update_columns(
-        winner: !self.winner) # related winner boolean should be opposite
-    end
+  end
+
+  def normalize_and_get_matching_odds_and_filled_max
+    # we then compute the wanted betting odds level
+    # we are assuming here that odds are calculated against a team/player
+    # i.e if I quote 3:1 I am betting 3 to 1 agains a team/player winning
+    odds_string = self.odds
+    odds_array = odds_string.split(":")
+    odds_against = Integer(odds_array[0])
+    odds_for = Integer(odds_array[1])
+    divisor = odds_agains.gcd(odds_for) #should almost always be 1
+
+    odds_against /= divisor
+    odds_for /= divisor
+    true_odds = odds_against.to_s.concat(":").concat(odds_for.to_s)
+    matching_odds = odds_for.to_s.concat(":").concat(odds_against.to_s)
+    self.filled_max = (BigDecimal.new(self.bet_size.to_s)*odds_against)/odds_for
+
+    return true_odds, matching_odds
+  end
+
+  def update_matching_bets(matching_bets)
+    # the running value of how much this bet was filled
+    bet_filled_size = BigDecimal.new("0")
+    matching_bets.each do |matching_bet|
+      #determine available quantity in matching_bet
+      to_fill = BigDecimal.new(matching_bet.filled_max.to_s) - 
+                    BigDecimal.new(matching_bet.filled_size.to_s)
+      matching_bet_filled_quantity
+
+
   end
 
 end
