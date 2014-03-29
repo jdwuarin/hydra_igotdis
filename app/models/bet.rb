@@ -47,6 +47,9 @@ class Bet < ActiveRecord::Base
   validates_with WinnerParticipatedInMatch
   validates_with OddsFormatIsValid
 
+  # after create, because I would rather 
+  # not aknowledge a bet at all because of some bug or some
+  # error on the server than aknowledge only one side of the trade/bet
   after_create :try_filling_related_bets
 
 
@@ -90,16 +93,40 @@ class Bet < ActiveRecord::Base
   end
 
   def update_matching_bets(matching_bets)
-    # the running value of how much this bet was filled
-    bet_filled_size = BigDecimal.new("0")
+    
     matching_bets.each do |matching_bet|
       #determine available quantity in matching_bet
-      to_fill = BigDecimal.new(matching_bet.filled_max.to_s) - 
+      to_fill_matching_bet = BigDecimal.new(matching_bet.filled_max.to_s) - 
                     BigDecimal.new(matching_bet.filled_size.to_s)
-      matching_bet_filled_quantity
+      # the quantity filled for this specific matching_bet will
+      # be determined by the following if statement
+      to_fill_bet = self.filled_max - self.filled_size
 
-
+      if to_fill_bet < to_fill_matching_bet
+        #first set the matching bet
+        matching_bet.filled_size += to_fill_bet
+        matching_bet.save
+        #this bet is filled, set it so
+        self.filled_size = self.filled_max
+        self.filled = true
+        break
+      elsif to_fill_bet > to_fill_matching_bet
+        # first set the matching bet
+        matching_bet.filled_size = matching_bet.filled_max
+        matching_bet.filled = true
+        matching_bet.save
+        # then set as much as we can in bet
+        self.filled_size += to_fill_matchin_bet
+      end
+      elsif to_fill_bet == to_fill_matching_bet
+        matching_bet.filled_size = matching_bet.filled_max
+        matching_bet.filled = true
+        matching_bet.save
+        self.filled_size = self.filled_max
+        self.filled = true
+        break
+    end
+    self.save
   end
-
 end
 
