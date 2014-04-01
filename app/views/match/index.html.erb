@@ -10,7 +10,13 @@
 		  <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-large btn-primary" %>
 
 	</div>
-
+	<div>
+	<% @matches_info.each do |m|%>
+		<%= m[:contestants_type] %>s
+		<%= m[:contestant1] %>, <%= m[:contestant2] %>
+		;tournament <%= m[:tournament] %><br>
+	<% end %>
+	</div>
 <% else %>
 
 <% end %>
