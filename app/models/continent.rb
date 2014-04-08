@@ -1,4 +1,4 @@
 class Continent < ActiveRecord::Base
 
-	has_many :tounrnaments
+  has_many :tournaments
 end

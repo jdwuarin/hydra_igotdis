@@ -61,7 +61,7 @@ class Bet < ActiveRecord::Base
     # we already have the match we want, so we get the wanted winner
     oponent_id = MatchResult.find_by(
       match_id: self.match_id,
-      contestant_id = self.winner_id).oponent_id
+      contestant_id: self.winner_id).oponent_id
 
     self.odds, matching_odds = self.normalize_set_filled_max_and_get_matching_odds
 
@@ -69,7 +69,6 @@ class Bet < ActiveRecord::Base
                               odds: matching_odss,
                               filled: false).order(:created_at)
     matched_quantity = self.update_matching_bets(matching_bets)
-
 
   end
 
@@ -117,7 +116,6 @@ class Bet < ActiveRecord::Base
         matching_bet.save
         # then set as much as we can in bet
         self.filled_size += to_fill_matchin_bet
-      end
       elsif to_fill_bet == to_fill_matching_bet
         matching_bet.filled_size = matching_bet.filled_max
         matching_bet.filled = true
@@ -125,6 +123,7 @@ class Bet < ActiveRecord::Base
         self.filled_size = self.filled_max
         self.filled = true
         break
+      end
     end
     self.save
   end

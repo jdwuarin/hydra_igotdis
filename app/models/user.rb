@@ -8,5 +8,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :create_user_account
 
+  def create_user_account
+    UserAccount.create(user_id: self.id)
+  end
 end
