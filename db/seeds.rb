@@ -18,13 +18,13 @@ game_list.each do |seed, name, is_team_game|
 end
 
 continent_list = [
-	[1, "Asia"],
-	[2, "Africa"],
-	[3, "North America"],
-	[4, "South America"],
-	[5, "Antarctica"],
-	[6, "Europe"],
-	[7, "Australia"]
+  [1, "Asia"],
+  [2, "Africa"],
+  [3, "North America"],
+  [4, "South America"],
+  [5, "Antarctica"],
+  [6, "Europe"],
+  [7, "Australia"]
 ]
 
 continent_list.each do |seed, name|
@@ -59,25 +59,25 @@ end
 # m.save
 
 
-# player1 = Player.find_or_create_by( id: 1, user_name: "J-D", game_id: 1)
-# player2 = Player.find_or_create_by( id: 2, user_name: "J-D foe", game_id: 1)
+# player1 = Player.find_or_create_by( id: 1)
+# player2 = Player.find_or_create_by( id: 2)
 # Player.find_or_create_by( id: 3, user_name: "Some other guy", game_id: 1)
 
 # Team.find_or_create_by( id: 1, name: "Awesome random team", continent_id: 1, game_id: 1)
 
-# MatchResult.find_or_create_by( 
-# 	id: 1, match_id: 1, 
-# 	contestant_id: player1.id, oponent_id: player2.id,
-# 	contestant_type: player1.class.name, oponent_type: player2.class.name)
+MatchResult.find_or_create_by( 
+  match_id: 1, 
+  contestant_id: player1.id, oponent_id: player2.id,
+  contestant_type: player1.class.name, oponent_type: player2.class.name)
 
 # Bet.find_or_create_by(
-# 	odds: "3:1", bet_size: 10, 
-# 	match_id: 1, winner_id: 2, 
-# 	winner_type: Player.name, 
-# 	user_id: 1)
+#   odds: "3:1", bet_size: 10, 
+#   match_id: 1, winner_id: 2, 
+#   winner_type: Player.name, 
+#   user_id: 1)
 
 # params = { match: {id: 7, tournament_id: 1, match_results_attributes: [{ match_id: 7, contestant_id: player1.id, oponent_id: player2.id, contestant_type: player1.class.name, oponent_type: player2.class.name}]}}
 
 # for activeadmin user
-# AdminUser.create!(:email => 'admin@ggbet.co', :password => 'password', :password_confirmation => 'password')
+# AdminUser.create!(:email => 'admin@ggbets.co', :password => 'password', :password_confirmation => 'password')
 

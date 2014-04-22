@@ -1,6 +1,6 @@
 class Match < ActiveRecord::Base
 
-  has_many :match_results
+  has_many :match_results, :dependent => :delete_all
   has_many :bets
   belongs_to :tournament
 
