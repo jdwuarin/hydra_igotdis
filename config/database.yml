@@ -7,7 +7,7 @@ development:
   adapter: postgresql
   database: hydra_db
   username: hydra_user
-  password: test123
+  password: hydra
   host: localhost
   port: 5432
 
@@ -18,7 +18,7 @@ test:
   adapter: postgresql
   database: hydra_test_db
   username: hydra_user
-  password: test123
+  password: hydra
   host: localhost
   port: 5432
 
@@ -26,6 +26,6 @@ production:
   adapter: postgresql
   database: hydra_db
   username: hydra_user
-  password: test123
+  password: hydra
   host: localhost
   port: 5432

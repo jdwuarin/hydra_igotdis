@@ -31,3 +31,30 @@ rails g active_admin:install User         # uses an existing class
 rails g active_admin:install --skip-users # if devise already installed
 
 rails generate active_admin:resource # to generate admin resource for a model
+
+
+#installing Bootstrap:
+
+"Actually you don't need gem for this, here is 
+the step to install Bootstrap 3 in RoR
+"
+Download Bootstrap
+
+Copy:
+
+bootstrap/dist/css/bootstrap.css and bootstrap/dist/css/bootstrap.min.css
+
+To: vendor/assets/stylesheets
+
+Copy:
+
+bootstrap/dist/js/bootstrap.js and bootstrap/dist/js/bootstrap.min.js
+
+To: vendor/assets/javascripts
+
+Update: app/assets/stylesheets/application.css by adding:
+
+*= require bootstrap.min
+Update: app/assets/javascripts/application.jsby adding:
+
+//= require bootstrap.min

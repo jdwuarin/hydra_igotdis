@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140406004158) do
+ActiveRecord::Schema.define(version: 20140724121610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,75 +50,22 @@ ActiveRecord::Schema.define(version: 20140406004158) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "bet_histories", force: true do |t|
-    t.integer  "match_id"
-    t.integer  "winner_id"
-    t.string   "winner_type"
-    t.decimal  "odds"
-    t.integer  "user_id"
-    t.decimal  "bet_size"
-    t.decimal  "filled_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "bets", force: true do |t|
-    t.integer  "match_id"
-    t.integer  "winner_id"
-    t.string   "winner_type"
-    t.string   "odds"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.decimal  "bet_size"
-    t.decimal  "filled_size"
-    t.boolean  "filled"
-    t.decimal  "filled_max"
-  end
-
-  create_table "continents", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "currencies", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "games", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "is_team_game"
-  end
-
-  create_table "match_results", force: true do |t|
-    t.integer  "match_id"
-    t.integer  "contestant_id"
-    t.string   "contestant_type"
-    t.integer  "oponent_id"
-    t.string   "oponent_type"
-    t.boolean  "winner"
-    t.integer  "kills"
-    t.integer  "num_tower_destroyed"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "matches", force: true do |t|
     t.integer  "tournament_id"
+    t.datetime "date"
+    t.boolean  "finished",                  default: false
+    t.integer  "receiving_contestant_id"
+    t.string   "receiving_contestant_type"
+    t.integer  "invited_contestant_id"
+    t.string   "invited_contestant_type"
+    t.hstore   "results"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "date"
-    t.boolean  "finished",      default: false
   end
 
   create_table "player_positions", force: true do |t|
     t.string   "name"
-    t.integer  "game"
+    t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -135,9 +82,12 @@ ActiveRecord::Schema.define(version: 20140406004158) do
     t.datetime "updated_at"
   end
 
-  create_table "team_players", force: true do |t|
-    t.integer  "team_id"
-    t.integer  "player_id"
+  create_table "predictions", force: true do |t|
+    t.integer  "match_id"
+    t.integer  "prediction_type"
+    t.string   "predicted_contestant_type"
+    t.integer  "predicted_contestant"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -163,9 +113,14 @@ ActiveRecord::Schema.define(version: 20140406004158) do
 
   create_table "user_accounts", force: true do |t|
     t.integer  "user_id"
-    t.decimal  "play_money"
-    t.decimal  "money"
-    t.integer  "currency_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_event_point_standings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "tournament_id"
+    t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

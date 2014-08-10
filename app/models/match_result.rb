@@ -1,20 +1,3 @@
-class TypesMatch < ActiveModel::Validator
-  def validate(record)
-    unless record.contestant.class == record.oponent.class
-      record.errors[:type] << 'Contestant and oponent must be of same type'
-    end
-  end
-end
-
-class ContestantDifferentFromOponent < ActiveModel::Validator
-  def validate(record)
-    if record.contestant.id == record.oponent.id
-      record.errors[:id] << 'Contestant and oponent cannot be the same'
-    end
-  end
-end
-
-
 class MatchResult < ActiveRecord::Base
 
   belongs_to :match
@@ -29,10 +12,11 @@ class MatchResult < ActiveRecord::Base
   validates_presence_of :contestant
   validates_presence_of :oponent
 
-  validates_with TypesMatch
-  validates_with ContestantDifferentFromOponent
+  validates_with TypesMatchValidator
+  validates_with ContestantDifferentFromOponentValidator
 
   after_save :check_related_match_result
+  after_save :settle_bets
 
 
   def check_related_match_result
@@ -49,6 +33,50 @@ class MatchResult < ActiveRecord::Base
       related_match_result.update_columns(
         winner: !self.winner) # related winner boolean should be opposite
     end
+  end
+
+
+  def settle_bets
+    if self.winner == nil
+      return
+    end
+
+    self.match.bets.each do |bet|
+      user_account = bet.user.user_account
+      if self.contestant == bet.winner && self.winner ||
+        (self.contestant != bet.winner && !self.winner)
+        credit_user_account(user_account, bet)
+        user_account.save
+        self.put_bet_in_bet_history(bet, true)
+      else
+        #money has already been taken out of account
+        self.put_bet_in_bet_history(bet, false)
+      end
+    end
+  end
+
+  def credit_user_account(user_account, bet)
+    if bet.type == RealBet
+      user_account.money += bet.bet_size + bet.filled_size
+    else
+      user_account.play_money += bet.bet_size + bet.filled_size
+    end
+  end
+
+  def put_bet_in_bet_history(bet, user_won)
+    BetHistory.create!(match: bet.match,
+                       winner: bet.winner,
+                       winner_type: bet.winner_type,
+                       odds: bet.odds,
+                       user: bet.user,
+                       created_at: bet.created_at,
+                       bet_size: bet.bet_size,
+                       filled_size: bet.filled_size,
+                       filled: bet.filled,
+                       filled_max: bet.filled_max,
+                       type: bet.type,
+                       user_won: user_won)
+    bet.destroy
   end
 
 end
