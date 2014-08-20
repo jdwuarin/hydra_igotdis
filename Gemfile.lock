@@ -45,8 +45,12 @@ GEM
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (4.0.2)
+    autoprefixer-rails (2.2.0.20140804)
+      execjs
     awesome_print (1.2.0)
     bcrypt-ruby (3.1.2)
+    bootstrap-sass (3.2.0.1)
+      sass (~> 3.2)
     bourbon (4.0.2)
       sass (~> 3.3)
       thor
@@ -268,7 +272,9 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  autoprefixer-rails
   bcrypt-ruby (= 3.1.2)
+  bootstrap-sass (~> 3.2.0)
   capybara (= 2.1.0)
   coffee-rails (= 4.0.1)
   debugger
