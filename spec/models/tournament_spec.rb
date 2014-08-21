@@ -1,16 +1,9 @@
 require 'spec_helper'
+require 'spec_shared_context'
 
 describe Tournament do
 
-  before do
-    @venue = Venue.new(name: "Example Venue")
-    @tournament = Tournament.new(name: "Example Tournament",
-                                 game_id: 1,
-                                 start_date: DateTime.now,
-                                 end_date: DateTime.tomorrow,
-                                 venue_id: @venue,
-                                 continent_id: 1)
-  end
+include_context "instance_variables"
 
   subject { @tournament }
 

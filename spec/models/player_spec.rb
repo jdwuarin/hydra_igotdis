@@ -1,18 +1,11 @@
 require 'spec_helper'
+require 'spec_shared_context'
 
 describe Player do
 
-  before do
-    @player = PlayerPosition.new(user_name: "Example name",
-                                 first_name: "Example first name",
-                                 last_name: "Example last name",
-                                 player_position_id: 1,
-                                 date: Datetime.today - 1000,
-                                 continent_id: 1,
-                                 game_id: 1)
-  end
+  include_context "instance_variables"
 
-  subject { @player_position }
+  subject { @player_1 }
 
   it { should respond_to(:user_name) }
   it { should respond_to(:first_name) }
@@ -25,15 +18,43 @@ describe Player do
   it { should be_valid }
 
   describe "when user_name is not present" do
-    before { @player.user_name = " " }
+    before { @player_1.user_name = " " }
     it { should_not be_valid }
   end
   describe "when player_position_id is not present" do
-    before { @player.player_position_id = nil }
+    before { @player_1.player_position_id = nil }
     it { should_not be_valid }
   end
   describe "when game_id is not present" do
-    before { @player.game_id = nil }
+    before { @player_1.game_id = nil }
     it { should_not be_valid }
+  end
+
+  describe "when name and game_id combination is not unique" do
+      before do
+        player_with_same_credentials = @player_1.dup
+        player_with_same_credentials.continent_id = 2
+        player_with_same_credentials.save
+      end
+
+      it { should_not be_valid }
+  end
+  describe "when game_id is changed" do
+      before do
+        player_with_same_credentials = @player_1.dup
+        player_with_same_credentials.game_id = 2
+        player_with_same_credentials.save
+      end
+
+      it { should be_valid }
+  end
+  describe "when name is changed" do
+      before do
+        player_with_same_credentials = @player_1.dup
+        player_with_same_credentials.name = "Test Name"
+        player_with_same_credentials.save
+      end
+
+      it { should be_valid }
   end
 end

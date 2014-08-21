@@ -1,10 +1,9 @@
 require 'spec_helper'
+require 'spec_shared_context'
 
 describe Venue do
 
-  before do
-    @venue = Venue.new(name: "Example Venue")
-  end
+include_context "instance_variables"
 
   subject { @venue }
 

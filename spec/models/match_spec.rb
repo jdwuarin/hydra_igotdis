@@ -1,24 +1,9 @@
 require 'spec_helper'
+require 'spec_shared_context'
 
 describe Match do
 
-  before do
-    @venue = Venue.new(name: "Example Venue")
-    @tournament = Tournament.new(name: "Example Tournament",
-                                 game_id: 1,
-                                 start_date: DateTime.now,
-                                 end_date: DateTime.tomorrow,
-                                 venue_id: @venue.id,
-                                 continent_id: 1)
-    @team_1 =
-    @team_2 = 
-    @match = Match.new(tournament_id: @tournament.id,
-                       date: DateTime.now,
-                       finished: false,
-                       receiving_contestant: team_1,
-                       invited_contestant: team_2,
-                       results: {})
-  end
+  include_context "instance_variables"
 
   subject { @match }
 
@@ -48,8 +33,7 @@ describe Match do
     it { should_not be_valid }
   end
   describe "when contestant types do not match" do
-    player_1 = 
-    before { @match.invited_contestant = player_1 }
+    before { @match.invited_contestant = @player_1 }
     it { should_not be_valid }
   end
   describe "when start of match starts before start of tournament" do
@@ -58,8 +42,8 @@ describe Match do
     it { should_not be_valid }
   end
   describe "when start of match starts after end of tournament" do
-    date_before_tournament = @tournament.start_date + 1
-    before { @match.date = date_before_tournament }
+    date_after_tournament = @tournament.start_date + 1
+    before { @match.date = date_after_tournament }
     it { should_not be_valid }
   end
 end
