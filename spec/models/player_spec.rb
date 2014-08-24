@@ -30,7 +30,7 @@ describe Player do
     it { should_not be_valid }
   end
 
-  describe "when name and game_id combination is not unique" do
+  describe "when user_name and game_id combination is not unique" do
       before do
         player_with_same_credentials = @player_1.dup
         player_with_same_credentials.continent_id = 2
@@ -48,10 +48,10 @@ describe Player do
 
       it { should be_valid }
   end
-  describe "when name is changed" do
+  describe "when user_name is changed" do
       before do
         player_with_same_credentials = @player_1.dup
-        player_with_same_credentials.name = "Test Name"
+        player_with_same_credentials.user_name = "Test Name"
         player_with_same_credentials.save
       end
 

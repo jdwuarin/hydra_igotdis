@@ -1,11 +1,22 @@
 class Match < ActiveRecord::Base
 
-  has_many :real_bets
-  has_many :play_bets
+  has_many :predictions
+
   belongs_to :tournament
+  belongs_to :receiving_contestant, polymorphic: true
+  belongs_to :invited_contestant, polymorphic: true
 
   validates :tournament_id, presence: true
   validates_presence_of :tournament
+  validates :date, presence: true
+  validates :receiving_contestant, presence: true
+  validates_presence_of :receiving_contestant
+  validates :invited_contestant, presence: true
+  validates_presence_of :invited_contestant
+
+  validates_with TypesMatchValidator
+  validates_with ContestantsDifferValidator
+  validates_with MatchDateDuringTournament
 
   after_save :settle_predictions_if_over
 
@@ -20,6 +31,33 @@ class Match < ActiveRecord::Base
   def settle_predictions_if_over
     if self.finished == true
       # all sorts of magic must happen
+    end
+  end
+
+  # def settle_bets
+  #   if self.winner == nil
+  #     return
+  #   end
+
+  #   self.match.bets.each do |bet|
+  #     user_account = bet.user.user_account
+  #     if self.contestant == bet.winner && self.winner ||
+  #       (self.contestant != bet.winner && !self.winner)
+  #       credit_user_account(user_account, bet)
+  #       user_account.save
+  #       self.put_bet_in_bet_history(bet, true)
+  #     else
+  #       #money has already been taken out of account
+  #       self.put_bet_in_bet_history(bet, false)
+  #     end
+  #   end
+  # end
+
+  def credit_user_tournament_point_stading(user_tournament_point_stading, prediction)
+    if bet.type == RealBet
+      user_account.money += bet.bet_size + bet.filled_size
+    else
+      user_account.play_money += bet.bet_size + bet.filled_size
     end
   end
 

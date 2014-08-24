@@ -2,17 +2,9 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
-  # has_one :user_account, :dependent => :delete
+  has_many :predictions
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  # after_create :create_user_account
-
-  private
-    def create_user_account
-      UserAccount.find_or_create_by(user: self)
-    end
-
 
 end

@@ -36,6 +36,10 @@ describe Match do
     before { @match.invited_contestant = @player_1 }
     it { should_not be_valid }
   end
+  describe "when contestants are the same" do
+    before { @match.invited_contestant = @team_1 }
+    it { should_not be_valid }
+  end
   describe "when start of match starts before start of tournament" do
     date_before_tournament = @tournament.start_date - 1
     before { @match.date = date_before_tournament }

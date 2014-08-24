@@ -34,33 +34,33 @@ shared_context "instance_variables" do
                                           game_id: 1)
 
     @player_1 = Player.new(user_name: "Player_1",
-                                 first_name: "Example first name",
-                                 last_name: "Example last name",
-                                 player_position_id: @player_position,
-                                 date: Datetime.today - 1000,
-                                 continent_id: 1,
-                                 game_id: 1)
+                           first_name: "Example first name",
+                           last_name: "Example last name",
+                            player_position_id: @player_position,
+                            date: Datetime.today - 1000,
+                            continent_id: 1,
+                            game_id: 1)
     @player_2 = Player.new(user_name: "Player_2",
-                                 first_name: "Example first name",
-                                 last_name: "Example last name",
-                                 player_position_id: @player_position,
-                                 date: Datetime.today - 1000,
-                                 continent_id: 1,
-                                 game_id: 1)
+                           first_name: "Example first name",
+                           last_name: "Example last name",
+                           player_position_id: @player_position,
+                           date: Datetime.today - 1000,
+                           continent_id: 1,
+                           game_id: 1)
     @player_3 = Player.new(user_name: "Player_3",
-                                 first_name: "Example first name",
-                                 last_name: "Example last name",
-                                 player_position_id: @player_position,
-                                 date: Datetime.today - 1000,
-                                 continent_id: 1,
-                                 game_id: 1)
+                           first_name: "Example first name",
+                           last_name: "Example last name",
+                           player_position_id: @player_position,
+                           date: Datetime.today - 1000,
+                           continent_id: 1,
+                           game_id: 1)
     @player_4 = Player.new(user_name: "Player_4",
-                                 first_name: "Example first name",
-                                 last_name: "Example last name",
-                                 player_position_id: @player_position,
-                                 date: Datetime.today - 1000,
-                                 continent_id: 1,
-                                 game_id: 1)
+                           first_name: "Example first name",
+                           last_name: "Example last name",
+                           player_position_id: @player_position,
+                           date: Datetime.today - 1000,
+                           continent_id: 1,
+                           game_id: 1)
 
     @team_player_1 = TeamPlayer.new(team_id: @team_1,
                                     player_id: @player_1)

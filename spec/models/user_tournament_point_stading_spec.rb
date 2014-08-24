@@ -21,19 +21,4 @@ include_context "instance_variables"
     before { @user_tournament_point_standing.tournament_id = nil }
     it { should_not be_valid }
   end
-  describe "when past tournament date, can not change points" do
-    before do
-      @tournament.end_date = Datetime.today
-      @user_tournament_point_standing.points = 100
-      @user_tournament_point_standing.save
-    end
-    it { should_not be_valid }
-  end
-  describe "can however change points during tournament" do
-    before do
-      @user_tournament_point_standing.points = 100
-      @user_tournament_point_standing.save
-    end
-    it { should be_valid }
-  end
 end

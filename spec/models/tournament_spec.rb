@@ -28,4 +28,9 @@ include_context "instance_variables"
     before { @tournament.start_date = nil }
     it { should_not be_valid }
   end
+  describe "should start before it ends" do
+    date_before_tournament = @tournament.start_date - 1
+    before { @tournament.end_date = date_before_tournament }
+    it { should_not be_valid }
+  end
 end

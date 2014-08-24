@@ -1,7 +1,8 @@
 class TypesMatchValidator < ActiveModel::Validator
   def validate(record)
-    unless record.contestant.class == record.oponent.class
-      record.errors[:type] << 'Contestant and oponent must be of same type'
+    unless record.receiving_contestant.class == record.invited_contestant.class
+      record.errors[:type] << 
+        'receiving_contestant and invited_contestant must be of same type'
     end
   end
 end
