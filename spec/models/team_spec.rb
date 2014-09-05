@@ -16,14 +16,17 @@ describe Team do
     before { @team_1.name = " " }
     it { should_not be_valid }
   end
+
   describe "when game_id is not present" do
     before { @team_1.game_id = nil }
     it { should_not be_valid }
   end
+
   describe "when continent_id is not present" do
     before { @team_1.continent_id = nil }
     it { should_not be_valid }
   end
+
   describe "when name and game_id combination already exists" do
       before do
         team_with_same_credentials = @team_1.dup
@@ -33,22 +36,5 @@ describe Team do
 
       it { should_not be_valid }
   end
-  describe "when game_id is changed" do
-      before do
-        team_with_same_credentials = @team_1.dup
-        team_with_same_credentials.game_id = 2
-        team_with_same_credentials.save
-      end
 
-      it { should_not be_valid }
-  end
-  describe "when name is changed" do
-      before do
-        team_with_same_credentials = @team_1.dup
-        team_with_same_credentials.name = "Test Name"
-        team_with_same_credentials.save
-      end
-
-      it { should_not be_valid }
-  end
 end

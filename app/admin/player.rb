@@ -1,6 +1,6 @@
 ActiveAdmin.register Player do
 
-  permit_params :user_name, 
+  permit_params :username, 
                 :first_name, 
                 :last_name,
                 :player_position_id,
@@ -11,7 +11,7 @@ ActiveAdmin.register Player do
 
   index do
     id_column
-    column :user_name
+    column :username
     column :first_name
     column :last_name
     column :player_position
@@ -25,7 +25,7 @@ ActiveAdmin.register Player do
     f.semantic_errors *f.object.errors.keys
 
     f.inputs 'Details' do
-      f.input :user_name
+      f.input :username
       f.input :first_name
       f.input :last_name
       f.input :player_position, :as => :select, :collection => PlayerPosition.all

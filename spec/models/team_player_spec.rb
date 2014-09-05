@@ -14,16 +14,20 @@ describe TeamPlayer do
     before { @team_player_1.team_id = nil }
     it { should_not be_valid }
   end
+
   describe "when player_id is not present" do
     before { @team_player_1.player_id = nil }
     it { should_not be_valid }
   end
-  describe "when player_1 is deleted" do
-    before { @player_1.delete }
+
+  describe "when player_1 is destroyed" do
+    before { @player_1.destroy }
     it { should eq(nil) }
   end
-  describe "when team_1 is deleted" do
-    before { @team_1.delete }
+
+  describe "when team_1 is destroyed" do
+    before { @team_1.destroy }
     it { should eq(nil) }
   end
+
 end

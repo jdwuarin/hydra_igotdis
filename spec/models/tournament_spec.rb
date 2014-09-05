@@ -11,7 +11,7 @@ include_context "instance_variables"
   it { should respond_to(:game_id) }
   it { should respond_to(:start_date) }
   it { should respond_to(:end_date) }
-  it { should respond_to(:venue_id) }
+  it { should respond_to(:venue) }
   it { should respond_to(:continent_id) }
 
   it { should be_valid }
@@ -22,6 +22,10 @@ include_context "instance_variables"
   end
   describe "when game_id is not present" do
     before { @tournament.game_id = nil }
+    it { should_not be_valid }
+  end
+  describe "when venue is not present" do
+    before { @tournament.venue = nil }
     it { should_not be_valid }
   end
   describe "when start_date is not present" do

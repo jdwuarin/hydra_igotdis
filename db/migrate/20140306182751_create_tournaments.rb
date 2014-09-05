@@ -5,7 +5,7 @@ class CreateTournaments < ActiveRecord::Migration
       t.integer :game_id
       t.timestamp :start_date
       t.timestamp :end_date
-      t.integer :venue_id
+      t.references :venue
       t.integer :continent_id
 
       t.timestamps

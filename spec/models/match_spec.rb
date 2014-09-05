@@ -7,7 +7,7 @@ describe Match do
 
   subject { @match }
 
-  it { should respond_to(:tournament_id) }
+  it { should respond_to(:round) }
   it { should respond_to(:date) }
   it { should respond_to(:finished) }
   it { should respond_to(:receiving_contestant) }
@@ -16,8 +16,8 @@ describe Match do
 
   it { should be_valid }
 
-  describe "when tournamen_id is not present" do
-    before { @match.tournament_id = nil }
+  describe "when round is not present" do
+    before { @match.round = nil }
     it { should_not be_valid }
   end
   describe "when date is not present" do
@@ -40,17 +40,16 @@ describe Match do
     before { @match.invited_contestant = @team_1 }
     it { should_not be_valid }
   end
-  describe "when start of match starts before start of tournament" do
-    date_before_tournament = @tournament.start_date - 1
+  describe "when start of match starts before start of round" do
+    date_before_tournament = @round.start_date - 1
     before { @match.date = date_before_tournament }
     it { should_not be_valid }
   end
-  describe "when start of match starts after end of tournament" do
-    date_after_tournament = @tournament.start_date + 1
-    before { @match.date = date_after_tournament }
-    it { should_not be_valid }
-  end
 end
+
+
+# TODO add a fucking test for when round is finished and points need
+# to be distributed to the people who did the correct predictions
 
 
 

@@ -8,7 +8,7 @@
 class CreateMatches < ActiveRecord::Migration
   def change
     create_table :matches do |t|
-      t.integer :tournament_id
+      t.references :round
       t.timestamp :date
       t.boolean :finished, :default => false
       t.references :receiving_contestant, polymorphic: true

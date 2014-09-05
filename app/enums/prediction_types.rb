@@ -2,14 +2,22 @@
 # a dictionary where the id of the type is
 # mapped to its name and the value representing the points
 # won by the user who correctly predicts
-# an event of this type.
+# an event of this type before aplplying the 
+# tournament_stage multiplicator
 # values are put in arrays so that other information
 # can later be added to the prediction_types without
 # requiring a huge code refactor
 
-prediction_types = { 1 => ["WINNER", 1],
-                     2 => ["LOSER", 1],
-                     3 => ["DRAW", 1],
-                     4 => ["FIRSTKILL", 2],
-                     5 => ["FIRSTINHIBITOR", 2]
+ROUND_PREDICTION = 0
+MATCH_PREDICTION = 1
+AGNOSTIC_PREDICTION = 2
+
+prediction_types = { 1 => ["WINNER", 100, AGNOSTIC_PREDICTION],
+                     2 => ["DRAW", 100, AGNOSTIC_PREDICTION],
+                     3 => ["FIRSTKILL", 200, MATCH_PREDICTION],
+                     4 => ["FIRSTTOWER", 2, MATCH_PREDICTION],
+                     5 => ["FIRSTINHIBITOR", 2, MATCH_PREDICTION],
+                     6 => ["SCORE_3_0", 200, ROUND_PREDICTION],
+                     7 => ["SCORE_3_1", 200, ROUND_PREDICTION],
+                     8 => ["SCORE_3_2", 200, ROUND_PREDICTION],
                    }

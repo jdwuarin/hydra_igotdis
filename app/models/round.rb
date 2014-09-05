@@ -1,18 +1,20 @@
-class Match < ActiveRecord::Base
+class Round < ActiveRecord::Base
 
-  has_many :user_match_predictions
+  has_many :user_round_predictions
 
   belongs_to :tournament
   belongs_to :receiving_contestant, polymorphic: true
   belongs_to :invited_contestant, polymorphic: true
 
-  validates :tournament_id, presence: true
+  validates :tournament, presence: true
   validates_presence_of :tournament
-  validates :date, presence: true
-  validates :receiving_contestant, presence: true
-  validates_presence_of :receiving_contestant
-  validates :invited_contestant, presence: true
-  validates_presence_of :invited_contestant
+  validates :start_date, presence: true
+
+
+  # validates :receiving_contestant, presence: true
+  # validates_presence_of :receiving_contestant
+  # validates :invited_contestant, presence: true
+  # validates_presence_of :invited_contestant
 
   validates_with TypesMatchValidator
   validates_with ContestantsDifferValidator
@@ -89,7 +91,6 @@ class Match < ActiveRecord::Base
   #   matches_info
   # end
 end
-
 
 
 

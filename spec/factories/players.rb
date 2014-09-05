@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :player do
-    user_name "MyString"
+    username "MyString"
     first_name "MyString"
     last_name "MyString"
     position 1

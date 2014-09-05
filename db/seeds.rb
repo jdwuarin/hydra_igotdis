@@ -37,7 +37,7 @@
 
 # player1 = Player.find_or_create_by( id: 1)
 # player2 = Player.find_or_create_by( id: 2)
-# Player.find_or_create_by( id: 3, user_name: "Some other guy", game_id: 1)
+# Player.find_or_create_by( id: 3, username: "Some other guy", game_id: 1)
 
 # Team.find_or_create_by( id: 1, name: "Awesome random team", continent_id: 1, game_id: 1)
 

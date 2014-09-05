@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20140724121610) do
   end
 
   create_table "players", force: true do |t|
-    t.string   "user_name"
+    t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "player_position_id"

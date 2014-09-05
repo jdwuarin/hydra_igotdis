@@ -7,7 +7,7 @@ describe Player do
 
   subject { @player_1 }
 
-  it { should respond_to(:user_name) }
+  it { should respond_to(:username) }
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
   it { should respond_to(:player_position_id) }
@@ -17,8 +17,8 @@ describe Player do
 
   it { should be_valid }
 
-  describe "when user_name is not present" do
-    before { @player_1.user_name = " " }
+  describe "when username is not present" do
+    before { @player_1.username = " " }
     it { should_not be_valid }
   end
   describe "when player_position_id is not present" do
@@ -30,7 +30,7 @@ describe Player do
     it { should_not be_valid }
   end
 
-  describe "when user_name and game_id combination is not unique" do
+  describe "when username and game_id combination is not unique" do
       before do
         player_with_same_credentials = @player_1.dup
         player_with_same_credentials.continent_id = 2
@@ -48,10 +48,10 @@ describe Player do
 
       it { should be_valid }
   end
-  describe "when user_name is changed" do
+  describe "when username is changed" do
       before do
         player_with_same_credentials = @player_1.dup
-        player_with_same_credentials.user_name = "Test Name"
+        player_with_same_credentials.username = "Test Name"
         player_with_same_credentials.save
       end
 

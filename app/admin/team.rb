@@ -11,8 +11,6 @@ ActiveAdmin.register Team do
     default_actions
   end
 
-  games = Game.where.not(name: "Starcraft")
-
   form do |f|
     f.semantic_errors *f.object.errors.keys
 
@@ -24,7 +22,7 @@ ActiveAdmin.register Team do
 
     f.inputs do
       f.has_many :players, through: :team_players do |player|
-        player.input :user_name
+        player.input :username
         player.input :first_name
         player.input :last_name
         player.input :player_position, :as => :select, :collection => PlayerPosition.all
