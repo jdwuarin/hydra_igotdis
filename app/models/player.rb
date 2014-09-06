@@ -16,6 +16,8 @@ class Player < ActiveRecord::Base
   validates_presence_of :player_position
   validates :game_id, presence: true
 
+  validates_with UniqueUsernamePerGame
+
   before_destroy :destroy_team_player
 
   def to_s

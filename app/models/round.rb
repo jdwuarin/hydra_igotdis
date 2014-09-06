@@ -10,15 +10,10 @@ class Round < ActiveRecord::Base
   validates_presence_of :tournament
   validates :start_date, presence: true
 
-
-  # validates :receiving_contestant, presence: true
-  # validates_presence_of :receiving_contestant
-  # validates :invited_contestant, presence: true
-  # validates_presence_of :invited_contestant
-
+  validates_with RoundDirectEliminationValidation
   validates_with TypesMatchValidator
   validates_with ContestantsDifferValidator
-  validates_with MatchDateDuringTournament
+  validates_with DatesAreValid
 
   after_save :settle_predictions_if_over
 
@@ -27,7 +22,8 @@ class Round < ActiveRecord::Base
 
 
   def to_s()
-    "Match Id: " + self.id.to_s + ", Date: " + date.to_s
+    "Round Id: " + self.id.to_s +
+    ", round_type: " + round_types[self.round_type]
   end
 
   def settle_predictions_if_over

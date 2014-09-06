@@ -2,12 +2,13 @@ class Match < ActiveRecord::Base
 
   has_many :user_match_predictions
 
-  belongs_to :tournament
+  belongs_to :round
+  has_one :tournament, through: :round
   belongs_to :receiving_contestant, polymorphic: true
   belongs_to :invited_contestant, polymorphic: true
 
-  validates :tournament_id, presence: true
-  validates_presence_of :tournament
+  validates :round, presence: true
+  validates_presence_of :round
   validates :date, presence: true
   validates :receiving_contestant, presence: true
   validates_presence_of :receiving_contestant
@@ -16,7 +17,7 @@ class Match < ActiveRecord::Base
 
   validates_with TypesMatchValidator
   validates_with ContestantsDifferValidator
-  validates_with MatchDateDuringTournament
+  validates_with DatesAreValid
 
   after_save :settle_predictions_if_over
 

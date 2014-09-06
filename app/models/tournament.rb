@@ -21,5 +21,5 @@ class Tournament < ActiveRecord::Base
   validates :start_date, presence: :true
   validates_presence_of :venue
 
-  validates_with StartsBeforeEnds
+  validates_with DatesAreValid
 end

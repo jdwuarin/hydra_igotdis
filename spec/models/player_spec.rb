@@ -21,8 +21,8 @@ describe Player do
     before { @player_1.username = " " }
     it { should_not be_valid }
   end
-  describe "when player_position_id is not present" do
-    before { @player_1.player_position_id = nil }
+  describe "when player_position is not present" do
+    before { @player_1.player_position = nil }
     it { should_not be_valid }
   end
   describe "when game_id is not present" do
@@ -38,23 +38,5 @@ describe Player do
       end
 
       it { should_not be_valid }
-  end
-  describe "when game_id is changed" do
-      before do
-        player_with_same_credentials = @player_1.dup
-        player_with_same_credentials.game_id = 2
-        player_with_same_credentials.save
-      end
-
-      it { should be_valid }
-  end
-  describe "when username is changed" do
-      before do
-        player_with_same_credentials = @player_1.dup
-        player_with_same_credentials.username = "Test Name"
-        player_with_same_credentials.save
-      end
-
-      it { should be_valid }
   end
 end
