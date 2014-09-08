@@ -12,7 +12,7 @@ class Round < ActiveRecord::Base
 
   validates_with RoundDirectEliminationValidation
   validates_with TypesMatchValidator
-  validates_with ContestantsDifferValidator
+  validates_with ContestantsValidator
   validates_with DatesAreValid
 
   after_save :settle_predictions_if_over

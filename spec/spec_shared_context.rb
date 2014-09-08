@@ -16,10 +16,10 @@ shared_context "instance_variables" do
                                  venue: @venue.id,
                                  continent_id: 1)
 
-    @team_1 = Team.new(name: "Example Team",
+    @team_1 = Team.new(name: "Example Team_1",
                        continent_id: 1,
                        game_id: 1)
-    @team_2 = Team.new(name: "Example Team",
+    @team_2 = Team.new(name: "Example Team_2",
                        continent_id: 1,
                        game_id: 1)
 
