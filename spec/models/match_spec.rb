@@ -41,7 +41,7 @@ describe Match do
     it { should_not be_valid }
   end
 
-  describe "when round is direct elimination contestants must be same" do
+  describe "round and match contestants same when is direct elimination" do
     before do
       @round.is_direct_elimination_round = true
       @round.save
