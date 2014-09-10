@@ -80,7 +80,130 @@ describe Match do
     it { should_not be_valid }
   end
 
-  describe "when both contestants results"
+  describe "Test validity of LOL_results_format_1" do
+
+    before do
+      @contestant_results = @lol_results_format_1["receiving_contestant"].clone
+      @contestant_results["winner"] = nil
+    end
+
+    describe "when lol_results_format_1 is larger than 3" do
+      before do
+        @lol_results_format_1["random"] = "something"
+        @match.results = @lol_results_format_1
+        @match.save
+      end
+      it {should_not be_valid}
+    end
+
+    describe "when 'type' is not present in lol_results_format_1" do
+      before do
+        results = @lol_results_format_1.except("type")
+        @match.results = results
+        @match.save
+      end
+      it {should_not be_valid}
+    end
+
+    descibe "when receiving_contestant is not present" do
+      before do
+        results = @lol_results_format_1.except("receiving_contestant")
+        @match.results = results
+        @match.save
+      end
+      it {should_not be_valid}
+    end
+
+    describe "when invited_contestant is not present" do
+      before do
+        results = @lol_results_format_1.except("invited_contestant")
+        @match.results = results
+        @match.save
+      end
+      it {should_not be_valid}
+    end
+
+    describe "when winner is absent" do
+      before do
+        invalid = @contestant_results.except("winner")
+        @lol_results_format_1["receiving_contestant"] = invalid
+      end
+      it {should_not be_valid}
+    end
+
+    describe "when first_blood is absent" do
+      before do
+        invalid = @contestant_results.except("first_blood")
+        @lol_results_format_1["receiving_contestant"] = invalid
+      end
+      it {should_not be_valid}
+    end
+
+    describe "when first_tower is absent" do
+      before do
+        invalid = @contestant_results.except("first_tower")
+        @lol_results_format_1["receiving_contestant"] = invalid
+      end
+      it {should_not be_valid}
+    end
+
+    describe "when first_inhibitor is absent" do
+      before do
+        invalid = @contestant_results.except("first_inhibitor")
+        @lol_results_format_1["receiving_contestant"] = invalid
+      end
+      it {should_not be_valid}
+    end
+
+    describe "when winner is both true" do
+      before do
+        @lol_results_format_1["receiving_contestant"]["winner"] = true
+        @lol_results_format_1["invited_contestant"]["winner"] = true
+      end
+      it {should_not be_valid}
+    end
+
+    describe "when winner is both false" do
+      before do
+        @lol_results_format_1["receiving_contestant"]["winner"] = false
+        @lol_results_format_1["invited_contestant"]["winner"] = false
+      end
+      it {should_not be_valid}
+    end
+
+    describe "when receiving_contestant winner is nil" do
+      before do
+        @lol_results_format_1["receiving_contestant"]["winner"] = nil
+      end
+      it {should_not be_valid}
+    end
+
+    describe "when invited_contestant winner is nil" do
+      before do
+        @lol_results_format_1["invited_contestant"]["winner"] = nil
+      end
+      it {should_not be_valid}
+    end
+
+    describe "when winner should be valid" do
+      it {should be_valid}
+    end
+
+    describe "when match.round_type is 1" do
+
+      before do
+        @round.round_type = 1
+        @round.save
+      end
+
+      describe "when first_blood is absent" do
+
+      end
+
+    end
+
+
+  end
 
 end
 

@@ -32,11 +32,15 @@ shared_context "instance_variables" do
                        receiving_contestant: @team_1,
                        invited_contestant: @team_2)
 
+    @lol_results_format_1 = get_empty_LOL_results_format_1
+    @lol_results_format_1["receiving_contestant"]["winner"] = false
+    @lol_results_format_1["invited_contestant"]["winner"] = true
+
     @match = Match.new(round: @round,
                        date: DateTime.now,
                        receiving_contestant: @team_1,
                        invited_contestant: @team_2,
-                       results: {})
+                       results: @lol_results_format_1)
 
     @player_position = PlayerPosition.new(match: @match,
                                           game_id: 1)
