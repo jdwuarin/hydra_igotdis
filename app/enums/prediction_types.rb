@@ -10,10 +10,9 @@
 
 ROUND_PREDICTION = 0
 MATCH_PREDICTION = 1
-AGNOSTIC_PREDICTION = 2
 
-prediction_types = { 1 => ["WINNER", 100, AGNOSTIC_PREDICTION],
-                     2 => ["DRAW", 100, AGNOSTIC_PREDICTION],
+prediction_types = { 1 => ["WINNER", 100, MATCH_PREDICTION],
+                     2 => ["DRAW", 100, MATCH_PREDICTION],
                      3 => ["FIRSTKILL", 200, MATCH_PREDICTION],
                      4 => ["FIRSTTOWER", 2, MATCH_PREDICTION],
                      5 => ["FIRSTINHIBITOR", 2, MATCH_PREDICTION],

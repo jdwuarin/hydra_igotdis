@@ -352,9 +352,7 @@ describe Match do
         end
 
       end
-
     end
-
   end
 
   describe "Test distributing points when matches are over" do

@@ -75,22 +75,4 @@ describe UserRoundPrediction do
     it { should_not be_valid }
   end
 
-  describe "can however do filler predictions on round of type ROUND_1" do
-    before do
-      type_1_round = Round.new(tournament: @tournament,
-                               round_type: 1,
-                               points_multiplier: 1,
-                               start_date: DateTime.yesterday + 1.hour,
-                               end_date: DateTime.yesterday + 1.day,
-                               is_direct_elimination_round: false,
-                               receiving_contestant: @team_1,
-                               invited_contestant: @team_2)
-      type_1_round.save
-      @user_round_prediction.round = type_1_round
-      @user_round_prediction.predicted_contestant = nil
-      @user_round_prediction.save
-    end
-    it { should be_valid }
-  end
-
 end

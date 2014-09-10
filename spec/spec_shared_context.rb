@@ -7,6 +7,10 @@ shared_context "instance_variables" do
                      password: "test1234",
                      password_confirmation: "test1234")
 
+    @other_user = User.new(email: "other_test@sugarglider.com",
+                           password: "test1234",
+                           password_confirmation: "test1234")
+
     @venue = Venue.new(name: "Example Venue")
 
     @tournament = Tournament.new(name: "Example Tournament",
@@ -83,19 +87,55 @@ shared_context "instance_variables" do
     @team_player_4 = TeamPlayer.new(team: @team_2,
                                     player: @player_4)
 
-    @user_round_prediction = UserRoundPrediction.new(round: @round,
-                                 prediction_type: 6,
-                                 predicted_contestant: @team_1,
-                                 user_id: @user)
+    # @user predicts @team_1 will win 3-0
+    @user_round_prediction = UserRoundPrediction.new(
+      round: @round,
+      prediction_type: 6,
+      predicted_contestant: @team_1,
+      user_id: @user)
 
-    @user_match_prediction = UserMatchPrediction.new(match_id: @match,
-                                 user_round_prediction: @user_round_prediction,
-                                 prediction_type: 3,
-                                 predicted_contestant: @team_1,
-                                 user_id: @user)
+    # @other_user predicts @team_1 will win 3-1
+    @other_user_round_prediction = UserRoundPrediction.new(
+      round: @round,
+      prediction_type: 7,
+      predicted_contestant: @team_1,
+      user_id: @other_user)
+
+
+    # @user predicts @team_1 will have the First kill
+    @user_match_prediction = UserMatchPrediction.new(
+      match_id: @match,
+      prediction_type: 1,
+      predicted_contestant: @team_1,
+      user_id: @user)
+
+    # @user predicts @team_1 will have the First kill
+    @user_match_other_prediction = UserMatchPrediction.new(
+      match_id: @match,
+      prediction_type: 3,
+      predicted_contestant: @team_1,
+      user_id: @user)
+
+    # @other_user predicts @team_1 will have the first tower
+    @other_user_match_prediction = UserMatchPrediction.new(
+      match_id: @match,
+      prediction_type: 4,
+      predicted_contestant: @team_1,
+      user_id: @other_user)
+
+    # @other_user predicts @team_1 will have the first inhibitor
+    @other_user_match_other_prediction = UserMatchPrediction.new(
+      match_id: @match,
+      prediction_type: 5,
+      predicted_contestant: @team_1,
+      user_id: @other_user)
 
     @user_tournament_point_standing = UserTournamentPointStading(
       user: @user,
+      tournament: @tournament)
+
+    @other_user_tournament_point_standing = UserTournamentPointStading(
+      user: @other_user,
       tournament: @tournament)
 
   end
