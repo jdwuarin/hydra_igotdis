@@ -185,7 +185,7 @@ describe Match do
       it {should_not be_valid}
     end
 
-    describe "when winner should be valid" do
+    describe "when winner status is all good" do
       it {should be_valid}
     end
 
@@ -193,15 +193,171 @@ describe Match do
 
       before do
         @round.round_type = 1
+        @round.is_direct_elimination_round = false
         @round.save
       end
 
       describe "when first_blood is absent" do
+        #by default it is
+        it {should be_valid}
+      end
+
+      describe "when first_tower is absent" do
+        #by default it is
+        it {should be_valid}
+      end
+
+      describe "when first_inhibitor is absent" do
+        #by default it is
+        it {should be_valid}
+      end
+
+    end
+
+    describe "when match.round_type is 2" do
+
+      before do
+        @round.round_type = 2
+        @round.is_direct_elimination_round = true
+        @round.save
+      end
+
+      describe "when first_blood is absent" do
+        #by default it is
+        it {should be_valid}
+      end
+
+      describe "when first_tower is absent" do
+        #by default it is
+        it {should be_valid}
+      end
+
+      describe "when first_inhibitor is absent" do
+        #by default it is
+        it {should be_valid}
+      end
+
+    end
+
+    describe "when match.round_type is 3" do
+
+      before do
+        @round.round_type = 3
+        @round.is_direct_elimination_round = true
+        @round.save
+      end
+
+      describe "when first_blood is absent" do
+        #by default it is
+        it {should_not be_valid}
+      end
+
+      describe "when first_blood is both true" do
+        before do
+          @lol_results_format_1["receiving_contestant"]["first_blood"] = true
+          @lol_results_format_1["invited_contestant"]["first_blood"] = true
+        end
+        it {should_not be_valid}
+      end
+
+      describe "when first_blood is both false" do
+        before do
+          @lol_results_format_1["receiving_contestant"]["first_blood"] = false
+          @lol_results_format_1["invited_contestant"]["first_blood"] = false
+        end
+        it {should_not be_valid}
+      end
+
+      describe "when receiving_contestant first_blood is nil" do
+        before do
+          @lol_results_format_1["receiving_contestant"]["first_blood"] = nil
+        end
+        it {should_not be_valid}
+      end
+
+      describe "when invited_contestant first_blood is nil" do
+        before do
+          @lol_results_format_1["invited_contestant"]["first_blood"] = nil
+        end
+        it {should_not be_valid}
+      end
+
+      describe "when first_tower is absent" do
+        #by default it is
+        it {should be_valid}
+      end
+
+      describe "when first_inhibitor is absent" do
+        #by default it is
+        it {should be_valid}
+      end
+
+    end
+
+    describe "when match.round_type is 3" do
+
+      before do
+        @round.round_type = 4
+        @round.is_direct_elimination_round = true
+        @round.save
+      end
+
+      describe "when first_blood is absent" do
+        #by default it is
+        it {should_not be_valid}
+      end
+
+      describe "when first_tower is absent" do
+        #by default it is
+        it {should_not be_valid}
+      end
+
+      describe "when first_inhibitor is absent" do
+        #by default it is
+        it {should_not be_valid}
+      end
+
+      result_specs = ["first_blood", "first_tower", "first_inhibitor"]
+
+      result_specs.each do |result_spec|
+
+        describe format("when %{a} is both true", a: result_spec) do
+          before do
+            @lol_results_format_1["receiving_contestant"]["first_blood"] = true
+            @lol_results_format_1["invited_contestant"]["first_blood"] = true
+          end
+          it {should_not be_valid}
+        end
+
+        describe format("when %{a} is both false", a: result_spec) do
+          before do
+            @lol_results_format_1["receiving_contestant"]["first_blood"] = false
+            @lol_results_format_1["invited_contestant"]["first_blood"] = false
+          end
+          it {should_not be_valid}
+        end
+
+        describe format("when receiving_contestant %{a} nil", a: result_spec) do
+          before do
+            @lol_results_format_1["receiving_contestant"]["first_blood"] = nil
+          end
+          it {should_not be_valid}
+        end
+
+        describe format("when invited_contestant %{a} nil", a: result_spec) do
+          before do
+            @lol_results_format_1["invited_contestant"]["first_blood"] = nil
+          end
+          it {should_not be_valid}
+        end
 
       end
 
     end
 
+  end
+
+  describe "Test distributing points when matches are over" do
 
   end
 
