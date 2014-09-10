@@ -50,9 +50,9 @@ describe Match do
                             game_id: 1)
       @match.receiving_contestant = wrong_team
       @match.save
-
-      it { should_not be_valid }
     end
+    it { should_not be_valid }
+
   end
 
   describe "when round is not direct elimination, no such check" do
@@ -64,9 +64,9 @@ describe Match do
                             game_id: 1)
       @match.receiving_contestant = some_team
       @match.save
-
-      it { should be_valid }
     end
+    it { should be_valid }
+
   end
 
   describe "when contestants are the same" do
@@ -79,6 +79,9 @@ describe Match do
     before { @match.date = date_before_tournament }
     it { should_not be_valid }
   end
+
+  describe "when both contestants results"
+
 end
 
 
