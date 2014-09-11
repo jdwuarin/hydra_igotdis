@@ -58,6 +58,18 @@ describe UserRoundPrediction do
     it { should_not be_valid }
   end
 
+  describe "user can only do one prediction per round" do
+
+    context "with prediction_type identical" do
+
+    end
+
+    context "with prediction_type different" do
+
+    end
+
+  end
+
   describe "cannot do any actual predictions on round of type ROUND_1" do
     before do
       type_1_round = Round.new(tournament: @tournament,

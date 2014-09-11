@@ -30,6 +30,7 @@ shared_context "instance_variables" do
     @round = Round.new(tournament: @tournament,
                        round_type: 2,
                        points_multiplier: 2,
+                       finished: false,
                        start_date: DateTime.yesterday + 1.hour,
                        end_date: DateTime.yesterday + 1.day,
                        is_direct_elimination_round: true,
@@ -42,6 +43,7 @@ shared_context "instance_variables" do
 
     @match = Match.new(round: @round,
                        date: DateTime.now,
+                       finished: false,
                        receiving_contestant: @team_1,
                        invited_contestant: @team_2,
                        results: @lol_results_format_1)

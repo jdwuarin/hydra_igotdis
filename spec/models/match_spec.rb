@@ -80,11 +80,12 @@ describe Match do
     it { should_not be_valid }
   end
 
-  describe "Test validity of LOL_results_format_1" do
+  describe "Test validity of LOL_results_format_1 when match finished" do
 
     before do
       @contestant_results = @lol_results_format_1["receiving_contestant"].clone
       @contestant_results["winner"] = nil
+      @match.finished = true # all these tests only apply when match is over
     end
 
     describe "when lol_results_format_1 is larger than 3" do
@@ -94,6 +95,18 @@ describe Match do
         @match.save
       end
       it {should_not be_valid}
+    end
+
+    # this is the only test to see that any kind of results is valid
+    # until the check is done when match is set to finished
+    describe "when lol_results_format_1 is larger than 3 and match not over" do
+      before do
+        @lol_results_format_1["random"] = "something"
+        @match.results = @lol_results_format_1
+        @match.finished = false
+        @match.save
+      end
+      it {should be_valid}
     end
 
     describe "when 'type' is not present in lol_results_format_1" do
@@ -357,13 +370,154 @@ describe Match do
 
   describe "Test distributing points when matches are over" do
 
+    context "match is a round 1 match" do
+
+      before do
+        @round.round_type = 1
+      end
+
+      context "@user correctly predicted the winner" do
+
+      end
+
+      context "multiple users correctly predicted the winner" do
+
+      end
+
+      context "@user incorrectly predicted the winner" do
+
+      end
+
+      context "one user correctly predicted the winner other didn't" do
+
+      end
+
+      context "multiple users incorrectly predicted the winner" do
+
+      end
+
+    end
+
+    context "match is a round 2 match" do
+
+      before do
+        @round.round_type = 2
+      end
+
+      context "@user correctly predicted the winner" do
+
+      end
+
+      context "@user incorrectly predicted the winner" do
+
+      end
+
+    end
+
+    context "match is a round 3 match" do
+
+      before do
+        @round.round_type = 3
+      end
+
+      context "@user correctly predicted the winner" do
+
+      end
+
+      context "@user incorrectly predicted the winner" do
+
+      end
+
+      context "@user correctly predicted the first_blood" do
+
+      end
+
+      context "multiple users correctly predicted the first_blood" do
+
+      end
+
+      context "@user incorrectly predicted the first_blood" do
+
+      end
+
+      context "one user correctly predicted the first_blood other didn't" do
+
+      end
+
+      context "multiple users incorrectly predicted the first_blood" do
+
+      end
+
+    end
+
+    context "match is a round 4 match" do
+
+      before do
+        @round.round_type = 4
+      end
+
+      context "@user correctly predicted the winner" do
+
+      end
+
+      context "@user incorrectly predicted the winner" do
+
+      end
+
+      context "@user correctly predicted the first_blood" do
+
+      end
+
+      context "@user incorrectly predicted the first_blood" do
+
+      end
+
+      context "@user correctly predicted the first_tower" do
+
+      end
+
+      context "multiple users correctly predicted the first_tower" do
+
+      end
+
+      context "@user incorrectly predicted the first_tower" do
+
+      end
+
+      context "one user correctly predicted the first_tower other didn't" do
+
+      end
+
+      context "multiple users incorrectly predicted the first_tower" do
+
+      end
+
+      context "@user correctly predicted the first_inhibitor" do
+
+      end
+
+      context "multiple users correctly predicted the first_inhibitor" do
+
+      end
+
+      context "@user incorrectly predicted the first_inhibitor" do
+
+      end
+
+      context "one user correctly predicted the first_inhibitor other didn't" do
+
+      end
+
+      context "multiple users incorrectly predicted the first_inhibitor" do
+
+      end
+
+
+    end
+
   end
 
 end
-
-
-# TODO add a fucking test for when round is finished and points need
-# to be distributed to the people who did the correct predictions
 
 
 

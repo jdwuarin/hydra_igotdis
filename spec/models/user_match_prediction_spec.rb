@@ -49,4 +49,8 @@ describe UserMatchPrediction do
     it { should_not be_valid }
   end
 
+  describe "user can only do one prediction of one type per match" do
+    
+  end
+
 end
