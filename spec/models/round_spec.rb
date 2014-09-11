@@ -125,11 +125,45 @@ describe round do
 
     it { should_not be_valid }
   end
+
+  describe "Test distributing points when round is over" do
+
+    context "match is a round 1 match" do
+
+      before do
+        @round.round_type = 2 #predictions on round_type 1 rounds do not work
+      end
+
+      context "@user correctly predicted the winner and the score" do
+
+      end
+
+      context "multiple users correctly predicted the winner and the score" do
+
+      end
+
+      context "user correclty predicted the winner, not the score" do
+
+      end
+
+      context "multiple users correclty predicted the winner, not the score" do
+
+      end
+
+      context "@user incorrectly predicted the winner" do
+
+      end
+
+      context "multiple users incorrectly predicted the winner" do
+
+      end
+
+      context "a user correctly predicted the winner and score, other didn't" do
+
+      end
+
+    end
+  end
 end
-
-
-# TODO add a fucking test for when round is finished and points need
-# to be distributed to the people who did the correct predictions
-
 
 
