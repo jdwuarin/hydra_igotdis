@@ -1,8 +1,6 @@
 require 'spec_helper'
-require 'spec_shared_context'
 
 describe UserMatchPrediction do
-  include_context "instance_variables"
 
   subject { @user_match_prediction }
 
@@ -50,7 +48,7 @@ describe UserMatchPrediction do
   end
 
   describe "user can only do one prediction of one type per match" do
-    
+
   end
 
 end

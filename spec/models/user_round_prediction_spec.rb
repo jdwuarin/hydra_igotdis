@@ -1,8 +1,6 @@
 require 'spec_helper'
-require 'spec_shared_context'
 
 describe UserRoundPrediction do
-  include_context "instance_variables"
 
   subject { @user_round_prediction }
 

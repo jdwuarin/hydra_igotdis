@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :team do
-    name "MyString"
+    name "Example Team"
     continent_id 1
     game_id 1
   end

@@ -2,5 +2,11 @@
 
 FactoryGirl.define do
   factory :match do
+    round
+    date Datetime.now
+    finished false
+    receiving_contestant round.receivin_contestant
+    invited_contestant round.invited_contestant
+    results {}
   end
 end

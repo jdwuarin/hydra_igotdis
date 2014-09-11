@@ -5,6 +5,12 @@ describe Match do
 
   include_context "instance_variables"
 
+  before do
+    @lol_results_format_1 = get_empty_LOL_results_format_1
+    @lol_results_format_1["receiving_contestant"]["winner"] = false
+    @lol_results_format_1["invited_contestant"]["winner"] = true
+  end
+
   subject { @match }
 
   it { should respond_to(:round) }

@@ -2,11 +2,11 @@
 
 FactoryGirl.define do
   factory :tournament do
-    name "MyString"
+    name "Example Tournament"
     game_id 1
-    start_date "2014-03-06 18:27:52"
-    end_date "2014-03-06 18:27:52"
-    venue_id 1
+    start_date DateTime.yesterday
+    end_date DateTime.tomorrow
+    venue
     continent_id 1
   end
 end
