@@ -2,11 +2,12 @@
 
 FactoryGirl.define do
   factory :player do
-    username "MyString"
-    first_name "MyString"
-    last_name "MyString"
-    position 1
-    date_of_birth "2014-03-06"
-    continent 1
+    username
+    first_name Faker::Name.first_name
+    last_name Faker::Name.last_name
+    player_position
+    date_of_birth { 20.years.ago }
+    continent_id 1
+    game_id 1
   end
 end

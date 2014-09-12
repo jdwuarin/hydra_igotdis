@@ -15,4 +15,9 @@ include_context "instance_variables"
     before { @venue.name = " " }
     it { should_not be_valid }
   end
+
+  describe "when name is not unique" do
+
+    it {should_not be_valid}
+  end
 end

@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :tournament do
-    name "Example Tournament"
+    name
     game_id 1
-    start_date DateTime.yesterday
-    end_date DateTime.tomorrow
+    start_date { 2.days.ago }
+    end_date { 2.days.from_now }
     venue
     continent_id 1
   end

@@ -10,6 +10,10 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :game_id
 
       t.timestamps
+
     end
+
+    # Add index to players Username And GameId combination. must be unique 
+    add_index :players, [:username, :game_id], :unique => true
   end
 end

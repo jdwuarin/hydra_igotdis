@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :team_player do
-    team_id 1
-    player_id 1
+    team
+    player
   end
 end

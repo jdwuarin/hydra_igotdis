@@ -3,10 +3,10 @@
 FactoryGirl.define do
   factory :match do
     round
-    date Datetime.now
+    date { DateTime.now }
     finished false
-    receiving_contestant round.receivin_contestant
-    invited_contestant round.invited_contestant
-    results {}
+    receiving_contestant { round.receivin_contestant }
+    invited_contestant { round.invited_contestant }
+    results Hash.new
   end
 end

@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :venue do
-    name "Example Venue"
+    name
   end
 end

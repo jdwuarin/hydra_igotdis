@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :player_position do
-    name "some position"
+    name
     game_id 1
   end
 end

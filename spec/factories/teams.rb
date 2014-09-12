@@ -6,4 +6,16 @@ FactoryGirl.define do
     continent_id 1
     game_id 1
   end
+
+  factory :receiving_contestant, class: Team do
+    name "receiving contestant"
+    continent_id 1
+    game_id 1
+  end
+
+  factory :invited_contestant, class: Team do
+    name "invited contestant"
+    continent_id 1
+    game_id 1
+  end
 end

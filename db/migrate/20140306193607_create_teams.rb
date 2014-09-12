@@ -7,5 +7,8 @@ class CreateTeams < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    # Add Index ToTeams NameAndGameId combination. must be unique
+    add_index :teams, [:name, :game_id], :unique => true
   end
 end
