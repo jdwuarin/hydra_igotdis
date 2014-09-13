@@ -1,0 +1,10 @@
+header
+  article
+    .logo
+      h1
+        a href="#" Sugraglider
+
+section#main
+  = outlet
+
+footer

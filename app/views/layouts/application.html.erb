@@ -1,27 +1,14 @@
+<!-- app/views/layouts/application.html.erb -->
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= full_title(yield(:title)) %></title>
-    <%= stylesheet_link_tag "application", media: "all",
-                                           "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <title>sugarglider</title>
+    <%= stylesheet_link_tag    'application'  %>
+    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
-	<%= render 'layouts/shim' %>
   </head>
   <body>
-	<%= render 'layouts/header' %>
-    <div class="container">
-
-      <% if !notice.nil? %>
-        <p class="notice"><%= notice %></p>
-      <% end %>
-      <% if !alert.nil? %>
-        <p class="alert"><%= alert %></p>
-      <% end %> 
-
-      <%= yield %>
-      <%= render 'layouts/footer' %>
-
-    </div>
+    <%= yield %>
+    <div id="ember-app"></div>
   </body>
 </html>
