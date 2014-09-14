@@ -5,6 +5,7 @@ class CreateUserMatchPredictions < ActiveRecord::Migration
       t.integer  :prediction_type
       t.references  :predicted_contestant, polymorphic: true
       t.references  :user
+      t.text :comment
       t.timestamps
     end
   end

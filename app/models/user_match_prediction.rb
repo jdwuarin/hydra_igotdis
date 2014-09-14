@@ -1,4 +1,4 @@
-class Prediction < ActiveRecord::Base
+class UserMatchPrediction < ActiveRecord::Base
 
   belongs_to :match
   belongs_to :user
@@ -9,7 +9,6 @@ class Prediction < ActiveRecord::Base
   validates :user_id, presence: true
   validates :prediction_type, presence: true
   validates :predicted_contestant_id, presence: true
-  validates_presence_of :game
 
   validates_with PredictionHasAppropriatePredictionType
 

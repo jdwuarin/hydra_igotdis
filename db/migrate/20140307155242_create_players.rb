@@ -8,6 +8,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.date :date_of_birth
       t.integer :continent_id
       t.integer :game_id
+      t.string :avatar
 
       t.timestamps
 

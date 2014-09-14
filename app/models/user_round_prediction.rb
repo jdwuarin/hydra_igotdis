@@ -19,7 +19,6 @@ class UserRoundPrediction < ActiveRecord::Base
   validates :round, presence: true
   validates :user_id, presence: true
   validates :prediction_type, presence: true
-  validates_presence_of :game
 
   validates_with PredictionHasAppropriatePredictionType
   validates_with RoundTypeNot1
