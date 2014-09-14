@@ -1,8 +1,10 @@
 # this test is used right now for the LOL tournament. But ew 
 class RoundTypeNot1 < ActiveModel::Validator
   def validate(record)
-    if record.round.round_type == 1 and record.predicted_contestant != nil
-      tournament.errors[:type] << 'cannot do an actual prediction on this round'
+    if record.round
+      if record.round.round_type == 1 && record.predicted_contestant != nil
+        record.errors[:type] << 'cannot do an actual prediction on this round'
+      end
     end
   end
 end
@@ -17,8 +19,10 @@ class UserRoundPrediction < ActiveRecord::Base
   has_many :user_match_predictions
 
   validates :round, presence: true
-  validates :user_id, presence: true
+  validates :user, presence: true
   validates :prediction_type, presence: true
+  validates :predicted_contestant, presence: true
+  validates :round, :user, :uniqueness => {:scope => [:round, :user]}
 
   validates_with PredictionHasAppropriatePredictionType
   validates_with RoundTypeNot1

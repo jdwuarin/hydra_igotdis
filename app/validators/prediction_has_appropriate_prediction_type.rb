@@ -1,19 +1,24 @@
 class PredictionHasAppropriatePredictionType < ActiveModel::Validator
   def validate(record)
-    prediction_type_group = Enums::PREDICTION_TYPES[record.prediction_type][2]
+    if record.prediction_type
 
-    if record.class == UserRoundPrediction
-      unless prediction_type_group == Enums::ROUND_PREDICTION
-        record.errors[:type] << 
-          'user_round_prediction\'s prediction type is not appropriate'
+      prediction_type_group = Enums::PREDICTION_TYPES[record.prediction_type][2]
+
+      if record.class == UserRoundPrediction
+        unless prediction_type_group == Enums::ROUND_PREDICTION
+          record.errors[:type] << 
+            'user_round_prediction\'s prediction type is not appropriate'
+        end
+
+      elsif record.class == UserMatchPrediction
+        unless prediction_type_group == Enums::MACTH_PREDICTION
+          record.errors[:type] << 
+            'user_match_prediction\'s prediction type is not appropriate'
+        end
       end
 
-    elsif record.class == UserMatchPrediction
-      unless prediction_type_group == Enums::MACTH_PREDICTION
-        record.errors[:type] << 
-          'user_match_prediction\'s prediction type is not appropriate'
-      end
     end
+
 
   end
 

@@ -8,5 +8,8 @@ class CreateUserRoundPredictions < ActiveRecord::Migration
       t.text :comment
       t.timestamps
     end
+
+    add_index :user_round_predictions, [:round_id, :user_id], :unique => true
+
   end
 end
