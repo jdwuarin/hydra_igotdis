@@ -1,11 +1,9 @@
 require 'spec_helper'
-require 'spec_shared_context'
 
 describe UserTournamentPointStandings do
 
-include_context "instance_variables"
 
-  subject { @user_tournament_point_standing }
+  subject { create(:user_tournament_point_standing) }
 
   it { should respond_to(:user) }
   it { should respond_to(:tournament) }
@@ -17,7 +15,7 @@ include_context "instance_variables"
     before { @user_tournament_point_standing.user = nil }
     it { should_not be_valid }
   end
-  describe "when tournament_id is not present" do
+  describe "when tournament is not present" do
     before { @user_tournament_point_standing.tournament = nil }
     it { should_not be_valid }
   end

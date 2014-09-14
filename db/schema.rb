@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20140724121610) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "matches", force: true do |t|
-    t.integer  "tournament_id"
+    t.integer  "round_id"
     t.datetime "date"
     t.boolean  "finished",                  default: false
     t.integer  "receiving_contestant_id"
@@ -78,16 +78,32 @@ ActiveRecord::Schema.define(version: 20140724121610) do
     t.date     "date_of_birth"
     t.integer  "continent_id"
     t.integer  "game_id"
+    t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "predictions", force: true do |t|
-    t.integer  "match_id"
-    t.integer  "prediction_type"
-    t.string   "predicted_contestant_type"
-    t.integer  "predicted_contestant"
-    t.integer  "user_id"
+  add_index "players", ["username", "game_id"], name: "index_players_on_username_and_game_id", unique: true, using: :btree
+
+  create_table "rounds", force: true do |t|
+    t.integer  "tournament_id"
+    t.integer  "round_type"
+    t.integer  "points_multiplier"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.boolean  "is_direct_elimination_round", default: false
+    t.boolean  "finished",                    default: false
+    t.integer  "receiving_contestant_id"
+    t.string   "receiving_contestant_type"
+    t.integer  "invited_contestant_id"
+    t.string   "invited_contestant_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "team_players", force: true do |t|
+    t.integer  "team_id"
+    t.integer  "player_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -96,9 +112,12 @@ ActiveRecord::Schema.define(version: 20140724121610) do
     t.string   "name"
     t.integer  "continent_id"
     t.integer  "game_id"
+    t.string   "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "teams", ["name", "game_id"], name: "index_teams_on_name_and_game_id", unique: true, using: :btree
 
   create_table "tournaments", force: true do |t|
     t.string   "name"
@@ -111,16 +130,32 @@ ActiveRecord::Schema.define(version: 20140724121610) do
     t.datetime "updated_at"
   end
 
-  create_table "user_accounts", force: true do |t|
+  create_table "user_event_point_standings", force: true do |t|
     t.integer  "user_id"
+    t.integer  "tournament_id"
+    t.integer  "points",        default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "user_event_point_standings", force: true do |t|
+  create_table "user_match_predictions", force: true do |t|
+    t.integer  "match_id"
+    t.integer  "prediction_type"
+    t.integer  "predicted_contestant_id"
+    t.string   "predicted_contestant_type"
     t.integer  "user_id"
-    t.integer  "tournament_id"
-    t.integer  "points"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_round_predictions", force: true do |t|
+    t.integer  "round_id"
+    t.integer  "prediction_type"
+    t.integer  "predicted_contestant_id"
+    t.string   "predicted_contestant_type"
+    t.integer  "user_id"
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -148,5 +183,7 @@ ActiveRecord::Schema.define(version: 20140724121610) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "venues", ["name"], name: "index_venues_on_name", unique: true, using: :btree
 
 end

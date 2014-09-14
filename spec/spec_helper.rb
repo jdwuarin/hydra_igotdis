@@ -30,13 +30,10 @@ Spork.prefork do
 
     config.include FactoryGirl::Syntax::Methods
 
-    config.before(:suite) do
-      FactoryGirl.lint
-    end
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
     # instead of true.
-    config.use_transactional_fixtures = false
+    config.use_transactional_fixtures = true
 
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of

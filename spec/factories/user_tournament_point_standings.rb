@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :user_tournament_point_standing do
     user
     tournament
-    points 100
+    points 0
   end
 end

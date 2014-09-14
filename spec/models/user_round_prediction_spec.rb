@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UserRoundPrediction do
 
-  subject { @user_round_prediction }
+  subject { create(:user_round_prediction) }
 
   it { should respond_to(:round) }
   it { should respond_to(:prediction_type) }
@@ -12,7 +12,7 @@ describe UserRoundPrediction do
 
   it { should be_valid }
 
-  describe "when round_id is not present" do
+  describe "when round is not present" do
     before { @user_round_prediction.round = nil }
     it { should_not be_valid }
   end
@@ -59,13 +59,14 @@ describe UserRoundPrediction do
   describe "user can only do one prediction per round" do
 
     context "with prediction_type identical" do
-
+      same_prediction = create(:venue)
+      expect(same_prediction).not_to be_valid
     end
 
-    context "with prediction_type different" do
-
+    context "even with prediction_type different" do
+      same_round_prediction = create(:venue, prediction_type: 7)
+      expect(same_round_prediction).not_to be_valid
     end
-
   end
 
   describe "cannot do any actual predictions on round of type ROUND_1" do

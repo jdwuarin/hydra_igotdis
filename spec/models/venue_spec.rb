@@ -1,11 +1,12 @@
 require 'spec_helper'
-require 'spec_shared_context'
 
 describe Venue do
 
-include_context "instance_variables"
+  # let(:venue) {create(:venue)}
 
-  subject { @venue }
+  before {@venue = create(:venue)}
+
+  subject {@venue}
 
   it { should respond_to(:name) }
 
@@ -17,7 +18,11 @@ include_context "instance_variables"
   end
 
   describe "when name is not unique" do
-
-    it {should_not be_valid}
+    before do
+      @same_name_venue = build(:venue, name: @venue.name)
+    end
+    subject {@same_name_venue}
+    it { should_not be_valid }
   end
+
 end
