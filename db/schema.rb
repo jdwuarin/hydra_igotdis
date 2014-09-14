@@ -130,14 +130,6 @@ ActiveRecord::Schema.define(version: 20140724121610) do
     t.datetime "updated_at"
   end
 
-  create_table "user_event_point_standings", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "tournament_id"
-    t.integer  "points",        default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "user_match_predictions", force: true do |t|
     t.integer  "match_id"
     t.integer  "prediction_type"
@@ -156,6 +148,14 @@ ActiveRecord::Schema.define(version: 20140724121610) do
     t.string   "predicted_contestant_type"
     t.integer  "user_id"
     t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_tournament_scores", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "tournament_id"
+    t.integer  "score",         default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

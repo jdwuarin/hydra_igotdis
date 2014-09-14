@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe Venue do
 
-  # let(:venue) {create(:venue)}
-
   before {@venue = create(:venue)}
 
   subject {@venue}

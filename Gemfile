@@ -16,10 +16,7 @@ gem 'ffaker'
 gem 'puma'
 
 group :development, :test do
-  gem 'guard-rspec', '4.3.1'
   gem 'rspec-rails', '~> 3.1.0'
-  gem 'spork-rails', '4.0.0'
-  gem 'guard-spork', '1.5.0'
 end
 
 group :test do

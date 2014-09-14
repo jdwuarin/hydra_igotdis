@@ -4,11 +4,12 @@ describe User do
 
   it { should have_many(:user_round_predictions).dependent(:destroy) }
   it { should have_many(:user_match_predictions).dependent(:destroy) }
-  it { should have_many(:user_match_predictions).dependent(:destroy) }
+  it { should have_many(:user_tournament_scores).dependent(:destroy) }
 
-  subject { create(:user) }
+  before {@user = create(:user)}
+  subject { @user }
 
-  it { should respond_to(:name) }
+  it { should respond_to(:email) }
 
   it { should be_valid }
 
