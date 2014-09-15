@@ -5,7 +5,7 @@ FactoryGirl.define do
     round
     date { DateTime.now }
     finished false
-    receiving_contestant { round.receivin_contestant }
+    receiving_contestant { round.receiving_contestant }
     invited_contestant { round.invited_contestant }
     results Hash.new
   end
