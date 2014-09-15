@@ -2,10 +2,7 @@ require 'spec_helper'
 
 describe PlayerPosition do
 
-  before do
-    @player_position = PlayerPosition.new(name: "Example player position",
-                                          game_id: 1)
-  end
+  before { @player_position = create(:player_position)}
 
   subject { @player_position }
 

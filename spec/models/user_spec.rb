@@ -9,7 +9,7 @@ describe User do
 
   it { should be_valid }
 
-  describe "upon deletion that has some dependent" do
+  describe "when deleted that has some dependent" do
 
     before do
       create(:user_round_prediction, user: @user)
