@@ -15,6 +15,9 @@ class CreateMatches < ActiveRecord::Migration
       t.references :invited_contestant, polymorphic: true
       t.hstore :results
 
+      # could contain the venue at some point in the future, but for now
+      # I really don't give a flying fuck
+
       t.timestamps
     end
   end
