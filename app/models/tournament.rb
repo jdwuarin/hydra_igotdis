@@ -1,14 +1,3 @@
-class StartsBeforeEnds < ActiveModel::Validator
-  def validate(tournament)
-    if tournament.end_date != nil
-      if tournament.start_date > tournament.end_date
-        tournament.errors[:base] << 'tournament cannot start after it ends'
-      end
-    end
-  end
-end
-
-
 class Tournament < ActiveRecord::Base
   include ActiveModel::Validations
 

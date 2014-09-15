@@ -38,10 +38,10 @@ class DatesAreValid < ActiveModel::Validator
   end
 
   def validate_start_date_before_end_date(record)
-    if record.end_date != nil
+    if record.start_date != nil && record.end_date != nil
       unless record.start_date < record.end_date
-        record.errors[:id] << record.class + 
-          'Start date must be before end date'
+        record.errors[:id] << record.class.to_s + 
+          ' start date must be before end date'
       end
     end
   end
