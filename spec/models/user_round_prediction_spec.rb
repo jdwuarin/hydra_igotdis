@@ -45,6 +45,11 @@ describe UserRoundPrediction do
   end
 
   describe "when prediction_type is the one of a round" do
+
+    context "and prediction is done for roundup best out of 3" do
+
+    end
+
     before { @user_round_prediction.prediction_type = 6 }
     it { should be_valid }
   end
@@ -73,7 +78,7 @@ describe UserRoundPrediction do
     end
   end
 
-  describe "When user does a prediction on round of type ROUND_1" do
+  describe "when user does a prediction on round of type ROUND_1" do
     before do
       @user_round_prediction.round.round_type = 1
     end

@@ -3,7 +3,6 @@ class CreateRounds < ActiveRecord::Migration
     create_table :rounds do |t|
       t.references :tournament
       t.integer :round_type
-      t.integer :points_multiplier
       t.timestamp :start_date
       t.timestamp :end_date
       t.boolean :is_direct_elimination_round, :default => false
