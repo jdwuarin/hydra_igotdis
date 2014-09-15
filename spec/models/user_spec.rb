@@ -9,23 +9,26 @@ describe User do
 
   it { should be_valid }
 
-  describe "When user has some user_round_predictions" do
+  describe "when deleted that has some dependent" do
 
     before do
-      @urp = create(:user_round_prediction, user: @user)
+      create(:user_round_prediction, user: @user)
+      create(:user_match_prediction, user: @user)
+      create(:user_tournament_score, user: @user)
       @user.destroy
     end
 
-    subject { @urp }
-    specify "They should be destroyed upon user destruction" do 
-      puts @urp
+    specify "user_round_predictions should also be deleted" do
+      expect(UserRoundPrediction.count).to eq 0
     end
 
+    specify "user_match_predictions should also be deleted" do
+      expect(UserMatchPrediction.count).to eq 0
+    end
+
+    specify "user_tournament_scores should also be deleted" do
+      expect(UserTournamentScore.count).to eq 0
+    end
   end
-
-
-  # it { should have_many(:user_round_predictions).dependent(:destroy) }
-  # it { should have_many(:user_match_predictions).dependent(:destroy) }
-  # it { should have_many(:user_tournament_scores).dependent(:destroy) }
 
 end

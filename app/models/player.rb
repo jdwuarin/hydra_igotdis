@@ -16,9 +16,8 @@ class Player < ActiveRecord::Base
   validates_presence_of :player_position
   validates :game_id, presence: true
 
-  validates_with UniqueUsernamePerGame
-
-  before_destroy :destroy_team_player
+  validates :username, :game_id,
+            :uniqueness => {:scope => [:username, :game_id]}
 
   def to_s
     "Player: " + self.username + ", Game: " + Game.find(game_id).name

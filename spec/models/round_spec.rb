@@ -39,6 +39,11 @@ describe round do
     it { should_not be_valid }
   end
 
+  describe "round_type should be a valid number" do
+    before { @round.round_type = 0 }
+    it { should_not be_valid }
+  end
+
   describe "when is_direct_elimination_round is false,
             contestants should not be specified" do
     before do

@@ -141,6 +141,8 @@ ActiveRecord::Schema.define(version: 20140724121610) do
     t.datetime "updated_at"
   end
 
+  add_index "user_match_predictions", ["match_id", "user_id", "prediction_type"], name: "index_ump_on_match_and_user_and_prediction_type", unique: true, using: :btree
+
   create_table "user_round_predictions", force: true do |t|
     t.integer  "round_id"
     t.integer  "prediction_type"
@@ -151,6 +153,8 @@ ActiveRecord::Schema.define(version: 20140724121610) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "user_round_predictions", ["round_id", "user_id"], name: "index_user_round_predictions_on_round_id_and_user_id", unique: true, using: :btree
 
   create_table "user_tournament_scores", force: true do |t|
     t.integer  "user_id"
