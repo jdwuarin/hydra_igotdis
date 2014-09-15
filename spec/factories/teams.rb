@@ -8,13 +8,13 @@ FactoryGirl.define do
   end
 
   factory :receiving_contestant, class: Team do
-    name "receiving contestant"
+    name
     continent_id 1
     game_id 1
   end
 
   factory :invited_contestant, class: Team do
-    name "invited contestant"
+    name
     continent_id 1
     game_id 1
   end

@@ -39,17 +39,17 @@ describe UserRoundPrediction do
     it { should_not be_valid }
   end
 
-  describe "When prediction type the one of a match" do
+  describe "when prediction_type is the one of a match" do
     before { @user_round_prediction.prediction_type = 3 }
     it { should_not be_valid }
   end
 
-  describe "When prediction type is the one of a round" do
+  describe "when prediction_type is the one of a round" do
     before { @user_round_prediction.prediction_type = 6 }
     it { should be_valid }
   end
 
-  describe "When user has already done a prediciton on round" do
+  describe "when user has already done a prediction on round" do
 
     context "with identical prediction_type" do
       before do

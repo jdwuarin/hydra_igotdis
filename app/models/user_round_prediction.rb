@@ -30,7 +30,7 @@ class UserRoundPrediction < ActiveRecord::Base
   def to_s
     "User: " + self.user.email +
     " predicted: " + self.predicted_contestant_id +
-    " of type: " + self.prediction_type +
+    " to achieve: " + Enums::PREDICTION_TYPES[self.prediction_type][0] +
     + "On match: " + self.match.name
   end
 

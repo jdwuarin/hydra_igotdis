@@ -16,8 +16,8 @@ module Enums
   PREDICTION_TYPES = { 1 => ["WINNER", 100, MATCH_PREDICTION],
                        2 => ["DRAW", 100, MATCH_PREDICTION],
                        3 => ["FIRSTKILL", 200, MATCH_PREDICTION],
-                       4 => ["FIRSTTOWER", 2, MATCH_PREDICTION],
-                       5 => ["FIRSTINHIBITOR", 2, MATCH_PREDICTION],
+                       4 => ["FIRSTTOWER", 200, MATCH_PREDICTION],
+                       5 => ["FIRSTINHIBITOR", 200, MATCH_PREDICTION],
                        6 => ["SCORE_2_0", 200, ROUND_PREDICTION],
                        7 => ["SCORE_2_1", 200, ROUND_PREDICTION],
                        }

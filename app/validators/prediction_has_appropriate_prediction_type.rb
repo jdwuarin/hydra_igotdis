@@ -11,7 +11,7 @@ class PredictionHasAppropriatePredictionType < ActiveModel::Validator
         end
 
       elsif record.class == UserMatchPrediction
-        unless prediction_type_group == Enums::MACTH_PREDICTION
+        unless prediction_type_group == Enums::MATCH_PREDICTION
           record.errors[:type] << 
             'user_match_prediction\'s prediction type is not appropriate'
         end
