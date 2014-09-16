@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724121610) do
+ActiveRecord::Schema.define(version: 20140916161500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(version: 20140724121610) do
   create_table "rounds", force: true do |t|
     t.integer  "tournament_id"
     t.integer  "round_type"
-    t.integer  "points_multiplier"
     t.datetime "start_date"
     t.datetime "end_date"
     t.boolean  "is_direct_elimination_round", default: false
@@ -119,13 +118,27 @@ ActiveRecord::Schema.define(version: 20140724121610) do
 
   add_index "teams", ["name", "game_id"], name: "index_teams_on_name_and_game_id", unique: true, using: :btree
 
+  create_table "tournament_contestants", force: true do |t|
+    t.integer  "tournament_id"
+    t.integer  "contestant_id"
+    t.string   "contestant_type"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tournament_contestants", ["tournament_id", "contestant_id"], name: "index_tournament_contestants_on_tournament_id_and_contestant_id", unique: true, using: :btree
+
   create_table "tournaments", force: true do |t|
     t.string   "name"
-    t.integer  "game_id"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.integer  "venue_id"
     t.integer  "continent_id"
+    t.integer  "tournament_type"
+    t.integer  "game_id"
+    t.boolean  "has_groups"
+    t.integer  "group_count"
+    t.integer  "group_naming_convention"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -177,10 +190,12 @@ ActiveRecord::Schema.define(version: 20140724121610) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "venues", force: true do |t|
     t.string   "name"

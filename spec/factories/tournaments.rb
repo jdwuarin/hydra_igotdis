@@ -6,6 +6,21 @@ FactoryGirl.define do
     start_date { 2.days.ago }
     end_date { 2.days.from_now }
     continent_id Continents::ASIA
-    tournament_type TournamentTypes::LOL_WORLD_CUP
+    tournament_type TournamentTypes::DEFAULT_LOL
+    game_id Games::LOL
+    has_groups false
   end
+
+  factory :LWC_tournament do
+    name "LOL World Cup 2014"
+    start_date { 2.days.ago }
+    end_date { 2.days.from_now }
+    continent_id Continents::ASIA
+    tournament_type TournamentTypes::LOL_WORLD_CUP
+    game_id Games::LOL
+    has_groups true
+    group_count 4
+    group_naming_convention GroupNamingConventions::LETTERS
+  end
+
 end
