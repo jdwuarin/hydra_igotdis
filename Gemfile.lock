@@ -269,6 +269,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   activeadmin!
   autoprefixer-rails
   bcrypt-ruby (= 3.1.2)

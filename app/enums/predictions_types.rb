@@ -5,22 +5,22 @@ module PredictionTypes
   # if the const values have info, it is mapped in
   # an INFO const
 
-  WINNER = 0
-  DRAW = 1
-  FIRSTBLOOD = 2
-  FIRSTTOWER = 3
-  FIRSTINHIBITOR = 4
-  SCORE_2_0 = 5
-  SCORE_2_1 = 6
-  SCORE_3_0 = 7
-  SCORE_3_1 = 8
-  SCORE_3_2 = 9
+  WINNER = 1
+  DRAW = 2
+  FIRSTBLOOD = 3
+  FIRSTTOWER = 4
+  FIRSTINHIBITOR = 5
+  SCORE_2_0 = 6
+  SCORE_2_1 = 7
+  SCORE_3_0 = 8
+  SCORE_3_1 = 9
+  SCORE_3_2 = 10
 
   # classes of which predictions can be part of
-  ROUND_PREDICTION = 0
-  MATCH_PREDICTION = 1
+  ROUND_PREDICTION = 1
+  MATCH_PREDICTION = 2
   BEST_OF_3 = 3
-  BEST_OF_5 = 5
+  BEST_OF_5 = 4
 
   # Info contains information for a prediciton type
   # in first position is the number of points the prediction

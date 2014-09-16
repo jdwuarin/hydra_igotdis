@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   validates :username, :uniqueness => {:case_sensitive => false}
 
-  # validates_format_of :username, :with => / \A[A-Za-z\d_]+\Z/
+  validates_format_of :username, :with => /\A[A-Za-z\d_]+\Z/
 
   def login=(login)
       @login = login

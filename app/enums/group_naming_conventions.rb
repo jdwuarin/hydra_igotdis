@@ -1,6 +1,6 @@
 module GroupNamingConventions
 
-  LETTERS = 0
-  NUMBERS = 1
+  LETTERS = 1
+  NUMBERS = 2
 
 end
