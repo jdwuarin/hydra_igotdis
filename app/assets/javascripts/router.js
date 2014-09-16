@@ -12,11 +12,7 @@ App.Router.map(function() {
 
 	this.resource('tournaments', { path: '/tournaments' }, function() {
 		this.resource('tournament', { path: '/tournaments/:id' }, function() {
-
-			this.resource('tournament', { path: '/tournaments/:id' }, function() {
-				this.route('rounds');
-			});
-
+			this.route('rounds');
 		});
 	});
 
