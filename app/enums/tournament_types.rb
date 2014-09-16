@@ -1,13 +1,9 @@
 module TournamentTypes
 
-  LOL_WORLD_CUP = 0
 
-  # INFO maps to what game the tournament is part of
-
-  INFO = {
-    LOL_WORLD_CUP => {
-      "game" => Games::LOL
-    }
-  }
+  DEFAULT_LOL = 0
+  DEFAULT_DOTA = 1
+  DEFAULT_STARCRAFT = 2
+  LOL_WORLD_CUP = 3
 
 end
