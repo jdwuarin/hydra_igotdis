@@ -3,9 +3,14 @@
 FactoryGirl.define do
   factory :tournament_contestant do
     tournament
-    contestant 
-    end_date { 2.days.from_now }
-    continent_id Continents::ASIA
-    tournament_type TournamentTypes::LOL_WORLD_CUP
+    association :contestant, factory: :team
   end
+
+  factory :LWC_tournament_contestant,
+          class: TournamentContestant do
+    association :tournament, factory: :LWC_tournament
+    association :contestant, factory: :LWC_receiving_contestant
+    group_id Groups::GROUP_A
+  end
+
 end

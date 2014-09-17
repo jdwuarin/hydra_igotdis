@@ -7,14 +7,14 @@
 
 module RoundTypes
 
-  BRACKET_ROUND = 1
+  GROUP_STAGE = 1
   QUARTER_FINAL = 2
   SEMI_FINAL = 3
   FINAL = 4
 
   INFO = {
     TournamentTypes::LOL_WORLD_CUP => {
-      BRACKET_ROUND => {
+      GROUP_STAGE => {
         "point_multiplier" => 1
       },
       QUARTER_FINAL => {
