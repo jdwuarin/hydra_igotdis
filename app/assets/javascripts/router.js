@@ -11,9 +11,7 @@ App.Router.map(function() {
 	this.route('home', { path: '/'});
 
 	this.resource('tournaments', { path: '/tournaments' }, function() {
-		this.resource('tournament', { path: '/tournaments/:id' }, function() {
-			this.route('rounds');
-		});
+		this.resource('tournament', { path: '/tournaments/:id' });
 	});
 
 });

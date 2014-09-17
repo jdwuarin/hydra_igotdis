@@ -1,8 +1,8 @@
+<h2>Posts</h2>
 <ul>
   {{#each}}
-    <li>
-      <label>{{name}}</label>
-      <label>{{startDate}}</label>
-    </li>
+    <li>{{#link-to 'tournament' this}}{{name}}{{/link-to}}</li>
   {{/each}}
 </ul>
+
+{{outlet}}

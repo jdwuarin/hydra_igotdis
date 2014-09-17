@@ -3,7 +3,9 @@ App.Tournament = DS.Model.extend({
   startDate: DS.attr('date'),
   endDate: DS.attr('date'),
   continent_id: DS.attr('string'),
-  tournament_type: DS.attr('integer')
+  tournament_type: DS.attr('number'),
+  has_groups: DS.attr('boolean'),
+  group_count: DS.attr('number')
 
   // fullName: function() {
   // return this.get('firstName') + ' ' + this.get('lastName');
@@ -11,24 +13,28 @@ App.Tournament = DS.Model.extend({
 
 });
 
-App.Tournament.FIXTURES = [
-  {
-    id: 1,
-    name: 'LOL_WORLD_CUP',
-    startDate: new Date('10/18/2014 10:1 AM'),
-    endDate: new Date('10/28/2014 10:1 AM'),
-    continent_id: 1,
-    tournament_type: 0
-  },
-  {
-    id: 2,
-    name: 'Other_tournament',
-    startDate: new Date('11/18/2014 10:1 AM'),
-    endDate: new Date('11/28/2014 10:1 AM'),
-    continent_id: 1,
-    tournament_type: 0
-  }
-];
+// App.Tournament.FIXTURES = [
+//   {
+//     id: 1,
+//     name: 'LOL_WORLD_CUP',
+//     startDate: new Date('10/18/2014 10:1 AM'),
+//     endDate: new Date('10/28/2014 10:1 AM'),
+//     continent_id: 1,
+//     tournament_type: 0,
+//     has_groups: true,
+//     group_count: 4
+//   },
+//   {
+//     id: 2,
+//     name: 'Other_tournament',
+//     startDate: new Date('11/18/2014 10:1 AM'),
+//     endDate: new Date('11/28/2014 10:1 AM'),
+//     continent_id: 1,
+//     tournament_type: 0,
+//     has_groups: true,
+//     group_count: 4
+//   }
+// ];
 
 // App.Lead.reopenClass({
 

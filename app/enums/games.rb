@@ -1,8 +1,8 @@
 module Games
 
-  LOL = 0
-  DOTA = 1
-  STARCRAFT = 2
+  LOL = 1
+  DOTA = 2
+  STARCRAFT = 3
 
   # mapping between game names and whether
   # a game is a team game. As in prediction_types,

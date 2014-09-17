@@ -6,4 +6,10 @@ FactoryGirl.define do
     comment "Some random comment"
     user
   end
+
+  factory :LWC_user_round_prediction,
+          parent: :user_round_prediction do
+    association :round, factory: :LWC_round
+  end
+
 end

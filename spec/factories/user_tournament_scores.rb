@@ -6,4 +6,10 @@ FactoryGirl.define do
     tournament
     score 0
   end
+
+  factory :LWC_user_tournament_score,
+          parent: :user_tournament_score do
+    association :tournament, factory: :LWC_tournament
+  end
+
 end

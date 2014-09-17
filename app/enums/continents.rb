@@ -1,11 +1,11 @@
 
 module Continents
-  ASIA = 0
-  AFRICA = 1
-  NORTH_AMERICA = 2
-  SOUTH_AMERICA = 3
-  ANTARCTICA = 4
-  EUROPE = 5
-  AUSTRALIA = 6
+  ASIA = 1
+  AFRICA = 2
+  NORTH_AMERICA = 3
+  SOUTH_AMERICA = 4
+  ANTARCTICA = 5
+  EUROPE = 6
+  AUSTRALIA = 7
 
 end

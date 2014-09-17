@@ -1,4 +1,4 @@
-# SUGARGLIDER match results format for LOL tournament 1:
+# SUGARGLIDER match results format for LOL World Cup:
 # Winner : must always be here
 # Score : must be present for rounds 2-4
 # First blood : present for rounds 3-4
@@ -6,7 +6,7 @@
 # all that is coded in validators that check for the type of
 # the results before doing the check
 
-def get_empty_LOL_results_format_1
+def get_empty_LWC_results_format
   contestant_results = {
     "winner" => nil,
     "first_blood" => nil,
@@ -14,12 +14,12 @@ def get_empty_LOL_results_format_1
     "first_inhibitor" => nil,
   }
 
-  lol_match_results_format_1 = {
-    "type" => "LOL_results_format_1",
+  lwc_match_results_format = {
+    "type" => "lwc_results_format",
     "receiving_contestant" => contestant_results,
     "invited_contestant" => contestant_results.clone,
   }
 
-  lol_match_results_format_1
+  lwc_match_results_format
 end
 
