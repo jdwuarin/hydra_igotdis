@@ -1,18 +1,28 @@
 // For more information see: http://emberjs.com/guides/routing/
 
 App.Router.reopen({
-	location: 'auto',
-	rootURL: '/'
+  location: 'auto',
+  rootURL: '/'
 });
 
 
 App.Router.map(function() {
 
-	this.route('home', { path: '/'});
+  this.route('home', { path: '/'});
 
-	this.resource('tournaments', { path: '/tournaments' }, function() {
-		this.resource('tournament', { path: '/tournaments/:id' });
-	});
+  this.resource('tournaments', { path: '/tournaments' }, function() {
+    this.resource('tournament', { path: '/tournaments/:id' });
+  });
+
+  this.resource('user-round-predictions',
+    { path: '/user-round-predictions' }, function() {
+
+      this.route('new');
+      this.resource('user-round-prediction',
+        { path: '/user-round-predictions/:id' }, function() {
+          this.route('edit');
+      });
+  });
 
 });
 

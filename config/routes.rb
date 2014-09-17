@@ -8,8 +8,8 @@ Hydra::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :tournaments
-      resources :user_round_predictions
-      resources :user_match_predictions
+      resources :user_round_predictions, as: "user_round_predictions"
+      resources :user_match_predictions, as: "user_match_predictions"
     end
   end
 
