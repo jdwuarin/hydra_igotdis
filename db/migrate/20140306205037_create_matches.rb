@@ -11,8 +11,8 @@ class CreateMatches < ActiveRecord::Migration
       t.references :round
       t.timestamp :date
       t.boolean :finished, :default => false
-      t.references :receiving_contestant, polymorphic: true
-      t.references :invited_contestant, polymorphic: true
+      t.references :receiving_contestant
+      t.references :invited_contestant
       t.hstore :results
 
       # could contain the venue at some point in the future, but for now

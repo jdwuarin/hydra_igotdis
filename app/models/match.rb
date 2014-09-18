@@ -4,8 +4,8 @@ class Match < ActiveRecord::Base
 
   belongs_to :round
   has_one :tournament, through: :round
-  belongs_to :receiving_contestant, polymorphic: true
-  belongs_to :invited_contestant, polymorphic: true
+  belongs_to :receiving_contestant, class_name: 'TournamentContestant'
+  belongs_to :invited_contestant, class_name: 'TournamentContestant'
 
   validates :round, presence: true
   validates_presence_of :round
@@ -54,7 +54,7 @@ class Match < ActiveRecord::Base
   #   end
   # end
 
-  def credit_user_tournament_point_stading(user_tournament_point_stading, prediction)
+  def credit_user_tournament_point_standing(user_tournament_point_stading, prediction)
     if bet.type == RealBet
       user_account.money += bet.bet_size + bet.filled_size
     else

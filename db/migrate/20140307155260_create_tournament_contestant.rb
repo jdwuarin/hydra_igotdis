@@ -10,6 +10,8 @@ class CreateTournamentContestant < ActiveRecord::Migration
     end
 
     add_index :tournament_contestants, 
-             [:tournament_id, :contestant_id], :unique => true
+             [:tournament_id, :contestant_id, :contestant_type], 
+             :unique => true,
+             :name => "index_tc_on_tournament_and_contestant"
   end
 end

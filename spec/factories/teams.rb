@@ -8,20 +8,12 @@ FactoryGirl.define do
     logo "no fucking logo for now. Change fucking soon"
   end
 
-  factory :receiving_contestant_team, parent: :team do
-    game_id Games::DOTA #just because
-  end
-
-  factory :invited_contestant_team, parent: :team do
-    game_id Games::DOTA
-  end
-
-  factory :LWC_receiving_contestant, parent: :team do
+  factory :LWC_fnatic, parent: :team do
     name "Fnatic"
     logo "Fnatic logo src"
   end
 
-  factory :LWC_invited_contestant, parent: :team do
+  factory :LWC_taipei_assassins, parent: :team do
     name "Taipei Assassins"
     logo "Taipei Assassins logo"
   end

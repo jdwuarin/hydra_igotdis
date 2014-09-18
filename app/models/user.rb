@@ -9,19 +9,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :username, presence: true, length: { maximum: 50, minimum: 3 }
   validates :username, :uniqueness => {:case_sensitive => false}
 
   validates_format_of :username, :with => /\A[A-Za-z\d_]+\Z/
 
-  def login=(login)
-      @login = login
-  end
+  attr_accessor :login
 
-  def login
-    @login || self.username || self.email
-  end
-
-  def self.find_first_by_auth_conditions(warden_conditions)
+  def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
       where(conditions).where(

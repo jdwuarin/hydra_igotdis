@@ -3,8 +3,8 @@ class Round < ActiveRecord::Base
   has_many :user_round_predictions
 
   belongs_to :tournament
-  belongs_to :receiving_contestant, polymorphic: true
-  belongs_to :invited_contestant, polymorphic: true
+  belongs_to :receiving_contestant, class_name: 'TournamentContestant'
+  belongs_to :invited_contestant, class_name: 'TournamentContestant'
 
   validates :tournament, presence: true
   validates_presence_of :tournament

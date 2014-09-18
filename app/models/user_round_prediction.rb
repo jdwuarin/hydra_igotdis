@@ -15,7 +15,7 @@ class UserRoundPrediction < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :round
-  belongs_to :predicted_contestant, polymorphic: true
+  belongs_to :predicted_contestant, class_name: 'TournamentContestant'
   has_many :user_match_predictions
 
   validates :round, presence: true
