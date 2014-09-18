@@ -8,9 +8,11 @@ describe Tournament do
 
   it { should respond_to(:name) }
   it { should respond_to(:start_date) }
+  it { should respond_to(:venue) }
   it { should respond_to(:end_date) }
   it { should respond_to(:continent_id) }
   it { should respond_to(:tournament_type) }
+  it { should respond_to(:tournament_contestants) }
 
   it { should be_valid }
 

@@ -5,9 +5,35 @@ describe User do
   before { @user = create(:user) }
   subject { @user }
 
+  it { should respond_to(:username) }
   it { should respond_to(:email) }
 
   it { should be_valid }
+
+  describe "when username is not present" do
+    before { @user.username = " " }
+    it { should_not be_valid }
+  end
+
+  describe "when username is too short" do
+    before { @user.username = "a" * 2 }
+    it { should_not be_valid }
+  end
+
+  describe "when username is too long" do
+    before { @user.username = "a" * 51 }
+    it { should_not be_valid }
+  end
+
+  describe "when username is already taken" do
+    before do
+      @user_with_same_username = create(:user)
+      @user_with_same_username.username = @user.username.upcase
+      @user_with_same_username.save
+    end
+    subject {@user_with_same_username}
+    it { should_not be_valid }
+  end
 
   describe "when deleted that has some dependent" do
 

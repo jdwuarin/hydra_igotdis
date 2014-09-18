@@ -2,6 +2,7 @@ class Tournament < ActiveRecord::Base
   include ActiveModel::Validations
 
   belongs_to :venue
+  has_many :tournament_contestants
   has_many :matches
 
   validates :name, presence: true

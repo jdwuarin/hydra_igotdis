@@ -3,18 +3,11 @@ Hydra::Application.routes.draw do
   # devise_for :admin_users, ActiveAdmin::Devise.config
   # ActiveAdmin.routes(self)
 
-  root to: 'home#index'
-
-  namespace :api do
-    namespace :v1 do
-      resources :tournaments
-      resources :user_round_predictions
-      resources :user_match_predictions
-    end
-  end
-
-  devise_for :users, :controllers => { :sessions => "json_sessions" }
-  get '*path', to: 'home#index'
+  devise_for :users, path_names: {sign_in: 'login', sign_out: 'logout'}
+  root  'home#index'
+  match '/contact', to: 'static_pages#contact', via: 'get'
+  get '/tournaments/lwc_2014'
+  resources :tournaments
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

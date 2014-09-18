@@ -7,20 +7,20 @@ module Groups
 
   INFO = {
     GROUP_A => {
-      GroupNamingConvention::LETTERS => "Group A",
-      GroupNamingConvention::NUMBERS => "Group 1",
+      GroupNamingConventions::LETTERS => "Group A",
+      GroupNamingConventions::NUMBERS => "Group 1",
     },
     GROUP_B => {
-      GroupNamingConvention::LETTERS => "Group B",
-      GroupNamingConvention::NUMBERS => "Group 2",
+      GroupNamingConventions::LETTERS => "Group B",
+      GroupNamingConventions::NUMBERS => "Group 2",
     },
     GROUP_C => {
-      GroupNamingConvention::LETTERS => "Group C",
-      GroupNamingConvention::NUMBERS => "Group 3",
+      GroupNamingConventions::LETTERS => "Group C",
+      GroupNamingConventions::NUMBERS => "Group 3",
     },
     GROUP_D => {
-      GroupNamingConvention::LETTERS => "Group D",
-      GroupNamingConvention::NUMBERS => "Group 4",
+      GroupNamingConventions::LETTERS => "Group D",
+      GroupNamingConventions::NUMBERS => "Group 4",
     }
   }
 

@@ -1,0 +1,50 @@
+<header>
+  <div class = "navbar navbar-inverse navbar-static-top">
+    <div class = "container">
+         
+        <a href = "/" class = "navbar-brand">
+          <img class="logo" src="/assets/igotdis_logo.png"></img>
+        </a>
+         
+        <button class="navbar-toggle" data-toggle="collapse"
+         data-target=".navHeaderCollapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+         
+        <div class="collapse navbar-collapse navHeaderCollapse">
+         
+            <ul class="nav navbar-nav navbar-right">
+             
+                <li class="active"><%= link_to "Home", root_path %></li>
+                <li><a href="#">Blog</a></li>
+                <li class="dropdown">
+                     
+                    <a href="#" class = "
+                    " data-toggle="dropdown">Share <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        
+                    </ul>
+                 
+                </li>
+                <% if !user_signed_in? %>
+                  <li><%= link_to "Login", new_user_session_path %></li>
+                  <li><%= link_to "Signup", new_user_registration_path %></li>
+                <% else %>
+                  <li><%= link_to "Logout", 
+                    destroy_user_session_path, method: :delete %>
+                  </li>
+                <% end %>
+
+                <li><%= link_to "Contact", contact_path %></li>
+             
+            </ul>
+         
+        </div>
+         
+    </div>
+  </div>
+</header>
