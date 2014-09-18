@@ -7,14 +7,14 @@ FactoryGirl.define do
     association :contestant, factory: :team
   end
 
-  factory :LWC_tournament_receiving_contestant,
+  factory :LWC_receiving_contestant,
           class: TournamentContestant do
     association :tournament, factory: :LWC_tournament
     association :contestant, factory: :LWC_fnatic
     group_id Groups::GROUP_A
   end
 
-  factory :LWC_tournament_invited_contestant,
+  factory :LWC_invited_contestant,
           class: TournamentContestant do
     association :tournament, factory: :LWC_tournament
     association :contestant, factory: :LWC_taipei_assassins
