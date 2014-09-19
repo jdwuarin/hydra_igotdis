@@ -11,12 +11,17 @@ FactoryGirl.define do
     has_groups false
   end
 
-  factory :LWC_tournament, parent: :tournament do
-    name "LOL World Cup 2014"
-    tournament_type TournamentTypes::LOL_WORLD_CUP
+  factory :tournament_with_groups, parent: :tournament do
     has_groups true
     group_count 4
     group_naming_convention GroupNamingConventions::LETTERS
+  end
+
+  factory :LWC_tournament, parent: :tournament_with_groups do
+    start_date { DateTime.new(2014, 9, 18) }
+    end_date { DateTime.new(2014, 10, 19, 23, 59, 59) }
+    name "LOL World Championship 2014"
+    tournament_type TournamentTypes::LOL_WORLD_CUP
   end
 
 end

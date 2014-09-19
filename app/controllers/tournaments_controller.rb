@@ -8,7 +8,7 @@ class TournamentsController < ApplicationController
     begin
       @tournament = Tournament.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      @tournament = Tournament.order(:created_at).last
+      redirect_to root_url
     end
   end
 
