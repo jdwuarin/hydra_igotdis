@@ -8,14 +8,14 @@ FactoryGirl.define do
     logo "no fucking logo for now. Change fucking soon"
   end
 
-  factory :LWC_fnatic, parent: :team do
-    name "Fnatic"
-    logo "Fnatic logo src"
+  factory :LWC_ahq, parent: :team do
+    name "ahq e-Sports Club"
+    logo "/assets/teams/ahq_logo.png"
   end
 
-  factory :LWC_taipei_assassins, parent: :team do
-    name "Taipei Assassins"
-    logo "Taipei Assassins logo"
+  factory :LWC_samsung_galaxy_white, parent: :team do
+    name "Samsung Galaxy White"
+    logo "/assets/teams/samsung_galaxy_white.png"
   end
 
 end
