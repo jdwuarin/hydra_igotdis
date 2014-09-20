@@ -6,11 +6,15 @@
     </div>
 </div>
 
+<%= yield(:group_round_matches) %>
+
 <div class = "container">
     <div class="Header">
         <a href ="#"><h3>Stage 2: Quarter Finals</h3></a>
     </div>
 </div>
+
+<%= yield(:quarter_final_matches) %>
 
 <div class = "container">
     <div class="Header">
@@ -18,8 +22,12 @@
     </div>
 </div>
 
+<%= yield(:semi_final_matches) %>
+
 <div class = "container">
     <div class="Header">
         <a href ="#"><h3>Stage 4: Final</h3></a>
     </div>
 </div>
+
+<%= yield(:final_match) %>
