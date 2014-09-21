@@ -13,6 +13,7 @@ class UserMatchPrediction < ActiveRecord::Base
             :uniqueness => {:scope => [:match, :user, :prediction_type]}
 
   validates_with PredictionHasAppropriatePredictionType
+  validates_with PredictedContestantParticipated
 
   def to_s
     "User: " + self.user.email +

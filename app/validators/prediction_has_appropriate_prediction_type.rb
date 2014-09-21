@@ -11,7 +11,9 @@ class PredictionHasAppropriatePredictionType < ActiveModel::Validator
             'user_round_prediction\'s prediction type is not appropriate'
         end
 
-        validate_tournament_specific_prediction_type(record)
+        if record.round
+          validate_tournament_specific_prediction_type(record)
+        end
 
       elsif record.class == UserMatchPrediction
         unless prediction_type_group == PredictionTypes::MATCH_PREDICTION
