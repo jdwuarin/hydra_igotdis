@@ -1,16 +1,16 @@
 class UserRoundPredictionsController < ApplicationController
 
   def show
-    @urp = UserRoundPrediction.find(params[:user])
+    @user_round_prediction = UserRoundPrediction.find(params[:user])
   end
 
   def new
-    @urp = UserRoundPrediction.new
+    @user_round_prediction = UserRoundPrediction.new
   end
 
   def create
-    @urp = UserRoundPrediction.new(urp_params[:urp])
-    if @urp.save
+    @user_round_prediction = UserRoundPrediction.new(urp_params)
+    if @user_round_prediction.save
 
     else
       render 'show'
@@ -20,8 +20,9 @@ class UserRoundPredictionsController < ApplicationController
   private
 
     def urp_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      user_round_prediction_params.require(
+        :user_round_prediction).permit(
+        :round, :prediction_type, :predicted_contestant_id, :password_confirmation)
     end
 
 end

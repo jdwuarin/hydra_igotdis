@@ -8,7 +8,6 @@ describe UserRoundPrediction do
 
   it { should respond_to(:round) }
   it { should respond_to(:prediction_type) }
-  it { should respond_to(:predicted_contestant_type) }
   it { should respond_to(:predicted_contestant_id) }
   it { should respond_to(:user) }
 
@@ -21,11 +20,6 @@ describe UserRoundPrediction do
 
   describe "when prediction_type is not present" do
     before { @user_round_prediction.prediction_type = nil }
-    it { should_not be_valid }
-  end
-
-  describe "when predicted_contestant_type is not present" do
-    before { @user_round_prediction.predicted_contestant_type = nil }
     it { should_not be_valid }
   end
 
@@ -78,11 +72,36 @@ describe UserRoundPrediction do
     end
   end
 
-  describe "when user does a prediction on round of type ROUND_1" do
-    before do
-      @user_round_prediction.round.round_type = 1
+  describe "when dealing with predicted_contestant" do
+
+    context "if it is not in the referenced round" do
+      before do
+        other_contestant = create(:tournament_contestant,
+          tournament: @user_round_prediction.round.tournament)
+        @user_round_prediction.predicted_contestant = other_contestant
+      end
+
+      it { should_not be_valid }
     end
-    it { should_not be_valid }
+
+    context "if it is in the referenced round" do
+      it { should be_valid }
+    end
+
   end
+
+  describe "When we are dealing with data specific to LWC" do
+
+    before { @user_round_prediction = create(:LWC_user_round_prediction) }
+
+    describe "when user does a prediction on round of type GROUP_STAGE" do
+      before do
+        @user_round_prediction.round.round_type = RoundTypes::GROUP_STAGE
+      end
+      it { should_not be_valid }
+    end
+  end
+
+
 
 end

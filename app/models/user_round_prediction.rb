@@ -12,6 +12,7 @@ class UserRoundPrediction < ActiveRecord::Base
   validates :round, :user, :uniqueness => {:scope => [:round, :user]}
 
   validates_with PredictionHasAppropriatePredictionType
+  validates_with PredictedContestantParticipated
 
   def to_s
     "User: " + self.user.email +

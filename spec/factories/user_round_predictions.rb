@@ -9,7 +9,7 @@ FactoryGirl.define do
 
   factory :LWC_user_round_prediction,
           parent: :user_round_prediction do
-    association :round, factory: :LWC_round
+    association :round, factory: :LWC_quarter_final
   end
 
 end
