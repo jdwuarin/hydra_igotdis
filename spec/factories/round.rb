@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :round do
     tournament
-    round_type RoundTypes::QUARTER_FINAL
+    round_type RoundTypes::QUARTER_FINALS
     finished false
     start_date { 1.day.ago }
     end_date { 1.day.from_now }
@@ -25,7 +25,7 @@ FactoryGirl.define do
 
   factory :LWC_quarter_final, class: Round do
     association :tournament, factory: :LWC_tournament
-    round_type RoundTypes::QUARTER_FINAL
+    round_type RoundTypes::QUARTER_FINALS
     finished false
     start_date { DateTime.new(2014, 10, 3).change(:offset => "+0200") }
     end_date { DateTime.new(2014, 10, 6, 23, 59, 59).change(:offset => "+0200") }
@@ -36,7 +36,7 @@ FactoryGirl.define do
 
   factory :LWC_semi_final, class: Round do
     association :tournament, factory: :LWC_tournament
-    round_type RoundTypes::SEMI_FINAL
+    round_type RoundTypes::SEMI_FINALS
     finished false
     start_date { DateTime.new(2014, 10, 11).change(:offset => "+0200") }
     end_date { DateTime.new(2014, 10, 12, 23, 59, 59).change(:offset => "+0200") }

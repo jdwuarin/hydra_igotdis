@@ -15,7 +15,7 @@ FactoryGirl.define do
 
   factory :LWC_samsung_galaxy_white, parent: :team do
     name "Samsung Galaxy White"
-    logo "/assets/teams/samsung_galaxy_white.png"
+    logo "/assets/teams/samsung_galaxy_white_logo.png"
   end
 
 end

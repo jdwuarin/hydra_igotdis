@@ -37,7 +37,7 @@ class PredictionHasAppropriatePredictionType < ActiveModel::Validator
     if rt == RoundTypes::GROUP_STAGE
       record.errors[:type] << 'cannot do an actual prediction on this round'
 
-    elsif rt == RoundTypes::QUARTER_FINAL
+    elsif rt == RoundTypes::QUARTER_FINALS
       condition_1 = record.prediction_type == PredictionTypes::SCORE_2_0
       condition_2 = record.prediction_type == PredictionTypes::SCORE_2_1
       unless condition_1 || condition_2

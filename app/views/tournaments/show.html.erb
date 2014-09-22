@@ -6,10 +6,11 @@
     <%= render round %>
 
     <% if @round_type_to_show == round.round_type.to_s %>
-      
-        <% round.matches.each do |match| %>
 
-          
+        <% round.matches.each_with_index do |match, index| %>
+
+          <% if index.modulo(2) == 1 %>
+
             <div class="matches-line">
               <div class="row">
 
@@ -17,13 +18,19 @@
                            key_name: "matches_partial_name"),
                            match: match %>
 
+                  <div class="col-md-2">
+                  </div>
 
+                  <% if index < round.matches.count - 1 %>
 
+                    <%= render 'matches/' + get_round_info(round,
+                               key_name: "matches_partial_name"),
+                               match: round.matches[index+1] %>
+                  <% end %>
 
               </div>
             </div>
-
-
+           <% end %>
 
       <% end %>
     <% end %>
