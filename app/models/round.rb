@@ -5,6 +5,7 @@ class Round < ActiveRecord::Base
   belongs_to :tournament
   belongs_to :receiving_contestant, class_name: 'TournamentContestant'
   belongs_to :invited_contestant, class_name: 'TournamentContestant'
+  has_many :matches
 
   validates :tournament, presence: true
   validates_presence_of :tournament

@@ -22,7 +22,7 @@ class UserRoundPredictionsController < ApplicationController
     def urp_params
       user_round_prediction_params.require(
         :user_round_prediction).permit(
-        :round, :prediction_type, :predicted_contestant_id, :password_confirmation)
+        :round, :prediction_type, :predicted_contestant_id, :comment)
     end
 
 end

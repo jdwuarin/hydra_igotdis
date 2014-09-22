@@ -1,0 +1,9 @@
+
+<div class="container">
+    <div class="Header">
+      <%= link_to(round) do %>
+        <h3>Stage <%= round.round_type %>:
+            <%= get_round_info round, key_name: "name" %></h3>
+      <% end %>
+    </div>
+</div>

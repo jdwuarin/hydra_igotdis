@@ -16,6 +16,7 @@ describe round do
   it { should respond_to(:finished) }
   it { should respond_to(:receiving_contestant) }
   it { should respond_to(:invited_contestant) }
+  it { should responsd_to(:matches) }
 
   it { should be_valid }
 

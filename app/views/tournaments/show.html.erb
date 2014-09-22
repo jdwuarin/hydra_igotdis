@@ -1,33 +1,40 @@
 
+<% if @tournament.rounds.any? %>
 
-<div class = "container">
-    <div class="Header">
-        <a href ="#"><h3>Stage 1: Group Stage</h3></a>
+  <% @rounds.each do |round| %>
+    <div class="container">
+    <%= render round %>
+
+    <% if @round_type_to_show == round.round_type.to_s %>
+      
+        <% round.matches.each do |match| %>
+
+          
+            <div class="matches-line">
+              <div class="row">
+
+                <%= render 'matches/' + get_round_info(round,
+                           key_name: "matches_partial_name"),
+                           match: match %>
+
+
+
+
+              </div>
+            </div>
+
+
+
+      <% end %>
+    <% end %>
+
+
     </div>
-</div>
+  <% end %>
 
-<%= yield(:group_round_matches) %>
 
-<div class = "container">
-    <div class="Header">
-        <a href ="#"><h3>Stage 2: Quarter Finals</h3></a>
-    </div>
-</div>
+<% else %>
 
-<%= yield(:quarter_final_matches) %>
+  <% redirect_to root_path %>
 
-<div class = "container">
-    <div class="Header">
-        <a href ="#"><h3>Stage 3: Semi Finals</h3></a>
-    </div>
-</div>
-
-<%= yield(:semi_final_matches) %>
-
-<div class = "container">
-    <div class="Header">
-        <a href ="#"><h3>Stage 4: Final</h3></a>
-    </div>
-</div>
-
-<%= yield(:final_match) %>
+<% end %>

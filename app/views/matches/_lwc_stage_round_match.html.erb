@@ -1,0 +1,27 @@
+<div class="col-md-5">
+  <table class="responsive">
+    <table class="table" frame="box"> 
+
+      <thead>
+        <tr>
+          <th class="Big" colspan="2"><%= match.receiving_contestant.contestant.name %></th>
+          <th colspan="2">VS</th>
+          <th class="Big"colspan="2"><%= match.invited_contestant.contestant.name %></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th href="#" class="Logo"colspan="3">
+            <img class="img-responsive"
+            src=<%= match.receiving_contestant.contestant.logo %> >
+          </th>                  
+          <th class="Logo" colspan="3">
+            <img class="img-responsive" 
+            src=<%= match.invited_contestant.contestant.logo %>>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </table>
+</div>
