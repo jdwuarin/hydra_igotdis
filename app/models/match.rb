@@ -7,6 +7,8 @@ class Match < ActiveRecord::Base
   belongs_to :receiving_contestant, class_name: 'TournamentContestant'
   belongs_to :invited_contestant, class_name: 'TournamentContestant'
 
+  default_scope -> { order('date DESC') }
+
   validates :round, presence: true
   validates_presence_of :round
   validates :date, presence: true

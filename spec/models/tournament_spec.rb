@@ -14,6 +14,7 @@ describe Tournament do
   it { should respond_to(:continent_id) }
   it { should respond_to(:tournament_type) }
   it { should respond_to(:tournament_contestants) }
+  it { should respond_to(:rounds) }
 
   it { should be_valid }
 
