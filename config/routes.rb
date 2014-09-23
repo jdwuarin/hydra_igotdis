@@ -6,6 +6,7 @@ Hydra::Application.routes.draw do
   devise_for :users, path_names: {sign_in: 'login', sign_out: 'logout'}
   root  'home#index'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/how-to-play', to: 'static_pages#how_to_play', via: 'get'
   resources :tournaments
   resources :rounds
   # The priority is based upon order of creation: first created -> highest priority.

@@ -7,14 +7,16 @@
                                            "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
-  <%= render 'layouts/shim' %>
+    <link rel="icon" type="image/ico" href="assets/favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Jockey+One' rel='stylesheet' type='text/css'>
+    <%= render 'layouts/shim' %>
   </head>
-  <body>
+  <body background="/assets/background_splash_page.jpg">
     <%= render 'layouts/header' %>
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
     <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
+    <!-- <%= debug(params) if Rails.env.development? %> -->
   </body>
 </html>
