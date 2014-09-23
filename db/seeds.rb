@@ -44,7 +44,7 @@ dark_passage = FactoryGirl.create(:tournament_contestant,
 # Group B
 
 team_5 = FactoryGirl.create(:team, name: "Star Horn Royal Club",
-                logo: "/assets/teams/star_horn_logo.png")
+                logo: "/assets/teams/star_horn_logo.jpg")
 
 star_horn = FactoryGirl.create(:tournament_contestant,
                    tournament: tournament,
@@ -60,7 +60,7 @@ team_solomid = FactoryGirl.create(:tournament_contestant,
                       group_id: Groups::GROUP_B)
 
 team_7 = FactoryGirl.create(:team, name: "Taipei Assassins",
-                logo: "/assets/teams/taipei_assassins_logo.png")
+                logo: "/assets/teams/taipei_assassins_logo.jpg")
 
 taipei_assassins = FactoryGirl.create(:tournament_contestant,
                           tournament: tournament,
@@ -128,7 +128,7 @@ najin_white_shield = FactoryGirl.create(:tournament_contestant,
                             group_id: Groups::GROUP_D)
 
 team_15 = FactoryGirl.create(:team, name: "Cloud9",
-                logo: "/assets/teams/cloud9_logo.png")
+                logo: "/assets/teams/cloud9_logo.jpg")
 
 cloud9 = FactoryGirl.create(:tournament_contestant,
                 tournament: tournament,
