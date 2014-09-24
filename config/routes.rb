@@ -7,8 +7,16 @@ Hydra::Application.routes.draw do
   root  'home#index'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/how-to-play', to: 'static_pages#how_to_play', via: 'get'
-  resources :tournaments
-  resources :rounds
+
+  resources :tournaments, only: :index do
+    resources :rounds, only: :index do
+      resources :matches, only: :index
+    end
+  end
+
+  # just adding this easy route that redirects to the latest
+  # tournaments rounds page
+  match '/tournaments/latest', to: 'tournaments#latest', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

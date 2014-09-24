@@ -2,16 +2,12 @@ class TournamentsController < ApplicationController
 
   def index
     @tournaments = Tournament.all
+    redirect_to root_path
   end
 
-  def show
-    begin
-      @tournament = Tournament.find(params[:id])
-      @rounds = @tournament.rounds
-      @round_type_to_show = params[:round_type]
-    rescue ActiveRecord::RecordNotFound
-      redirect_to root_url
-    end
+  def latest
+    redirect_to tournament_rounds_path(
+      Tournament.order('start_date desc').first)
   end
 
 end
