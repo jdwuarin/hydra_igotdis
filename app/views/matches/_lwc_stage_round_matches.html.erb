@@ -38,10 +38,18 @@
 
                   <tbody>
                     <tr>
-                      <th class="Logo" colspan="3"><a href="#">
-                        <%= image_tag match.receiving_contestant.contestant.logo,
-                            class: "img-responsive" %></a>
-                      </th>                 
+                      <%= form_tag("/user_match_predictions", method: "post") do %>
+                        <%= hidden_field_tag(:match_id, match.id) %>
+                        <%= hidden_field_tag(:prediction_type, 1) %>
+                        <%= hidden_field_tag(:predicted_contestant_id, match.receiving_contestant_id) %>
+
+                        <th class="Logo" colspan="3">
+                        <%= image_submit_tag match.receiving_contestant.contestant.logo,
+                            class: "img-responsive", type: "image" %>
+                        </th>
+
+                      <% end %>
+
                       <th class="Logo" colspan="3"><a href="#">
                         <%= image_tag match.invited_contestant.contestant.logo,
                             class: "img-responsive" %></a>

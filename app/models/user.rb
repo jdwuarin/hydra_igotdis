@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :username, presence: true, length: { maximum: 50, minimum: 3 }
+  validates :username, presence: true, length: { maximum: 50, minimum: 2 }
   validates :username, :uniqueness => {:case_sensitive => false}
 
   validates_format_of :username, :with => /\A[A-Za-z\d_]+\Z/

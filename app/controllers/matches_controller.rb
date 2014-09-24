@@ -1,4 +1,10 @@
 class MatchesController < ApplicationController
+  before_action :store_location, only: [:index]
+  # to add user stuff. Add if signed_in. 
+  # if user is signed_in, send all predictions.
+  # if prediction on a match is done look if match over or not
+  # if over, show if right or wrong. If not, say points will be assigned soon.
+  # If prediction is not done on "dead match", show match as such.
 
   def index
     tournament = Tournament.find(params[:tournament_id])
@@ -22,5 +28,11 @@ class MatchesController < ApplicationController
       end
     end
   end
+
+  private
+
+    def store_location
+      user_session[:return_to] = request.url if request.get?
+    end
 
 end
