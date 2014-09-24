@@ -1,14 +1,38 @@
 
 <div class="container">
   <div class="Group_A">
-    <%= link_to "Group A", url_for(:group => 1), :type => "button",
-        :class => "btn btn-default" %>
-    <%= link_to "Group B", url_for(:group => 2), :type => "button",
-        :class => "btn btn-default" %>
-    <%= link_to "Group C", url_for(:group => 3), :type => "button",
-        :class => "btn btn-default" %>
-    <%= link_to "Group D", url_for(:group => 4), :type => "button",
-        :class => "btn btn-default" %>
+
+    <% if @context[:group] == "1" %>
+      <%= link_to "Group A", url_for(:group => 1), :type => "button",
+          :class => "btn btn-default active" %>
+    <% else %>
+      <%= link_to "Group A", url_for(:group => 1), :type => "button",
+          :class => "btn btn-default" %>
+    <% end %>
+
+    <% if @context[:group] == "2" %>
+      <%= link_to "Group B", url_for(:group => 2), :type => "button",
+          :class => "btn btn-default active" %>
+    <% else %>
+      <%= link_to "Group B", url_for(:group => 2), :type => "button",
+          :class => "btn btn-default" %>
+    <% end %>
+
+    <% if @context[:group] == "3" %>
+      <%= link_to "Group C", url_for(:group => 3), :type => "button",
+          :class => "btn btn-default active" %>
+    <% else %>
+      <%= link_to "Group C", url_for(:group => 3), :type => "button",
+          :class => "btn btn-default" %>
+    <% end %>
+
+    <% if @context[:group] == "4" %>
+      <%= link_to "Group D", url_for(:group => 4), :type => "button",
+          :class => "btn btn-default active" %>
+    <% else %>
+      <%= link_to "Group D", url_for(:group => 4), :type => "button",
+          :class => "btn btn-default" %>
+    <% end %>
   </div>
 </div>
 

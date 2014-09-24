@@ -1,7 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
 /* Nav-Bar*/
 
 /* Nav-Bar Back*/
@@ -17,6 +16,17 @@ body {
 
 }
 
+.Group_A .btn.active {
+    background-color: #cc6600;
+    color: white;
+    border: none;
+} 
+
+.btn:active {
+    color: white;
+    background-color: #cc6600;
+    border: none;
+}
 .space {
     height: 3.5em;
 }
@@ -69,7 +79,7 @@ h3 {
 .navbar .navbar-nav > .active > a:hover,
 .navbar .navbar-nav > .active > a:focus {
     background-color: white ;
-    color: brown}
+    color: #cc6600}
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
@@ -83,11 +93,11 @@ h3 {
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
   color: white;
-  background-color: brown;
+  background-color: #cc6600;
 }
 
 .navbar-toggle {
-    background-color: brown}
+    background-color: #cc6600}
 
 /*JUMBOTRON*/
 
@@ -158,15 +168,22 @@ h3 {
 
 .jumbotron h1 {
     color: white;
-    padding-top: 2em;
+    padding-top: 0em;
     border-bottom: auto;
     font-family: 'Jockey One' ;
+    text-align: center;
     
     
 }
 
+.jumbotron .img-responsive {
+    padding-left: 3.7em;
+    padding-right: 3.7em;
+}
+
 .news h1 {
-    padding-top: 0.5em;
+    padding-top: 2em;
+    font-size: 3.4em;
 }
 
 .news .img-responsive {
@@ -234,7 +251,7 @@ h3 {
 .col-md-6 h2 {
     text-align: center;
     font-family: 'Jockey One';
-    color: brown;
+    color: #cc6600;
     vertical-align: center;
 }
 
@@ -242,7 +259,7 @@ h3 {
     text-align: center;
     font-size: 20px;
     font-family: 'Jockey One';
-    color: brown;
+    color: #cc6600;
 }
 
 
@@ -263,8 +280,9 @@ h3 {
     border-radius: 0px;
 }
 
+
 .Header {
-    background-color: brown;
+    background-color: #cc6600;
     color: white;
     font-family: 'Jockey One';
     height: 4em;
@@ -351,8 +369,14 @@ h3 {
 
 
 .table .Logo:hover {
-    background-color: brown;
+    background-color: #cc6600;
 }
+
+.table .Logo.active {
+    background-color: #cc6600;
+}
+
+
 
 .img-responsive {
     display: inline;
@@ -378,7 +402,7 @@ margin-top: 1em;
 }
 
 .predictionrule {
-    color: brown;
+    color: #cc6600;
 }
 
 
