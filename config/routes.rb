@@ -14,6 +14,8 @@ Hydra::Application.routes.draw do
     end
   end
 
+  resources :user_match_predictions, except: [:destroy, :new]
+
   # just adding this easy route that redirects to the latest
   # tournaments rounds page
   match '/tournaments/latest', to: 'tournaments#latest', via: 'get'
