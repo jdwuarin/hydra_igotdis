@@ -1,0 +1,17 @@
+<div class="space">
+</div>
+
+<% @rounds.each do |curr_round| %>
+
+  <% if !defined? show_round # this is the normal rounds page %>
+    <%= render '/rounds/round', round: curr_round %>
+
+  <% else #show one particular round %>
+
+    <%= render '/rounds/round', round: curr_round,
+                                show_round: show_round,
+                                matches: matches %>
+
+  <% end %>
+
+<% end %>

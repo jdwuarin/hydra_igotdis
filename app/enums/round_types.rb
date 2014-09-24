@@ -17,17 +17,17 @@ module RoundTypes
       GROUP_STAGE => {
         "name" => "Group Stage",
         "point_multiplier" => 1,
-        "matches_partial_name" => "lwc_stage_round_match"
+        "matches_partial_name" => "lwc_stage_round_matches"
       },
       QUARTER_FINALS => {
         "name" => "Quarter Finals",
         "point_multiplier" => 6,
-        "matches_partial_name" => "lwc_quarter_final_match"
+        "matches_partial_name" => "lwc_quarter_final_matches"
       },
       SEMI_FINALS => {
         "name" => "Semi Finals",
         "point_multiplier" => 10,
-        "matches_partial_name" => "lwc_semi_final_match"
+        "matches_partial_name" => "lwc_semi_final_matches"
       },
       FINAL => {
         "name" => "Final",

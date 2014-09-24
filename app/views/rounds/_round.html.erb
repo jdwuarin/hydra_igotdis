@@ -1,9 +1,20 @@
-
 <div class="container">
     <div class="Header">
-      <%= link_to(round) do %>
+      <%= link_to tournament_round_matches_path(round.tournament, round) do %>
         <h3>Stage <%= round.round_type %>:
             <%= get_round_info round, key_name: "name" %></h3>
       <% end %>
     </div>
 </div>
+
+<% if defined? show_round %>
+
+  <% if round == show_round %>
+
+    <%= render '/matches/' + get_round_info(round,
+               key_name: "matches_partial_name"),
+               matches: matches %>
+
+  <% end %>
+
+<% end %>

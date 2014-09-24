@@ -150,7 +150,6 @@ alliance = FactoryGirl.create(:tournament_contestant,
 # in the quarters yet.
 group_stage_round = FactoryGirl.create(:LWC_group_stage, tournament: tournament)
 
-
 # so here are the matches
 
 # Group matches
@@ -460,6 +459,20 @@ FactoryGirl.create(:LWC_group_stage_match,
        receiving_contestant: omg,
        invited_contestant: lmq)
 
+quarter_final_round = FactoryGirl.create(:LWC_quarter_final,
+                                         tournament: tournament,
+                                         receiving_contestant: cloud9,
+                                         invited_contestant: najin_white_shield)
+
+quarter_final_round = FactoryGirl.create(:LWC_semi_final,
+                                         tournament: tournament,
+                                         receiving_contestant: cloud9,
+                                         invited_contestant: najin_white_shield)
+
+quarter_final_round = FactoryGirl.create(:LWC_final,
+                                         tournament: tournament,
+                                         receiving_contestant: cloud9,
+                                         invited_contestant: najin_white_shield)
 
 
 
