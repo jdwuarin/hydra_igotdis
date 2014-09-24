@@ -20,82 +20,16 @@
       <div class="matches-line">
         <div class="row">
 
-            <div class="col-md-5">
-              <table class="responsive">
-                <table class="table" frame="box"> 
-
-                  <thead>
-                    <tr>
-                      <th class="Big" colspan="2">
-                        <%= match.receiving_contestant.contestant.name %>
-                      </th>
-                      <th colspan="2">VS</th>
-                      <th class="Big"colspan="2">
-                        <%= match.invited_contestant.contestant.name %>
-                      </th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <%= form_tag("/user_match_predictions", method: "post") do %>
-                        <%= hidden_field_tag(:match_id, match.id) %>
-                        <%= hidden_field_tag(:prediction_type, 1) %>
-                        <%= hidden_field_tag(:predicted_contestant_id, match.receiving_contestant_id) %>
-
-                        <th class="Logo" colspan="3">
-                        <%= image_submit_tag match.receiving_contestant.contestant.logo,
-                            class: "img-responsive", type: "image" %>
-                        </th>
-
-                      <% end %>
-
-                      <th class="Logo" colspan="3"><a href="#">
-                        <%= image_tag match.invited_contestant.contestant.logo,
-                            class: "img-responsive" %></a>
-                      </th>
-                    </tr>
-                  </tbody>
-                </table>
-              </table>
-            </div>
+            <%= render 'lwc_stage_round_match_open', 
+                match: match %>
 
             <div class="col-md-2">
             </div>
 
             <% if index < matches.count - 1 %>
 
-              <div class="col-md-5">
-                <table class="responsive">
-                  <table class="table" frame="box"> 
-
-                    <thead>
-                      <tr>
-                        <th class="Big" colspan="2">
-                          <%= matches[index+1].receiving_contestant.contestant.name %>
-                        </th>
-                        <th colspan="2">VS</th>
-                        <th class="Big"colspan="2">
-                          <%= matches[index+1].invited_contestant.contestant.name %>
-                        </th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      <tr>
-                        <th href="#" class="Logo"colspan="3"><a href="#">
-                          <%= image_tag matches[index+1].receiving_contestant.contestant.logo,
-                              class: "img-responsive" %></a>
-                        </th>                  
-                        <th class="Logo" colspan="3"><a href="#">
-                          <%= image_tag matches[index+1].invited_contestant.contestant.logo,
-                              class: "img-responsive" %></a>
-                        </th>
-                      </tr>
-                    </tbody>
-                  </table>
-                </table>
-              </div>
+              <%= render 'lwc_stage_round_match_open',
+                  match: matches[index+1] %>
 
             <% end %>
 
