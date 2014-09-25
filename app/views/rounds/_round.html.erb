@@ -13,7 +13,7 @@
 
     <%= render '/matches/' + get_round_info(round,
                key_name: "matches_partial_name"),
-               matches: context[:matches] %>
+               context: context %>
 
   <% end %>
 

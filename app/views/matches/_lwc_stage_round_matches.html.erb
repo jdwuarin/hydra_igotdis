@@ -36,24 +36,30 @@
   </div>
 </div>
 
-<div class="container">
-  <% matches.each_with_index do |match, index| %>
 
-    <% if index.modulo(2) == 0 %>
+<div class="container">
+
+  <% context[:matches].each_with_index do |match, index| %>
+
+    <% if index.modulo(3) == 0 %>
 
       <div class="matches-line">
         <div class="row">
 
             <%= render 'lwc_stage_round_match_open', 
-                match: match %>
+                match: match, new_prediction: context[:new_prediction] %>
 
-            <div class="col-md-2">
-            </div>
-
-            <% if index < matches.count - 1 %>
+            <% if index < context[:matches].count-1 %>
 
               <%= render 'lwc_stage_round_match_open',
-                  match: matches[index+1] %>
+                  match: context[:matches][index+1], new_prediction: context[:new_prediction] %>
+
+            <% end %>
+
+            <% if index < context[:matches].count-2 %>
+
+              <%= render 'lwc_stage_round_match_open',
+                  match: context[:matches][index+2], new_prediction: context[:new_prediction] %>
 
             <% end %>
 

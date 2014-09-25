@@ -23,13 +23,27 @@ class MatchesController < ApplicationController
       end
     else
       if !round.is_direct_elimination_round
-        redirect_to tournament_round_matches_path(tournament,
-                                                  round, :group => 1)
+        params[:group] = 1
+        redirect_to url_for params
       else
         matches = round.matches
       end
     end
     @context[:matches] = matches
+
+    if params[:user]
+      user = User.find(username: params[:user])
+      @context[:predictions] = UserMatchPrediction.where(
+        user: user, match: matches)
+
+    elsif current_user
+      @context[:predictions] = UserMatchPrediction.where(
+        user: current_user, match: matches)
+    end
+
+    user_match_prediction = UserMatchPrediction.new
+    @context[:new_prediction] = user_match_prediction
+
   end
 
 end

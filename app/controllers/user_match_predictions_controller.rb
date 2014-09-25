@@ -17,13 +17,25 @@ class UserMatchPredictionsController < ApplicationController
       :comment => user_match_prediction_params[:comment],
       :user => current_user)
     if @user_match_prediction.save
-      flash[:success] = "Your prediction was successfully saved!"
+      # respond_to do |format|
+      #   format.html { redirect_back_or root_path }
+      #   format.js
+      # end
+      redirect_back_or root_path
+      return
     end
-    redirect_back_or root_path
+    redirect_to root_path
   end
 
   def edit
 
   end
+
+  private
+
+    def user_match_prediction_params
+      params.permit(:match_id, :prediction_type,
+                    :predicted_contestant_id, :comment)
+    end
 
 end
