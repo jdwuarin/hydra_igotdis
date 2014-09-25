@@ -1,5 +1,8 @@
 class DatesAreValid < ActiveModel::Validator
   def validate(record)
+    # if other errors, return
+    return unless record.errors.blank?
+
     if record.class == Tournament
       self.validate_tournament_dates(record)
 
