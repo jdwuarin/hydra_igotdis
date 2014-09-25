@@ -52,7 +52,7 @@ class DatesAreValid < ActiveModel::Validator
   def validate_date_in_parent_bounds(record, value, lower_bound, upper_bound)
     unless value >= lower_bound && value <= upper_bound
       record.errors[:id] << record.class.to_s + 
-        'must occur during the round/tournament'
+        ' must occur during the round/tournament'
     end
   end
 

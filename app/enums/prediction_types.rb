@@ -29,8 +29,8 @@ module PredictionTypes
 
   # classes of which lwc predictions can be part of
   LWC_GROUP_STAGE = 1
-  LWC_QUARTER_FINAL = 2
-  LWC_SEMI_FINAL = 3
+  LWC_QUARTER_FINALS = 2
+  LWC_SEMI_FINALS = 3
   LWC_FINAL = 4
 
   # Info contains information for a prediciton type
@@ -44,8 +44,8 @@ module PredictionTypes
       WINNER => {
         "points" => 100,
         "available_in" => [LWC_GROUP_STAGE, 
-                           LWC_QUARTER_FINAL, 
-                           LWC_SEMI_FINAL,
+                           LWC_QUARTER_FINALS, 
+                           LWC_SEMI_FINALS,
                            LWC_FINAL]
       },
 
@@ -56,7 +56,7 @@ module PredictionTypes
 
       MOSTFIRSTBLOOD => {
         "points" => 100,
-        "available_in" => [LWC_SEMI_FINAL,
+        "available_in" => [LWC_SEMI_FINALS,
                            LWC_FINAL]
       },
 
@@ -67,29 +67,29 @@ module PredictionTypes
 
       SCORE_2_0 => {
         "points" => 100,
-        "available_in" => [LWC_QUARTER_FINAL]
+        "available_in" => [LWC_QUARTER_FINALS]
       },
 
       SCORE_2_1 => {
         "points" => 100,
-        "available_in" => [LWC_QUARTER_FINAL]
+        "available_in" => [LWC_QUARTER_FINALS]
       },
 
       SCORE_3_0 => {
         "points" => 100,
-        "available_in" => [LWC_SEMI_FINAL,
+        "available_in" => [LWC_SEMI_FINALS,
                            LWC_FINAL]
       },
 
       SCORE_3_1 => {
         "points" => 100,
-        "available_in" => [LWC_SEMI_FINAL,
+        "available_in" => [LWC_SEMI_FINALS,
                            LWC_FINAL]
       },
 
       SCORE_3_2 => {
         "points" => 100,
-        "available_in" => [LWC_SEMI_FINAL,
+        "available_in" => [LWC_SEMI_FINALS,
                            LWC_FINAL]
       }
 

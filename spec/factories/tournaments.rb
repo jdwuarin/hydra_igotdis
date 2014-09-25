@@ -18,8 +18,8 @@ FactoryGirl.define do
   end
 
   factory :LWC_tournament, parent: :tournament_with_groups do
-    start_date { DateTime.new(2014, 9, 18).change(:offset => "+0200") }
-    end_date { DateTime.new(2014, 10, 19, 23, 59, 59).change(:offset => "+0200") }
+    start_date { Time.new(2014, 9, 18).change(:offset => "+0200") }
+    end_date { Time.new(2014, 10, 19, 23, 59, 59).change(:offset => "+0200") }
     name "LOL World Championship 2014"
     tournament_type TournamentTypes::LOL_WORLD_CUP
   end

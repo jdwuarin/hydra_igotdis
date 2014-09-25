@@ -1,48 +1,55 @@
 class PredictionTypeValidator < ActiveModel::Validator
 
   def validate(record)
-    if record.prediction_type
 
-      unless PredictionTypes::LIST[record.prediction_type]
-        record.errors[:type] << 
-          'prediction_type was not valid.'
-      end
+    # if other errors, return
+    return unless record.errors.blank?
 
-      if record.round
-        validate_tournament_specific_prediction_type(record)
-      end
-
+    unless PredictionTypes::LIST[record.prediction_type]
+      record.errors[:type] << 
+        'prediction_type was not valid.'
     end
+
+    validate_tournament_specific_prediction_type(record)
+
   end
 
   def validate_tournament_specific_prediction_type(record)
     # LWC_2014 specific validation
-    tt = record.round.tournament.tournament_type
-    if tt == TournamentTypes::LOL_WORLD_CUP
-      validate_lwc_2014_prediction_type(record)
+    lwc = record.match.round.tournament.tournament_type
+    if lwc == TournamentTypes::LOL_WORLD_CUP
+      validate_lwc_2014_prediction_type(record, lwc)
     end
   end
 
-  def validate_lwc_2014_prediction_type(record)
-    rt = record.round.round_type
-    if rt == RoundTypes::GROUP_STAGE
-      record.errors[:type] << 'cannot do an actual prediction on this round'
+  def validate_lwc_2014_prediction_type(record, lwc)
+    round_type = record.match.round.round_type
 
-    elsif rt == RoundTypes::QUARTER_FINALS
-      condition_1 = record.prediction_type == PredictionTypes::SCORE_2_0
-      condition_2 = record.prediction_type == PredictionTypes::SCORE_2_1
-      unless condition_1 || condition_2
-        record.errors[:type] << 'Wrong prediction type for Quarter finals'
-      end
+    prediction_type = record.prediction_type
+    prediction_class = nil
 
-    else # semis or final
-      condition_1 = record.prediction_type == PredictionTypes::SCORE_3_0
-      condition_2 = record.prediction_type == PredictionTypes::SCORE_3_1
-      condition_3 = record.prediction_type == PredictionTypes::SCORE_3_2
-      unless condition_1 || condition_2 || condition_3
-        record.errors[:type] << 'Wrong prediction type for Semis or Final'
-      end
+    if round_type == RoundTypes::GROUP_STAGE
+      prediction_class = PredictionTypes::LWC_GROUP_STAGE
+
+    elsif round_type == RoundTypes::QUARTER_FINALS
+      prediction_class = PredictionTypes::LWC_QUARTER_FINALS
+
+    elsif round_type == RoundTypes::SEMI_FINALS
+      prediction_class = PredictionTypes::LWC_SEMI_FINALS
+
+    else
+      prediction_class = PredictionTypes::LWC_FINAL
+
     end
+
+    condition = PredictionTypes::INFO[lwc][
+      prediction_type]["available_in"].include? prediction_class
+
+    unless condition
+      round_name = RoundTypes::INFO[lwc][round_type]["name"]
+      record.errors[:type] << 'Wrong prediction type for' + round_name
+    end
+
   end
 
 end
