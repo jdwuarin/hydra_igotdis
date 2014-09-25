@@ -1,7 +1,8 @@
 <div class="col-md-4">
   <table class="responsive">
 
-    <%= form_tag("/user_match_predictions", method: "post") do %>
+    <%= form_tag("/user_match_predictions",
+        remote: user_signed_in?, method: "post") do %>
 
       <table class="table" frame="box"> 
 
@@ -17,7 +18,6 @@
           </tr>
         </thead>
 
-        <%= javascript_include_tag 'activate_on_click' %>
         <tbody>
           <tr>
 

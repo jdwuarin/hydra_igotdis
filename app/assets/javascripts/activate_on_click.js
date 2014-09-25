@@ -1,4 +1,4 @@
-$('th.Logo').on('click', function() {
+$('th.Logo').on('click', function (event) {
 
   // make th object active
   $(this).siblings('th').removeClass('active');
@@ -15,5 +15,16 @@ $('th.Logo').on('click', function() {
   $(this).parents("table").
     siblings("div.submitmatch").
     children("input").prop('disabled', false);
+
+});
+
+$("div.submitmatch").on('click', function(e) {
+
+    button = $(e.currentTarget).children("input")[0];
+
+    if (!button["disabled"]) {
+      button["value"] = "UPDATE";
+      $(e.currentTarget).children("input").html(button);
+    }
 
 });

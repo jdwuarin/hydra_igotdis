@@ -17,12 +17,11 @@ class UserMatchPredictionsController < ApplicationController
       :comment => user_match_prediction_params[:comment],
       :user => current_user)
     if @user_match_prediction.save
-      # respond_to do |format|
-      #   format.html { redirect_back_or root_path }
-      #   format.js
-      # end
-      redirect_back_or root_path
-      return
+      respond_to do |format|
+        format.html { redirect_back_or root_path }
+        format.js { render :js => @post }
+        return
+      end
     end
     redirect_to root_path
   end

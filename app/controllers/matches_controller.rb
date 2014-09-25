@@ -41,9 +41,6 @@ class MatchesController < ApplicationController
         user: current_user, match: matches)
     end
 
-    user_match_prediction = UserMatchPrediction.new
-    @context[:new_prediction] = user_match_prediction
-
   end
 
 end
