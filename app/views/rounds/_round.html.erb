@@ -7,13 +7,13 @@
     </div>
 </div>
 
-<% if defined? show_round %>
+<% if context[:round] %>
 
-  <% if round == show_round %>
+  <% if round == context[:round] %>
 
     <%= render '/matches/' + get_round_info(round,
                key_name: "matches_partial_name"),
-               matches: matches %>
+               context: context %>
 
   <% end %>
 

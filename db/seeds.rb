@@ -43,7 +43,7 @@ dark_passage = FactoryGirl.create(:tournament_contestant,
 
 # Group B
 
-team_5 = FactoryGirl.create(:team, name: "Star Horn Royal Club",
+team_5 = FactoryGirl.create(:team, name: "Star Horn",
                 logo: "/assets/teams/star_horn_logo.jpg")
 
 star_horn = FactoryGirl.create(:tournament_contestant,
@@ -101,7 +101,7 @@ fnatic = FactoryGirl.create(:tournament_contestant,
                 contestant: team_11,
                 group_id: Groups::GROUP_C)
 
-team_12 = FactoryGirl.create(:team, name: "Samsung Galaxy Blue",
+team_12 = FactoryGirl.create(:team, name: "Samsung Blue",
                 logo: "/assets/teams/samsung_galaxy_blue_logo.png")
 
 samsung_galaxy_blue = FactoryGirl.create(:tournament_contestant,
@@ -111,7 +111,7 @@ samsung_galaxy_blue = FactoryGirl.create(:tournament_contestant,
 
 # Group D
 
-team_13 = FactoryGirl.create(:team, name: "KaBuM! a-Sports",
+team_13 = FactoryGirl.create(:team, name: "KaBuM!",
                 logo: "/assets/teams/kabum_logo.png")
 
 kabum = FactoryGirl.create(:tournament_contestant,
@@ -119,7 +119,7 @@ kabum = FactoryGirl.create(:tournament_contestant,
                contestant: team_13,
                group_id: Groups::GROUP_D)
 
-team_14 = FactoryGirl.create(:team, name: "NaJin White Shield",
+team_14 = FactoryGirl.create(:team, name: "Najin Shield",
                 logo: "/assets/teams/najin_white_shield_logo.png")
 
 najin_white_shield = FactoryGirl.create(:tournament_contestant,

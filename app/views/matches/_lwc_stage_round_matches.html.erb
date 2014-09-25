@@ -1,101 +1,65 @@
 
 <div class="container">
   <div class="Group_A">
-    <%= link_to "Group A", url_for(:group => 1), :type => "button",
-        :class => "btn btn-default" %>
-    <%= link_to "Group B", url_for(:group => 2), :type => "button",
-        :class => "btn btn-default" %>
-    <%= link_to "Group C", url_for(:group => 3), :type => "button",
-        :class => "btn btn-default" %>
-    <%= link_to "Group D", url_for(:group => 4), :type => "button",
-        :class => "btn btn-default" %>
+
+    <% if @context[:group] == "1" %>
+      <%= link_to "Group A", url_for(:group => 1), :type => "button",
+          :class => "btn btn-default active" %>
+    <% else %>
+      <%= link_to "Group A", url_for(:group => 1), :type => "button",
+          :class => "btn btn-default" %>
+    <% end %>
+
+    <% if @context[:group] == "2" %>
+      <%= link_to "Group B", url_for(:group => 2), :type => "button",
+          :class => "btn btn-default active" %>
+    <% else %>
+      <%= link_to "Group B", url_for(:group => 2), :type => "button",
+          :class => "btn btn-default" %>
+    <% end %>
+
+    <% if @context[:group] == "3" %>
+      <%= link_to "Group C", url_for(:group => 3), :type => "button",
+          :class => "btn btn-default active" %>
+    <% else %>
+      <%= link_to "Group C", url_for(:group => 3), :type => "button",
+          :class => "btn btn-default" %>
+    <% end %>
+
+    <% if @context[:group] == "4" %>
+      <%= link_to "Group D", url_for(:group => 4), :type => "button",
+          :class => "btn btn-default active" %>
+    <% else %>
+      <%= link_to "Group D", url_for(:group => 4), :type => "button",
+          :class => "btn btn-default" %>
+    <% end %>
   </div>
 </div>
 
-<div class="container">
-  <% matches.each_with_index do |match, index| %>
 
-    <% if index.modulo(2) == 0 %>
+<div class="container">
+
+  <% context[:matches].each_with_index do |match, index| %>
+
+    <% if index.modulo(3) == 0 %>
 
       <div class="matches-line">
         <div class="row">
 
-            <div class="col-md-5">
-              <table class="responsive">
-                <table class="table" frame="box"> 
+            <%= render 'lwc_stage_round_match_open', 
+                match: match, new_prediction: context[:new_prediction] %>
 
-                  <thead>
-                    <tr>
-                      <th class="Big" colspan="2">
-                        <%= match.receiving_contestant.contestant.name %>
-                      </th>
-                      <th colspan="2">VS</th>
-                      <th class="Big"colspan="2">
-                        <%= match.invited_contestant.contestant.name %>
-                      </th>
-                    </tr>
-                  </thead>
+            <% if index < context[:matches].count-1 %>
 
-                  <tbody>
-                    <tr>
-                      <%= form_tag("/user_match_predictions", method: "post") do %>
-                        <%= hidden_field_tag(:match_id, match.id) %>
-                        <%= hidden_field_tag(:prediction_type, 1) %>
-                        <%= hidden_field_tag(:predicted_contestant_id, match.receiving_contestant_id) %>
+              <%= render 'lwc_stage_round_match_open',
+                  match: context[:matches][index+1], new_prediction: context[:new_prediction] %>
 
-                        <th class="Logo" colspan="3">
-                        <%= image_submit_tag match.receiving_contestant.contestant.logo,
-                            class: "img-responsive", type: "image" %>
-                        </th>
+            <% end %>
 
-                      <% end %>
+            <% if index < context[:matches].count-2 %>
 
-                      <th class="Logo" colspan="3"><a href="#">
-                        <%= image_tag match.invited_contestant.contestant.logo,
-                            class: "img-responsive" %></a>
-                      </th>
-                    </tr>
-                  </tbody>
-                </table>
-              </table>
-            </div>
-
-            <div class="col-md-2">
-            </div>
-
-            <% if index < matches.count - 1 %>
-
-              <div class="col-md-5">
-                <table class="responsive">
-                  <table class="table" frame="box"> 
-
-                    <thead>
-                      <tr>
-                        <th class="Big" colspan="2">
-                          <%= matches[index+1].receiving_contestant.contestant.name %>
-                        </th>
-                        <th colspan="2">VS</th>
-                        <th class="Big"colspan="2">
-                          <%= matches[index+1].invited_contestant.contestant.name %>
-                        </th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      <tr>
-                        <th href="#" class="Logo"colspan="3"><a href="#">
-                          <%= image_tag matches[index+1].receiving_contestant.contestant.logo,
-                              class: "img-responsive" %></a>
-                        </th>                  
-                        <th class="Logo" colspan="3"><a href="#">
-                          <%= image_tag matches[index+1].invited_contestant.contestant.logo,
-                              class: "img-responsive" %></a>
-                        </th>
-                      </tr>
-                    </tbody>
-                  </table>
-                </table>
-              </div>
+              <%= render 'lwc_stage_round_match_open',
+                  match: context[:matches][index+2], new_prediction: context[:new_prediction] %>
 
             <% end %>
 
@@ -104,5 +68,7 @@
      <% end %>
 
   <% end %>
+
+  <%= javascript_include_tag 'activate_on_click' %>
 
 </div>

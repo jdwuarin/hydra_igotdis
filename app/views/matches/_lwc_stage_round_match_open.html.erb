@@ -1,0 +1,54 @@
+<div class="col-md-4">
+  <table class="responsive">
+
+    <%= form_tag("/user_match_predictions",
+        remote: user_signed_in?, method: "post") do %>
+
+      <table class="table" frame="box"> 
+
+        <thead>
+          <tr>
+            <th class="Big" colspan="2">
+              <%= match.receiving_contestant.contestant.name %>
+            </th>
+            <th colspan="2">VS</th>
+            <th class="Big"colspan="2">
+              <%= match.invited_contestant.contestant.name %>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+
+              <th class="Logo" colspan="3">
+                <%= content_tag :div, "",class: match.receiving_contestant.id %>
+                <%= image_tag match.receiving_contestant.contestant.logo,
+                    class: "img-responsive", type: "image" %>
+              </th>
+
+
+              <th class="Logo" colspan="3">
+                <%= content_tag :div, "",class: match.invited_contestant.id %>
+                <%= image_tag match.invited_contestant.contestant.logo,
+                    class: "img-responsive", type: "image" %>
+              </th>
+
+              <%= hidden_field_tag :predicted_contestant_id, 0 %>
+
+          </tr>
+        </tbody>
+      </table>
+
+      <%= hidden_field_tag :match_id, match.id %>
+      <%= hidden_field_tag :prediction_type,  1 %>
+
+      <div class="submitmatch">
+        <%= submit_tag 'SUBMIT',
+            class: "btn btn-default", disabled: true %>
+      </div>
+
+    <% end %>
+
+  </table>
+</div>

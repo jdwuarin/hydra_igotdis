@@ -8,31 +8,39 @@ class MatchesController < ApplicationController
 
   def index
     tournament = Tournament.find(params[:tournament_id])
-    @rounds = tournament.rounds
-    @round = Round.find(params[:round_id])
+    rounds = tournament.rounds
+    round = Round.find(params[:round_id])
+    @context = { :rounds => rounds, :round => round}
     if params[:group]
-      @matches = []
-      _matches = @round.matches
+      @context[:group] = params[:group]
+      matches = []
+      _matches = round.matches
 
       _matches.each do |match|
         if match.receiving_contestant.group_id == params[:group].to_i
-          @matches.append(match)
+          matches.append(match)
         end
       end
     else
-      if !@round.is_direct_elimination_round
-        redirect_to tournament_round_matches_path(tournament,
-                                                  @round, :group => 1)
+      if !round.is_direct_elimination_round
+        params[:group] = 1
+        redirect_to url_for params
       else
-        @matches = @round.matches
+        matches = round.matches
       end
     end
-  end
+    @context[:matches] = matches
 
-  private
+    if params[:user]
+      user = User.find(username: params[:user])
+      @context[:predictions] = UserMatchPrediction.where(
+        user: user, match: matches)
 
-    def store_location
-      user_session[:return_to] = request.url if request.get?
+    elsif current_user
+      @context[:predictions] = UserMatchPrediction.where(
+        user: current_user, match: matches)
     end
+
+  end
 
 end
