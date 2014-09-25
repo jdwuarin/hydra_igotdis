@@ -10,20 +10,29 @@ class UserMatchPredictionsController < ApplicationController
   end
 
   def create
-    @user_match_prediction = UserMatchPrediction.new(
+
+    @ump = UserMatchPrediction.find_or_initialize_by(
       :match_id => user_match_prediction_params[:match_id],
       :prediction_type => user_match_prediction_params[:prediction_type],
-      :predicted_contestant_id => user_match_prediction_params[:predicted_contestant_id],
-      :comment => user_match_prediction_params[:comment],
-      :user => current_user)
-    if @user_match_prediction.save
+      :user => current_user
+    )
+
+      @ump[:comment] = user_match_prediction_params[:comment]
+      @ump[:predicted_contestant_id] = 
+        user_match_prediction_params[:predicted_contestant_id]
+
+    if @ump.save
       respond_to do |format|
         format.html { redirect_back_or root_path }
-        format.js { render :js => @post }
-        return
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_back_or root_path }
+        format.js { render :text => @ump.errors.to_json,
+                    :status => 400 }
       end
     end
-    redirect_to root_path
   end
 
   def edit
