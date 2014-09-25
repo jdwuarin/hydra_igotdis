@@ -21,9 +21,10 @@
         <tbody>
           <tr>
 
-              <% if context[:predictions].where(match: match) != [] && 
-                context[:predictions].where(match: match)[0]
-                [:predicted_contestant_id] == match.receiving_contestant.id %>
+              <% if context[:predictions] != nil &&
+                context[:predictions].where(match: match) != [] && 
+                context[:predictions].find_by(match: match).
+                predicted_contestant == match.receiving_contestant %>
 
                 <%= render '/matches/team_cell/active',
                     t_contestant: match.receiving_contestant %>
@@ -35,9 +36,10 @@
 
               <% end %>
 
-              <% if context[:predictions].where(match: match) != [] && 
-                context[:predictions].where(match: match)[0]
-                [:predicted_contestant_id] == match.invited_contestant.id %>
+              <% if context[:predictions] != nil &&
+                context[:predictions].where(match: match) != [] && 
+                context[:predictions].find_by(match: match).
+                predicted_contestant == match.invited_contestant %>
 
                 <%= render '/matches/team_cell/active',
                     t_contestant: match.invited_contestant %>
@@ -58,7 +60,9 @@
       <%= hidden_field_tag :match_id, match.id %>
       <%= hidden_field_tag :prediction_type,  1 %>
 
-      <% if context[:predictions].where(match: match) != [] %>
+      <% if context[:predictions] != nil && 
+        context[:predictions].where(match: match) != [] %>
+
         <div class="submitmatch">
           <%= submit_tag 'UPDATE',
               class: "btn btn-default", disabled: true %>

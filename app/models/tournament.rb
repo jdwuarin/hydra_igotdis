@@ -4,6 +4,7 @@ class Tournament < ActiveRecord::Base
   belongs_to :venue
   has_many :tournament_contestants
   has_many :rounds
+  has_many :matches, :through => :rounds
 
   validates :name, presence: true
   validates :start_date, presence: :true
