@@ -22,14 +22,16 @@
           <tr>
 
               <th class="Logo" colspan="3">
-                <%= content_tag :div, "",class: match.receiving_contestant.id %>
+                <%= content_tag :div, match.receiving_contestant.id.to_s,
+                                hidden: true, class: "contestant" %>
                 <%= image_tag match.receiving_contestant.contestant.logo,
                     class: "img-responsive", type: "image" %>
               </th>
 
 
               <th class="Logo" colspan="3">
-                <%= content_tag :div, "",class: match.invited_contestant.id %>
+                <%= content_tag :div, match.invited_contestant.id.to_s,
+                                hidden: true, class: "contestant" %>
                 <%= image_tag match.invited_contestant.contestant.logo,
                     class: "img-responsive", type: "image" %>
               </th>
