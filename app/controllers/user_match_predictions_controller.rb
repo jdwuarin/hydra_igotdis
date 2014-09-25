@@ -19,7 +19,7 @@ class UserMatchPredictionsController < ApplicationController
     if @user_match_prediction.save
       respond_to do |format|
         format.html { redirect_back_or root_path }
-        format.js { render :js => @post }
+        format.js
         return
       end
     end

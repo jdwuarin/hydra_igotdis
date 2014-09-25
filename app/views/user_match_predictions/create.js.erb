@@ -1,0 +1,11 @@
+$("form.form").on('ajax:success', function(data, status, xhr) {
+
+    button = $(this).parents("table.responsive").
+      siblings("div.submitmatch").
+        children("input")[0]
+
+    if (!button["disabled"]) {
+      button["value"] = "UPDATE";
+    }
+
+});
