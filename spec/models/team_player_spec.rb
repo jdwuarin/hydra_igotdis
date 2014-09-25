@@ -20,4 +20,14 @@ describe TeamPlayer do
     it { should_not be_valid }
   end
 
+  describe "when team object is not present" do
+    before { @team_player.team_id = 0 }
+    it { should_not be_valid }
+  end
+
+  describe "when player object is not present" do
+    before { @team_player.player_id = 0 }
+    it { should_not be_valid }
+  end
+
 end

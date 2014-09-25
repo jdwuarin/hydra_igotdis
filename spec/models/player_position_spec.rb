@@ -8,6 +8,7 @@ describe PlayerPosition do
 
   it { should respond_to(:name) }
   it { should respond_to(:game_id) }
+  it { should respond_to(:players) }
 
   it { should be_valid }
 
