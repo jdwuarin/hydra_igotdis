@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
 
-  has_many :tournament_contestants
+  has_many :tournament_contestants, as: :contestant, :dependent => :destroy
   has_many :team_players, :dependent => :destroy
   has_many :players, through: :team_players
 
@@ -8,7 +8,8 @@ class Team < ActiveRecord::Base
   validates :continent_id, presence: true
   validates :game_id, presence: true
 
-  validates :name, :game_id, :uniqueness => {:scope => [:name, :game_id]}
+  validates :name, :game_id, :uniqueness =>
+            {:scope => [:name, :game_id]}
 
   accepts_nested_attributes_for :team_players
   accepts_nested_attributes_for :players

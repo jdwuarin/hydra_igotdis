@@ -1,6 +1,6 @@
 class Player < ActiveRecord::Base
 
-  has_many :tournament_contestants
+  has_many :tournament_contestants, as: :contestant, :dependent => :destroy
   has_one :team_player, :dependent => :destroy
   has_one :team, through: :team_player
   belongs_to :player_position

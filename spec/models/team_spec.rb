@@ -9,6 +9,9 @@ describe Team do
   it { should respond_to(:name) }
   it { should respond_to(:continent_id) }
   it { should respond_to(:game_id) }
+  it { should respond_to(:team_players) }
+  it { should respond_to(:players) }
+  it { should respond_to(:tournament_contestants) }
 
   it { should be_valid }
 
@@ -41,12 +44,18 @@ describe Team do
 
     before do
       create(:team_player, team: @team)
+      create(:tournament_contestant, contestant: @team)
       @team.destroy
     end
 
     specify "team_players should also be deleted" do
       expect(TeamPlayer.count).to eq 0
     end
+
+    specify "tournament_contestants should also be deleted" do
+      expect(TournamentContestant.count).to eq 0
+    end
+
   end
 
 end

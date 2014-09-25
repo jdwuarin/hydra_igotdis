@@ -15,6 +15,7 @@ describe Tournament do
   it { should respond_to(:tournament_type) }
   it { should respond_to(:tournament_contestants) }
   it { should respond_to(:rounds) }
+  it { should respond_to(:matches) }
 
   it { should be_valid }
 

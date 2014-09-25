@@ -6,9 +6,6 @@ class CreateRounds < ActiveRecord::Migration
       t.timestamp :start_date
       t.timestamp :end_date
       t.boolean :is_direct_elimination_round, :default => false
-      t.boolean :finished, :default => false
-      t.references :receiving_contestant
-      t.references :invited_contestant
 
       t.timestamps
     end

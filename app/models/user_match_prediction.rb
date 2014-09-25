@@ -22,8 +22,4 @@ class UserMatchPrediction < ActiveRecord::Base
     + "On match: " + self.match.name
   end
 
-  # def find_or_build_by(search_params)
-  #   # first try finding 
-  #   UserMatchPrediction
-
 end

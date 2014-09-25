@@ -12,6 +12,13 @@ module RoundTypes
   SEMI_FINALS = 3
   FINAL = 4
 
+  LIST = {
+    GROUP_STAGE => true,
+    QUARTER_FINALS => true,
+    SEMI_FINALS => true,
+    FINAL => true
+  }
+
   INFO = {
     TournamentTypes::LOL_WORLD_CUP => {
       GROUP_STAGE => {
@@ -21,17 +28,17 @@ module RoundTypes
       },
       QUARTER_FINALS => {
         "name" => "Quarter Finals",
-        "point_multiplier" => 6,
+        "point_multiplier" => 3,
         "matches_partial_name" => "lwc_quarter_final_matches"
       },
       SEMI_FINALS => {
         "name" => "Semi Finals",
-        "point_multiplier" => 10,
+        "point_multiplier" => 6,
         "matches_partial_name" => "lwc_semi_final_matches"
       },
       FINAL => {
         "name" => "Final",
-        "point_multiplier" => 15,
+        "point_multiplier" => 9,
         "matches_partial_name" => "lwc_final_match"
       }
     }
