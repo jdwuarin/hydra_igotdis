@@ -47,19 +47,19 @@
         <div class="row">
 
             <%= render 'lwc_stage_round_match_open', 
-                match: match, new_prediction: context[:new_prediction] %>
+                match: match, context: context %>
 
             <% if index < context[:matches].count-1 %>
 
               <%= render 'lwc_stage_round_match_open',
-                  match: context[:matches][index+1], new_prediction: context[:new_prediction] %>
+                  match: context[:matches][index+1], context: context %>
 
             <% end %>
 
             <% if index < context[:matches].count-2 %>
 
               <%= render 'lwc_stage_round_match_open',
-                  match: context[:matches][index+2], new_prediction: context[:new_prediction] %>
+                  match: context[:matches][index+2], context: context %>
 
             <% end %>
 

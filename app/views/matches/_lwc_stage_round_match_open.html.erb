@@ -21,20 +21,33 @@
         <tbody>
           <tr>
 
-              <th class="Logo" colspan="3">
-                <%= content_tag :div, match.receiving_contestant.id.to_s,
-                                hidden: true, class: "contestant" %>
-                <%= image_tag match.receiving_contestant.contestant.logo,
-                    class: "img-responsive", type: "image" %>
-              </th>
+              <% if context[:predictions].where(match: match) != [] && 
+                context[:predictions].where(match: match)[0]
+                [:predicted_contestant_id] == match.receiving_contestant.id %>
 
+                <%= render '/matches/team_cell/active',
+                    t_contestant: match.receiving_contestant %>
 
-              <th class="Logo" colspan="3">
-                <%= content_tag :div, match.invited_contestant.id.to_s,
-                                hidden: true, class: "contestant" %>
-                <%= image_tag match.invited_contestant.contestant.logo,
-                    class: "img-responsive", type: "image" %>
-              </th>
+              <% else %>
+
+                <%= render '/matches/team_cell/not_active',
+                    t_contestant: match.receiving_contestant %>
+
+              <% end %>
+
+              <% if context[:predictions].where(match: match) != [] && 
+                context[:predictions].where(match: match)[0]
+                [:predicted_contestant_id] == match.invited_contestant.id %>
+
+                <%= render '/matches/team_cell/active',
+                    t_contestant: match.invited_contestant %>
+
+              <% else %>
+
+                <%= render '/matches/team_cell/not_active',
+                    t_contestant: match.invited_contestant %>
+
+              <% end %>
 
               <%= hidden_field_tag :predicted_contestant_id, 0 %>
 
@@ -45,10 +58,17 @@
       <%= hidden_field_tag :match_id, match.id %>
       <%= hidden_field_tag :prediction_type,  1 %>
 
-      <div class="submitmatch">
-        <%= submit_tag 'SUBMIT',
-            class: "btn btn-default", disabled: true %>
-      </div>
+      <% if context[:predictions].where(match: match) != [] %>
+        <div class="submitmatch">
+          <%= submit_tag 'UPDATE',
+              class: "btn btn-default", disabled: true %>
+        </div>
+      <% else %>
+        <div class="submitmatch">
+          <%= submit_tag 'SUBMIT',
+              class: "btn btn-default", disabled: true %>
+        </div>
+      <% end %>
 
     <% end %>
 
