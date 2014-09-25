@@ -1,5 +1,6 @@
 # require 'rubygems'
 require 'factory_girl'
+require 'active_support/testing/time_helpers.rb'
 
 ENV["RAILS_ENV"] = 'test'
 require File.expand_path("../../config/environment", __FILE__)
@@ -26,6 +27,7 @@ RSpec.configure do |config|
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.include FactoryGirl::Syntax::Methods
+  config.include ActiveSupport::Testing::TimeHelpers
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

@@ -36,7 +36,7 @@ describe UserMatchPrediction do
   describe "when match has already started" do
     before do
       match = @user_match_prediction.match
-      match.date = DateTime.now - 10.seconds
+      match.date = Time.now - 10.seconds
       match.save
     end
 
@@ -79,11 +79,13 @@ describe UserMatchPrediction do
 
   describe "LWC specific tests" do
 
-    before { @user_match_prediction = create(:LWC_user_match_prediction) }
-
     describe "when user predicts a draw" do
       before do
-        @user_match_prediction.prediction_type = PredictionTypes::Draw
+        # picked group stage match as an example
+        @user_match_prediction.match = create(:LWC_group_stage_match)
+        match = @user_match_prediction.match
+        @user_match_prediction.predicted_contestant = match.invited_contestant
+        @user_match_prediction.prediction_type = PredictionTypes::DRAW
       end
         # tournament does not have draws
         it { should_not be_valid}
@@ -93,11 +95,14 @@ describe UserMatchPrediction do
 
       before do
         @user_match_prediction.match = create(:LWC_group_stage_match)
+        match = @user_match_prediction.match
+        @user_match_prediction.predicted_contestant = match.invited_contestant
+        travel_to(match.date-1.hour)
       end
 
       context "and prediction type is different than WINNER" do
         before do 
-          @user_match_prediction.prediction_type = Prediction_Type::SCORE_2_0
+          @user_match_prediction.prediction_type = PredictionTypes::SCORE_2_0
         end
           # can only do predictions on winner of group_stage match
           it { should_not be_valid}
@@ -105,7 +110,7 @@ describe UserMatchPrediction do
 
       context "and prediction type is WINNER" do
         before do 
-          @user_match_prediction.prediction_type = Prediction_Type::WINNER
+          @user_match_prediction.prediction_type = PredictionTypes::WINNER
         end
           it { should be_valid}
       end
@@ -116,18 +121,21 @@ describe UserMatchPrediction do
 
       before do
         @user_match_prediction.match = create(:LWC_quarter_final_match)
+        match = @user_match_prediction.match
+        @user_match_prediction.predicted_contestant = match.invited_contestant
+        travel_to(match.date-1.hour)
       end
 
       context "and prediction type is not available in LWC_QUARTER_FINAL" do
         before do 
-          @user_match_prediction.prediction_type = Prediction_Type::SCORE_3_0
+          @user_match_prediction.prediction_type = PredictionTypes::SCORE_3_0
         end
           it { should_not be_valid}
       end
 
       context "and prediction type is available in LWC_QUARTER_FINAL" do
         before do 
-          @user_match_prediction.prediction_type = Prediction_Type::SCORE_2_0
+          @user_match_prediction.prediction_type = PredictionTypes::SCORE_2_0
         end
           it { should be_valid}
       end
@@ -138,18 +146,21 @@ describe UserMatchPrediction do
 
       before do
         @user_match_prediction.match = create(:LWC_semi_final_match)
+        match = @user_match_prediction.match
+        @user_match_prediction.predicted_contestant = match.invited_contestant
+        travel_to(match.date-1.hour)
       end
 
       context "and prediction type is not available in LWC_SEMI_FINAL" do
         before do 
-          @user_match_prediction.prediction_type = Prediction_Type::MOSTDRAGON
+          @user_match_prediction.prediction_type = PredictionTypes::MOSTDRAGON
         end
           it { should_not be_valid}
       end
 
       context "and prediction type is available in LWC_SEMI_FINAL" do
         before do 
-          @user_match_prediction.prediction_type = Prediction_Type::MOSTFIRSTBLOOD
+          @user_match_prediction.prediction_type = PredictionTypes::MOSTFIRSTBLOOD
         end
           it { should be_valid}
       end
@@ -160,24 +171,26 @@ describe UserMatchPrediction do
 
       before do
         @user_match_prediction.match = create(:LWC_final_match)
+        match = @user_match_prediction.match
+        @user_match_prediction.predicted_contestant = match.invited_contestant
+        travel_to(match.date-1.hour)
       end
 
       context "and prediction type is not available in LWC_FINAL" do
         before do 
-          @user_match_prediction.prediction_type = Prediction_Type::SCORE_2_1
+          @user_match_prediction.prediction_type = PredictionTypes::SCORE_2_1
         end
           it { should_not be_valid}
       end
 
-      context "and prediction type is available in LWC_QUARTER_FINAL" do
+      context "and prediction type is available in FINAL" do
         before do 
-          @user_match_prediction.prediction_type = Prediction_Type::MOSTDRAGON
+          @user_match_prediction.prediction_type = PredictionTypes::MOSTDRAGON
         end
           it { should be_valid}
       end
 
     end
-
 
   end
 

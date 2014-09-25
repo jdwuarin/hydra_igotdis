@@ -11,7 +11,7 @@ class UserMatchPrediction < ActiveRecord::Base
   validates :match, :user, :prediction_type,
             :uniqueness => {:scope => [:match, :user, :prediction_type]}
 
-  # validates_with PredictionTypeValidator
+  validates_with PredictionTypeValidator
   validates_with MatchUnstarted
   validates_with PredictedContestantParticipated
 
