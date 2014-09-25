@@ -3,16 +3,15 @@
 FactoryGirl.define do
   factory :match do
     round
-    date { DateTime.now }
+    date { DateTime.tomorrow }
     finished false
-    receiving_contestant { round.receiving_contestant }
-    invited_contestant { round.invited_contestant }
+    receiving_contestant
+    invited_contestant
     results Hash.new
   end
 
   factory :LWC_group_stage_match, parent: :match do
     association :round, factory: :LWC_group_stage
-    # contestants have to be created in this case
     association :receiving_contestant, factory: :LWC_receiving_contestant
     association :invited_contestant, factory: :LWC_invited_contestant
   end
