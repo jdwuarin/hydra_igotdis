@@ -52,7 +52,7 @@ describe Team do
       expect(TeamPlayer.count).to eq 0
     end
 
-    specify "tournament contestants should also be deleted" do
+    specify "tournament_contestants should also be deleted" do
       expect(TournamentContestant.count).to eq 0
     end
 

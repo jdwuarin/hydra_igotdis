@@ -8,7 +8,8 @@ class Team < ActiveRecord::Base
   validates :continent_id, presence: true
   validates :game_id, presence: true
 
-  validates :name, :game_id, :uniqueness => {:scope => [:name, :game_id]}
+  validates :name, :game_id, :uniqueness =>
+            {:scope => [:name, :game_id]}
 
   accepts_nested_attributes_for :team_players
   accepts_nested_attributes_for :players
