@@ -14,6 +14,7 @@ gem 'sprockets', '2.11.0'
 gem 'byebug'
 gem 'ffaker'
 gem 'puma'
+gem 'nested-hstore'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'

@@ -76,7 +76,7 @@ describe Match do
     context "check results validity when match finished" do
       before do
         @match = create(:LWC_group_stage_match)
-        @lwc_results_format = ResultsFormat::LWC_RESULTS_FORMAT
+        @lwc_results_format = ResultsFormat::LWC_RESULTS_FORMAT.clone
         @lwc_results_format['receiving_contestant']["winner"] = true
         @lwc_results_format['invited_contestant']["winner"] = false
         @match.results = @lwc_results_format
@@ -205,8 +205,8 @@ describe Match do
       describe "when match.round_type is QUARTER_FINALS" do
 
         before do
-          @match.round.round_type = RoundTypes::GROUP_STAGE
-          @matchround.is_direct_elimination_round = true
+          @match.round.round_type = RoundTypes::QUARTER_FINALS
+          @match.round.is_direct_elimination_round = true
         end
 
         # by default, as is, it should not be valid
@@ -220,9 +220,9 @@ describe Match do
           it { should_not be_valid }
         end
 
-        describe "when a score is above MAX_QUARTER_FINAL_SCORE" do
+        describe "when a score is above LWC_MAX_QUARTER_FINAL_SCORE" do
           before do
-            invalid = ResultsFormat::MAX_QUARTER_FINAL_SCORE + 1
+            invalid = ResultsFormat::LWC_MAX_QUARTER_FINAL_SCORE + 1
             @lwc_results_format["receiving_contestant"]["score"] = invalid
             @lwc_results_format["invited_contestant"]["score"] = 1
           end
@@ -274,9 +274,9 @@ describe Match do
         # by default, as is, it should not be valid
         it { should_not be_valid }
 
-        describe "when a score is above MAX_QUARTER_FINAL_SCORE" do
+        describe "when a score is above LWC_MAX_OTHER_SCORE" do
           before do
-            invalid = ResultsFormat::MAX_OTHER_SCORE + 1
+            invalid = ResultsFormat::LWC_MAX_OTHER_SCORE + 1
             @lwc_results_format["receiving_contestant"]["score"] = invalid
             @lwc_results_format["invited_contestant"]["score"] = 1
           end

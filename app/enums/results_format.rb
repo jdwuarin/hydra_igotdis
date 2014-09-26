@@ -8,25 +8,25 @@
 
 module ResultsFormat
 
-  MAX_QUARTER_FINAL_SCORE = 2
-  MAX_OTHER_SCORE = 3
+  LWC_MAX_QUARTER_FINAL_SCORE = 2
+  LWC_MAX_OTHER_SCORE = 3
 
   LWC_RESULTS_FORMAT = {
 
-    "type" => "lwc_results_format",
+    "type" => TournamentTypes::LOL_WORLD_CUP,
 
     "receiving_contestant" => {
-      "winner" => nil,
+      "winner" => -1,
       "score" => 0,
-      "most_dragon" => nil,
-      "most_first_blood" => nil
+      "most_dragon" => -1,
+      "most_first_blood" => -1
     },
 
     "invited_contestant" => {
-      "winner" => nil,
+      "winner" => -1,
       "score" => 0,
-      "most_dragon" => nil,
-      "most_first_blood" => nil
+      "most_dragon" => -1,
+      "most_first_blood" => -1
     }
 
   }

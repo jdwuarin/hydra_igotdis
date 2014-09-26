@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 40ac6655d67eece5f43f72ff6137db1ba34aa711
+  revision: 708e59018cdec2a078a173da0dbc0b732b3a9399
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -38,6 +38,10 @@ GEM
       activemodel (= 4.1.5)
       activesupport (= 4.1.5)
       arel (~> 5.0.0)
+    activerecord-postgres-hstore (0.7.7)
+      activerecord (>= 3.1)
+      pg-hstore (>= 1.1.5)
+      rake
     activesupport (4.1.5)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
@@ -125,10 +129,15 @@ GEM
     mini_portile (0.6.0)
     minitest (5.4.1)
     multi_json (1.10.1)
+    nested-hstore (0.0.5)
+      activerecord
+      activerecord-postgres-hstore
+      activesupport
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
     pg (0.15.1)
+    pg-hstore (1.2.0)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
@@ -256,6 +265,7 @@ DEPENDENCIES
   ffaker
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
+  nested-hstore
   pg (= 0.15.1)
   puma
   rails (= 4.1.5)

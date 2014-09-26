@@ -24,6 +24,8 @@ class Match < ActiveRecord::Base
 
   after_save :settle_predictions_if_over
 
+  serialize :results, ActiveRecord::Coders::NestedHstore
+
   # make sure all match results are destroyed when a match is destroyed
   # before_destroy { |match| MatchResult.destroy_all "match_id = #{match.id}" }
 
