@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>iGotDis <%= yield(:title) %></title>
+    <title>iGotDisa <%= yield(:title) %></title>
     <%= stylesheet_link_tag "application", media: "all",
                                            "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -10,15 +10,6 @@
     <link rel="icon" type="image/ico" href="assets/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Jockey+One' rel='stylesheet' type='text/css'>
     <%= render 'layouts/shim' %>
-  </head>
-  <body background="/assets/background_splash_page.jpg">
-
-    <%= render 'layouts/header' %>
-
-    <%= yield %>
-
-    <!-- <%= debug(params) if Rails.env.development? %> -->
-  </body>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -30,5 +21,15 @@
     ga('send', 'pageview');
 
   </script>
+
+  </head>
+  <body background="/assets/background_splash_page.jpg">
+
+    <%= render 'layouts/header' %>
+
+    <%= yield %>
+
+    <!-- <%= debug(params) if Rails.env.development? %> -->
+  </body>
 
 </html>
