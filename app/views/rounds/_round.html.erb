@@ -1,6 +1,7 @@
 <div class="container">
     <div class="Header">
-      <%= link_to tournament_round_matches_path(round.tournament, round) do %>
+      <%= link_to tournament_round_matches_path(round.tournament, round),
+          style: "text-decoration: none" do %>
         <h3>Stage <%= round.round_type %>:
             <%= get_round_info round, key_name: "name" %></h3>
       <% end %>

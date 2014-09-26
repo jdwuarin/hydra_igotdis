@@ -7,6 +7,7 @@ Hydra::Application.routes.draw do
   root  'home#index'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/how-to-play', to: 'static_pages#how_to_play', via: 'get'
+  match '/rules', to: 'static_pages#rules', via: 'get'
 
   resources :tournaments, only: :index do
     resources :rounds, only: :index do

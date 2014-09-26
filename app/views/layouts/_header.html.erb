@@ -16,18 +16,7 @@
       <div class = "collapse navbar-collapse navHeaderCollapse">
           <ul class = "nav navbar-nav navbar-right">
 
-              <li><%= link_to "How To Play", how_to_play_path %></li>
-              <li class = "dropdown">
-                   
-                  <a href = "#" class = "
-                  " data-toggle = "dropdown">Share <b class = "caret"></b>
-                  </a>
-                  <ul class = "dropdown-menu">
-                      <li><a href = "#">Twitter</a></li>
-                      <li><a href = "#">Facebook</a></li>
-                  </ul>
-               
-              </li>
+              <li><%= link_to "Rules", rules_path %></li>
               <% if !user_signed_in? %>
                 <li><%= link_to "Login", new_user_session_path %></li>
                 <li><%= link_to "Signup", new_user_registration_path %></li>
