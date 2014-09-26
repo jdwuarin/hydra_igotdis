@@ -7,5 +7,8 @@ class CreateUserTournamentScores < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :user_tournament_scores,
+              [:user_id, :tournament_id], :unique => true
   end
 end

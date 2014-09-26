@@ -43,6 +43,24 @@ describe UserMatchPrediction do
     it { should_not be_valid }
   end
 
+
+  describe "when user creates a prediction new tournament after registering" do
+
+    before do
+      @tournament = create(:tournament)
+      @user_match_prediction.match.round.tournament = @tournament
+      @user_match_prediction.save
+    end
+
+    specify "an associated user_tournament_score object should exist" do
+
+      expect(UserTournamentScore.where(user: @user_match_prediction.user,
+             tournament: @tournament)).to exist
+    end
+
+  end
+
+
   describe "when predicted contestant did not participate in match" do
 
     before do

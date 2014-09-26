@@ -6,4 +6,7 @@ class UserTournamentScore < ActiveRecord::Base
   validates :user, presence: true
   validates :tournament, presence: true
 
+  validates :user_id, :tournament_id,
+            :uniqueness => {:scope => [:user_id, :tournament_id]}
+
 end

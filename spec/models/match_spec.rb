@@ -404,15 +404,17 @@ describe Match do
         @user = create(:user)
 
         @match = create(:LWC_group_stage_match)
+        travel_to(@match.date-1.hour)
         @lwc_results_format = ResultsFormat::LWC_RESULTS_FORMAT
         @lwc_results_format['receiving_contestant']["winner"] = true
         @lwc_results_format['invited_contestant']["winner"] = false
         @match.results = @lwc_results_format
         @match.finished = true # mose of these tests apply when match is over
 
-        # this ia good prediction for round 1
+        # this is good prediction for round 1
         @user_match_prediction = create(:user_match_prediction,
-          predicted_contestant: match.receiving_contestant,
+          match: @match,
+          predicted_contestant: @match.receiving_contestant,
           prediction_type: PredictionTypes::WINNER,
           user: @user)
 
@@ -426,6 +428,7 @@ describe Match do
 
         context "@user correctly predicted the winner" do
 
+          before { @match.save }
           # this is the case by default
 
           specify "user should now have an account with 100 points in it" do
@@ -440,14 +443,16 @@ describe Match do
 
           before do
 
-            @users = create_list(:user, 200)
+            @users = create_list(:user, 5)
 
             @users.each do |user|
               create(:user_match_prediction,
-                predicted_contestant: match.receiving_contestant,
+                match: @match,
+                predicted_contestant: @match.receiving_contestant,
                 prediction_type: PredictionTypes::WINNER,
                 user: user)
             end
+            @match.save
           end
 
           specify "users should now have an account with 100 points in it" do
@@ -464,7 +469,9 @@ describe Match do
         context "@user incorrectly predicted the winner" do
 
           before do
-            @user_match_prediciton.predicted_contestant = match.invited_contestant
+            @user_match_prediction.predicted_contestant = @match.invited_contestant
+            @user_match_prediction.save
+            @match.save
           end
 
           specify "user should now have an account with 0 points in it" do
@@ -484,17 +491,20 @@ describe Match do
 
             @good_users.each do |user|
               create(:user_match_prediction,
-                predicted_contestant: match.receiving_contestant,
+                match: @match,
+                predicted_contestant: @match.receiving_contestant,
                 prediction_type: PredictionTypes::WINNER,
                 user: user)
             end
             @bad_users.each do |user|
               create(:user_match_prediction,
-                predicted_contestant: match.invited_contestant,
+                match: @match,
+                predicted_contestant: @match.invited_contestant,
                 prediction_type: PredictionTypes::WINNER,
                 user: user)
             end
 
+            @match.save
           end
 
           specify "points should now be porperly distributed" do

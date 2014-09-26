@@ -15,11 +15,20 @@ class UserMatchPrediction < ActiveRecord::Base
   validates_with MatchUnstarted
   validates_with PredictedContestantParticipated
 
+  before_save :create_user_tournament_score
+
   def to_s
     "User: " + self.user.username +
     " predicted: " + self.predicted_contestant +
     " would: " + PREDICTION_TYPES[self.prediction_type].to_s +
     + "On match: " + self.match.name
+  end
+
+  def create_user_tournament_score
+
+    UserTournamentScore.find_or_create_by(
+      user: self.user, tournament: self.match.round.tournament)
+
   end
 
 end

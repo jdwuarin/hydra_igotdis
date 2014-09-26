@@ -39,6 +39,55 @@ class Match < ActiveRecord::Base
     end
   end
 
+  def credit_user_tournament_point_standing
+
+    if self.round.tournament.tournament_type == TournamentTypes::LOL_WORLD_CUP
+      credit_according_to_LWC
+    end
+
+  end
+
+  def credit_according_to_LWC
+
+    tourn_type = TournamentTypes::LOL_WORLD_CUP
+
+    # because of UserMatchPrediction validation we know only valid
+    # predictions sould exist in the db. So this is straightforward
+
+    user_match_predictions = UserMatchPrediction.where(match: self)
+
+    user_match_predictions.each do |ump|
+
+      # only deal with winner right now. will need all the other ones
+      # later too
+      if ump.prediction_type == PredictionTypes::WINNER
+        winner = nil
+        if self.results["receiving_contestant"]["winner"] == true
+          winner = self.receiving_contestant
+        else
+          winner = self.invited_contestant
+        end
+
+        if ump.predicted_contestant == winner
+
+          uts = UserTournamentScore.find_by(user: ump.user,
+            tournament: ump.match.round.tournament)
+
+          points_to_add = PredictionTypes::INFO[tourn_type][
+                          ump.prediction_type]["points"]
+          multiplier = RoundTypes::INFO[tourn_type][
+                          self.round.round_type]["point_multiplier"]
+          uts.score += (points_to_add * multiplier)
+          uts.save
+
+        end
+
+      end
+
+    end
+
+  end
+
 end
 
 

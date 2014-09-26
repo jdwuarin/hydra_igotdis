@@ -50,6 +50,21 @@ describe User do
     specify "user_tournament_scores should also be deleted" do
       expect(UserTournamentScore.count).to eq 0
     end
+
+  end
+
+  describe "when creating a user and some tournaments are active" do
+
+    before do
+      @tournament_over = create(:tournament, 
+        start_date: Time.new(2013, 1, 1),
+        end_date: Time.new(2013, 1, 15))
+      @tournament = create_list(:tournament, 3)
+      @user = create(:user)
+    end
+
+    specify { expect(UserTournamentScore.count).to eq 3 }
+
   end
 
 end
