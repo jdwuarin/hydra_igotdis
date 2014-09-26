@@ -547,28 +547,45 @@ margin-bottom: 2em;
 }
 
 
-.table .Logo {
+.table .Logo-static {
     border: 1px solid;
     background-color: transparent;
 
 }
 
-.caca .table .Logo {
+.table .Logo-static.active {
+    background-color: #cc6600;
+}
+
+
+.match-done .table .Logo-static {
+    border: 0;
     opacity: 1;
     margin-top: -18em;
     position: relative;
     z-index: 2;
 }
 
-.caca .table {
-    margin-top: -14.3em;
+.match-done .table {
+    border: 0;
+    margin-top: -14em;
     position: relative;
     z-index: 2;
-    background-color: rgba(57, 127, 37, 0.6);
 }
 
-.caca .table th {
-    color: rgba(255,255,0,0);
+.match-done .table.no-status  th {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 0;
+}
+
+.match-done .table.success th {
+    background-color: rgba(57, 127, 37, 0.6);
+    border: 0;
+}
+
+.match-done .table.failure th {
+    background-color: rgba(215, 40, 40, 0.6);
+    border: 0;
 }
 
 .table {
@@ -584,7 +601,11 @@ margin-bottom: 2em;
     height: 2em;
 }
 
+.table .Logo {
+    border: 1px solid;
+    background-color: transparent;
 
+}
 
 .table .Logo:hover {
     background-color: #cc6600;
@@ -631,7 +652,6 @@ margin-top: 1em;
     background-color: black;
 
 }
-
 
 
 

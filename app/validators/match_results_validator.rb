@@ -57,7 +57,7 @@ class MatchResultsValidator < ActiveModel::Validator
     end
 
     unless results.has_key?("type") &&
-      results["type"] == TournamentTypes::LOL_WORLD_CUP
+      results["type"].to_i == TournamentTypes::LOL_WORLD_CUP
         match.errors[:results] << "result type is wrong or undeclared"
       return
     end

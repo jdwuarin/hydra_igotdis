@@ -1,0 +1,101 @@
+<div class="col-md-4">
+  <table class="responsive">
+
+    <table class="table" frame="box"> 
+
+      <thead>
+        <tr>
+          <th class="Big" colspan="2">
+            <%= match.receiving_contestant.contestant.name %>
+          </th>
+          <th colspan="2">VS</th>
+          <th class="Big"colspan="2">
+            <%= match.invited_contestant.contestant.name %>
+          </th>
+        </tr>
+      </thead>
+
+      <%= content_tag :div, match.id.to_s,
+                      hidden: true, class: "match" %>
+
+      <tbody>
+        <tr>
+
+            <% if context[:predictions] != nil &&
+              context[:predictions].where(match: match) != [] && 
+              context[:predictions].find_by(match: match).
+              predicted_contestant == match.receiving_contestant %>
+
+              <%= render '/matches/lwc_stage_round_match/team_cell/active_static',
+                  t_contestant: match.receiving_contestant %>
+
+            <% else %>
+
+              <%= render '/matches/lwc_stage_round_match/team_cell/not_active_static',
+                  t_contestant: match.receiving_contestant %>
+
+            <% end %>
+
+            <% if context[:predictions] != nil &&
+              context[:predictions].where(match: match) != [] && 
+              context[:predictions].find_by(match: match).
+              predicted_contestant == match.invited_contestant %>
+
+              <%= render '/matches/lwc_stage_round_match/team_cell/active_static',
+                  t_contestant: match.invited_contestant %>
+
+            <% else %>
+
+              <%= render '/matches/lwc_stage_round_match/team_cell/not_active_static',
+                  t_contestant: match.invited_contestant %>
+
+            <% end %>
+
+        </tr>
+      </tbody>
+    </table>
+
+    <% if match.finished && context[:predictions] != nil &&
+      context[:predictions].where(match: match) != [] %>
+
+      <% if context[:predictions].find_by(match: match).
+      predicted_contestant == match.receiving_contestant %>
+
+        <% if match.results["receiving_contestant"]["winner"] == true %>
+
+          <%= render '/matches/lwc_stage_round_match/was_right',
+              left_or_right: "left" %>
+
+        <% else %>
+
+          <%= render '/matches/lwc_stage_round_match/was_wrong',
+              left_or_right: "left" %>
+
+        <% end %>
+
+      <% elsif match.finished && context[:predictions].find_by(match: match).
+      predicted_contestant == match.invited_contestant %>
+
+        <% if match.results["invited_contestant"]["winner"] == true %>
+
+          <%= render '/matches/lwc_stage_round_match/was_right',
+              left_or_right: "right" %>
+
+        <% else %>
+
+          <%= render '/matches/lwc_stage_round_match/was_wrong',
+              left_or_right: "right" %>
+
+        <% end %>
+
+      <% end %>
+
+    <% else %>
+
+        <%= render '/matches/lwc_stage_round_match/did_not_predict' %>
+
+    <% end %>
+
+  </table>
+</div>
+
