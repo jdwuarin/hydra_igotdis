@@ -6,20 +6,30 @@
 # all that is coded in validators that check for the type of
 # the results before doing the check
 
-def get_empty_LWC_results_format
-  contestant_results = {
-    "winner" => nil,
-    "first_blood" => nil,
-    "first_tower" => nil,
-    "first_inhibitor" => nil,
-  }
+module ResultsFormat
 
-  lwc_match_results_format = {
+  MAX_QUARTER_FINAL_SCORE = 2
+  MAX_OTHER_SCORE = 3
+
+  LWC_RESULTS_FORMAT = {
+
     "type" => "lwc_results_format",
-    "receiving_contestant" => contestant_results,
-    "invited_contestant" => contestant_results.clone,
+
+    "receiving_contestant" => {
+      "winner" => nil,
+      "score" => 0,
+      "most_dragon" => nil,
+      "most_first_blood" => nil
+    },
+
+    "invited_contestant" => {
+      "winner" => nil,
+      "score" => 0,
+      "most_dragon" => nil,
+      "most_first_blood" => nil
+    }
+
   }
 
-  lwc_match_results_format
 end
 

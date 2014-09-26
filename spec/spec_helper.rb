@@ -27,6 +27,10 @@ RSpec.configure do |config|
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.include FactoryGirl::Syntax::Methods
+  # config.before(:suite) do
+  #   FactoryGirl.lint
+  # end
+  # in order to be able to use travel_to and travel_back etc...
   config.include ActiveSupport::Testing::TimeHelpers
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

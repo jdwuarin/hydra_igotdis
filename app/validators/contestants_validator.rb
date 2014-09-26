@@ -1,7 +1,10 @@
 class ContestantsValidator < ActiveModel::Validator
   def validate(record)
 
-    if record.receiving_contestant.id == record.invited_contestant.id
+    contestant_1 = record.receiving_contestant.contestant
+    contestant_2 = record.invited_contestant.contestant
+
+    unless contestant_1 != contestant_2
       record.errors[:id] << 'Contestants must be different'
     end
 
