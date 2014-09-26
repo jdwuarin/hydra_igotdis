@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
 
   validates_format_of :username, :with => /\A[A-Za-z\d_]+\Z/
 
+  after_create :create_user_tournament_scores
+
   attr_accessor :login
 
   def self.find_for_database_authentication(warden_conditions)
@@ -24,6 +26,16 @@ class User < ActiveRecord::Base
     else
       where(conditions).first
     end
+  end
+
+  def create_user_tournament_scores
+
+    active_tournaments = Tournament.where("end_date > ?", Time.now)
+
+    active_tournaments.each do |active_tournament|
+      UserTournamentScore.create(user: self, tournament: active_tournament)
+    end
+
   end
 
 end

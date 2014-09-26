@@ -5,16 +5,20 @@ FactoryGirl.define do
     round
     date { DateTime.tomorrow }
     finished false
-    receiving_contestant
-    invited_contestant
+    receiving_contestant { create(:receiving_contestant, 
+                           tournament: round.tournament) }
+    invited_contestant { create(:invited_contestant, 
+                         tournament: round.tournament) }
     results Hash.new
   end
 
   factory :LWC_group_stage_match, parent: :match do
     association :round, factory: :LWC_group_stage
     date { Time.new(2014, 9, 19).change(:offset => "+0200") }
-    association :receiving_contestant, factory: :LWC_receiving_contestant
-    association :invited_contestant, factory: :LWC_invited_contestant
+    receiving_contestant { create(:LWC_receiving_contestant, 
+                           tournament: round.tournament) }
+    invited_contestant { create(:LWC_invited_contestant, 
+                         tournament: round.tournament) }
   end
 
   factory :LWC_quarter_final_match, parent: :match do

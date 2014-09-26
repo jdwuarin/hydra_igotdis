@@ -13,8 +13,8 @@ class TournamentContestant < ActiveRecord::Base
   has_many :matches_as_invited_contestant,
            :as => :invited_contestant, :class_name => 'Match'
 
-validates :tournament_id, :contestant_id, :contestant_type, :uniqueness =>
-          {:scope => [:tournament_id, :contestant_id, :contestant_type]}
+  validates :tournament_id, :contestant_id, :contestant_type, :uniqueness =>
+            {:scope => [:tournament_id, :contestant_id, :contestant_type]}
 
 
 end

@@ -20,4 +20,15 @@ describe UserTournamentScore do
     before { @uts.tournament = nil }
     it { should_not be_valid }
   end
+
+  describe "when tournament, user, combination is not unique" do
+      before do
+        @var_with_same_credentials = @uts.dup
+        @var_with_same_credentials.score = 1000000
+      end
+
+      subject { @var_with_same_credentials }
+      it { should_not be_valid }
+  end
+
 end
