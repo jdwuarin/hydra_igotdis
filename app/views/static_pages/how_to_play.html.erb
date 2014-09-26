@@ -1,29 +1,58 @@
 <div class="container">
 
-  <div class="rules">
-    <h3>Summary</h3>
-    <p>Predict outcomes of the League of Legends World Cup and win cool prizes</p>
-    <h3>Prizes</h3>
-    <p>Initial prize-pool :</p> 
-    <p>35x10$ Riot Points Cards</p>
-    <p>1xG430 Surround Sound Gaming Headset from Logitech</p>
-    </p>That's not it! The more people join the competition, the bigger the prize pool. Invite your friends and gaming-broes to play and get more chances to win stuff!</p>
-    <h3>Predictions</h3>
-    <h4>Group Stage</h4>
-    <p>For Group Stage, you'll just be picking the winner of each match.</p>
-    <p class="predictionrule">Predicting WINNER=100pts</p>
-    <h4>Quarter Finals</h4>
-    <p>Things get more exciting here! You now have to predict the score of each quarter-final in addition to the winner of each quarter-final. </p>
-    <p class="predictionrule">Predicting WINNER=300pts &nbsp SCORE=300pts</p>
-    <h4>Semi-Finals</h4>
-    <p>You think you're good? Try and predict which team is going to score more first bloods as well.</p>
-    <p class="predictionrule">Predicting WINNER=600pts &nbsp SCORE=600pts &nbsp FIRSTBLOOD=600pts</p>
-    <h4>Finals</h4>
-    <p>Here is where you can score the most points. Even if you are behind on the ladder, you still have a chance to get to the top.</p>
-    <p class="predictionrule">Predicting WINNER=900pts &nbsp SCORE=900pts &nbsp FIRSTBLOOD=900pts &nbsp DRAGONS=900pts &nbsp TURRETS=900pts</p>
-
-
-    <a class="btn btn-default">Get Started</a>
+<div class="container">
+  <div class="rulescolumns">
+   <div class="headerrules">
+    <h1>How to play</h1>
   </div>
+  <div class="row">
+    <div class="col-md-6">
+
+      <h1>1) Make a prediction</h1>
+    </div>
+    <div class="col-md-6">
+      <div class="icon1">
+        <img class="img-responsive" src="/assets/howtoplayicon1.png"></img>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <h1>2) Submit</h1>
+    </div>
+    <div class="col-md-6">
+      <div class="icon2">
+        <img class="img-responsive" src="/assets/howtoplayicon2.png"></img>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <h1>3) Win Points</h1>
+    </div>
+    <div class="col-md-6">
+      <img class="img-responsive" src="/assets/howtoplayicon3.png"></img>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h1>4) Win Prizes!</h1>
+    </div>
+    <div class="col-md-6">
+      <img class="img-responsive" src="/assets/howtoplayicon4.png"></img>
+    </div>
+  </div>
+
+  <div class="gotit">
+    <%= link_to "Got it", tournaments_latest_path, 
+    :type => "button", :class => "btn btn-default" %>
+  </div>
+</div>
+</div>
 
 </div>
