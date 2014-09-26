@@ -2,6 +2,7 @@
 @import "bootstrap";
 
 
+
 /* Nav-Bar*/
 
 /* Nav-Bar Back*/
@@ -191,37 +192,93 @@ h3 {
     opacity: 0.7;
 }
 
+
 /* Get Started */
 
-.btn {
+.col-md-2 .btn {
     background-color:white;
     color: black; 
+    border-radius: 0px;
+    font-family: 'Jockey One';
+    margin-right: 1em;
+    margin-left: 1em;
+    font-size: 30px;
+    border: 1px solid;
+    margin-top: 14.5em;
 
+}
+
+.signup .btn {
+    background-color:white;
+    color: black; 
     border-radius: 0px;
     font-family: 'Jockey One';
     margin-right: 1em;
     margin-left: 1em;
     font-size: 20px;
     border: 1px solid;
-
-
 }
 
+.signin .btn {
+    background-color:white;
+    color: black; 
+    border-radius: 0px;
+    font-family: 'Jockey One';
+    margin-right: 1em;
+    margin-left: 1em;
+    font-size: 20px;
+    border: 1px solid;
+}
+
+.gotit .btn {
+    background-color:white;
+    color: black; 
+    border-radius: 0px;
+    font-family: 'Jockey One';
+    margin-right: 1em;
+    margin-left: 1em;
+    font-size: 20px;
+    border: 1px solid;
+}
+
+.Group_A .btn {
+    background-color:white;
+    color: black; 
+    border-radius: 0px;
+    font-family: 'Jockey One';
+    margin-right: 1em;
+    margin-left: 1em;
+    font-size: 20px;
+    border: 1px solid;
+}
+
+.submitmatch .btn {
+    background-color:white;
+    color: black; 
+    border-radius: 0px;
+    font-family: 'Jockey One';
+    margin-right: 1em;
+    margin-left: 1em;
+    font-size: 20px;
+    border: 1px solid;
+}
 
 .navbar .mypoints {
-    color: green;
+    color: #cc6600;
+    font-family: 'Jockey One';
+    font-size: 1.5em;
+    margin-top: 0.5em;
+    margin-right: 1em;
 }
 
 .signin {
-    margin-top: 10em;
     font-family: 'Jockey One';
     color: white;
     background-color: rgba(245, 245, 245, 0.4);
     text-align: center;
     width: 40em;
-    margin:auto;
+    margin: 5em auto 0 auto;
     height: 30em;
-    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
@@ -248,6 +305,44 @@ h3 {
     width: 12em;
 }
 
+
+.signup {
+
+    font-family: 'Jockey One';
+    color: white;
+    background-color: rgba(245, 245, 245, 0.4);
+    text-align: center;
+    width: 40em;
+    margin: 5em auto 0 auto;
+    height: 40em;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.signup h2 {
+
+    padding-bottom: 0.5em;
+    font-size: 3em;
+}
+
+.signup p {
+    font-size: 1.5em;
+    margin-bottom: 0.3em;
+
+}
+
+
+.signup .box {
+    background-color: rgba(245, 245, 245, 1);
+    margin-bottom: 1em;
+    color: black;
+    width: 12em;
+}
+
+
 .alert-notice {
     color:white;
     height: 2em;
@@ -266,7 +361,14 @@ h3 {
     background-color: #cc6600;
     color: white;
     border: none;
-    margin-top: 1.3em;
+    margin-top: 0.5em;
+}
+
+.signup .btn {
+    background-color: #cc6600;
+    color: white;
+    border: none;
+    margin-top: 0.5em;
 }
 
 .submitmatch {
@@ -279,9 +381,7 @@ margin-top:-1em;
 }
 
 
-.col-md-2 .btn {
-    margin-top: 24em;
-}
+
 
 .col-md-12 {
     text-align: center;
@@ -310,7 +410,7 @@ margin-top:-1em;
     font-size: 2.5em;
     color: black;
     margin-top: 2.6em;
-    margin-left: 3em;
+    margin-left: 2em;
 }
 
 .rulescolumns .col-md-6 .img-responsive {
@@ -322,8 +422,9 @@ margin-top:-1em;
 
 .rulescolumns {
     background-color: rgba(245, 245, 245, 0.8);
-    margin-top: 5em;
     padding-top: 0.6em;
+    width: 65em;
+    margin: 5em auto 0 auto;
 }
 
 .headerrules h1 {
@@ -407,30 +508,29 @@ margin-bottom: 2em;
     margin-top: 4em;
 }
 
-.col-md-2 {
-    height: 5em;
-}
+
 
 .centering {
     float: none;
     vertical-align: top;
 }
 
-.table {
-    background-color: rgba(245, 245, 245, 0.7);
-    font-family: 'Jockey One'
 
-}
+
 
 .img-responsive th {
     background-color: rgba(245, 245, 245, 0.3)
 }
 
 
+
+
 .table th {
     text-align: center;
     font-family: 'Jockey One'
 }
+
+
 
 .table-responsive th {
     text-align: left;
@@ -450,6 +550,32 @@ margin-bottom: 2em;
 .table .Logo {
     border: 1px solid;
     background-color: transparent;
+
+}
+
+.caca .table .Logo {
+    opacity: 1;
+    margin-top: -18em;
+    position: relative;
+    z-index: 2;
+}
+
+.caca .table {
+    margin-top: -14.3em;
+    position: relative;
+    z-index: 2;
+    background-color: rgba(57, 127, 37, 0.6);
+}
+
+.caca .table th {
+    color: rgba(255,255,0,0);
+}
+
+.table {
+    background-color: rgba(245, 245, 245, 0.7);
+    font-family: 'Jockey One';
+    z-index: 1;
+    position: relative;
 
 }
 
@@ -499,6 +625,11 @@ margin-top: 1em;
 
 .predictionrule {
     color: #cc6600;
+}
+
+.mainbtn .btn {
+    background-color: black;
+
 }
 
 
