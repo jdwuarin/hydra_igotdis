@@ -1,0 +1,39 @@
+<div class="match-done">
+  <table class="table failure" frame="box">
+    <thead>
+      <tr>
+        <th class="Big" colspan="2"></th>
+        <th colspan="2">VS</th>
+        <th class="Big"colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+
+        <% if left_or_right == "left" %>
+
+          <th class="Logo-static"colspan="3"><a>
+            <img src="/assets/failure.png";></a>
+          </th>
+
+          <th class="Logo-static" colspan="3"><a>
+            <img src="/assets/nothing.png"></a>
+          </th>
+
+        <% else %>
+
+          <th class="Logo-static" colspan="3"><a>
+            <img src="/assets/nothing.png"></a>
+          </th>
+
+          <th class="Logo-static"colspan="3"><a>
+            <img src="/assets/failure.png";></a>
+          </th>
+
+        <% end %>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
