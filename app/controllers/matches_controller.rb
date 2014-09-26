@@ -23,7 +23,7 @@ class MatchesController < ApplicationController
       end
     else
       if !round.is_direct_elimination_round
-        params[:group] = 1
+        params[:group] = 3
         redirect_to url_for params
       else
         matches = round.matches
