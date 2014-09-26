@@ -1,0 +1,13 @@
+
+<% if match.date >= DateTime.now %>
+
+  <%= render '/matches/lwc_stage_round_match/open',
+      match: match, context: context %>
+
+<% else %>
+
+  <%= render '/matches/lwc_stage_round_match/closed',
+      match: match, context: context %>
+
+<% end %>
+
