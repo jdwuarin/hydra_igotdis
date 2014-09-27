@@ -14,21 +14,21 @@
         <% if left_or_right == "left" %>
 
           <th class="Logo-static"colspan="3"><a>
-            <img src="/assets/gg.png";></a>
+            <img src= <%= asset_path('gg.png') %> ></a>
           </th>
 
           <th class="Logo-static" colspan="3"><a>
-            <img src="/assets/nothing.png"></a>
+            <img src= <%= asset_path('nothing.png') %> ></a>
           </th>
 
         <% else %>
 
           <th class="Logo-static" colspan="3"><a>
-            <img src="/assets/nothing.png"></a>
+            <img src= <%= asset_path('nothing.png') %> ></a>
           </th>
 
           <th class="Logo-static"colspan="3"><a>
-            <img src="/assets/gg.png";></a>
+            <img src=<%= asset_path('gg.png') %> ></a>
           </th>
 
         <% end %>

@@ -4,7 +4,7 @@
     <div class = "container" img="img-responsive">
        
       <a href = "/" class = "navbar-brand">
-        <img class="logo" src="/assets/igotdis_logo.png"></img>
+        <img class="logo" src= <%= asset_path('igotdis_logo.png') %> ></img>
       </a>
            
       <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
@@ -25,7 +25,6 @@
                   destroy_user_session_path, method: :delete %>
                 </li>
               <% end %>
-              <li><a href = "#">Contact</a></li>
           </ul>
       </div>
     </div>

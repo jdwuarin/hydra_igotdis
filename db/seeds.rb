@@ -26,7 +26,7 @@ samsung_galaxy_white = FactoryGirl.create(:tournament_contestant,
                               group_id: Groups::GROUP_A)
 
 team_3 = FactoryGirl.create(:team, name: "Edward Gaming",
-                logo: "/assets/teams/edward_gaming_logo.png")
+                logo: "teams/edward_gaming_logo.png")
 
 edward_gaming = FactoryGirl.create(:tournament_contestant,
                        tournament: tournament,
@@ -34,7 +34,7 @@ edward_gaming = FactoryGirl.create(:tournament_contestant,
                        group_id: Groups::GROUP_A)
 
 team_4 = FactoryGirl.create(:team, name: "Dark Passage",
-                logo: "/assets/teams/dark_passage_logo.png")
+                logo: "teams/dark_passage_logo.png")
 
 dark_passage = FactoryGirl.create(:tournament_contestant,
                       tournament: tournament,
@@ -44,7 +44,7 @@ dark_passage = FactoryGirl.create(:tournament_contestant,
 # Group B
 
 team_5 = FactoryGirl.create(:team, name: "Star Horn",
-                logo: "/assets/teams/star_horn_logo.png")
+                logo: "teams/star_horn_logo.png")
 
 star_horn = FactoryGirl.create(:tournament_contestant,
                    tournament: tournament,
@@ -52,7 +52,7 @@ star_horn = FactoryGirl.create(:tournament_contestant,
                    group_id: Groups::GROUP_B)
 
 team_6 = FactoryGirl.create(:team, name: "Team SoloMid",
-                logo: "/assets/teams/team_solomid_logo.png")
+                logo: "teams/team_solomid_logo.png")
 
 team_solomid = FactoryGirl.create(:tournament_contestant,
                       tournament: tournament,
@@ -60,7 +60,7 @@ team_solomid = FactoryGirl.create(:tournament_contestant,
                       group_id: Groups::GROUP_B)
 
 team_7 = FactoryGirl.create(:team, name: "Taipei Assassins",
-                logo: "/assets/teams/taipei_assassins_logo.png")
+                logo: "teams/taipei_assassins_logo.png")
 
 taipei_assassins = FactoryGirl.create(:tournament_contestant,
                           tournament: tournament,
@@ -68,7 +68,7 @@ taipei_assassins = FactoryGirl.create(:tournament_contestant,
                           group_id: Groups::GROUP_B)
 
 team_8 = FactoryGirl.create(:team, name: "SK Gaming",
-                logo: "/assets/teams/sk_logo.png")
+                logo: "teams/sk_logo.png")
 
 sk = FactoryGirl.create(:tournament_contestant,
             tournament: tournament,
@@ -78,7 +78,7 @@ sk = FactoryGirl.create(:tournament_contestant,
 # Group C
 
 team_9 = FactoryGirl.create(:team, name: "LMQ",
-                logo: "/assets/teams/lmq_logo.png")
+                logo: "teams/lmq_logo.png")
 
 lmq = FactoryGirl.create(:tournament_contestant,
              tournament: tournament,
@@ -86,7 +86,7 @@ lmq = FactoryGirl.create(:tournament_contestant,
              group_id: Groups::GROUP_C)
 
 team_10 = FactoryGirl.create(:team, name: "OMG",
-                logo: "/assets/teams/omg_logo.png")
+                logo: "teams/omg_logo.png")
 
 omg = FactoryGirl.create(:tournament_contestant,
              tournament: tournament,
@@ -94,7 +94,7 @@ omg = FactoryGirl.create(:tournament_contestant,
              group_id: Groups::GROUP_C)
 
 team_11 = FactoryGirl.create(:team, name: "Fnatic",
-                logo: "/assets/teams/fnatic_logo.png")
+                logo: "teams/fnatic_logo.png")
 
 fnatic = FactoryGirl.create(:tournament_contestant,
                 tournament: tournament,
@@ -102,7 +102,7 @@ fnatic = FactoryGirl.create(:tournament_contestant,
                 group_id: Groups::GROUP_C)
 
 team_12 = FactoryGirl.create(:team, name: "Samsung Blue",
-                logo: "/assets/teams/samsung_galaxy_blue_logo.png")
+                logo: "teams/samsung_galaxy_blue_logo.png")
 
 samsung_galaxy_blue = FactoryGirl.create(:tournament_contestant,
                              tournament: tournament,
@@ -112,7 +112,7 @@ samsung_galaxy_blue = FactoryGirl.create(:tournament_contestant,
 # Group D
 
 team_13 = FactoryGirl.create(:team, name: "KaBuM!",
-                logo: "/assets/teams/kabum_logo.png")
+                logo: "teams/kabum_logo.png")
 
 kabum = FactoryGirl.create(:tournament_contestant,
                tournament: tournament,
@@ -120,7 +120,7 @@ kabum = FactoryGirl.create(:tournament_contestant,
                group_id: Groups::GROUP_D)
 
 team_14 = FactoryGirl.create(:team, name: "Najin Shield",
-                logo: "/assets/teams/najin_white_shield_logo.png")
+                logo: "teams/najin_white_shield_logo.png")
 
 najin_white_shield = FactoryGirl.create(:tournament_contestant,
                             tournament: tournament,
@@ -128,7 +128,7 @@ najin_white_shield = FactoryGirl.create(:tournament_contestant,
                             group_id: Groups::GROUP_D)
 
 team_15 = FactoryGirl.create(:team, name: "Cloud9",
-                logo: "/assets/teams/cloud9_logo.png")
+                logo: "teams/cloud9_logo.png")
 
 cloud9 = FactoryGirl.create(:tournament_contestant,
                 tournament: tournament,
@@ -136,7 +136,7 @@ cloud9 = FactoryGirl.create(:tournament_contestant,
                 group_id: Groups::GROUP_D)
 
 team_16 = FactoryGirl.create(:team, name: "Alliance",
-                logo: "/assets/teams/alliance_logo.png")
+                logo: "teams/alliance_logo.png")
 
 alliance = FactoryGirl.create(:tournament_contestant,
                   tournament: tournament,

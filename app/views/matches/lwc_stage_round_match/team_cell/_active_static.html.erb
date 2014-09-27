@@ -2,5 +2,5 @@
 <th class="Logo-static active" colspan="3">
   <%= content_tag :div, t_contestant.id.to_s,
                   hidden: true, class: "contestant" %>
-    <%= image_tag t_contestant.contestant.logo, type: "image" %>
+    <%= image_tag asset_path(t_contestant.contestant.logo), type: "image" %>
 </th>
