@@ -59,6 +59,19 @@ body {
     margin-top: 4em;
 }
 
+.rulesbutton {
+    margin-left: 25em;
+    margin-top: 5em;
+}
+
+.rules .btn {
+    border-radius: 0px;
+    background-color: #cc6600;
+    color: white;
+    font-size: 1.5em;
+    margin-left: 1em;
+}
+
 
 
 /* Nav-Bar Logo */
@@ -647,7 +660,7 @@ margin-bottom: 2em;
 .rules {
     background-color: rgba(245, 245, 245, 0.8);
     margin-top: 6em;
-    height: 60em; 
+    height: 70em; 
     margin-bottom: 2em;
     padding-left: 3em;
     padding-right: 3em;
@@ -655,17 +668,33 @@ margin-bottom: 2em;
     font-family: 'Jockey One';
 }
 
-.rules .btn {
-margin-left: 40%;
-margin-right: auto;
-margin-top: 1em;
-}
 
 
 
 .predictionrule {
     color: #cc6600;
+    font-size: 1.5em;
 }
+
+.rules h5 {
+    font-size: 1.3em;
+
+}
+
+.rules h3 {
+    font-size: 2em;
+    padding-bottom: 0.5em;
+}
+
+.prizes {
+    color: #cc6600;
+}
+
+.rules h4 {
+    font-size: 1.5em;
+    padding-bottom: 0.5em;
+}
+
 
 .mainbtn .btn {
     background-color: black;

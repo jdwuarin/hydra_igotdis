@@ -11,10 +11,10 @@
       </div>
       <div class="col-md-2">
         <% if user_signed_in? %>
-          <%= link_to "Get Started", tournaments_latest_path, 
+          <%= link_to "Start Now", tournaments_latest_path, 
           :type => "button", :class => "btn btn-default" %>
         <% else %>
-          <%= link_to "Get Started", how_to_play_path, 
+          <%= link_to "Start Now", how_to_play_path, 
           :type => "button", :class => "btn btn-default" %>
         <% end %>
       </div>

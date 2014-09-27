@@ -1,32 +1,34 @@
 <div class="container">
 
   <div class="rules">
-    <h3>Summary</h3>
-    <h5>Predict outcomes of the League of Legends World Cup and win cool prizes</h5>
-    
-    <h3>Predictions</h3>
-    <u><h4>Group Stage</h4></u>
-    <h5>For Group Stage, you'll just be picking the winner of each match.</h5>
-    <h5 class="predictionrule">Predicting WINNER=100pts</h5>
-    <u><h4>Quarter Finals</h4></u>
-    <h5>Things get more exciting here! You now have to predict the score of each quarter-final in addition to the winner of each quarter-final. </h5>
-    <h5 class="predictionrule">Predicting WINNER=300pts &nbsp SCORE=300pts (max 600pts/match)</h5>
-    <u><h4>Semi-Finals</h4></u>
-    <h5>You think you're good? Try and predict which team is going to score more first bloods as well.</h5>
-    <h5 class="predictionrule">Predicting WINNER=600pts &nbsp SCORE=600pts &nbsp FIRSTBLOOD=600pts (max 1800pts/match)</h5>
-    <u><h4>Finals</h4></u>
-    <h5>Here is where you can score the most points. Even if you are behind on the ladder, you still have a chance to get to the top.</h5>
-    <h5 class="predictionrule">Predicting WINNER=900pts &nbsp SCORE=900pts &nbsp FIRSTBLOOD=900pts &nbsp DRAGONS=900pts &nbsp TURRETS=900pts (max 3600pts/match)</h5>
+  <h3>Summary</h3>
+  <h5>Predict outcomes of the League of Legends World Cup and win cool prizes</h5>
+  
+  <h3>Predictions</h3>
+  <u><h4>Group Stage</h4></u>
+  <h5>For Group Stage, you'll just be picking the winner of each match.</h5>
+  <h5 class="predictionrule">Predicting WINNER=100pts</h5>
+  <u><h4>Quarter Finals</h4></u>
+  <h5>Things get more exciting here! You now have to predict the score of each quarter-final in addition to the winner of each quarter-final. </h5>
+  <h5 class="predictionrule">Predicting WINNER=300pts &nbsp SCORE=300pts (max 600pts/match)</h5>
+  <u><h4>Semi-Finals</h4></u>
+  <h5>You think you're good? Try and predict which team is going to score more first bloods as well.</h5>
+  <h5 class="predictionrule">Predicting WINNER=600pts &nbsp SCORE=600pts &nbsp FIRSTBLOOD=600pts (max 1800pts/match)</h5>
+  <u><h4>Finals</h4></u>
+  <h5>Here is where you can score the most points. Even if you are behind on the ladder, you still have a chance to get to the top.</h5>
+  <h5 class="predictionrule">Predicting WINNER=900pts &nbsp SCORE=900pts &nbsp FIRSTBLOOD=900pts &nbsp DRAGONS=900pts &nbsp TURRETS=900pts (max 3600pts/match)</h5>
 
-    <h3>Prizes</h3>
-    <h4>Initial prize-pool :</h4> 
-    <h4 class="prizes">35x10$ Riot Points Cards</h4>
-    <h4 class="prizes">1xG430 Surround Sound Gaming Headset from Logitech</h4>
-    <h4>That's not it! The more people join the competition, the bigger the prize pool. Invite your friends and gaming-broes to play and get more chances to win stuff!</h4>
+  <h3>Prizes</h3>
+  <h4>Initial prize-pool :</h4> 
+  <h4 class="prizes">35x10$ Riot Points Cards</h4>
+  <h4 class="prizes">1xG430 Surround Sound Gaming Headset from Logitech</h4>
+  <h4>That's not it! The more people join the competition, the bigger the prize pool. Invite your friends and gaming-broes to play and get more chances to win stuff!</h4>
 
-    <div class="rulesbutton">
-      <a class="btn btn-default">Get Started</a>
-      <a class="btn btn-default">How to play</a>
-    </div>
+  <div class="rulesbutton">
+    <%= link_to "Start Now", tournaments_latest_path, 
+      :type => "button", :class => "btn btn-default" %>
+    <%= link_to "How To Play", how_to_play_path, 
+      :type => "button", :class => "btn btn-default" %>
+  </div>
   </div>
 </div>
