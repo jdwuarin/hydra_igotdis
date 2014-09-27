@@ -159,37 +159,37 @@ group_stage_round = FactoryGirl.create(:LWC_group_stage,
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 18, 11).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 18, 11).change(:offset => "+0200"),
        receiving_contestant: edward_gaming,
        invited_contestant: samsung_galaxy_white)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 18, 12).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 18, 12).change(:offset => "+0200"),
        receiving_contestant: team_solomid,
        invited_contestant: sk)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 18, 13).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 18, 13).change(:offset => "+0200"),
        receiving_contestant: dark_passage,
        invited_contestant: ahq)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 18, 14).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 18, 14).change(:offset => "+0200"),
        receiving_contestant: taipei_assassins,
        invited_contestant: star_horn)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 18, 15).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 18, 15).change(:offset => "+0200"),
        receiving_contestant: samsung_galaxy_white,
        invited_contestant: ahq)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 18, 16).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 18, 16).change(:offset => "+0200"),
        receiving_contestant: star_horn,
        invited_contestant: team_solomid)
 
@@ -197,37 +197,37 @@ FactoryGirl.create(:LWC_group_stage_match,
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 19, 11).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 19, 11).change(:offset => "+0200"),
        receiving_contestant: taipei_assassins,
        invited_contestant: sk)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 19, 12).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 19, 12).change(:offset => "+0200"),
        receiving_contestant: edward_gaming,
        invited_contestant: dark_passage)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 19, 13).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 19, 13).change(:offset => "+0200"),
        receiving_contestant: star_horn,
        invited_contestant: sk)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 19, 14).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 19, 14).change(:offset => "+0200"),
        receiving_contestant: dark_passage,
        invited_contestant: samsung_galaxy_white)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 19, 15).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 19, 15).change(:offset => "+0200"),
        receiving_contestant: team_solomid,
        invited_contestant: taipei_assassins)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 19, 16).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 19, 16).change(:offset => "+0200"),
        receiving_contestant: edward_gaming,
        invited_contestant: ahq)
 
@@ -235,37 +235,37 @@ FactoryGirl.create(:LWC_group_stage_match,
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 20, 11).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 20, 11).change(:offset => "+0200"),
        receiving_contestant: samsung_galaxy_white,
        invited_contestant: dark_passage)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 20, 12).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 20, 12).change(:offset => "+0200"),
        receiving_contestant: sk,
        invited_contestant: star_horn)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 20, 13).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 20, 13).change(:offset => "+0200"),
        receiving_contestant: ahq,
        invited_contestant: samsung_galaxy_white)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 20, 14).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 20, 14).change(:offset => "+0200"),
        receiving_contestant: taipei_assassins,
        invited_contestant: team_solomid)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 20, 15).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 20, 15).change(:offset => "+0200"),
        receiving_contestant: dark_passage,
        invited_contestant: edward_gaming)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 20, 16).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 20, 16).change(:offset => "+0200"),
        receiving_contestant: sk,
        invited_contestant: taipei_assassins)
 
@@ -273,37 +273,37 @@ FactoryGirl.create(:LWC_group_stage_match,
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 21, 11).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 21, 11).change(:offset => "+0200"),
        receiving_contestant: team_solomid,
        invited_contestant: star_horn)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 21, 12).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 21, 12).change(:offset => "+0200"),
        receiving_contestant: ahq,
        invited_contestant: dark_passage)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 21, 13).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 21, 13).change(:offset => "+0200"),
        receiving_contestant: star_horn,
        invited_contestant: taipei_assassins)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 21, 14).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 21, 14).change(:offset => "+0200"),
        receiving_contestant: ahq,
        invited_contestant: edward_gaming)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 21, 15).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 21, 15).change(:offset => "+0200"),
        receiving_contestant: sk,
        invited_contestant: team_solomid)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 21, 16).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 21, 16).change(:offset => "+0200"),
        receiving_contestant: samsung_galaxy_white,
        invited_contestant: edward_gaming)
 
@@ -312,37 +312,37 @@ FactoryGirl.create(:LWC_group_stage_match,
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 25, 11).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 25, 11).change(:offset => "+0200"),
        receiving_contestant: lmq,
        invited_contestant: omg)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 25, 12).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 25, 12).change(:offset => "+0200"),
        receiving_contestant: najin_white_shield,
        invited_contestant: kabum)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 25, 13).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 25, 13).change(:offset => "+0200"),
        receiving_contestant: samsung_galaxy_blue,
        invited_contestant: omg)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 25, 14).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 25, 14).change(:offset => "+0200"),
        receiving_contestant: cloud9,
        invited_contestant: alliance)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 25, 15).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 25, 15).change(:offset => "+0200"),
        receiving_contestant: fnatic,
        invited_contestant: lmq)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 25, 16).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 25, 16).change(:offset => "+0200"),
        receiving_contestant: cloud9,
        invited_contestant: kabum)
 
@@ -350,37 +350,37 @@ FactoryGirl.create(:LWC_group_stage_match,
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 26, 11).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 26, 11).change(:offset => "+0200"),
        receiving_contestant: najin_white_shield,
        invited_contestant: alliance)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 26, 12).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 26, 12).change(:offset => "+0200"),
        receiving_contestant: samsung_galaxy_blue,
        invited_contestant: fnatic)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 26, 13).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 26, 13).change(:offset => "+0200"),
        receiving_contestant: najin_white_shield,
        invited_contestant: cloud9)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 26, 14).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 26, 14).change(:offset => "+0200"),
        receiving_contestant: omg,
        invited_contestant: fnatic)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 26, 15).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 26, 15).change(:offset => "+0200"),
        receiving_contestant: alliance,
        invited_contestant: kabum)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 26, 16).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 26, 16).change(:offset => "+0200"),
        receiving_contestant: samsung_galaxy_blue,
        invited_contestant: lmq)
 
@@ -388,37 +388,37 @@ FactoryGirl.create(:LWC_group_stage_match,
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 27, 8).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 27, 8).change(:offset => "+0200"),
        receiving_contestant: fnatic,
        invited_contestant: omg)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 27, 9).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 27, 9).change(:offset => "+0200"),
        receiving_contestant: alliance,
        invited_contestant: cloud9)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 27, 10).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 27, 10).change(:offset => "+0200"),
        receiving_contestant: lmq,
        invited_contestant: fnatic)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 27, 11).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 27, 11).change(:offset => "+0200"),
        receiving_contestant: kabum,
        invited_contestant: najin_white_shield)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 27, 12).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 27, 12).change(:offset => "+0200"),
        receiving_contestant: omg,
        invited_contestant: samsung_galaxy_blue)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 27, 13).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 27, 13).change(:offset => "+0200"),
        receiving_contestant: alliance,
        invited_contestant: najin_white_shield)
 
@@ -426,37 +426,37 @@ FactoryGirl.create(:LWC_group_stage_match,
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 28, 8).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 28, 8).change(:offset => "+0200"),
        receiving_contestant: kabum,
        invited_contestant: cloud9)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 28, 9).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 28, 9).change(:offset => "+0200"),
        receiving_contestant: lmq,
        invited_contestant: samsung_galaxy_blue)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 28, 10).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 28, 10).change(:offset => "+0200"),
        receiving_contestant: kabum,
        invited_contestant: alliance)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 28, 11).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 28, 11).change(:offset => "+0200"),
        receiving_contestant: fnatic,
        invited_contestant: samsung_galaxy_blue)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 28, 12).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 28, 12).change(:offset => "+0200"),
        receiving_contestant: cloud9,
        invited_contestant: najin_white_shield)
 
 FactoryGirl.create(:LWC_group_stage_match,
        round: group_stage_round,
-       date: Time.new(2014, 9, 28, 13).change(:offset => "+0200"),
+       date: DateTime.new(2014, 9, 28, 13).change(:offset => "+0200"),
        receiving_contestant: omg,
        invited_contestant: lmq)
 

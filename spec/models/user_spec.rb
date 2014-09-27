@@ -57,8 +57,8 @@ describe User do
 
     before do
       @tournament_over = create(:tournament, 
-        start_date: Time.new(2013, 1, 1),
-        end_date: Time.new(2013, 1, 15))
+        start_date: DateTime.new(2013, 1, 1),
+        end_date: DateTime.new(2013, 1, 15))
       @tournament = create_list(:tournament, 3)
       @user = create(:user)
     end
