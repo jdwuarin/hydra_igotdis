@@ -27,6 +27,7 @@ module Hydra
     I18n.config.enforce_available_locales = true
     config.autoload_paths += %W["#{config.root}/app/validators/"]
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
-    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif, *.js, *.css)
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    config.assets.precompile << /\A(?!active_admin).*\.(js|css)\z/
   end
 end
