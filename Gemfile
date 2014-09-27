@@ -20,10 +20,10 @@ gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rvm', github: "capistrano/rvm"
+gem 'factory_girl_rails', '4.4.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
-  gem 'factory_girl_rails', '4.4.0'
 end
 
 group :test do
