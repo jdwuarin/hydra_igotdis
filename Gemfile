@@ -13,14 +13,12 @@ gem 'autoprefixer-rails'
 gem 'sprockets', '2.11.0'
 gem 'byebug'
 gem 'ffaker'
-gem 'puma'
 gem 'nested-hstore'
 
 gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rvm', github: "capistrano/rvm"
-gem 'unicorn'
 gem 'factory_girl_rails', '4.4.0'
 
 group :development, :test do
