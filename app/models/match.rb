@@ -61,31 +61,34 @@ class Match < ActiveRecord::Base
       # only deal with winner right now. will need all the other ones
       # later too
       if ump.prediction_type == PredictionTypes::WINNER
-        winner = nil
-        if self.results["receiving_contestant"]["winner"] == true
-          winner = self.receiving_contestant
-        else
-          winner = self.invited_contestant
-        end
-
-        if ump.predicted_contestant == winner
-
-          uts = UserTournamentScore.find_by(user: ump.user,
-            tournament: ump.match.round.tournament)
-
-          points_to_add = PredictionTypes::INFO[tourn_type][
-                          ump.prediction_type]["points"]
-          multiplier = RoundTypes::INFO[tourn_type][
-                          self.round.round_type]["point_multiplier"]
-          uts.score += (points_to_add * multiplier)
-          uts.save
-
-        end
-
+        credit_winner_prediction_according_to_LWC(ump, tourn_type)
       end
 
     end
 
+  end
+
+  def credit_winner_prediction_according_to_LWC(ump, tourn_type)
+    winner = nil
+    if self.results["receiving_contestant"]["winner"] == true
+      winner = self.receiving_contestant
+    else
+      winner = self.invited_contestant
+    end
+
+    if ump.predicted_contestant == winner
+
+      uts = UserTournamentScore.find_by(user: ump.user,
+        tournament: ump.match.round.tournament)
+
+      points_to_add = PredictionTypes::INFO[tourn_type][
+                      ump.prediction_type]["points"]
+      multiplier = RoundTypes::INFO[tourn_type][
+                      self.round.round_type]["point_multiplier"]
+      uts.score += (points_to_add * multiplier)
+      uts.save
+
+    end
   end
 
 end
