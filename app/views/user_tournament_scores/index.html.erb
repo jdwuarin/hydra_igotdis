@@ -19,7 +19,8 @@
             <% @user_tournament_scores.each_with_index do |uts, index| %>
               <tr>
                 <% if request.params[:page] %>
-                  <td> <%= (request.params[:page].to_i-1) * 30 + (index + 1) %> </td>
+                  <td> <%= (request.params[:page].to_i-1) * 20 + (index + 1) %>
+                  </td>
                 <% else %>
                   <td> <%= index + 1 %> </td>
                 <% end %>

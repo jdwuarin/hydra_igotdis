@@ -486,8 +486,8 @@ describe Match do
 
           before do
 
-            @good_users = create_list(:user, 76)
-            @bad_users = create_list(:user, 154)
+            @good_users = create_list(:user, 15)
+            @bad_users = create_list(:user, 20)
 
             @good_users.each do |user|
               create(:user_match_prediction,
