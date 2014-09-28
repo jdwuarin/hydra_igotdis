@@ -16,7 +16,7 @@
       <div class = "collapse navbar-collapse navHeaderCollapse">
           <ul class = "nav navbar-nav navbar-right">
 
-              <% if (request.original_url.include? "tournament") &&
+              <% if (request.params[:tournament_id]) &&
                  user_signed_in? %>
 
                 <li><p class="mypoints"> 

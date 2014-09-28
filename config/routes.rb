@@ -15,14 +15,16 @@ Hydra::Application.routes.draw do
     end
   end
 
-  resources :user_match_predictions, except: [:destroy, :new]
-
   # just adding this easy route that redirects to the latest
   # tournaments rounds page
   match '/tournaments/latest', to: 'tournaments#latest', via: 'get'
 
+  resources :user_tournament_scores, only: :index
   # ladder path (will require a tournament=[as a param])
-  match '/ladder', to: 'users#ladder', via: 'get'
+  match '/ladder', to: 'user_tournament_scores#index', via: 'get'
+
+  resources :user_match_predictions, except: [:destroy, :new]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
