@@ -762,7 +762,7 @@ describe Match do
       context "match is the FINAL match" do
 
         before do
-          @match.round.round_type = RoundTypes::SEMI_FINALS
+          @match.round.round_type = RoundTypes::FINAL
           @lwc_results_format['receiving_contestant']["score"] = 0
           @lwc_results_format['invited_contestant']["score"] = 3
           @lwc_results_format['receiving_contestant']["most_first_blood"] = true

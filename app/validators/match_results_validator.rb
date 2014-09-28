@@ -117,24 +117,34 @@ class MatchResultsValidator < ActiveModel::Validator
 
     score_1 = results["receiving_contestant"]["score"]
     score_2 = results["invited_contestant"]["score"]
+    winner_1 = results["receiving_contestant"]["winner"]
+    winner_2 = results["invited_contestant"]["winner"]
 
     # check score
     cond_1 = score_1 != nil
     cond_2 = score_2 != nil
 
     unless cond_1 && cond_2
-        match.errors[:results] << "score can't be nil"
-        return
+      match.errors[:results] << "score can't be nil"
+      return
     end
 
-    cond_3 = score_1 <= max_score
-    cond_4 = score_2 <= max_score
-    cond_5 = score_1 >= 0
-    cond_6 = score_2 >= 0
-    cond_7 = score_1 != score_2
-    cond_8 = !(score_1 != max_score && score_2 != max_score)
+    cond_3 = score_1 > score_2 && winner_1 == true
+    cond_4 = score_2 > score_1 && winner_2 == true
 
-    unless cond_3 && cond_4 && cond_5 && cond_6 && cond_7 && cond_8
+    unless cond_3 || cond_4
+      match.errors[:results] << "winner's score must be larger than losers"
+      return
+    end
+
+    cond_5 = score_1 <= max_score
+    cond_6 = score_2 <= max_score
+    cond_7 = score_1 >= 0
+    cond_8 = score_2 >= 0
+    cond_9 = score_1 != score_2
+    cond_10 = !(score_1 != max_score && score_2 != max_score)
+
+    unless cond_5 && cond_6 && cond_7 && cond_8 && cond_9 && cond_10
         match.errors[:results] << "score is invalid"
         return
     end
