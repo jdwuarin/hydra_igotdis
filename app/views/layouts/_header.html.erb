@@ -16,18 +16,31 @@
       <div class = "collapse navbar-collapse navHeaderCollapse">
           <ul class = "nav navbar-nav navbar-right">
 
-              <% if (request.params[:tournament_id]) &&
-                 user_signed_in? %>
+              <% if request.params[:tournament_id] %> 
 
-                <li><p class="mypoints"> 
-                  <%= current_user.username %> :
-                  <%= get_user_tournament_score(current_user,
-                      request.params[:tournament_id]) %> pts</p>
+                <% if user_signed_in? %>
+
+                  <li><p class="mypoints"> 
+                    <%= current_user.username %> :
+                    <%= get_user_tournament_score(current_user,
+                        request.params[:tournament_id]) %> pts</p>
+                  </li>
+
+                <% end %>
+
+                <li><%= link_to "Ladder",
+                        ladder_path(tournament_id:
+                        request.params[:tournament_id]) %>
                 </li>
+
+              <% else %>
+
+                <li><%= link_to "Ladder",
+                        ladder_path(tournament_id: "latest") %></li>
 
               <% end %>
 
-              <li><%= link_to "Ladder", ladder_path(tournament_id: "latest") %></li>
+              
               <li><%= link_to "Rules", rules_path %></li>
               <% if !user_signed_in? %>
                 <li><%= link_to "Login", new_user_session_path %></li>

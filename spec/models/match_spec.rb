@@ -411,7 +411,7 @@ describe Match do
         @match.results = @lwc_results_format
         @match.finished = true # mose of these tests apply when match is over
 
-        # this is good prediction for round 1
+        # this is a good prediction for round 1
         @user_match_prediction = create(:user_match_prediction,
           match: @match,
           predicted_contestant: @match.receiving_contestant,
@@ -526,23 +526,32 @@ describe Match do
 
       end
 
-      # context "match is a round 2 match" do
+      context "match is a QUARTER_FINALS match" do
 
-      #   before do
-      #     @round.round_type = 2
-      #   end
+        before do
+          @match.round.round_type = RoundTypes::QUARTER_FINALS
+        end
 
-      #   context "@user correctly predicted the winner" do
+        context "@user correctly predicted the winner" do
 
-      #   end
+          before { @match.save }
+          # this is the case by default
 
-      #   context "@user incorrectly predicted the winner" do
+          specify "user should now have an account with 300 points in it" do
+            user_tournament_score = UserTournamentScore.find_by(user: @user,
+              tournament: @match.round.tournament)
+            expect(user_tournament_score.score).to eq 300
+          end
 
-      #   end
+        end
 
-      # end
+        context "@user incorrectly predicted the winner" do
 
-      # context "match is a round 3 match" do
+        end
+
+      end
+
+      # context "match is a SEMI_FINALS match" do
 
       #   before do
       #     @round.round_type = 3
@@ -578,7 +587,7 @@ describe Match do
 
       # end
 
-      # context "match is a round 4 match" do
+      # context "match is the FINAL match" do
 
       #   before do
       #     @round.round_type = 4
