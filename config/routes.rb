@@ -20,6 +20,10 @@ Hydra::Application.routes.draw do
   # just adding this easy route that redirects to the latest
   # tournaments rounds page
   match '/tournaments/latest', to: 'tournaments#latest', via: 'get'
+
+  # ladder path (will require a tournament=[as a param])
+  match '/ladder', to: 'users#ladder', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

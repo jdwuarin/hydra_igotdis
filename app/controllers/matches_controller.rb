@@ -10,7 +10,9 @@ class MatchesController < ApplicationController
     tournament = Tournament.find(params[:tournament_id])
     rounds = tournament.rounds
     round = Round.find(params[:round_id])
-    @context = { :rounds => rounds, :round => round}
+    @context = { :tournament => tournament,
+                 :rounds => rounds,
+                 :round => round}
     if params[:group]
       @context[:group] = params[:group]
       matches = []
