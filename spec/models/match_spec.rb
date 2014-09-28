@@ -252,6 +252,14 @@ describe Match do
           it { should_not be_valid }
         end
 
+        describe "when score is not in accordance with WINNER side" do
+          before do
+            @lwc_results_format["receiving_contestant"]["score"] = 0
+            @lwc_results_format["invited_contestant"]["score"] = 2
+          end
+          it { should_not be_valid }
+        end
+
         describe "when score is alright" do
           before do
             @lwc_results_format["receiving_contestant"]["score"] = 2
@@ -540,11 +548,11 @@ describe Match do
 
           before do
             # this is a good prediction for QUARTER_FINALS
-          @user_match_prediction = create(:user_match_prediction,
-            match: @match,
-            predicted_contestant: @match.receiving_contestant,
-            prediction_type: PredictionTypes::WINNER,
-            user: @user)
+            @user_match_prediction = create(:user_match_prediction,
+              match: @match,
+              predicted_contestant: @match.receiving_contestant,
+              prediction_type: PredictionTypes::WINNER,
+              user: @user)
           end
 
           context "@user correctly predicted the winner" do
@@ -560,31 +568,17 @@ describe Match do
 
           end
 
-          context "@user incorrectly predicted the winner" do
-            before do
-              @user_match_prediction.predicted_contestant = @match.invited_contestant
-              @user_match_prediction.save
-              @match.save
-            end
-
-            specify "user should now have an account with 0 points in it" do
-              user_tournament_score = UserTournamentScore.find_by(user: @user,
-                tournament: @match.round.tournament)
-              expect(user_tournament_score.score).to eq 0
-            end
-          end
-
         end
 
         describe "where user made a score prediction" do
 
           before do
             # this is a good prediction for QUARTER_FINALS
-          @user_match_prediction = create(:user_match_prediction,
-            match: @match,
-            predicted_contestant: @match.receiving_contestant,
-            prediction_type: PredictionTypes::SCORE_2_0,
-            user: @user)
+            @user_match_prediction = create(:user_match_prediction,
+              match: @match,
+              predicted_contestant: @match.receiving_contestant,
+              prediction_type: PredictionTypes::SCORE_2_0,
+              user: @user)
           end
 
           context "@user correctly predicted the score" do
@@ -632,106 +626,285 @@ describe Match do
 
       end
 
-      # context "match is a SEMI_FINALS match" do
+      context "match is a SEMI_FINALS match" do
 
-      #   before do
-      #     @round.round_type = 3
-      #   end
+        before do
+          @match.round.round_type = RoundTypes::SEMI_FINALS
+          @lwc_results_format['receiving_contestant']["score"] = 3
+          @lwc_results_format['invited_contestant']["score"] = 1
+          @lwc_results_format['receiving_contestant']["most_first_blood"] = false
+          @lwc_results_format['invited_contestant']["most_first_blood"] = true
+          @match.results = @lwc_results_format
+        end
 
-      #   context "@user correctly predicted the winner" do
+        describe "where user made a winner prediction" do
 
-      #   end
+          before do
+            # this is a good prediction for SEMI_FINALS
+            @user_match_prediction = create(:user_match_prediction,
+              match: @match,
+              predicted_contestant: @match.receiving_contestant,
+              prediction_type: PredictionTypes::WINNER,
+              user: @user)
+          end
 
-      #   context "@user incorrectly predicted the winner" do
+          context "@user correctly predicted the winner" do
 
-      #   end
+            before { @match.save }
+            # this is the case by default
 
-      #   context "@user correctly predicted the first_blood" do
+            specify "user should now have an account with 600 points in it" do
+              user_tournament_score = UserTournamentScore.find_by(user: @user,
+                tournament: @match.round.tournament)
+              expect(user_tournament_score.score).to eq 600
+            end
 
-      #   end
+          end
 
-      #   context "multiple users correctly predicted the first_blood" do
+        end
 
-      #   end
+        describe "where user made a score prediction" do
 
-      #   context "@user incorrectly predicted the first_blood" do
+          before do
+            # this is a good prediction for SEMI_FINALS
+          @user_match_prediction = create(:user_match_prediction,
+            match: @match,
+            predicted_contestant: @match.receiving_contestant,
+            prediction_type: PredictionTypes::SCORE_3_1,
+            user: @user)
+          end
 
-      #   end
+          context "@user correctly predicted the score" do
 
-      #   context "one user correctly predicted the first_blood other didn't" do
+            before { @match.save }
+            # this is the case by default
 
-      #   end
+            specify "user should now have an account with 600 points in it" do
+              user_tournament_score = UserTournamentScore.find_by(user: @user,
+                tournament: @match.round.tournament)
+              expect(user_tournament_score.score).to eq 600
+            end
 
-      #   context "multiple users incorrectly predicted the first_blood" do
+          end
 
-      #   end
+          context "@user incorrectly predicted the score by direction" do
+            before do
+              @user_match_prediction.predicted_contestant = @match.invited_contestant
+              @user_match_prediction.save
+              @match.save
+            end
 
-      # end
+            specify "user should now have an account with 0 points in it" do
+              user_tournament_score = UserTournamentScore.find_by(user: @user,
+                tournament: @match.round.tournament)
+              expect(user_tournament_score.score).to eq 0
+            end
+          end
 
-      # context "match is the FINAL match" do
+          context "@user incorrectly predicted the score by value" do
+            before do
+              @user_match_prediction.prediction_type = PredictionTypes::SCORE_3_0
+              @user_match_prediction.save
+              @match.save
+            end
 
-      #   before do
-      #     @round.round_type = 4
-      #   end
+            specify "user should now have an account with 0 points in it" do
+              user_tournament_score = UserTournamentScore.find_by(user: @user,
+                tournament: @match.round.tournament)
+              expect(user_tournament_score.score).to eq 0
+            end
+          end
 
-      #   context "@user correctly predicted the winner" do
+        end
 
-      #   end
+        describe "where user made a most_first_blood prediction" do
 
-      #   context "@user incorrectly predicted the winner" do
+          before do
+            # this is a good prediction for SEMI_FINALS
+          @user_match_prediction = create(:user_match_prediction,
+            match: @match,
+            predicted_contestant: @match.invited_contestant,
+            prediction_type: PredictionTypes::MOSTFIRSTBLOOD,
+            user: @user)
+          end
 
-      #   end
+          context "@user correctly predicted most_first_blood" do
 
-      #   context "@user correctly predicted the first_blood" do
+            before { @match.save }
+            # this is the case by default
 
-      #   end
+            specify "user should now have an account with 600 points in it" do
+              user_tournament_score = UserTournamentScore.find_by(user: @user,
+                tournament: @match.round.tournament)
+              expect(user_tournament_score.score).to eq 600
+            end
 
-      #   context "@user incorrectly predicted the first_blood" do
+          end
 
-      #   end
+          context "@user incorrectly predicted most_first_blood" do
+            before do
+              @user_match_prediction.predicted_contestant = @match.receiving_contestant
+              @user_match_prediction.save
+              @match.save
+            end
 
-      #   context "@user correctly predicted the first_tower" do
+            specify "user should now have an account with 0 points in it" do
+              user_tournament_score = UserTournamentScore.find_by(user: @user,
+                tournament: @match.round.tournament)
+              expect(user_tournament_score.score).to eq 0
+            end
+          end
 
-      #   end
+        end
 
-      #   context "multiple users correctly predicted the first_tower" do
+      end
 
-      #   end
+      context "match is the FINAL match" do
 
-      #   context "@user incorrectly predicted the first_tower" do
+        before do
+          @match.round.round_type = RoundTypes::SEMI_FINALS
+          @lwc_results_format['receiving_contestant']["score"] = 0
+          @lwc_results_format['invited_contestant']["score"] = 3
+          @lwc_results_format['receiving_contestant']["most_first_blood"] = true
+          @lwc_results_format['invited_contestant']["most_first_blood"] = false
+          @lwc_results_format['receiving_contestant']["most_dragon"] = false
+          @lwc_results_format['invited_contestant']["most_dragon"] = true
+          @match.results = @lwc_results_format
+        end
 
-      #   end
+        describe "where user made a winner prediction" do
 
-      #   context "one user correctly predicted the first_tower other didn't" do
+          before do
+            # this is a good prediction for the FINAL
+            @user_match_prediction = create(:user_match_prediction,
+              match: @match,
+              predicted_contestant: @match.receiving_contestant,
+              prediction_type: PredictionTypes::WINNER,
+              user: @user)
+          end
 
-      #   end
+          context "@user correctly predicted the winner" do
 
-      #   context "multiple users incorrectly predicted the first_tower" do
+            before { @match.save }
+            # this is the case by default
 
-      #   end
+            specify "user should now have an account with 900 points in it" do
+              user_tournament_score = UserTournamentScore.find_by(user: @user,
+                tournament: @match.round.tournament)
+              expect(user_tournament_score.score).to eq 900
+            end
 
-      #   context "@user correctly predicted the first_inhibitor" do
+          end
 
-      #   end
+        end
 
-      #   context "multiple users correctly predicted the first_inhibitor" do
+        describe "where user made a score prediction" do
 
-      #   end
+          before do
+            # this is a good prediction for FINAL
+          @user_match_prediction = create(:user_match_prediction,
+            match: @match,
+            predicted_contestant: @match.invited_contestant,
+            prediction_type: PredictionTypes::SCORE_3_0,
+            user: @user)
+          end
 
-      #   context "@user incorrectly predicted the first_inhibitor" do
+          context "@user correctly predicted the score" do
 
-      #   end
+            before { @match.save }
+            # this is the case by default
 
-      #   context "one user correctly predicted the first_inhibitor other didn't" do
+            specify "user should now have an account with 900 points in it" do
+              user_tournament_score = UserTournamentScore.find_by(user: @user,
+                tournament: @match.round.tournament)
+              expect(user_tournament_score.score).to eq 900
+            end
 
-      #   end
+          end
 
-      #   context "multiple users incorrectly predicted the first_inhibitor" do
+        end
 
-      #   end
+        describe "where user made a most_first_blood prediction" do
 
+          before do
+            # this is a good prediction for the FINAL
+          @user_match_prediction = create(:user_match_prediction,
+            match: @match,
+            predicted_contestant: @match.receiving_contestant,
+            prediction_type: PredictionTypes::MOSTFIRSTBLOOD,
+            user: @user)
+          end
 
-      # end
+          context "@user correctly predicted most_first_blood" do
+
+            before { @match.save }
+            # this is the case by default
+
+            specify "user should now have an account with 900 points in it" do
+              user_tournament_score = UserTournamentScore.find_by(user: @user,
+                tournament: @match.round.tournament)
+              expect(user_tournament_score.score).to eq 900
+            end
+
+          end
+
+          context "@user incorrectly predicted most_first_blood" do
+            before do
+              @user_match_prediction.predicted_contestant = @match.invited_contestant
+              @user_match_prediction.save
+              @match.save
+            end
+
+            specify "user should now have an account with 0 points in it" do
+              user_tournament_score = UserTournamentScore.find_by(user: @user,
+                tournament: @match.round.tournament)
+              expect(user_tournament_score.score).to eq 0
+            end
+          end
+
+        end
+
+        describe "where user made a most_dragon prediction" do
+
+          before do
+            # this is a good prediction for the FINAL
+          @user_match_prediction = create(:user_match_prediction,
+            match: @match,
+            predicted_contestant: @match.invited_contestant,
+            prediction_type: PredictionTypes::MOSTDRAGON,
+            user: @user)
+          end
+
+          context "@user correctly predicted most_dragon" do
+
+            before { @match.save }
+            # this is the case by default
+
+            specify "user should now have an account with 900 points in it" do
+              user_tournament_score = UserTournamentScore.find_by(user: @user,
+                tournament: @match.round.tournament)
+              expect(user_tournament_score.score).to eq 900
+            end
+
+          end
+
+          context "@user incorrectly predicted most_dragon" do
+            before do
+              @user_match_prediction.predicted_contestant = @match.receiving_contestant
+              @user_match_prediction.save
+              @match.save
+            end
+
+            specify "user should now have an account with 0 points in it" do
+              user_tournament_score = UserTournamentScore.find_by(user: @user,
+                tournament: @match.round.tournament)
+              expect(user_tournament_score.score).to eq 0
+            end
+          end
+
+        end
+
+      end
 
     end
 
