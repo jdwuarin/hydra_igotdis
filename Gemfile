@@ -14,6 +14,7 @@ gem 'byebug'
 gem 'ffaker'
 gem 'nested-hstore'
 gem 'passenger'
+gem 'will_paginate', '3.0.4'
 
 gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-bundler', '~> 1.1.2'

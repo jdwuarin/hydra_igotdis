@@ -14,15 +14,21 @@
       </thead>
       <tbody>
 
-        <% if @user_tournament_scores %>
-          <% @user_tournament_scores.each_with_index do |uts, index| %>
-            <tr>
-              <td> <%= index + 1 %> </td>
-              <td> <%= uts.user.username %> </td>
-              <td> <%= uts.score %> </td>
-            </tr>
+        <%= will_paginate %>
+          <% if @user_tournament_scores %>
+            <% @user_tournament_scores.each_with_index do |uts, index| %>
+              <tr>
+                <% if request.params[:page] %>
+                  <td> <%= (request.params[:page].to_i-1) * 30 + (index + 1) %> </td>
+                <% else %>
+                  <td> <%= index + 1 %> </td>
+                <% end %>
+                <td> <%= uts.user.username %> </td>
+                <td> <%= uts.score %> </td>
+              </tr>
+            <% end %>
           <% end %>
-        <% end %>
+        <%= will_paginate %>
 
       </tbody>
      </div>
