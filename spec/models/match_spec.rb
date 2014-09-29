@@ -558,6 +558,7 @@ describe Match do
           context "@user correctly predicted the winner" do
 
             before { @match.save }
+
             # this is the case by default
 
             specify "user should now have an account with 300 points in it" do
@@ -667,11 +668,11 @@ describe Match do
 
           before do
             # this is a good prediction for SEMI_FINALS
-          @user_match_prediction = create(:user_match_prediction,
-            match: @match,
-            predicted_contestant: @match.receiving_contestant,
-            prediction_type: PredictionTypes::SCORE_3_1,
-            user: @user)
+            @user_match_prediction = create(:user_match_prediction,
+              match: @match,
+              predicted_contestant: @match.receiving_contestant,
+              prediction_type: PredictionTypes::SCORE_3_1,
+              user: @user)
           end
 
           context "@user correctly predicted the score" do
@@ -763,6 +764,8 @@ describe Match do
 
         before do
           @match.round.round_type = RoundTypes::FINAL
+          @lwc_results_format['receiving_contestant']["winner"] = false
+          @lwc_results_format['invited_contestant']["winner"] = true
           @lwc_results_format['receiving_contestant']["score"] = 0
           @lwc_results_format['invited_contestant']["score"] = 3
           @lwc_results_format['receiving_contestant']["most_first_blood"] = true
@@ -778,7 +781,7 @@ describe Match do
             # this is a good prediction for the FINAL
             @user_match_prediction = create(:user_match_prediction,
               match: @match,
-              predicted_contestant: @match.receiving_contestant,
+              predicted_contestant: @match.invited_contestant,
               prediction_type: PredictionTypes::WINNER,
               user: @user)
           end
@@ -786,6 +789,7 @@ describe Match do
           context "@user correctly predicted the winner" do
 
             before { @match.save }
+
             # this is the case by default
 
             specify "user should now have an account with 900 points in it" do
@@ -802,11 +806,11 @@ describe Match do
 
           before do
             # this is a good prediction for FINAL
-          @user_match_prediction = create(:user_match_prediction,
-            match: @match,
-            predicted_contestant: @match.invited_contestant,
-            prediction_type: PredictionTypes::SCORE_3_0,
-            user: @user)
+            @user_match_prediction = create(:user_match_prediction,
+              match: @match,
+              predicted_contestant: @match.invited_contestant,
+              prediction_type: PredictionTypes::SCORE_3_0,
+              user: @user)
           end
 
           context "@user correctly predicted the score" do

@@ -61,22 +61,70 @@ class Match < ActiveRecord::Base
       # only deal with winner right now. will need all the other ones
       # later too
       if ump.prediction_type == PredictionTypes::WINNER
-        credit_winner_prediction_according_to_LWC(ump, tourn_type)
+        credit_bool_prediction_according_to_LWC(ump, tourn_type, "winner")
+      elsif ump.prediction_type == PredictionTypes::MOSTFIRSTBLOOD
+        credit_bool_prediction_according_to_LWC(ump, tourn_type, "most_first_blood")
+      elsif ump.prediction_type == PredictionTypes::MOSTDRAGON
+        credit_bool_prediction_according_to_LWC(ump, tourn_type, "most_dragon")
+      elsif ump.prediction_type == PredictionTypes::SCORE_2_0
+        credit_score_prediction_according_to_LWC(ump, tourn_type, 2, 0)
+      elsif ump.prediction_type == PredictionTypes::SCORE_2_1
+        credit_score_prediction_according_to_LWC(ump, tourn_type, 2, 1)
+      elsif ump.prediction_type == PredictionTypes::SCORE_3_0
+        credit_score_prediction_according_to_LWC(ump, tourn_type, 3, 0)
+      elsif ump.prediction_type == PredictionTypes::SCORE_3_1
+        credit_score_prediction_according_to_LWC(ump, tourn_type, 3, 1)
+      elsif ump.prediction_type == PredictionTypes::SCORE_3_2
+        credit_score_prediction_according_to_LWC(ump, tourn_type, 3, 2)
       end
 
     end
 
   end
 
-  def credit_winner_prediction_according_to_LWC(ump, tourn_type)
-    winner = nil
-    if self.results["receiving_contestant"]["winner"] == true
-      winner = self.receiving_contestant
+  def credit_bool_prediction_according_to_LWC(ump, tourn_type,
+                                                prediction_type_string)
+    real = nil
+    if self.results["receiving_contestant"][prediction_type_string] == true
+      real = self.receiving_contestant
     else
-      winner = self.invited_contestant
+      real = self.invited_contestant
     end
 
-    if ump.predicted_contestant == winner
+    if ump.predicted_contestant == real
+
+      uts = UserTournamentScore.find_by(user: ump.user,
+        tournament: ump.match.round.tournament)
+
+      points_to_add = PredictionTypes::INFO[tourn_type][
+                      ump.prediction_type]["points"]
+      multiplier = RoundTypes::INFO[tourn_type][
+                      self.round.round_type]["point_multiplier"]
+      uts.score += (points_to_add * multiplier)
+      uts.save
+
+    end
+  end
+
+  def credit_score_prediction_according_to_LWC(ump, tourn_type,
+                                               predicted_winner_score,
+                                               predicted_loser_score)
+
+    receiving_contestant_score = self.results["receiving_contestant"]["score"]
+    invited_contestant_score = self.results["invited_contestant"]["score"]
+
+    if ump.predicted_contestant == self.receiving_contestant
+      # winner score applies to the reveiving contestant
+      cond_1 = predicted_winner_score == receiving_contestant_score
+      cond_2 = predicted_loser_score == invited_contestant_score
+
+    elsif ump.predicted_contestant == self.invited_contestant
+      # winner score applies to the invited contestant
+      cond_1 = predicted_winner_score == invited_contestant_score
+      cond_2 = predicted_loser_score == receiving_contestant_score
+    end
+
+    if cond_1 && cond_2
 
       uts = UserTournamentScore.find_by(user: ump.user,
         tournament: ump.match.round.tournament)

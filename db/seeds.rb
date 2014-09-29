@@ -463,6 +463,34 @@ FactoryGirl.create(:LWC_group_stage_match,
 quarter_final_round = FactoryGirl.create(:LWC_quarter_final,
                                          tournament: tournament)
 
+# for the quarter finals. This is just the main info
+# adding them properly will require a lot of attention and not
+# fucking it up. Do it when very concentrated
+
+# FactoryGirl.create(:LWC_quarter_final_match,
+#        round: quarter_final_round,
+#        date: DateTime.new(2014, 10, 3, 9).change(:offset => "+0200"),
+#        receiving_contestant: samsung_galaxy_white,
+#        invited_contestant: team_solomid)
+
+# FactoryGirl.create(:LWC_quarter_final_match,
+#        round: quarter_final_round,
+#        date: DateTime.new(2014, 10, 4, 6).change(:offset => "+0200"),
+#        receiving_contestant: samsung_galaxy_blue,
+#        invited_contestant: cloud9)
+
+# FactoryGirl.create(:LWC_quarter_final_match,
+#        round: quarter_final_round,
+#        date: DateTime.new(2014, 10, 5, 6).change(:offset => "+0200"),
+#        receiving_contestant: star_horn,
+#        invited_contestant: edward_gaming)
+
+# FactoryGirl.create(:LWC_quarter_final_match,
+#        round: quarter_final_round,
+#        date: DateTime.new(2014, 10, 6, 9).change(:offset => "+0200"),
+#        receiving_contestant: najin_white_shield,
+#        invited_contestant: omg)
+
 semi_final_round = FactoryGirl.create(:LWC_semi_final,
                                       tournament: tournament)
 

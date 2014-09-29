@@ -3,6 +3,7 @@
 
 <div class="container">
   <div class="table-responsive">
+    <%= will_paginate %>
     <table class="table">
      <div class="ladder">
       <thead>
@@ -14,7 +15,6 @@
       </thead>
       <tbody>
 
-        <%= will_paginate %>
           <% if @user_tournament_scores %>
             <% @user_tournament_scores.each_with_index do |uts, index| %>
               <tr>
@@ -29,10 +29,11 @@
               </tr>
             <% end %>
           <% end %>
-        <%= will_paginate %>
+
 
       </tbody>
      </div>
     </table>
+    <%= will_paginate %>
   </div>
 </div>
