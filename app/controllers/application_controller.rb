@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_filter :ensure_signup_complete
 
   protected
 
@@ -34,6 +35,26 @@ class ApplicationController < ActionController::Base
     def redirect_back_or(default)
       redirect_to(session[:return_to] || default)
       session.delete(:return_to)
+    end
+
+    def current_user?(user)
+      user == current_user
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def ensure_signup_complete
+      # Ensure we don't go into an infinite loop
+      return if action_name == 'finish_signup'
+
+      # Redirect to the 'finish_signup' page if the user
+      # email hasn't been verified yet
+      if current_user && !current_user.username
+        redirect_to finish_signup_path(current_user)
+      end
     end
 
 end

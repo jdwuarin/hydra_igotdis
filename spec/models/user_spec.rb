@@ -10,9 +10,9 @@ describe User do
 
   it { should be_valid }
 
-  describe "when username is not present" do
-    before { @user.username = " " }
-    it { should_not be_valid }
+  describe "when username is absent" do
+    before { @user.username = nil }
+    it { should be_valid }
   end
 
   describe "when username is too short" do

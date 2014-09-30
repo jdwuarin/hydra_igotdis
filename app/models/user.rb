@@ -9,10 +9,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
-  validates :username, presence: true, length: { maximum: 50, minimum: 2 }
+  validates :username, length: { maximum: 50, minimum: 2 }, :allow_blank => true
   validates :username, :uniqueness => {:case_sensitive => false}
 
-  validates_format_of :username, :with => /\A[A-Za-z\d_]+\Z/
+  validates_format_of :username, :with => /\A(|[A-Za-z\d_])+\Z/
 
   after_create :create_user_tournament_scores
 
@@ -58,19 +58,19 @@ class User < ActiveRecord::Base
       # Get the existing user by email if the provider gives us a verified email.
       # If no verified email was provided we assign a temporary email and ask the
       # user to verify it on the next step via UsersController.finish_signup
-      email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
+      email_is_verified = auth.info.email &&
+        (auth.info.verified || auth.info.verified_email)
       email = auth.info.email if email_is_verified
       user = User.where(:email => email).first if email
 
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(
-          name: auth.extra.raw_info.name,
-          #username: auth.info.nickname || auth.uid,
+
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )
-        user.skip_confirmation!
+        # user.skip_confirmation! # not asking for email confirmation for now
         user.save!
       end
     end
