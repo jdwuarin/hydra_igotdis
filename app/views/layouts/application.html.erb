@@ -26,11 +26,33 @@
   </head>
   <body background = <%= asset_path('background_splash_page.jpg') %>  >
 
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '855729767800823',
+          xfbml      : true,
+          version    : 'v2.1'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+
     <%= render 'layouts/header' %>
 
     <%= yield %>
 
-    <%= debug(params) if Rails.env.development? %>
+<!--     <%= debug(params) if Rails.env.development? %> -->
   </body>
 
 </html>

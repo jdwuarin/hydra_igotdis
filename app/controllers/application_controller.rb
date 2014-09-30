@@ -36,8 +36,4 @@ class ApplicationController < ActionController::Base
       session.delete(:return_to)
     end
 
-    def after_sign_in_path_for(resource)
-      session[:return_to] || tournaments_latest_path
-    end
-
 end

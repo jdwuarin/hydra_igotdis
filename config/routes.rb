@@ -3,7 +3,9 @@ Hydra::Application.routes.draw do
   # devise_for :admin_users, ActiveAdmin::Devise.config
   # ActiveAdmin.routes(self)
 
-  devise_for :users, path_names: {sign_in: 'login', sign_out: 'logout'}
+  devise_for :users, path_names: {sign_in: 'login', sign_out: 'logout'},
+             :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
+
   root  'home#index'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/how-to-play', to: 'static_pages#how_to_play', via: 'get'
