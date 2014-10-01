@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_filter :ensure_signup_complete
+  before_filter :ensure_signup_complete, except: :destroy
 
   protected
 
@@ -48,6 +48,7 @@ class ApplicationController < ActionController::Base
 
     def ensure_signup_complete
       # Ensure we don't go into an infinite loop
+      puts action_name
       return if action_name == 'finish_signup'
 
       # Redirect to the 'finish_signup' page if the user
