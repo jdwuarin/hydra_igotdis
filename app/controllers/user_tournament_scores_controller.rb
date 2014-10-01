@@ -10,8 +10,8 @@ class UserTournamentScoresController < ApplicationController
     end
 
     @user_tournament_scores = UserTournamentScore.where(
-      tournament: params[:tournament_id]).paginate(page: params[:page],
-      :per_page => 20)
+      tournament: params[:tournament_id]).joins(:user).where.not(
+      users: { username: nil }).paginate(page: params[:page], :per_page => 20)
 
   end
 
