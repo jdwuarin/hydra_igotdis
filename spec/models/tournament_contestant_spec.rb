@@ -8,6 +8,8 @@ describe TournamentContestant do
 
   it { should respond_to(:tournament) }
   it { should respond_to(:contestant) }
+  it { should respond_to(:team) }
+  it { should respond_to(:player) }
   it { should respond_to(:user_match_predictions) }
   it { should respond_to(:matches_as_receiving_contestant) }
   it { should respond_to(:matches_as_invited_contestant) }

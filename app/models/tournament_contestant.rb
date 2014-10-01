@@ -3,6 +3,12 @@ class TournamentContestant < ActiveRecord::Base
 
   belongs_to :tournament
   belongs_to :contestant, polymorphic: true
+  belongs_to :team, -> { where(tournament_contestants:
+                         {contestant_type: 'Team'}) },
+                         foreign_key: 'contestant_id'
+  belongs_to :player, -> { where(tournament_contestants:
+                           {contestant_type: 'Player'}) },
+                           foreign_key: 'contestant_id'
   # has many predictions and is referred to as predicted_contestant
   # in model referencing it
   has_many :user_match_predictions, as: :predicted_contestant

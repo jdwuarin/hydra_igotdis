@@ -678,7 +678,7 @@ margin-bottom: 2em;
 
 .rules {
     background-color: rgba(245, 245, 245, 0.8);
-    margin-top: 6em;
+    margin-top: 2em;
     height: 70em; 
     margin-bottom: 2em;
     padding-left: 3em;
@@ -686,8 +686,6 @@ margin-bottom: 2em;
     padding-top: 0.7em;
     font-family: 'Jockey One';
 }
-
-
 
 
 .predictionrule {
@@ -744,5 +742,106 @@ margin-bottom: 2em;
 
 #error_explanation {
     color: rgba(215, 40, 40, 0.9)
+}
+
+/* Stage 2 */
+
+.scorelol th {
+    height: 1em;
+    border: 1px solid;
+}
+
+.scorelol h1 {
+    margin-top: 10px;
+    font-size: 3em;
+}
+
+.scorelol .pluslogo {
+    height: 4.55em;
+    width: 4.55em;
+    margin-left: 1em;
+    margin-top: -4.6em;
+    z-index: 10;
+    position: absolute;
+}
+
+.scorelol .minuslogo {
+    height: 4.55em;
+    width: 4.55em;
+    margin-left: -5.4em;
+    margin-top: -4.6em;
+    z-index: 10;
+    position: absolute;
+}
+
+.comment_section .btn {
+    background-color:white;
+    color: black; 
+    border-radius: 0px;
+    font-family: 'Jockey One';
+    font-size: 13px;
+    border: 1px solid;
+    margin-left: 62%;
+    padding-left: 8px;
+    padding-right: 8px;
+
+}
+
+.comment_section h2 {
+    font-family: 'Jockey One';
+    float: left;
+    margin-top: 0em;
+    }
+
+.comment_section {
+    margin-right: 3em;
+    margin-left: 1em;
+    height: 18.5em;
+    border: 1px solid black;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.3em;
+    padding-bottom: 0.7em;
+}
+
+.comment_zone {
+    margin-top: 0.5em;
+    height: 13em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    width: 100%;
+}
+
+.submitmatch_stage2 .btn {
+    background-color:white;
+    color: black; 
+    width: auto;
+    border-radius: 0px;
+    font-family: 'Jockey One';
+    margin: -5em auto 0 2em;
+    font-size: 30px;
+    border: 1px solid;
+}
+
+.stage2 .col-md-12 {
+    background-color: rgba(245, 245, 245, 0.4);
+}
+
+.stage2 .row {
+    background-color: transparent;
+    height: 30em;
+    padding-top: 4em;
+    padding-left: 3em;
+}
+
+.fa-check {
+    color: green;
+    margin-left: 0.15em;
+}
+
+.fa-reddit {
+    margin-left: 0.3em;
 }
 

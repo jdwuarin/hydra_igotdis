@@ -467,6 +467,22 @@ quarter_final_round = FactoryGirl.create(:LWC_quarter_final,
 # adding them properly will require a lot of attention and not
 # fucking it up. Do it when very concentrated
 
+
+# quarter_final_round = Round.find_by(round_type: 2)
+
+# samsung_galaxy_white = TournamentContestant.joins(:team).where(teams: {name: "Samsung White"})[0]
+# team_solomid = TournamentContestant.joins(:team).where(teams: {name: "Team SoloMid"})[0]
+
+# samsung_galaxy_blue = TournamentContestant.joins(:team).where(teams: {name: "Samsung Blue"})[0]
+# cloud9 = TournamentContestant.joins(:team).where(teams: {name: "Cloud9"})[0]
+
+# star_horn = TournamentContestant.joins(:team).where(teams: {name: "Star Horn"})[0]
+# edward_gaming = TournamentContestant.joins(:team).where(teams: {name: "Edward Gaming"})[0]
+
+# najin_white_shield = TournamentContestant.joins(:team).where(teams: {name: "Najin Shield"})[0]
+# omg = TournamentContestant.joins(:team).where(teams: {name: "OMG"})[0]
+
+
 # FactoryGirl.create(:LWC_quarter_final_match,
 #        round: quarter_final_round,
 #        date: DateTime.new(2014, 10, 3, 9).change(:offset => "+0200"),
