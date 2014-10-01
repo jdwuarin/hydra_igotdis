@@ -26,11 +26,13 @@
   </head>
   <body background = <%= asset_path('background_splash_page.jpg') %>  >
 
+    <%= render 'layouts/header' %>
+
+    <div class="space"> </div>
+
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
-
-    <%= render 'layouts/header' %>
 
     <%= yield %>
 

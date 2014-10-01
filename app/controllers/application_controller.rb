@@ -56,11 +56,10 @@ class ApplicationController < ActionController::Base
 
     def ensure_signup_complete
       # Ensure we don't go into an infinite loop
-      puts action_name
       return if action_name == 'finish_signup'
 
       # Redirect to the 'finish_signup' page if the user
-      # email hasn't been verified yet
+      # username hasn't been added yet
       if current_user && !current_user.username
         redirect_to finish_signup_path(current_user)
       end

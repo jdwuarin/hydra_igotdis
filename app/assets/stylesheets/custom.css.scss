@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 
 
@@ -132,7 +133,7 @@ h3 {
 
 /*Background Image*/
 .jumbotron {
-    height: 32em;
+    height: 30em;
     background-repeat: no-repeat;
     background-color: transparent;
 
@@ -142,7 +143,7 @@ h3 {
 .container .jumbotron {
     border-radius: 0px;
     background-color: transparent;
-    height: 45em;
+    height: 40em;
     padding-left: 0px;
 }
 
@@ -340,9 +341,23 @@ h3 {
     background-color: rgba(245, 245, 245, 0.4);
     text-align: center;
     width: 40em;
-    margin: 5em auto 0 auto;
-    height: 40em;
-    position: absolute;
+    margin: 0 auto 0 auto;
+    height: 45em;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.login {
+
+    font-family: 'Jockey One';
+    color: white;
+    background-color: rgba(245, 245, 245, 0.4);
+    text-align: center;
+    width: 40em;
+    margin: 0 auto 0 auto;
+    height: 35em;
     top: 0;
     bottom: 0;
     left: 0;
@@ -364,28 +379,41 @@ h3 {
 
 .signup .box {
     background-color: rgba(245, 245, 245, 1);
-    margin-bottom: 1em;
+    margin-bottom: 0;
     color: black;
     width: 12em;
 }
 
 
-.alert-notice {
-    color:white;
-    height: 2em;
-    border-radius:0px;
+.alert-notice, .alert-success {
+
     background-color: rgba(57, 180, 37, 0.8);
-    text-align: center;
-    font-size: 2em;
-    font-family: 'Jockey One';
-    width: 12em;
-    margin-left: 28em;
-    margin-top: 6em;
 
 }
 
+.alert-alert, .alert-error {
+
+    background-color: rgba(215, 40, 40, 0.8);
+
+}
+
+
 .alert {
-    padding: 8px;
+
+    color:white;
+    height: 2em;
+    border-radius:0px;
+    padding: 4px;
+    font-size: 1em;
+    font-family: 'Jockey One';
+    width: 100%;
+    text-align: center;
+    margin: 0em auto 0 auto;
+    height: 2em;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
 }
 
@@ -478,7 +506,7 @@ margin-bottom: 2em;
 /* Ladder */
 
 .table-responsive {
-    margin: 40px 8.48056537%
+    margin: 0 8.48056537%
 }
 
 .ladder thead {
@@ -686,6 +714,13 @@ margin-bottom: 2em;
     padding-bottom: 0.5em;
 }
 
+.container h3.signin-or {
+
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+}
+
 .prizes {
     color: #cc6600;
 }
@@ -701,5 +736,22 @@ margin-bottom: 2em;
 
 }
 
+.signin-facebook-button .btn {
+    color: white;
+    background-color: #2d4373;
+    width: 7.5em;
+    margin: 0 auto 0 auto;
+    text-align: center;
+}
 
+.signin-facebook-button .btn i {
+
+    padding-right: 5px;
+    border-right: 1px solid white;
+
+}
+
+#error_explanation {
+    color: rgba(215, 40, 40, 0.9)
+}
 
