@@ -27,6 +27,7 @@ class UserMatchPredictionsController < ApplicationController
         format.js
       end
     else
+      puts @ump.errors.full_messages
       respond_to do |format|
         format.html { redirect_back_or root_path }
         format.js { render :text => @ump.errors.to_json,

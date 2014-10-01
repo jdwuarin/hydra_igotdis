@@ -26,12 +26,12 @@
                 context[:predictions].find_by(match: match).
                 predicted_contestant == match.receiving_contestant %>
 
-                <%= render '/matches/lwc_stage_round_match/team_cell/active_dynamic',
+                <%= render '/matches/team_cell/active_dynamic',
                     t_contestant: match.receiving_contestant %>
 
               <% else %>
 
-                <%= render '/matches/lwc_stage_round_match/team_cell/not_active_dynamic',
+                <%= render '/matches/team_cell/not_active_dynamic',
                     t_contestant: match.receiving_contestant %>
 
               <% end %>
@@ -41,12 +41,12 @@
                 context[:predictions].find_by(match: match).
                 predicted_contestant == match.invited_contestant %>
 
-                <%= render '/matches/lwc_stage_round_match/team_cell/active_dynamic',
+                <%= render '/matches/team_cell/active_dynamic',
                     t_contestant: match.invited_contestant %>
 
               <% else %>
 
-                <%= render '/matches/lwc_stage_round_match/team_cell/not_active_dynamic',
+                <%= render '/matches/team_cell/not_active_dynamic',
                     t_contestant: match.invited_contestant %>
 
               <% end %>
@@ -58,7 +58,7 @@
       </table>
 
       <%= hidden_field_tag :match_id, match.id %>
-      <%= hidden_field_tag :prediction_type,  1 %>
+      <%= hidden_field_tag :prediction_type, 1 %>
 
 
       <% if context[:predictions] != nil && 
