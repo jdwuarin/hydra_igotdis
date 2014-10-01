@@ -15,15 +15,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     }
   end
 
+  # this uses functions named after the providers
+  # using ruby metaprogramming
   [:facebook].each do |provider|
     provides_callback_for provider
   end
 
-  def after_sign_in_path_for(resource)
-    if resource.username
-      session[:return_to] || default
-    else
-      finish_signup_path(resource)
-    end
-  end
 end

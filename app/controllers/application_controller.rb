@@ -32,9 +32,17 @@ class ApplicationController < ActionController::Base
       session[:return_to] = request.url if request.get?
     end
 
-    def redirect_back_or(default)
-      redirect_to(session[:return_to] || default)
+    def redirect_back_or(default, flash_messages={})
+      redirect_to(session[:return_to] || default, :flash => flash_messages)
       session.delete(:return_to)
+    end
+
+    def after_sign_in_path_for(resource)
+      if resource.username
+        session[:return_to] || root_path
+      else
+        finish_signup_path(resource)
+      end
     end
 
     def current_user?(user)

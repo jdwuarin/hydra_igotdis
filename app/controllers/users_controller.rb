@@ -23,7 +23,8 @@ class UsersController < ApplicationController
     if request.patch? && params[:user] #&& params[:user][:email]
       if current_user.update(user_params)
         sign_in(current_user, :bypass => true)
-        redirect_back_or root_path
+        redirect_back_or root_path,
+          { :notice => "your username was set succesfully"}
       else
         @show_errors = true
       end
