@@ -42,14 +42,20 @@ class MatchesController < ApplicationController
     end
 
     def user_params_condition(matches)
-      if params[:user]
-        user = User.find(username: params[:user])
-        @context[:predictions] = UserMatchPrediction.where(
-          user: user, match: matches)
+      if params[:user_id]
+        if User.where(id: params[:user_id].to_i) == []
+          redirect_to root_path
+        else
+          user = User.find(params[:user_id].to_i)
+          @context[:predictions] = UserMatchPrediction.where(
+            user: user, match: matches)
+        end
 
       elsif current_user
         @context[:predictions] = UserMatchPrediction.where(
           user: current_user, match: matches)
+      else
+        @context[:predictions] = UserMatchPrediction.none
       end
 
     end
