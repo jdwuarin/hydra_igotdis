@@ -116,7 +116,7 @@
                 <%= text_area_tag :comment, context[:predictions].find_by(match: match, prediction_type: 1).comment,
                     {:class => "comment_zone",
                      :readonly => "readonly",
-                     :placeholder => "add your comments here..."} %>
+                     :placeholder => "no comments..."} %>
               <% else %>
                 <%= text_area_tag :comment, context[:predictions].find_by(match: match, prediction_type: 1).comment,
                     {:class => "comment_zone",
@@ -138,7 +138,7 @@
                 <%= text_area_tag :comment, "",
                     {:class => "comment_zone",
                      :readonly => "readonly",
-                     :placeholder => "add your comments here..."} %>
+                     :placeholder => "no comments..."} %>
               <% else %>
                 <%= text_area_tag :comment, "",
                     {:class => "comment_zone",

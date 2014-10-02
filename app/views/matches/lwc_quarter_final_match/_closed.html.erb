@@ -1,0 +1,118 @@
+<div class="col-md-12">
+  <div class="matches-line">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="responsive">
+          <table class="table" frame="box"> 
+
+            <thead>
+              <tr>
+                <th class="Big" colspan="2">
+                  <%= match.receiving_contestant.contestant.name %>
+                </th>
+                <th colspan="2">VS</th>
+                <th class="Big"colspan="2">
+                  <%= match.invited_contestant.contestant.name %>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+
+                <% if context[:predictions] != nil &&
+                  context[:predictions].where(match: match, prediction_type: 1) != [] && 
+                  context[:predictions].find_by(match: match, prediction_type: 1).
+                  predicted_contestant == match.receiving_contestant %>
+
+                  <%= render '/matches/team_cell/active_dynamic',
+                      t_contestant: match.receiving_contestant,
+                      is_public_page: true %>
+
+                <% else %>
+
+                  <%= render '/matches/team_cell/not_active_dynamic',
+                      t_contestant: match.receiving_contestant,
+                      is_public_page: true %>
+
+                <% end %>
+
+                <% if context[:predictions] != nil &&
+                  context[:predictions].where(match: match, prediction_type: 1) != [] && 
+                  context[:predictions].find_by(match: match, prediction_type: 1).
+                  predicted_contestant == match.invited_contestant %>
+
+                  <%= render '/matches/team_cell/active_dynamic',
+                      t_contestant: match.invited_contestant,
+                      is_public_page: true %>
+
+                <% else %>
+
+                  <%= render '/matches/team_cell/not_active_dynamic',
+                      t_contestant: match.invited_contestant,
+                      is_public_page: true %>
+
+                <% end %>
+
+              </tr>
+            </tbody>
+
+            <tbody class="scorelol">
+              <tr>
+                <th colspan="3" 
+                    id="<%= match.receiving_contestant.id.to_s %>" >
+                  <%= render '/matches/lwc_quarter_final_match/score_field',
+                      context: context,
+                      predicted_contestant: context[:predictions].where(match: match, prediction_type: 1) != [] ?
+                        context[:predictions].find_by(match: match, prediction_type: 1).predicted_contestant.id :
+                        nil,
+                      match: match,
+                      is_public_page: true,
+                      left: true %>
+                </th>
+                <th colspan="3"
+                    id="<%= match.invited_contestant.id.to_s %>" >
+                  <%= render '/matches/lwc_quarter_final_match/score_field',
+                      context: context,
+                      predicted_contestant: context[:predictions].where(match: match, prediction_type: 1) != [] ?
+                        context[:predictions].find_by(match: match, prediction_type: 1).predicted_contestant.id :
+                        nil,
+                      match: match,
+                      is_public_page: true,
+                      left: false %>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </table>
+      </div>
+
+      <div class="col-md-6">
+        <div class="comment_section">
+          <h2>I predict this because...</h2>
+          <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('<%= context['public_url'] %>'); return false"> <img src="//www.redditstatic.com/spreddit8.gif" alt="submit to reddit" class= "reddit-button"/> </a>
+
+        <% if context[:predictions] != nil &&
+          context[:predictions].where(match: match, prediction_type: 1) != [] %>
+
+          <%= text_area_tag :comment, context[:predictions].find_by(match: match, prediction_type: 1).comment,
+              {:class => "comment_zone",
+               :placeholder => "add your comments here..."} %>
+
+        <% else %>
+
+          <%= text_area_tag :comment, "",
+              {:class => "comment_zone",
+               :readonly => "readonly"} %>
+
+        <% end %>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
