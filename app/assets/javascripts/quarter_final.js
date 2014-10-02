@@ -27,7 +27,7 @@ $('th.Logo').on('click', function (event) {
     if ($(this)[0]["id"] == predicted_contestant) {
       $(this).find(".minuslogo").css('display', 'none');
       $(this).find(".pluslogo").css('display', 'none');
-      $(this).find("h1")[0]["textContent"] = "2";
+      $(this).find("h1")[0]["textContent"] = "3";
     }
     else {
       $(this).find(".minuslogo").css('display', 'inline');
@@ -35,7 +35,7 @@ $('th.Logo').on('click', function (event) {
       $(this).find("h1")[0]["textContent"] = "0";
       // because if user pressed up it would be type 6
       $(this).parents("div.matches-line").find(
-        "form.score-form").children("#prediction_type")[0]["value"] = 5;
+        "form.score-form").children("#prediction_type")[0]["value"] = 7;
     }
 
   });
@@ -55,7 +55,13 @@ $("img.minuslogo").on("click", function(e) {
     minus_sign[0]["textContent"] = "0";
 
   $(this).parents("div.matches-line").find(
-    "form.score-form").children("#prediction_type")[0]["value"] = 5;
+    "form.score-form").children("#prediction_type")[0]["value"] = 7;
+
+  } else if (minus_sign[0]["textContent"] == "2"){
+    minus_sign[0]["textContent"] = "1";
+
+  $(this).parents("div.matches-line").find(
+    "form.score-form").children("#prediction_type")[0]["value"] = 8;
 
   }
 
@@ -72,7 +78,13 @@ $("img.pluslogo").on("click", function(e) {
     plus_sign[0]["textContent"] = "1";
 
   $(this).parents("div.matches-line").find(
-    "form.score-form").children("#prediction_type")[0]["value"] = 6;
+    "form.score-form").children("#prediction_type")[0]["value"] = 8;
+
+  } else if (plus_sign[0]["textContent"] == "1"){
+    plus_sign[0]["textContent"] = "2";
+
+  $(this).parents("div.matches-line").find(
+    "form.score-form").children("#prediction_type")[0]["value"] = 9;
 
   }
 

@@ -157,8 +157,9 @@
         <%= hidden_field_tag :match_id, match.id %>
 
         <% if context[:predictions] != nil && (
-          context[:predictions].where(match: match, prediction_type: 5) != [] || 
-          context[:predictions].where(match: match, prediction_type: 6) != []) %>
+          context[:predictions].where(match: match, prediction_type: 7) != [] || 
+          context[:predictions].where(match: match, prediction_type: 8) != [] ||
+          context[:predictions].where(match: match, prediction_type: 9) != []) %>
 
           <% if context[:predictions].find_by(match: match, prediction_type: 1).
           predicted_contestant == match.receiving_contestant %>
@@ -171,20 +172,24 @@
                 match.invited_contestant.id %>
           <% end %>
 
-          <% if context[:predictions].where(match: match, prediction_type: 6) != [] %>
+          <% if context[:predictions].where(match: match, prediction_type: 7) != [] %>
 
-            <%= hidden_field_tag :prediction_type, 6 %>
+            <%= hidden_field_tag :prediction_type, 7 %>
+
+          <% elsif context[:predictions].where(match: match, prediction_type: 8) != [] %>
+
+            <%= hidden_field_tag :prediction_type, 8 %>
 
           <% else %>
 
-            <%= hidden_field_tag :prediction_type, 5 %>
+            <%= hidden_field_tag :prediction_type, 9 %>
 
           <% end %>
 
         <% else %>
 
           <%= hidden_field_tag :predicted_contestant_id, 0 %>
-          <%= hidden_field_tag :prediction_type, 5 %>
+          <%= hidden_field_tag :prediction_type, 7 %>
 
         <% end %>
 
