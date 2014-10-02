@@ -193,18 +193,18 @@
     </div>
   </div>
 
-  <% if context[:predictions] != nil && 
-    context[:predictions].where(match: match) != [] %>
+  <% if !request.params[:user_id] %>
+    <% if context[:predictions] != nil && 
+      context[:predictions].where(match: match) != [] %>
 
-    <div class="submitmatch_stage2">
-      <%= content_tag :a ,
-          :class => 'btn btn-default btn-submit btn-inactive' do %>SUBMITTED<i class="fa fa-check"></i>
-      <% end %>
+      <div class="submitmatch_stage2">
+        <%= content_tag :a ,
+            :class => 'btn btn-default btn-submit btn-inactive' do %>SUBMITTED<i class="fa fa-check"></i>
+        <% end %>
 
-    </div>
+      </div>
 
-  <% else %>
-    <% if !request.params[:user_id] %>
+    <% else %>
       <div class="submitmatch_stage2">
         <%= content_tag :a, 'SUBMIT',
             :class => "btn btn-default btn-submit btn-inactive" %>
