@@ -27,7 +27,7 @@ module Hydra
     I18n.config.enforce_available_locales = true
     config.autoload_paths += %W["#{config.root}/app/validators/"]
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
-    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif, *.svg)
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif, *.svg, *.js)
     config.time_zone = 'UTC'
   end
 end
