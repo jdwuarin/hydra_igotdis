@@ -1,7 +1,16 @@
 
-<th class="Logo active" colspan="3">
-  <%= content_tag :div, t_contestant.id.to_s,
-                  hidden: true, class: "contestant" %>
-    <%= image_tag asset_path(t_contestant.contestant.logo),
-        class: "img-responsive", type: "image" %>
-</th>
+<% if is_public_page %>
+
+  <%= render '/matches/team_cell/active_static',
+      t_contestant: t_contestant %>
+
+<% else %>
+
+  <th class="Logo active" colspan="3">
+    <%= content_tag :div, t_contestant.id.to_s,
+                    hidden: true, class: "contestant" %>
+      <%= image_tag asset_path(t_contestant.contestant.logo),
+          class: "img-responsive", type: "image" %>
+  </th>
+
+<% end %>

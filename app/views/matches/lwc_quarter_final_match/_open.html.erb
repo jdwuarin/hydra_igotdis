@@ -26,12 +26,14 @@
                   predicted_contestant == match.receiving_contestant %>
 
                   <%= render '/matches/team_cell/active_dynamic',
-                      t_contestant: match.receiving_contestant %>
+                      t_contestant: match.receiving_contestant,
+                      is_public_page: request.params[:user_id] ? true : false %>
 
                 <% else %>
 
                   <%= render '/matches/team_cell/not_active_dynamic',
-                      t_contestant: match.receiving_contestant %>
+                      t_contestant: match.receiving_contestant,
+                      is_public_page: request.params[:user_id] ? true : false %>
 
                 <% end %>
 
@@ -41,12 +43,14 @@
                   predicted_contestant == match.invited_contestant %>
 
                   <%= render '/matches/team_cell/active_dynamic',
-                      t_contestant: match.invited_contestant %>
+                      t_contestant: match.invited_contestant,
+                      is_public_page: request.params[:user_id] ? true : false %>
 
                 <% else %>
 
                   <%= render '/matches/team_cell/not_active_dynamic',
-                      t_contestant: match.invited_contestant %>
+                      t_contestant: match.invited_contestant,
+                      is_public_page: request.params[:user_id] ? true : false %>
 
                 <% end %>
 
@@ -108,9 +112,17 @@
               <h2>Why?</h2>
               <a class="btn btn-default">spreddit<i class="fa fa-reddit"></i></a>
 
-              <%= text_area_tag :comment, context[:predictions].find_by(match: match, prediction_type: 1).comment,
-                  {:class => "comment_zone",
-                   :placeholder => "add your comments here..."} %>
+              <% if request.params[:user_id] %>
+                <%= text_area_tag :comment, context[:predictions].find_by(match: match, prediction_type: 1).comment,
+                    {:class => "comment_zone",
+                     :readonly => "readonly",
+                     :placeholder => "add your comments here..."} %>
+              <% else %>
+                <%= text_area_tag :comment, context[:predictions].find_by(match: match, prediction_type: 1).comment,
+                    {:class => "comment_zone",
+                     :placeholder => "add your comments here..."} %>
+              <% end %>
+
             </div>
           </div>
 
@@ -122,9 +134,16 @@
               <h2>Why?</h2>
               <a class="btn btn-default">spreddit<i class="fa fa-reddit"></i></a>
 
-              <%= text_area_tag :comment, "",
-                  {:class => "comment_zone",
-                   :placeholder => "add your comments here..."} %>
+              <% if request.params[:user_id] %>
+                <%= text_area_tag :comment, "",
+                    {:class => "comment_zone",
+                     :readonly => "readonly",
+                     :placeholder => "add your comments here..."} %>
+              <% else %>
+                <%= text_area_tag :comment, "",
+                    {:class => "comment_zone",
+                     :placeholder => "add your comments here..."} %>
+              <% end %>
             </div>
           </div>
 
@@ -185,10 +204,12 @@
     </div>
 
   <% else %>
-    <div class="submitmatch_stage2">
-      <%= content_tag :a, 'SUBMIT',
-          :class => "btn btn-default btn-submit" %>
-    </div>
+    <% if !request.params[:user_id] %>
+      <div class="submitmatch_stage2">
+        <%= content_tag :a, 'SUBMIT',
+            :class => "btn btn-default btn-submit btn-inactive" %>
+      </div>
+    <% end %>
   <% end %>
 
     <!-- <a class="btn btn-default">OK<i class="fa fa-check"></i></a> -->
