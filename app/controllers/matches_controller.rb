@@ -13,7 +13,6 @@ class MatchesController < ApplicationController
     
     user_params_condition(@context[:matches])
 
-    
 
     if params[:user_id]
       @context['public_url'] = url_for

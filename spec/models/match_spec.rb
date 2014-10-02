@@ -214,8 +214,8 @@ describe Match do
 
         describe "when score is both same" do
           before do
-            @lwc_results_format["receiving_contestant"]["score"] = 2
-            @lwc_results_format["invited_contestant"]["score"] = 2
+            @lwc_results_format["receiving_contestant"]["score"] = 3
+            @lwc_results_format["invited_contestant"]["score"] = 3
           end
           it { should_not be_valid }
         end
@@ -255,14 +255,14 @@ describe Match do
         describe "when score is not in accordance with WINNER side" do
           before do
             @lwc_results_format["receiving_contestant"]["score"] = 0
-            @lwc_results_format["invited_contestant"]["score"] = 2
+            @lwc_results_format["invited_contestant"]["score"] = 3
           end
           it { should_not be_valid }
         end
 
         describe "when score is alright" do
           before do
-            @lwc_results_format["receiving_contestant"]["score"] = 2
+            @lwc_results_format["receiving_contestant"]["score"] = 3
             @lwc_results_format["invited_contestant"]["score"] = 0
           end
           it { should be_valid }
@@ -539,8 +539,8 @@ describe Match do
 
         before do
           @match.round.round_type = RoundTypes::QUARTER_FINALS
-          @lwc_results_format['receiving_contestant']["score"] = 2
-          @lwc_results_format['invited_contestant']["score"] = 0
+          @lwc_results_format['receiving_contestant']["score"] = 3
+          @lwc_results_format['invited_contestant']["score"] = 2
           @match.results = @lwc_results_format
         end
 
@@ -578,7 +578,7 @@ describe Match do
             @user_match_prediction = create(:user_match_prediction,
               match: @match,
               predicted_contestant: @match.receiving_contestant,
-              prediction_type: PredictionTypes::SCORE_2_0,
+              prediction_type: PredictionTypes::SCORE_3_2,
               user: @user)
           end
 
@@ -611,7 +611,7 @@ describe Match do
 
           context "@user incorrectly predicted the score by value" do
             before do
-              @user_match_prediction.prediction_type = PredictionTypes::SCORE_2_1
+              @user_match_prediction.prediction_type = PredictionTypes::SCORE_3_1
               @user_match_prediction.save
               @match.save
             end

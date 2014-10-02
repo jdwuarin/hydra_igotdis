@@ -146,14 +146,14 @@ describe UserMatchPrediction do
 
       context "and prediction type is not available in LWC_QUARTER_FINAL" do
         before do 
-          @user_match_prediction.prediction_type = PredictionTypes::SCORE_3_0
+          @user_match_prediction.prediction_type = PredictionTypes::MOSTFIRSTBLOOD
         end
           it { should_not be_valid}
       end
 
       context "and prediction type is available in LWC_QUARTER_FINAL" do
         before do 
-          @user_match_prediction.prediction_type = PredictionTypes::SCORE_2_0
+          @user_match_prediction.prediction_type = PredictionTypes::SCORE_3_0
         end
           it { should be_valid}
       end

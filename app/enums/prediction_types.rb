@@ -67,29 +67,32 @@ module PredictionTypes
 
       SCORE_2_0 => {
         "points" => 100,
-        "available_in" => [LWC_QUARTER_FINALS]
+        "available_in" => []
       },
 
       SCORE_2_1 => {
         "points" => 100,
-        "available_in" => [LWC_QUARTER_FINALS]
+        "available_in" => []
       },
 
       SCORE_3_0 => {
         "points" => 100,
-        "available_in" => [LWC_SEMI_FINALS,
+        "available_in" => [LWC_QUARTER_FINALS,
+                           LWC_SEMI_FINALS,
                            LWC_FINAL]
       },
 
       SCORE_3_1 => {
         "points" => 100,
-        "available_in" => [LWC_SEMI_FINALS,
+        "available_in" => [LWC_QUARTER_FINALS,
+                           LWC_SEMI_FINALS,
                            LWC_FINAL]
       },
 
       SCORE_3_2 => {
         "points" => 100,
-        "available_in" => [LWC_SEMI_FINALS,
+        "available_in" => [LWC_QUARTER_FINALS,
+                           LWC_SEMI_FINALS,
                            LWC_FINAL]
       }
 
