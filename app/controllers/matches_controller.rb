@@ -13,6 +13,16 @@ class MatchesController < ApplicationController
     
     user_params_condition(@context[:matches])
 
+    
+
+    if params[:user_id]
+      @context['public_url'] = url_for
+    elsif user_signed_in?
+      @context['public_url'] = url_for + "?user_id=" + current_user.id.to_s
+    else
+      @context['public_url'] = url_for
+    end
+
   end
 
   private

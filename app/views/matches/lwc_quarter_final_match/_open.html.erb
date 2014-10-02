@@ -109,8 +109,8 @@
 
           <div class="col-md-6">
             <div class="comment_section">
-              <h2>Why?</h2>
-              <a class="btn btn-default">spreddit<i class="fa fa-reddit"></i></a>
+              <h2>I predict this because...</h2>
+              <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('<%= context['public_url'] %>'); return false"> <img src="//www.redditstatic.com/spreddit8.gif" alt="submit to reddit" class= "reddit-button"/> </a>
 
               <% if request.params[:user_id] %>
                 <%= text_area_tag :comment, context[:predictions].find_by(match: match, prediction_type: 1).comment,
@@ -131,8 +131,8 @@
 
           <div class="col-md-6">
             <div class="comment_section">
-              <h2>Why?</h2>
-              <a class="btn btn-default">spreddit<i class="fa fa-reddit"></i></a>
+              <h2>I predict this because...</h2>
+              <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('<%= context['public_url'] %>'); return false"> <img src="//www.redditstatic.com/spreddit8.gif" alt="submit to reddit" class= "reddit-button"/> </a>
 
               <% if request.params[:user_id] %>
                 <%= text_area_tag :comment, "",
