@@ -125,7 +125,7 @@
         </div>
 
         <div class="col-md-6">
-          <% if !match.finished && !request.params[:user_id] %>
+          <% if match.finished && !request.params[:user_id] %>
             <h2>Check out your points in the navbar</h2>
             <h2>Oh, and <%= link_to "here's",
                         ladder_path(tournament_id:
