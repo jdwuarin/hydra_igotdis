@@ -210,6 +210,21 @@
             :class => "btn btn-default btn-submit btn-inactive" %>
       </div>
     <% end %>
+
+  <% elsif !user_signed_in? %>
+    <div class="submitmatch_stage2">
+      <%= link_to "Create your own predictions",
+      tournament_round_matches_path(1, 2),
+          :class => "btn btn-default " %>
+    </div>
+  <% elsif current_user.id != request.params[:user_id].to_i %>
+
+    <div class="submitmatch_stage2">
+      <%= link_to "Back to my predictions",
+      tournament_round_matches_path(1, 2),
+          :class => "btn btn-default " %>
+    </div>
+
   <% end %>
 
 </div>
