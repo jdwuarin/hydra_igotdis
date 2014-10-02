@@ -13,6 +13,8 @@ class Round < ActiveRecord::Base
   validates_with DatesAreValid
   validates_with RoundTypeValidator
 
+  default_scope -> { order('start_date ASC') }
+
   def to_s()
     "Round Id: " + self.id.to_s +
     ", round_type: " + round_types[self.round_type]
