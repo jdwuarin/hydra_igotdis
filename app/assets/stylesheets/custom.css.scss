@@ -661,7 +661,6 @@ margin-bottom: 2em;
 .table .Logo:hover {
     background-color: #cc6600;
     cursor: pointer;
-    cursor: hand;
 }
 
 .table .Logo.active {
@@ -763,6 +762,7 @@ margin-bottom: 2em;
     margin-top: -4.6em;
     z-index: 10;
     position: absolute;
+    cursor: pointer;
 }
 
 .scorelol .minuslogo {
@@ -772,6 +772,7 @@ margin-bottom: 2em;
     margin-top: -4.6em;
     z-index: 10;
     position: absolute;
+    cursor: pointer;
 }
 
 .comment_section .btn {

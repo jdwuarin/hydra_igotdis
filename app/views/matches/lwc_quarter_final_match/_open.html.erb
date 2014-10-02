@@ -59,17 +59,21 @@
                     id=<%= match.receiving_contestant.id.to_s  %> >
                   <div colspan="2" id="score"><h1>0</h1></div>
                   <div colspan="2"><img class="pluslogo" hidden="true"
-                    src= <%= asset_path("plus_button.png") %> ></div>
+                    src= <%= asset_path("plus_button.png") %> >
+                  </div>
                   <div colspan="2"><img class="minuslogo" hidden="true"
-                    src= <%= asset_path("minus_button.png") %> ></div>
+                    src= <%= asset_path("minus_button.png") %> >
+                  </div>
                 </th>
                 <th colspan="3"
                     id=<%= match.invited_contestant.id.to_s  %> >
                   <div colspan="2" id="score"><h1>0</h1></div>
                   <div colspan="2"><img class="pluslogo" hidden="true"
-                    src= <%= asset_path("plus_button.png") %> ></div>
+                    src= <%= asset_path("plus_button.png") %> >
+                  </div>
                   <div colspan="2"><img class="minuslogo" hidden="true"
-                    src= <%= asset_path("minus_button.png") %> ></div>
+                    src= <%= asset_path("minus_button.png") %> >
+                  </div>
                 </th>
               </tr>
             </tbody>
@@ -88,7 +92,10 @@
             <div class="comment_section">
               <h2>Why?</h2>
               <a class="btn btn-default">spreddit<i class="fa fa-reddit"></i></a>
-              <textarea class="comment_zone">hi </textarea>
+
+              <%= text_area_tag :comment, "",
+                  {:class => "comment_zone",
+                   :placeholder => "add your comments here..."} %>
             </div>
           </div>
 
