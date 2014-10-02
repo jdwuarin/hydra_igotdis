@@ -115,4 +115,29 @@
 
 </div>
 
+<div class="stage2over">
+  <div class="col-md-12">
+    <div class="matches-line">
+      <div class="row">
+        <div class="col-md-6">
+          <%= image_tag asset_path("closed.png"), type: "image",
+               class: "closed-stage-2" %> >
+        </div>
 
+        <div class="col-md-6">
+          <% if !match.finished && !request.params[:user_id] %>
+            <h2>Check out your points in the navbar</h2>
+            <h2>Oh, and <%= link_to "here's",
+                        ladder_path(tournament_id:
+                        request.params[:tournament_id]) %>
+                how good others are</h2>
+
+          <% end %>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
