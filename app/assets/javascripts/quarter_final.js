@@ -25,13 +25,13 @@ $('th.Logo').on('click', function (event) {
   table_row.children().each(function () {
 
     if ($(this)[0]["id"] == predicted_contestant) {
-      $(this).find(".minuslogo").hide();
-      $(this).find(".pluslogo").hide();
+      $(this).find(".minuslogo").css('display', 'none');
+      $(this).find(".pluslogo").css('display', 'none');
       $(this).find("h1")[0]["textContent"] = "2";
     }
     else {
-      $(this).find(".minuslogo").show();
-      $(this).find(".pluslogo").show();
+      $(this).find(".minuslogo").css('display', 'inline');
+      $(this).find(".pluslogo").css('display', 'inline');
       $(this).find("h1")[0]["textContent"] = "0";
       // because if user pressed up it would be type 6
       $(this).parents("div.matches-line").find(
@@ -40,23 +40,12 @@ $('th.Logo').on('click', function (event) {
 
   });
 
-  // // enable button
-  // button = $(this).parents("table").
-  //   siblings("div.submitmatch").
-  //   children("input");
+  // enable button
+  enable_button($(this));
 
-  // button.prop('disabled', false);
 
 });
 
-$("a.btn-submit").on("click", function(e) {
-
-  $(this).parents("div.col-md-12").find(
-    "form.winner-form").trigger("submit");
-  $(this).parents("div.col-md-12").find(
-    "form.score-form").trigger("submit");
-
-});
 
 $("img.minuslogo").on("click", function(e) {
 
@@ -69,6 +58,8 @@ $("img.minuslogo").on("click", function(e) {
     "form.score-form").children("#prediction_type")[0]["value"] = 5;
 
   }
+
+  enable_button($(this));
 
 });
 
@@ -85,18 +76,28 @@ $("img.pluslogo").on("click", function(e) {
 
   }
 
+  enable_button($(this));
+
+});
+
+$('.comment_zone').bind('keyup', function () {
+
+  enable_button($(this));
+
+});
+
+$("a.btn-submit").on("click", function(e) {
+
+  $(this).parents("div.col-md-12").find(
+    "form.winner-form").trigger("submit");
+  $(this).parents("div.col-md-12").find(
+    "form.score-form").trigger("submit");
+
 });
 
 $("form.winner-form").on('ajax:success', function(data, status, xhr) {
 
-    button = $(this).parents("table.responsive").
-      siblings("div.submitmatch").
-        children("input")[0];
-
-    if (!button["disabled"]) {
-      button["value"] = "UPDATE";
-      button["disabled"] = true;
-    }
+  disable_button($(this));
 
 });
 
@@ -109,3 +110,32 @@ $("form.winner-form").on('ajax:error', function(xhr, status, error) {
     button.removeClass("btn-default");
 
 });
+
+var disable_button = function(base) {
+
+  button = base.parents("div.col-md-12").
+    find("a.btn-submit");
+
+  button.addClass("btn-inactive");
+
+  button[0]["text"] = "SUBMITTED";
+
+  button.append("<i class='fa fa-check'></i>");
+};
+
+
+var enable_button = function(base) {
+
+  button = base.parents("div.col-md-12").
+    find("a.btn-submit");
+
+  if (button.hasClass("btn-inactive")) {
+
+    button.removeClass("btn-inactive");
+    button[0]["text"] = "SUBMIT";
+
+    button.children("i").remove();
+
+  }
+
+};

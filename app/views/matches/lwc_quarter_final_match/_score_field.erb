@@ -1,0 +1,88 @@
+<% if context[:predictions] != nil && 
+  context[:predictions].where(match: match, prediction_type: 5) != [] %>
+
+  <% if ((left == true && predicted_contestant == match.receiving_contestant.id) ||
+        (left == false && predicted_contestant == match.invited_contestant.id)) && %>
+    <div colspan="2" id="score"><h1>2</h1></div>
+    <div colspan="2"><img class="pluslogo" hidden="true"
+      src= <%= asset_path("plus_button.png") %> >
+    </div>
+    <div colspan="2"><img class="minuslogo" hidden="true"
+      src= <%= asset_path("minus_button.png") %> >
+    </div>
+  <% else %>
+
+    <% if !is_public_page %>
+
+      <div colspan="2" id="score"><h1>1</h1></div>
+      <div colspan="2"><img class="pluslogo"
+        src= <%= asset_path("plus_button.png") %> >
+      </div>
+      <div colspan="2"><img class="minuslogo"
+        src= <%= asset_path("minus_button.png") %> >
+      </div>
+
+    <% else %>
+
+      <div colspan="2" id="score"><h1>1</h1></div>
+      <div colspan="2"><img class="pluslogo" hidden="true"
+        src= <%= asset_path("plus_button.png") %> >
+      </div>
+      <div colspan="2"><img class="minuslogo" hidden="true"
+        src= <%= asset_path("minus_button.png") %> >
+      </div>
+
+    <% end %>
+
+  <% end %>
+
+
+<% elsif context[:predictions] != nil && 
+  context[:predictions].where(match: match, prediction_type: 6) != [] %>
+
+  <% if ((left == true && predicted_contestant == match.receiving_contestant.id) ||
+        (left == false && predicted_contestant == match.invited_contestant.id)) && %>
+    <div colspan="2" id="score"><h1>2</h1></div>
+    <div colspan="2"><img class="pluslogo" hidden="true"
+      src= <%= asset_path("plus_button.png") %> >
+    </div>
+    <div colspan="2"><img class="minuslogo" hidden="true"
+      src= <%= asset_path("minus_button.png") %> >
+    </div>
+  <% else %>
+
+    <% if !is_public_page %>
+
+      <div colspan="2" id="score"><h1>1</h1></div>
+      <div colspan="2"><img class="pluslogo"
+        src= <%= asset_path("plus_button.png") %> >
+      </div>
+      <div colspan="2"><img class="minuslogo"
+        src= <%= asset_path("minus_button.png") %> >
+      </div>
+
+    <% else %>
+
+      <div colspan="2" id="score"><h1>1</h1></div>
+      <div colspan="2"><img class="pluslogo" hidden="true"
+        src= <%= asset_path("plus_button.png") %> >
+      </div>
+      <div colspan="2"><img class="minuslogo" hidden="true"
+        src= <%= asset_path("minus_button.png") %> >
+      </div>
+
+    <% end %>
+
+  <% end %>
+
+<% else %>
+
+  <div colspan="2" id="score"><h1>0</h1></div>
+  <div colspan="2"><img class="pluslogo" hidden="true"
+    src= <%= asset_path("plus_button.png") %> >
+  </div>
+  <div colspan="2"><img class="minuslogo" hidden="true"
+    src= <%= asset_path("minus_button.png") %> >
+  </div>
+
+<% end %>

@@ -13,6 +13,12 @@ class MatchesController < ApplicationController
     
     user_params_condition(@context[:matches])
 
+    if params[:user_id] == nil
+  
+      puts "this was it!!!!!!!!!!!!!!"
+
+    end
+
   end
 
   private

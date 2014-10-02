@@ -826,6 +826,11 @@ margin-bottom: 2em;
     border: 1px solid;
 }
 
+.submitmatch_stage2 .btn-inactive {
+    background-color: rgba(255, 255, 255, 0.5);
+    pointer-events:none;
+}
+
 .stage2 .col-md-12 {
     background-color: rgba(245, 245, 245, 0.4);
 }

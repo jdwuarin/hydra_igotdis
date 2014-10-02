@@ -11,15 +11,16 @@ class UserMatchPredictionsController < ApplicationController
 
   def create
 
-    @ump = UserMatchPrediction.find_or_initialize_by(
-      :match_id => user_match_prediction_params[:match_id],
-      :prediction_type => user_match_prediction_params[:prediction_type],
-      :user => current_user
+    @ump = UserMatchPrediction.find_or_instantiate_by(
+      user_match_prediction_params[:match_id].to_i,
+      user_match_prediction_params[:prediction_type].to_i,
+      current_user
     )
 
-      @ump[:comment] = user_match_prediction_params[:comment]
-      @ump[:predicted_contestant_id] = 
-        user_match_prediction_params[:predicted_contestant_id]
+    @ump[:prediction_type] = user_match_prediction_params[:prediction_type]
+    @ump[:comment] = user_match_prediction_params[:comment]
+    @ump[:predicted_contestant_id] = 
+      user_match_prediction_params[:predicted_contestant_id]
 
     if @ump.save
       respond_to do |format|
