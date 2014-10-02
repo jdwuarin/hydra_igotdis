@@ -129,7 +129,8 @@
             <h2>Check out your points in the navbar</h2>
             <h2>Oh, and <%= link_to "here's",
                         ladder_path(tournament_id:
-                        request.params[:tournament_id]) %>
+                        request.params[:tournament_id]),
+                        class: "igotdis-color-link" %>
                 how good others are</h2>
 
           <% end %>

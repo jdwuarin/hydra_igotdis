@@ -514,6 +514,7 @@ margin-bottom: 2em;
 
 
 .Header {
+    box-shadow: 0 0 10px black;
     background-color: #cc6600;
     color: white;
     font-family: 'Jockey One';
@@ -874,5 +875,14 @@ margin-bottom: 2em;
 .stage2over h2, p {
     color: white;
     font-family: 'Jockey One'
+}
+
+.igotdis-color-link {
+    color: #cc6600;
+}
+
+.igotdis-color-link:hover {
+    color: #cc6600;
+    text-decoration: none;
 }
 
