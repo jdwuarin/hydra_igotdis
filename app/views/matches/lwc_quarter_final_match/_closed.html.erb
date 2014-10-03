@@ -121,11 +121,12 @@
       <div class="row">
         <div class="col-md-6">
           <%= image_tag asset_path("closed_big.png"), type: "image",
-               class: "closed-stage-2" %> >
+               class: "closed-stage-2" %>
         </div>
 
         <div class="col-md-6">
-          <% if match.finished && !request.params[:user_id] %>
+          <% if match.finished && !request.params[:user_id] && 
+             user_signed_in? %>
             <h2>Check out your points in the navbar!</h2>
             <h2>Oh... and <%= link_to "here's",
                         ladder_path(tournament_id:
