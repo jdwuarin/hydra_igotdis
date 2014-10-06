@@ -510,6 +510,26 @@ quarter_final_round = FactoryGirl.create(:LWC_quarter_final,
 semi_final_round = FactoryGirl.create(:LWC_semi_final,
                                       tournament: tournament)
 
+# semi_final_round = Round.find(3)
+
+# samsung_galaxy_white = TournamentContestant.joins(:team).where(teams: {name: "Samsung White"})[0]
+# samsung_galaxy_blue = TournamentContestant.joins(:team).where(teams: {name: "Samsung Blue"})[0]
+
+# star_horn = TournamentContestant.joins(:team).where(teams: {name: "Star Horn"})[0]
+# omg = TournamentContestant.joins(:team).where(teams: {name: "OMG"})[0]
+
+# FactoryGirl.create(:LWC_semi_final_match,
+#        round: semi_final_round,
+#        date: DateTime.new(2014, 10, 11, 9).change(:offset => "+0200"),
+#        receiving_contestant: samsung_galaxy_white,
+#        invited_contestant: samsung_galaxy_blue)
+
+# FactoryGirl.create(:LWC_semi_final_match,
+#        round: semi_final_round,
+#        date: DateTime.new(2014, 10, 12, 9).change(:offset => "+0200"),
+#        receiving_contestant: star_horn,
+#        invited_contestant: omg)
+
 final_round = FactoryGirl.create(:LWC_final,
                                  tournament: tournament)
 
