@@ -1,5 +1,15 @@
 <div class="container">
-  <div class="notrdy">
-    <h2>This stage is not ready yet, check back in a couple of days!</h2>
+  <div class="stage2">
+
+    <% context[:matches].each do |match| %>
+
+
+      <%= render 'lwc_semi_final_match', 
+          match: match, context: context %>
+
+    <% end %>
+
+    <%= javascript_include_tag "semi_final", "data-turbolinks-track" => true %>
+
   </div>
 </div>

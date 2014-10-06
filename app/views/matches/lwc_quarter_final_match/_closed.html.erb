@@ -61,7 +61,7 @@
               <tr>
                 <th colspan="3" 
                     id="<%= match.receiving_contestant.id.to_s %>" >
-                  <%= render '/matches/lwc_quarter_final_match/score_field',
+                  <%= render '/matches/score_field',
                       context: context,
                       predicted_contestant: context[:predictions].where(match: match, prediction_type: 1) != [] ?
                         context[:predictions].find_by(match: match, prediction_type: 1).predicted_contestant.id :
@@ -72,7 +72,7 @@
                 </th>
                 <th colspan="3"
                     id="<%= match.invited_contestant.id.to_s %>" >
-                  <%= render '/matches/lwc_quarter_final_match/score_field',
+                  <%= render '/matches/score_field',
                       context: context,
                       predicted_contestant: context[:predictions].where(match: match, prediction_type: 1) != [] ?
                         context[:predictions].find_by(match: match, prediction_type: 1).predicted_contestant.id :
