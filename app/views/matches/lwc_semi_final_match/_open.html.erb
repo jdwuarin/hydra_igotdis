@@ -1,0 +1,237 @@
+<div class="col-md-12">
+  <div class="matches-line">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="responsive">
+          <table class="table" frame="box"> 
+
+            <thead>
+              <tr>
+                <th class="Big" colspan="2">
+                  <%= match.receiving_contestant.contestant.name %>
+                </th>
+                <th colspan="2">VS</th>
+                <th class="Big"colspan="2">
+                  <%= match.invited_contestant.contestant.name %>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+
+                <% if context[:predictions] != nil &&
+                  context[:predictions].where(match: match, prediction_type: 1) != [] && 
+                  context[:predictions].find_by(match: match, prediction_type: 1).
+                  predicted_contestant == match.receiving_contestant %>
+
+                  <%= render '/matches/team_cell/active_dynamic',
+                      t_contestant: match.receiving_contestant,
+                      is_public_page: request.params[:user_id] ? true : false %>
+
+                <% else %>
+
+                  <%= render '/matches/team_cell/not_active_dynamic',
+                      t_contestant: match.receiving_contestant,
+                      is_public_page: request.params[:user_id] ? true : false %>
+
+                <% end %>
+
+                <% if context[:predictions] != nil &&
+                  context[:predictions].where(match: match, prediction_type: 1) != [] && 
+                  context[:predictions].find_by(match: match, prediction_type: 1).
+                  predicted_contestant == match.invited_contestant %>
+
+                  <%= render '/matches/team_cell/active_dynamic',
+                      t_contestant: match.invited_contestant,
+                      is_public_page: request.params[:user_id] ? true : false %>
+
+                <% else %>
+
+                  <%= render '/matches/team_cell/not_active_dynamic',
+                      t_contestant: match.invited_contestant,
+                      is_public_page: request.params[:user_id] ? true : false %>
+
+                <% end %>
+
+              </tr>
+            </tbody>
+
+            <tbody class="scorelol">
+              <tr>
+                <th colspan="3" 
+                    id="<%= match.receiving_contestant.id.to_s %>" >
+                  <%= render '/matches/lwc_quarter_final_match/score_field',
+                      context: context,
+                      predicted_contestant: context[:predictions].where(match: match, prediction_type: 1) != [] ?
+                        context[:predictions].find_by(match: match, prediction_type: 1).predicted_contestant.id :
+                        nil,
+                      match: match,
+                      is_public_page: request.params[:user_id] ? true : false,
+                      left: true %>
+                </th>
+                <th colspan="3"
+                    id="<%= match.invited_contestant.id.to_s %>" >
+                  <%= render '/matches/lwc_quarter_final_match/score_field',
+                      context: context,
+                      predicted_contestant: context[:predictions].where(match: match, prediction_type: 1) != [] ?
+                        context[:predictions].find_by(match: match, prediction_type: 1).predicted_contestant.id :
+                        nil,
+                      match: match,
+                      is_public_page: request.params[:user_id] ? true : false,
+                      left: false %>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </table>
+      </div>
+
+      <%= form_tag("/user_match_predictions",
+          remote: user_signed_in?, method: "post", class: "winner-form") do %>
+
+        <%= hidden_field_tag :match_id, match.id %>
+        <%= hidden_field_tag :prediction_type, 1 %>
+
+        <% if context[:predictions] != nil &&
+          context[:predictions].where(match: match, prediction_type: 1) != [] %>
+
+          <% if context[:predictions].find_by(match: match, prediction_type: 1).
+          predicted_contestant == match.receiving_contestant %>
+
+            <%= hidden_field_tag :predicted_contestant_id,
+                match.receiving_contestant.id %>
+
+          <% else %>
+            <%= hidden_field_tag :predicted_contestant_id,
+                match.invited_contestant.id %>
+          <% end %>
+
+          <div class="col-md-6">
+            <div class="comment_section">
+              <h2>I predict this because...</h2>
+              <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('<%= context['public_url'] %>'); return false"> <img src="//www.redditstatic.com/spreddit8.gif" alt="submit to reddit" class= "reddit-button"/> </a>
+
+              <% if request.params[:user_id] %>
+                <%= text_area_tag :comment, context[:predictions].find_by(match: match, prediction_type: 1).comment,
+                    {:class => "comment_zone",
+                     :readonly => "readonly",
+                     :placeholder => "no comments..."} %>
+              <% else %>
+                <%= text_area_tag :comment, context[:predictions].find_by(match: match, prediction_type: 1).comment,
+                    {:class => "comment_zone",
+                     :placeholder => "add your comments here..."} %>
+              <% end %>
+
+            </div>
+          </div>
+
+        <% else %>
+          <%= hidden_field_tag :predicted_contestant_id, 0 %>
+
+          <div class="col-md-6">
+            <div class="comment_section">
+              <h2>I predict this because...</h2>
+              <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('<%= context['public_url'] %>'); return false"> <img src="//www.redditstatic.com/spreddit8.gif" alt="submit to reddit" class= "reddit-button"/> </a>
+
+              <% if request.params[:user_id] %>
+                <%= text_area_tag :comment, "",
+                    {:class => "comment_zone",
+                     :readonly => "readonly",
+                     :placeholder => "no comments..."} %>
+              <% else %>
+                <%= text_area_tag :comment, "",
+                    {:class => "comment_zone",
+                     :placeholder => "add your comments here..."} %>
+              <% end %>
+            </div>
+          </div>
+
+        <% end %>
+
+      <% end %>
+
+      <%= form_tag("/user_match_predictions",
+          remote: user_signed_in?, method: "post", class: "score-form") do %>
+
+        <%= hidden_field_tag :match_id, match.id %>
+
+        <% if context[:predictions] != nil && (
+          context[:predictions].where(match: match, prediction_type: 7) != [] || 
+          context[:predictions].where(match: match, prediction_type: 8) != [] ||
+          context[:predictions].where(match: match, prediction_type: 9) != []) %>
+
+          <% if context[:predictions].find_by(match: match, prediction_type: 1).
+          predicted_contestant == match.receiving_contestant %>
+
+            <%= hidden_field_tag :predicted_contestant_id,
+                match.receiving_contestant.id %>
+
+          <% else %>
+            <%= hidden_field_tag :predicted_contestant_id,
+                match.invited_contestant.id %>
+          <% end %>
+
+          <% if context[:predictions].where(match: match, prediction_type: 7) != [] %>
+
+            <%= hidden_field_tag :prediction_type, 7 %>
+
+          <% elsif context[:predictions].where(match: match, prediction_type: 8) != [] %>
+
+            <%= hidden_field_tag :prediction_type, 8 %>
+
+          <% else %>
+
+            <%= hidden_field_tag :prediction_type, 9 %>
+
+          <% end %>
+
+        <% else %>
+
+          <%= hidden_field_tag :predicted_contestant_id, 0 %>
+          <%= hidden_field_tag :prediction_type, 7 %>
+
+        <% end %>
+
+      <% end %>
+
+    </div>
+  </div>
+
+  <% if !request.params[:user_id] %>
+    <% if context[:predictions] != nil && 
+      context[:predictions].where(match: match) != [] %>
+
+      <div class="submitmatch_stage2">
+        <%= content_tag :a ,
+            :class => 'btn btn-default btn-submit btn-inactive' do %>SUBMITTED<i class="fa fa-check"></i>
+        <% end %>
+
+      </div>
+
+    <% else %>
+      <div class="submitmatch_stage2">
+        <%= content_tag :a, 'SUBMIT',
+            :class => "btn btn-default btn-submit btn-inactive" %>
+      </div>
+    <% end %>
+
+  <% elsif !user_signed_in? %>
+    <div class="submitmatch_stage2">
+      <%= link_to "Create your own predictions",
+      tournament_round_matches_path(1, 2),
+          :class => "btn btn-default " %>
+    </div>
+  <% elsif current_user.id != request.params[:user_id].to_i %>
+
+    <div class="submitmatch_stage2">
+      <%= link_to "Back to my predictions",
+      tournament_round_matches_path(1, 2),
+          :class => "btn btn-default " %>
+    </div>
+
+  <% end %>
+
+</div>
+
+
