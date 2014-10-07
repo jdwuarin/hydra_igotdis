@@ -41,18 +41,8 @@ $('th.Logo').on('click', function (event) {
   });
 
   // enable button
-  // only if user has selected a contestant
-  // for the most first blood
 
-  var firstblood_row = $(this).parents("div.matches-line").find(
-    "tbody.firstbloodlol").children("tr");
-
-  firstblood_row.children().each(function () {
-    if ($(this).hasClass("active")) {
-      enable_button($(this));
-    }
-
-  });
+  enable_button($(this));
 
 
 
@@ -123,12 +113,7 @@ $('th.firstblood').on('click', function (event) {
   var firstblood_row = $(this).parents("div.matches-line").find(
     "tbody.winnerlol").children("tr");
 
-  firstblood_row.children().each(function () {
-    if ($(this).hasClass("active")) {
-      enable_button($(this));
-    }
-
-  });
+  enable_button($(this));
 
 });
 
@@ -183,16 +168,43 @@ var disable_button = function(base) {
 
 var enable_button = function(base) {
 
-  button = base.parents("div.col-md-12").
-    find("a.btn-submit");
+  // if user has selected a winner contestant
+  var winner_row = base.parents("div.matches-line").find(
+    "tbody.winnerlol").children("tr");
+  var firstblood_row = base.parents("div.matches-line").find(
+    "tbody.firstbloodlol").children("tr");
 
-  if (button.hasClass("btn-inactive")) {
+  var winner_selected = false;
 
-    button.removeClass("btn-inactive");
-    button[0]["text"] = "SUBMIT";
+  winner_row.children().each(function () {
+    if ($(this).hasClass("active")) {
+      winner_selected = true;
+    }
 
-    button.children("i").remove();
+  });
 
-  }
+  // and a firstblood one too
+
+  firstblood_row.children().each(function () {
+    if (winner_selected && $(this).hasClass("active")) {
+
+      button = base.parents("div.col-md-12").
+        find("a.btn-submit");
+
+      if (button.hasClass("btn-inactive")) {
+
+        button.removeClass("btn-inactive");
+        button[0]["text"] = "SUBMIT";
+
+        button.children("i").remove();
+
+      }
+
+    }
+
+  });
+
+
+
 
 };
