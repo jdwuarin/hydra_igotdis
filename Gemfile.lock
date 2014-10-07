@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/capistrano/rvm.git
-  revision: dc35ec5e7a74a422250bd6ff5e8885c8b742d0e5
+  revision: 805d76b30443ff7f62a64d8e69fda22e29cb5765
   specs:
     capistrano-rvm (0.1.1)
       capistrano (~> 3.0)
@@ -39,8 +39,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     arel (5.0.1.20140414130214)
-    autoprefixer-rails (3.1.0.20140911)
+    autoprefixer-rails (3.1.1.20141001)
       execjs
     awesome_print (1.2.0)
     bcrypt-ruby (3.1.2)
@@ -67,7 +68,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    childprocess (0.5.4)
+    childprocess (0.5.5)
       ffi (~> 1.0, >= 1.0.11)
     code_analyzer (0.4.5)
       sexp_processor
@@ -269,6 +270,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   autoprefixer-rails
   bcrypt-ruby (= 3.1.2)
   bootstrap-sass (~> 3.2.0)

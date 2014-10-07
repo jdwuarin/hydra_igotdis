@@ -9,11 +9,11 @@ $('th.Logo').on('click', function (event) {
     "div.contestant")[0]["textContent"];
 
   $(this).parents("div.matches-line").find(
-    "form").children("#predicted_contestant_id").each(function() {
-
-      $(this)[0]["value"] = predicted_contestant;
-
-  });
+    "form.winner-form").children(
+      "#predicted_contestant_id")[0]["value"] = predicted_contestant;
+  $(this).parents("div.matches-line").find(
+    "form.score-form").children(
+      "#predicted_contestant_id")[0]["value"] = predicted_contestant;
 
 
   // deal with making plus minus buttons appear
@@ -41,7 +41,19 @@ $('th.Logo').on('click', function (event) {
   });
 
   // enable button
-  enable_button($(this));
+  // only if user has selected a contestant
+  // for the most first blood
+
+  var firstblood_row = $(this).parents("div.matches-line").find(
+    "tbody.firstbloodlol").children("tr");
+
+  firstblood_row.children().each(function () {
+    if ($(this).hasClass("active")) {
+      enable_button($(this));
+    }
+
+  });
+
 
 
 });
@@ -92,11 +104,40 @@ $("img.pluslogo").on("click", function(e) {
 
 });
 
+$('th.firstblood').on('click', function (event) {
+
+  // make the object active
+  $(this).siblings('th').removeClass('active');
+  $(this).addClass('active');
+
+  // update the forms (predicted contestant depends only on this click)
+  var predicted_contestant = $(this).children(
+    "div.contestant")[0]["textContent"];
+
+  $(this).parents("div.matches-line").find(
+    "form.most-first-blood-form").children(
+      "#predicted_contestant_id")[0]["value"] = predicted_contestant;
+
+  // enable button
+  // if user has selected a winner contestant
+  var firstblood_row = $(this).parents("div.matches-line").find(
+    "tbody.winnerlol").children("tr");
+
+  firstblood_row.children().each(function () {
+    if ($(this).hasClass("active")) {
+      enable_button($(this));
+    }
+
+  });
+
+});
+
 $('.comment_zone').bind('keyup', function () {
 
   enable_button($(this));
 
 });
+
 
 $("a.btn-submit").on("click", function(e) {
 
@@ -109,13 +150,15 @@ $("a.btn-submit").on("click", function(e) {
 
 });
 
-$("form.winner-form").on('ajax:success', function(data, status, xhr) {
+
+
+$("form").on('ajax:success', function(data, status, xhr) {
 
   disable_button($(this));
 
 });
 
-$("form.winner-form").on('ajax:error', function(xhr, status, error) {
+$("form").on('ajax:error', function(xhr, status, error) {
 
     button = $(this).parents("div.col-md-12").
       find("a.btn-submit");

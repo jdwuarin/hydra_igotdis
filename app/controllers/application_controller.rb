@@ -29,11 +29,23 @@ class ApplicationController < ActionController::Base
     end
 
     def store_location
-      session[:return_to] = request.url if request.get?
+
+      require 'addressable/uri'
+      uri = Addressable::URI.parse(request.url)
+
+      query_values = uri.query_values
+      if query_values
+        query_values.delete('user_id')
+        uri.query_values = query_values
+      end
+
+      session[:return_to] = uri.to_s if request.get?
     end
 
     def redirect_back_or(default, flash_messages={})
-      redirect_to(session[:return_to] || default, :flash => flash_messages)
+      redirect_to(session[:return_to] || default, 
+        :flash => flash_messages,
+        :params => params.delete(:user_id))
       session.delete(:return_to)
     end
 

@@ -1,0 +1,15 @@
+<% if is_public_page %>
+
+  <%= render '/matches/most_first_blood_cell/not_active_static',
+      t_contestant: t_contestant %>
+
+<% else %>
+
+  <th class="firstblood" colspan="3">
+    <%= content_tag :div, t_contestant.id.to_s,
+      hidden: true, class: "contestant" %>
+    <img class="swordlogo" src= <%= asset_path("sword.png") %> >
+    <p>Most First Bloods</p>
+  </th>
+
+<% end %>

@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :store_location, only: [:index]
+  after_action :store_location, only: [:index]
 
   def index
     tournament = Tournament.find(params[:tournament_id])
