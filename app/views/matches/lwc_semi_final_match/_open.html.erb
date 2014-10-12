@@ -84,47 +84,6 @@
               </tr>
             </tbody>
 
-            <tbody class="firstbloodlol">
-              <tr>
-
-                <% if context[:predictions] != nil &&
-                  context[:predictions].where(match: match, prediction_type: 3) != [] && 
-                  context[:predictions].find_by(match: match, prediction_type: 3).
-                  predicted_contestant == match.receiving_contestant %>
-
-
-                  <%= render '/matches/most_first_blood_cell/active_dynamic',
-                      t_contestant: match.receiving_contestant,
-                      is_public_page: request.params[:user_id] ? true : false %>
-
-                <% else %>
-
-                  <%= render '/matches/most_first_blood_cell/not_active_dynamic',
-                      t_contestant: match.receiving_contestant,
-                      is_public_page: request.params[:user_id] ? true : false %>
-
-                <% end %>
-
-                <% if context[:predictions] != nil &&
-                  context[:predictions].where(match: match, prediction_type: 3) != [] && 
-                  context[:predictions].find_by(match: match, prediction_type: 3).
-                  predicted_contestant == match.invited_contestant %>
-
-                  <%= render '/matches/most_first_blood_cell/active_dynamic',
-                      t_contestant: match.invited_contestant,
-                      is_public_page: request.params[:user_id] ? true : false %>
-
-                <% else %>
-
-                  <%= render '/matches/most_first_blood_cell/not_active_dynamic',
-                      t_contestant: match.invited_contestant,
-                      is_public_page: request.params[:user_id] ? true : false %>
-
-                <% end %>
-
-              </tr>
-            </tbody>
-
           </table>
         </table>
       </div>

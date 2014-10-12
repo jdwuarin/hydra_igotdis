@@ -1,5 +1,26 @@
 <div class="container">
-  <div class="notrdy">
-    <h2>This stage is not ready yet, try again later!</h2>
+  <div class="stage2">
+
+    <% context[:matches].each do |match| %>
+
+
+      <% if match.date >= DateTime.now %>
+
+        <%= render '/matches/lwc_quarter_final_match/open',
+            match: match, context: context %>
+
+      <% else %>
+
+        <%= render '/matches/lwc_quarter_final_match/closed',
+            match: match, context: context %>
+
+      <% end %>
+
+    <% end %>
+
+    <%= javascript_include_tag "quarter_final", "data-turbolinks-track" => true %>
+
   </div>
 </div>
+
+

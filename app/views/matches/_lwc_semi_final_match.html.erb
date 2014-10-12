@@ -1,12 +1,12 @@
 
 <% if match.date >= DateTime.now %>
 
-  <%= render '/matches/lwc_semi_final_match/open',
+  <%= render '/matches/lwc_quarter_final_match/open',
       match: match, context: context %>
 
 <% else %>
 
-  <%= render '/matches/lwc_semi_final_match/closed',
+  <%= render '/matches/lwc_quarter_final_match/closed',
       match: match, context: context %>
 
 <% end %>
