@@ -18,6 +18,7 @@ gem 'ffaker'
 gem 'nested-hstore'
 gem 'passenger'
 gem 'will_paginate', '3.0.4'
+gem 'bootstrap-will_paginate', '0.0.10'
 gem 'factory_girl_rails', '4.4.0'
 gem "font-awesome-rails"
 gem "addressable"
