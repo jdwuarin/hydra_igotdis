@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable
+         :omniauthable, :confirmable
 
   validates :username, length: { maximum: 50, minimum: 2 }, :allow_blank => true
   validates :username, :uniqueness => {:case_sensitive => false}
@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )
-        # user.skip_confirmation! # not asking for email confirmation for now
+        user.skip_confirmation!
         user.save!
       end
     end

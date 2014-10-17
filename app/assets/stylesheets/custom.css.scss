@@ -240,17 +240,6 @@ h3 {
 
 }
 
-.signup .btn {
-    background-color:white;
-    color: black; 
-    border-radius: 0px;
-    font-family: 'Jockey One';
-    margin-right: 1em;
-    margin-left: 1em;
-    font-size: 20px;
-    border: 1px solid;
-}
-
 .signin .btn {
     background-color:white;
     color: black; 
@@ -303,42 +292,7 @@ h3 {
     margin-right: 1em;
 }
 
-.signin {
-    font-family: 'Jockey One';
-    color: white;
-    background-color: rgba(245, 245, 245, 0.4);
-    text-align: center;
-    width: 40em;
-    margin: 5em auto 0 auto;
-    height: 30em;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.signin h2 {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    font-size: 3em;
-}
-
-.signin p {
-    font-size: 1.5em;
-    margin-bottom: 0.3em;
-
-}
-
-
-.signin .box {
-    background-color: rgba(245, 245, 245, 1);
-    margin-bottom: 1em;
-    color: black;
-    width: 12em;
-}
-
-
-.signup {
+.registration-base {
 
     font-family: 'Jockey One';
     color: white;
@@ -353,30 +307,64 @@ h3 {
     right: 0;
 }
 
-.login {
-
-    height: 35em;
-
-}
-
-.signup h2 {
+.registration-base h2 {
 
     padding-bottom: 0.5em;
     font-size: 3em;
 }
 
-.signup p {
+.registration-base p {
     font-size: 1.5em;
     margin-bottom: 0.3em;
 
 }
 
+.registration-base .btn {
+    border-radius: 2px;
+    font-family: 'Jockey One';
+    margin-top: 0.5em;
+    margin-right: 1em;
+    margin-left: 1em;
+    font-size: 20px;
+    border: 1px solid;
+    background-color: #cc6600;
+    color: white;
+    border: none;
+}
 
-.signup .box {
+.registration-base .box {
     background-color: rgba(245, 245, 245, 1);
     margin-bottom: 0;
     color: black;
     width: 12em;
+}
+
+.login {
+    height: 37em;
+}
+
+.login {
+    height: 37em;
+}
+
+.new-confirmation-email {
+    height: 20em;
+}
+
+.new-password-email {
+    height: 20em;
+}
+
+.edit-password-email {
+    height: 23em;
+}
+
+.shared-registration {
+    color: #cc6600;
+}
+
+.shared-registration:hover {
+    color: #cc6600;
 }
 
 
@@ -413,13 +401,6 @@ h3 {
 }
 
 .signin .btn {
-    background-color: #cc6600;
-    color: white;
-    border: none;
-    margin-top: 0.5em;
-}
-
-.signup .btn {
     background-color: #cc6600;
     color: white;
     border: none;
