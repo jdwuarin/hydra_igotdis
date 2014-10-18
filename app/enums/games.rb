@@ -1,8 +1,8 @@
 module Games
 
   LOL = 1
-  DOTA = 2
-  STARCRAFT = 3
+  DOTA_2 = 2
+  STARCRAFT_2 = 3
 
   # mapping between game names and whether
   # a game is a team game. As in prediction_types,
@@ -12,8 +12,8 @@ module Games
 
   INFO = {
     LOL => [TEAM_GAME],
-    DOTA => [!TEAM_GAME],
-    STARCRAFT => [!TEAM_GAME]
+    DOTA_2 => [TEAM_GAME],
+    STARCRAFT_2 => [!TEAM_GAME]
   }
 
 end
