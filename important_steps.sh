@@ -58,3 +58,5 @@ Update: app/assets/stylesheets/application.css by adding:
 Update: app/assets/javascripts/application.jsby adding:
 
 //= require bootstrap.min
+
+tomaso is awesome
