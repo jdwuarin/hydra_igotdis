@@ -8,12 +8,20 @@ module Games
   # a game is a team game. As in prediction_types,
   # we prefer mapping to an array.
 
-  TEAM_GAME = true
 
   INFO = {
-    LOL => [TEAM_GAME],
-    DOTA_2 => [TEAM_GAME],
-    STARCRAFT_2 => [!TEAM_GAME]
+    LOL => {
+      "team_game" => true
+      },
+    DOTA_2 => {
+      "team_game" => true,
+      "api" => {
+        "key" => "1328C1674312F4020F4D6DFC828830A8",
+      }
+    },
+    STARCRAFT_2 => {
+      "team_game" => false
+      },
   }
 
 end
