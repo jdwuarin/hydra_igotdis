@@ -11,16 +11,22 @@ module Games
 
   INFO = {
     LOL => {
-      "team_game" => true
+      "team_game" => true,
+      "user_nomenclature" => "summoner",
+      "character_nomenclature" => "champion"
       },
     DOTA_2 => {
       "team_game" => true,
+      "user_nomenclature" => "",
+      "character_nomenclature" => "hero",
       "api" => {
         "key" => "1328C1674312F4020F4D6DFC828830A8",
       }
     },
     STARCRAFT_2 => {
-      "team_game" => false
+      "team_game" => false,
+      "user_nomenclature" => "",
+      "character_nomenclature" => "race"
       },
   }
 

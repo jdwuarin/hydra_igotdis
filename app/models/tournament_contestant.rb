@@ -23,4 +23,17 @@ class TournamentContestant < ActiveRecord::Base
             {:scope => [:tournament_id, :contestant_id, :contestant_type]}
 
 
+  def to_s()
+
+    "Tournament: " + self.tournament.name +
+    ", contestant_type: " + self.contestant_type +
+    if self.contestant_type == Player
+      ", contestant_type: " + self.contestant.username
+    else
+      ", contestant_type: " + self.contestant.name
+    end
+
+  end
+
+
 end

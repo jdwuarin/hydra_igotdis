@@ -12,11 +12,13 @@ module RoundTypes
   SEMI_FINALS = 3
   FINAL = 4
 
+  active = true
+
   LIST = {
-    GROUP_STAGE => true,
-    QUARTER_FINALS => true,
-    SEMI_FINALS => true,
-    FINAL => true
+    GROUP_STAGE => active,
+    QUARTER_FINALS => active,
+    SEMI_FINALS => active,
+    FINAL => active
   }
 
   INFO = {

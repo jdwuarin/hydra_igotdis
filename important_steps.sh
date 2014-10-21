@@ -11,7 +11,7 @@ bundle exec rake db:seed
 rails generate migration add_something_to_games something:integer
 
 # reomove a column from a model
-rails generate migration remove_something_from_games something:integer
+rails generate migration remove_something_from_games
 
 # destroying a migration
 rails destroy migration add_something_to_games

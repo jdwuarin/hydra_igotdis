@@ -17,7 +17,7 @@ class Round < ActiveRecord::Base
 
   def to_s()
     "Round Id: " + self.id.to_s +
-    ", round_type: " + round_types[self.round_type]
+    ", round_type: " + self.round_type.to_s
   end
 
 end

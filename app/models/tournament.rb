@@ -15,5 +15,12 @@ class Tournament < ActiveRecord::Base
   validates :group_naming_convention,
             :presence => true, :if => "!has_groups.blank?"
 
+
+  has_attached_file :avatar, :styles => { :large => "1024x768>",
+                                          :medium => "640x480>",
+                                          :thumb => "120x90>" },
+                    :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
   validates_with DatesAreValid
 end
