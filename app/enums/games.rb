@@ -8,14 +8,21 @@ module Games
   # a game is a team game. As in prediction_types,
   # we prefer mapping to an array.
 
+  NAMES = {
+    "league of legends" => LOL,
+    "Defense of the Ancients 2" => DOTA_2,
+    "Starcraft 2" => STARCRAFT_2
+  }
 
   INFO = {
     LOL => {
+      "name" => "league of legends",
       "team_game" => true,
       "user_nomenclature" => "summoner",
       "character_nomenclature" => "champion"
-      },
+    },
     DOTA_2 => {
+      "name" => "Defense of the Ancients 2",
       "team_game" => true,
       "user_nomenclature" => "",
       "character_nomenclature" => "hero",
@@ -24,10 +31,11 @@ module Games
       }
     },
     STARCRAFT_2 => {
+      "name" => "Starcraft 2",
       "team_game" => false,
       "user_nomenclature" => "",
       "character_nomenclature" => "race"
-      },
+    },
   }
 
 end
