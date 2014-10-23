@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021212037) do
+ActiveRecord::Schema.define(version: 20141023031331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20141021212037) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.text     "description"
   end
 
   add_index "players", ["username", "game_id"], name: "index_players_on_username_and_game_id", unique: true, using: :btree
@@ -141,6 +142,7 @@ ActiveRecord::Schema.define(version: 20141021212037) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.text     "description"
   end
 
   add_index "teams", ["name", "game_id"], name: "index_teams_on_name_and_game_id", unique: true, using: :btree

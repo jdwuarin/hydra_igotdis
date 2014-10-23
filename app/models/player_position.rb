@@ -6,6 +6,6 @@ class PlayerPosition < ActiveRecord::Base
   validates :game_id, presence: true
 
   def to_s
-    "Player Position: " + self.name + ", Game: " + games[game_id][0]
+    Games::INFO[self.game_id]["name"] + " " + self.name
   end
 end

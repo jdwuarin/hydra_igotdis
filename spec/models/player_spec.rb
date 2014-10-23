@@ -16,6 +16,7 @@ describe Player do
   it { should respond_to(:team_player) }
   it { should respond_to(:team) }
   it { should respond_to(:tournament_contestants) }
+  it { should respond_to(:description) }
 
   it { should be_valid }
 
@@ -33,13 +34,21 @@ describe Player do
   end
 
   describe "when username and game_id combination is not unique" do
-      before do
-        @player_with_same_credentials = @player.dup
-        @player_with_same_credentials.continent_id = 2
-      end
+    before do
+      @player_with_same_credentials = @player.dup
+      @player_with_same_credentials.continent_id = 2
+    end
 
-      subject { @player_with_same_credentials }
-      it { should_not be_valid }
+    subject { @player_with_same_credentials }
+    it { should_not be_valid }
+  end
+
+  describe "when player_position is from a different game" do
+    before do
+      @player.game_id = Games::DOTA_2
+    end
+
+    it { should_not be_valid }
   end
 
   describe "when deleted that was part of a team," do

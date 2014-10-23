@@ -16,7 +16,7 @@ module Games
 
   INFO = {
     LOL => {
-      "name" => "league of legends",
+      "name" => "League of Legends",
       "team_game" => true,
       "user_nomenclature" => "summoner",
       "character_nomenclature" => "champion"

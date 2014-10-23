@@ -39,6 +39,11 @@ describe Tournament do
     it { should_not be_valid }
   end
 
+  describe "when tournament_type not congruent with tournament game" do
+    before { @tournament.game_id = Games::DOTA_2 }
+    it { should_not be_valid }
+  end
+
   describe "when has_groups is true" do
     before { @tournament_with_groups = create(:tournament_with_groups) }
 

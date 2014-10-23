@@ -8,5 +8,15 @@ class TeamPlayer < ActiveRecord::Base
   validates_presence_of :team
   validates_presence_of :player
 
-  accepts_nested_attributes_for :player
+  validate :team_game_same_as_player_game
+
+  def team_game_same_as_player_game
+    return unless errors.blank?
+
+    unless team.game_id == player.game_id
+      errors[:type] << "team game and player game must be identical"
+    end
+  end
+
+
 end

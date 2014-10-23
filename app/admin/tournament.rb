@@ -1,19 +1,26 @@
 ActiveAdmin.register Tournament do
 
   permit_params :name, :tournament_type, :venue_id, :continent_id,
-  :game_id, :start_date, :end_date, :description,
-  :special_mention, :has_groups, :group_count,
-  :group_naming_convention, :image
+    :game_id, :start_date, :end_date, :description,
+    :special_mention, :has_groups, :group_count,
+    :group_naming_convention, :image,
+    tournament_contestants_attributes: [:id, :tournament_id,
+                                        :contestant_type, :contestant_id,
+                                        :group_id, :_destroy]
 
   index do
     id_column
     column :name
-    column :game_id
-    column :tournament_type do |tournament_type|
-      TournamentTypes::BLUB[tournament_type]
+    column :game do |tournament|
+      Games::INFO[tournament.game_id]["name"]
+    end
+    column :tournament_type do |tournament|
+      TournamentTypes::INFO[tournament.tournament_type]["name"]
     end
     column :venue
-    column :continent_id
+    column :continent do |tournament|
+      Continents::INFO[tournament.continent_id]["name"]
+    end
     column :start_date
     column :end_date
     column :has_groups
@@ -43,6 +50,22 @@ ActiveAdmin.register Tournament do
       f.input :image, :as => :file,
               :hint => f.template.image_tag(f.object.image.url(:medium))
     end
+
+    type_collection = [Player.name, Team.name]
+    f.inputs do
+      f.has_many :tournament_contestants,
+                 :allow_destroy => true do |tc|
+
+        tc.input :contestant_type,
+          :as => :select, :collection => type_collection
+        tc.input :contestant_id,
+          :as => :select, :collection => (Player.all.order(:username) + Team.all.order(:name)).map{|t| ["#{t.to_s}", t.id]}
+        tc.input :group_id,
+          :as => :select, :collection => Groups::NAMES
+
+      end
+    end
+
     f.actions
   end
 end

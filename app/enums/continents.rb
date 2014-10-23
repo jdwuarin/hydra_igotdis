@@ -18,4 +18,34 @@ module Continents
     "Australia" => AUSTRALIA
   }
 
+  INFO = {
+    ASIA => {
+      "name" => "Asia"
+    },
+
+    AFRICA => {
+      "name" => "Africa"
+    },
+
+    NORTH_AMERICA => {
+      "name" => "North America"
+    },
+    
+    SOUTH_AMERICA => {
+      "name" => "South America"
+    },
+
+    ANTARCTICA => {
+      "name" => "Antarctica"
+    },
+
+    EUROPE => {
+      "name" => "Europe"
+    },
+
+    AUSTRALIA => {
+      "name" => "Australia"
+    },
+  }
+
 end

@@ -13,8 +13,26 @@ module TournamentTypes
     "LoL World Championship" => LOL_WORLD_CUP
   }
 
-  BLUB = {
-    DEFAULT_DOTA_2 => "Default DotA 2 tournament"
+  INFO = {
+    DEFAULT_LOL => {
+      "name" => "Default LoL tournament",
+      "game" => Games::LOL
+    },
+
+    DEFAULT_DOTA_2 => {
+      "name" => "Default DotA 2 tournament",
+      "game" => Games::DOTA_2
+    },
+
+    DEFAULT_STARCRAFT_2 => {
+      "name" => "Default Starcraft 2 tournament",
+      "game" => Games::STARCRAFT_2
+    },
+    
+    LOL_WORLD_CUP => {
+      "name" => "LoL World Championship",
+      "game" => Games::LOL
+    },
   }
 
 end

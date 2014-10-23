@@ -11,8 +11,7 @@ class Team < ActiveRecord::Base
   validates :name, :game_id, :uniqueness =>
             {:scope => [:name, :game_id]}
 
-  accepts_nested_attributes_for :team_players
-  accepts_nested_attributes_for :players
+  accepts_nested_attributes_for :team_players, allow_destroy: true
 
   has_attached_file :logo, :styles => { :large => "500x500",
                                         :medium => "300x300>",
@@ -21,7 +20,7 @@ class Team < ActiveRecord::Base
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
   def to_s()
-    "Team: " + self.name + ", Game: " + games[game_id][0]
+    self.name + " team, " + Games::INFO[self.game_id]["name"] + " game"
   end
 
 end

@@ -16,6 +16,20 @@ describe TournamentContestant do
 
   it { should be_valid }
 
+  describe "when tournament game and contestant game don't match" do
+    before do
+      @tournament_contestant.contestant.game_id = Games::DOTA_2
+    end
+    it { should_not be_valid }
+  end
+
+  describe "when contestant_type not congruent with tournament" do
+    before do
+      @tournament_contestant.contestant = create(:player)
+    end
+    it { should_not be_valid }
+  end
+
   describe "when tournament, contestant, contestant_type 
             combination is not unique" do
       before do

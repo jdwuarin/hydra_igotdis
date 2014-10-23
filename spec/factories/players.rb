@@ -7,7 +7,7 @@ FactoryGirl.define do
     last_name Faker::Name.last_name
     player_position
     date_of_birth { 20.years.ago }
-    continent_id 1
-    game_id 1
+    continent_id Continents::ASIA
+    game_id Games::LOL
   end
 end

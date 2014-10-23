@@ -5,7 +5,6 @@ FactoryGirl.define do
     name
     continent_id Continents::ASIA
     game_id Games::LOL
-    logo "don't care"
   end
 
   factory :LWC_ahq, parent: :team do
