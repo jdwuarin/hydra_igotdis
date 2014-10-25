@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023031331) do
+ActiveRecord::Schema.define(version: 20141024200559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,10 @@ ActiveRecord::Schema.define(version: 20141023031331) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "in_game_id"
   end
+
+  add_index "characters", ["in_game_id", "game_id"], name: "index_characters_on_in_game_id_and_game_id", unique: true, using: :btree
 
   create_table "identities", force: true do |t|
     t.integer  "user_id"
@@ -84,7 +87,11 @@ ActiveRecord::Schema.define(version: 20141023031331) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "game_id"
+    t.integer  "in_game_id"
   end
+
+  add_index "matches", ["in_game_id", "game_id"], name: "index_matches_on_in_game_id_and_game_id", unique: true, using: :btree
 
   create_table "player_positions", force: true do |t|
     t.string   "name"
@@ -108,8 +115,10 @@ ActiveRecord::Schema.define(version: 20141023031331) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.text     "description"
+    t.integer  "in_game_id"
   end
 
+  add_index "players", ["in_game_id", "game_id"], name: "index_players_on_in_game_id_and_game_id", unique: true, using: :btree
   add_index "players", ["username", "game_id"], name: "index_players_on_username_and_game_id", unique: true, using: :btree
 
   create_table "rounds", force: true do |t|

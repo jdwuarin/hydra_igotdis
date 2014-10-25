@@ -24,16 +24,13 @@ module Games
     DOTA_2 => {
       "name" => "Defense of the Ancients 2",
       "team_game" => true,
-      "user_nomenclature" => "",
+      "user_nomenclature" => "player",
       "character_nomenclature" => "hero",
-      "api" => {
-        "key" => "1328C1674312F4020F4D6DFC828830A8",
-      }
     },
     STARCRAFT_2 => {
       "name" => "Starcraft 2",
       "team_game" => false,
-      "user_nomenclature" => "",
+      "user_nomenclature" => "player",
       "character_nomenclature" => "race"
     },
   }
