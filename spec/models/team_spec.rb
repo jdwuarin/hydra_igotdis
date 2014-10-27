@@ -9,6 +9,7 @@ describe Team do
   it { should respond_to(:name) }
   it { should respond_to(:continent_id) }
   it { should respond_to(:game_id) }
+  it { should respond_to(:description) }
   it { should respond_to(:team_players) }
   it { should respond_to(:players) }
   it { should respond_to(:tournament_contestants) }

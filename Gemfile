@@ -10,6 +10,10 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'rails_best_practices'
+gem 'activeadmin', github: 'activeadmin'
+gem "just-datetime-picker"
+gem "paperclip", "~> 4.2"
+gem "rmagick"
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'sprockets', '2.11.0'

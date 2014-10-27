@@ -6,7 +6,7 @@ class PredictionTypeValidator < ActiveModel::Validator
     return unless record.errors.blank?
 
     unless PredictionTypes::LIST[record.prediction_type]
-      record.errors[:type] << 
+      record.errors[:type] <<
         'prediction_type was not valid.'
     end
 

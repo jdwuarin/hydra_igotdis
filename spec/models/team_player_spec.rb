@@ -30,4 +30,9 @@ describe TeamPlayer do
     it { should_not be_valid }
   end
 
+  describe "when team game different from player game" do
+    before { @team_player.team.game_id = Games::DOTA_2 }
+    it { should_not be_valid }
+  end
+
 end

@@ -44,6 +44,8 @@ namespace :deploy do
     end
   end
 
+  after("deploy:compile_assets", "deploy:build_missing_paperclip_styles")
+
   after :publishing, 'deploy:restart'
   after :finishing, 'deploy:cleanup'
 

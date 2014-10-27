@@ -5,6 +5,13 @@ module Groups
   GROUP_C = GROUP_3 = 3
   GROUP_D = GROUP_4 = 4
 
+  NAMES = {
+    "Group A/1" => GROUP_A,
+    "Group B/2" => GROUP_B,
+    "Group C/3" => GROUP_C,
+    "Group D/4" => GROUP_D,
+  }
+
   INFO = {
     GROUP_A => {
       GroupNamingConventions::LETTERS => "Group A",

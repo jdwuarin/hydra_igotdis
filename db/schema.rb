@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017112708) do
+ActiveRecord::Schema.define(version: 20141026185058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,38 @@ ActiveRecord::Schema.define(version: 20141017112708) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
+  create_table "admin_users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "characters", force: true do |t|
+    t.integer  "game_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.integer  "in_game_id"
+  end
+
+  add_index "characters", ["in_game_id", "game_id"], name: "index_characters_on_in_game_id_and_game_id", unique: true, using: :btree
+
   create_table "identities", force: true do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -51,7 +83,15 @@ ActiveRecord::Schema.define(version: 20141017112708) do
     t.hstore   "results"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "game_id"
+    t.integer  "in_game_id"
   end
+
+  add_index "matches", ["in_game_id", "game_id"], name: "index_matches_on_in_game_id_and_game_id", unique: true, using: :btree
 
   create_table "player_positions", force: true do |t|
     t.string   "name"
@@ -68,11 +108,17 @@ ActiveRecord::Schema.define(version: 20141017112708) do
     t.date     "date_of_birth"
     t.integer  "continent_id"
     t.integer  "game_id"
-    t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.text     "description"
+    t.integer  "in_game_id"
   end
 
+  add_index "players", ["in_game_id", "game_id"], name: "index_players_on_in_game_id_and_game_id", unique: true, using: :btree
   add_index "players", ["username", "game_id"], name: "index_players_on_username_and_game_id", unique: true, using: :btree
 
   create_table "rounds", force: true do |t|
@@ -99,9 +145,13 @@ ActiveRecord::Schema.define(version: 20141017112708) do
     t.string   "name"
     t.integer  "continent_id"
     t.integer  "game_id"
-    t.string   "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.text     "description"
   end
 
   add_index "teams", ["name", "game_id"], name: "index_teams_on_name_and_game_id", unique: true, using: :btree
@@ -129,6 +179,15 @@ ActiveRecord::Schema.define(version: 20141017112708) do
     t.integer  "group_naming_convention"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
+    t.string   "special_mention"
+    t.integer  "venue_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "tournament_url"
+    t.decimal  "prize_pool"
   end
 
   create_table "user_match_predictions", force: true do |t|
@@ -142,6 +201,22 @@ ActiveRecord::Schema.define(version: 20141017112708) do
   end
 
   add_index "user_match_predictions", ["match_id", "user_id", "prediction_type"], name: "index_ump_on_match_and_user_and_prediction_type", unique: true, using: :btree
+
+  create_table "user_profiles", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.integer  "points"
+    t.integer  "title"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
+  add_index "user_profiles", ["user_id", "game_id"], name: "index_user_profiles_on_user_id_and_game_id", unique: true, using: :btree
 
   create_table "user_round_predictions", force: true do |t|
     t.integer  "round_id"

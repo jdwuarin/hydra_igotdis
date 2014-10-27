@@ -50,6 +50,10 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for(resource)
+      if resource.class == AdminUser
+        return admin_root_path
+      end
+
       if resource.username
         session[:return_to] || root_path
       else

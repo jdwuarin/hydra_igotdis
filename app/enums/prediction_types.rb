@@ -15,16 +15,18 @@ module PredictionTypes
   SCORE_3_1 = 8
   SCORE_3_2 = 9
 
+  active = true
+
   LIST = {
-    WINNER => true,
-    DRAW => true,
-    MOSTFIRSTBLOOD => true,
-    MOSTDRAGON => true,
-    SCORE_2_0 => true,
-    SCORE_2_1 => true,
-    SCORE_3_0 => true,
-    SCORE_3_1 => true,
-    SCORE_3_2 => true
+    WINNER => active,
+    DRAW => active,
+    MOSTFIRSTBLOOD => active,
+    MOSTDRAGON => active,
+    SCORE_2_0 => active,
+    SCORE_2_1 => active,
+    SCORE_3_0 => active,
+    SCORE_3_1 => active,
+    SCORE_3_2 => active
   }
 
   # classes of which lwc predictions can be part of

@@ -16,6 +16,9 @@ describe Tournament do
   it { should respond_to(:tournament_contestants) }
   it { should respond_to(:rounds) }
   it { should respond_to(:matches) }
+  it { should respond_to(:description) }
+  it { should respond_to(:image) }
+  it { should respond_to(:special_mention) }
 
   it { should be_valid }
 
@@ -33,6 +36,11 @@ describe Tournament do
   end
   describe "when game_id is not present" do
     before { @tournament.game_id = nil }
+    it { should_not be_valid }
+  end
+
+  describe "when tournament_type not congruent with tournament game" do
+    before { @tournament.game_id = Games::DOTA_2 }
     it { should_not be_valid }
   end
 

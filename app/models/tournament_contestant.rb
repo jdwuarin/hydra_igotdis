@@ -22,5 +22,35 @@ class TournamentContestant < ActiveRecord::Base
   validates :tournament_id, :contestant_id, :contestant_type, :uniqueness =>
             {:scope => [:tournament_id, :contestant_id, :contestant_type]}
 
+  validate :contestant_type_and_game_type_validations
+
+  def contestant_type_and_game_type_validations
+    return unless errors.blank?
+
+    cond_1 = Games::INFO[tournament.game_id]["team_game"]
+    cond_2 = contestant_type == Player.name
+    cond_3 = contestant_type == Team.name
+    if cond_1 && cond_2 || !cond_1 && cond_3
+      errors[:type] << "team games require team contestants and vice versa"
+    end
+
+    unless tournament.game_id == contestant.game_id
+      errors[:type] << "tournament game must be the same as contestant game"
+    end
+  end
+
+
+  def to_s()
+
+    "Tournament: " + self.tournament.name +
+    ", contestant_type: " + self.contestant_type +
+    if self.contestant_type == Player
+      ", contestant_type: " + self.contestant.username
+    else
+      ", contestant_type: " + self.contestant.name
+    end
+
+  end
+
 
 end
