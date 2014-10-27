@@ -7,6 +7,29 @@ a {
   text-decoration: none;
   color: white; }
 
+.splash-background {
+  position: relative;
+  width: 100%;
+  height: 100%; }
+  .splash-background .dota2:hover {
+    opacity: 1; }
+  .splash-background .lol:hover {
+    opacity: 1; }
+  .splash-background .dota2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8; }
+  .splash-background .lol {
+    position: absolute;
+    top: 0;
+    left: 360px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8; }
+
 /* NAVBAR */
 .navbar {
   position: fixed;
@@ -43,6 +66,12 @@ a {
     width: 80%;
     margin-right: -50%;
     height: 64px; }
+    .navbar .right-content-area a {
+      display: inline-block;
+      height: 64px;
+      border-radius: 15px; }
+    .navbar .right-content-area a:hover {
+      background-color: rgba(24, 35, 46, 0.5); }
   .navbar .right-content-area ul li {
     display: inline;
     padding-left: 15px;
@@ -50,8 +79,6 @@ a {
   .navbar li {
     border-left: 2px solid black;
     line-height: 50px; }
-  .navbar li:hover {
-    background-color: rgba(24, 35, 46, 0.5); }
   .navbar ul {
     margin: 0;
     margin-top: 7px; }
@@ -66,6 +93,22 @@ a {
   padding-top: 0;
   border-color: 1px solid black;
   margin-top: 4em; }
+  .leftbar .toggle-down {
+    display: block;
+    line-height: 30px;
+    visibility: normal;
+    /* set to hidden */
+    margin-top: 0px;
+    /* set to -58 */
+    z-index: 0;
+    /* set to 10 */ }
+    .leftbar .toggle-down p {
+      padding-left: 45px;
+      margin-top: -15px;
+      margin-bottom: 0px;
+      line-height: 30px; }
+    .leftbar .toggle-down li {
+      padding-top: 0px; }
   .leftbar li {
     padding-bottom: 5px;
     list-style-type: none;
@@ -88,9 +131,9 @@ a {
 
 /* CONTENT */
 .content {
+  position: fixed;
   margin-left: 250px;
   margin-top: 52px;
-  position: absolute;
   background-color: black;
   background-image: url("../images/amumu.jpg");
   background-repeat: no-repeat;
@@ -98,8 +141,8 @@ a {
   height: 100%;
   width: 100%; }
   .content .profile {
-    margin-top: 80px;
-    margin-left: 80px;
+    margin-top: 4em;
+    margin-left: 4em;
     margin-right: 80px;
     margin-bottom: 80px;
     background-color: rgba(151, 151, 151, 0.8);
@@ -132,6 +175,11 @@ a {
           height: 40px;
           text-align: center;
           background-color: #2e3943; }
+          .content .profile .profile-head .profile-menu td a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding-top: 9px; }
         .content .profile .profile-head .profile-menu td:hover {
           background-color: #08111b; }
         .content .profile .profile-head .profile-menu td .active {
@@ -141,22 +189,90 @@ a {
       margin-bottom: 30px;
       margin-left: 42px;
       margin-right: 42px;
-      height: 55%;
       background-color: white; }
-      .content .profile .profile-body .predictions table {
-        width: 100%;
-        border-collapse: collapse; }
-      .content .profile .profile-body .predictions tr {
-        color: white;
-        height: 45px;
-        text-align: center;
-        border-bottom: 1px solid white;
-        border-top: 1px solid white; }
-      .content .profile .profile-body .predictions .win {
-        background-color: green; }
-      .content .profile .profile-body .predictions .lose {
-        background-color: red; }
-      .content .profile .profile-body .predictions .instructions {
-        background-color: #08111b; }
+      .content .profile .profile-body .profile-predictions {
+        display: block;
+        overflow-y: scroll;
+        height: 290px; }
+        .content .profile .profile-body .profile-predictions table {
+          width: 100%;
+          border-collapse: collapse;
+          height: 150px; }
+        .content .profile .profile-body .profile-predictions tbody {
+          max-height: 200px; }
+        .content .profile .profile-body .profile-predictions tr {
+          overflow-y: scroll;
+          color: white;
+          height: 45px;
+          text-align: center;
+          border-bottom: 1px solid white;
+          border-top: 1px solid white; }
+          .content .profile .profile-body .profile-predictions tr a:hover {
+            text-decoration: underline; }
+        .content .profile .profile-body .profile-predictions .win {
+          background-color: #4ABA70; }
+        .content .profile .profile-body .profile-predictions .lose {
+          background-color: #BA4A4A; }
+        .content .profile .profile-body .profile-predictions .instructions {
+          background-color: #08111b; }
+      .content .profile .profile-body .profile-profile {
+        height: 290px; }
+        .content .profile .profile-body .profile-profile .new-group-button {
+          background-color: #08111b;
+          padding-left: 1em;
+          padding-top: 1em; }
+          .content .profile .profile-body .profile-profile .new-group-button a {
+            display: inline-block;
+            background-color: #2e3943;
+            padding: 2px 4px 2px 4px;
+            border-radius: 3px; }
+          .content .profile .profile-body .profile-profile .new-group-button a:hover {
+            color: #08111b; }
+        .content .profile .profile-body .profile-profile table {
+          width: 100%;
+          background-color: #08111b; }
+        .content .profile .profile-body .profile-profile tr {
+          text-align: left;
+          height: 45px;
+          border-top: 1px solid black;
+          border-bottom: 1px solid black;
+          font-size: 20px; }
+        .content .profile .profile-body .profile-profile td {
+          padding-left: 2em;
+          padding-top: 1em; }
+      .content .profile .profile-body .profile-groups {
+        display: block;
+        overflow-y: scroll;
+        height: 290px; }
+        .content .profile .profile-body .profile-groups .new-group-button {
+          background-color: #08111b;
+          padding-left: 1.6em;
+          padding-top: 1.3em; }
+          .content .profile .profile-body .profile-groups .new-group-button a {
+            display: inline-block;
+            background-color: #2e3943;
+            padding: 2px 4px 2px 4px;
+            border-radius: 3px; }
+          .content .profile .profile-body .profile-groups .new-group-button a:hover {
+            color: #08111b; }
+        .content .profile .profile-body .profile-groups table {
+          width: 100%;
+          background-color: #08111b;
+          padding-top: 1em;
+          padding-left: 1em;
+          padding-right: 1em;
+          border-spacing: 10px; }
+          .content .profile .profile-body .profile-groups table .group {
+            background-color: #2e3943; }
+          .content .profile .profile-body .profile-groups table td {
+            float: left;
+            line-height: 10px;
+            display: inline-block;
+            color: white;
+            list-style-type: none; }
+          .content .profile .profile-body .profile-groups table a:hover {
+            text-decoration: underline; }
+          .content .profile .profile-body .profile-groups table img {
+            float: left; }
 
 /*# sourceMappingURL=custom.css.css.map */

@@ -18,6 +18,39 @@ a {
 	color: white;
 }
 
+.splash-background {
+	position:relative;
+	width:100%;
+	height:100%;
+
+	.dota2:hover {
+		opacity:1;
+	}
+
+	.lol:hover {
+		opacity: 1;
+	}
+
+	.dota2 {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width:100%;
+		height:100%;
+		opacity: 0.8;
+	}
+
+	.lol {
+		position:absolute;
+		top: 0;
+		left: 360px;
+		width:100%;
+		height:100%;
+		opacity: 0.8;
+	}
+
+}
+
 /* NAVBAR */
 
 .navbar {
@@ -66,6 +99,20 @@ a {
 		width: 80%;
 		margin-right: -50%;
 		height: 64px;
+
+		a {
+			display: inline-block;
+			height: 64px;
+			border-radius:15px;
+
+
+		}
+
+		a:hover {
+		background-color:rgba(24,35,46,0.5);
+
+
+		}
 	}
 
 		.right-content-area ul li {
@@ -77,10 +124,6 @@ a {
 		li {
 			border-left:2px solid black;
 			line-height: 50px;
-		}
-
-		li:hover {
-		background-color:rgba(24,35,46,0.5);
 
 		}
 
@@ -103,14 +146,37 @@ a {
 	border-color: 1px solid black;
 	margin-top:$nav-row-height;
 
-	li {
-	padding-bottom: 5px;
-	list-style-type: none;
-	border-bottom: 1px solid black;
-	width:100%;
-	line-height:60px;
-	margin-top:-20px;
+	.toggle-down {
+		display: block;
+		line-height: 30px;
+		visibility: normal; /* set to hidden */
+		margin-top: 0px; /* set to -58 */
+		z-index: 0; /* set to 10 */
+
+
+		p {
+			padding-left:45px;
+			margin-top:-15px;
+			margin-bottom:0px;
+			line-height: 30px;
+		}
+
+		li {
+			padding-top:0px;
+		}
+
+
 	}
+
+
+	li {
+			padding-bottom: 5px;
+			list-style-type: none;
+			border-bottom: 1px solid black;
+			width:100%;
+			line-height:60px;
+			margin-top:-20px;
+		}
 
 	ul {
 		padding-left:0;
@@ -137,9 +203,9 @@ a {
 /* CONTENT */
 
 .content {
+	position: fixed;
 	margin-left: 250px;
 	margin-top:52px;
-	position: absolute;
 	background-color:black;
 	background-image:url('../images/amumu.jpg');
 	background-repeat:no-repeat;
@@ -148,8 +214,8 @@ a {
 	width:100%;
 
 	.profile {
-		margin-top:80px;
-		margin-left: 80px;
+		margin-top:4em;
+		margin-left: 4em;
 		margin-right: 80px;
 		margin-bottom: 80px;
 		background-color:rgba(151,151,151,0.8);
@@ -166,6 +232,7 @@ a {
 				padding-top:40px;
 				padding-right:40px;
 				width: 100%;
+
 			}
 
 
@@ -197,6 +264,12 @@ a {
 					height: 40px;
 					text-align: center;
 					background-color:$color2;
+					a {
+						display: block;
+						width: 100%;
+						height: 100%;
+						padding-top:9px;
+					}
 				}
 
 				td:hover {
@@ -214,30 +287,47 @@ a {
 				margin-bottom: 30px;
 				margin-left:42px;
 				margin-right:42px;
-				height: 55%;
 				background-color:white;
 
-			.predictions {
+			.profile-predictions {
+				display: block;
+				overflow-y : scroll;
+				height: 290px;
+
+
 				table {
 					width: 100%;
 					border-collapse:collapse;
+					height: 150px;
+
+
+				}
+
+				tbody {
+					max-height: 200px;
 				}
 
 				tr {
-
+					overflow-y: scroll;
 					color:white;
 					height: 45px;
 					text-align: center;
 					border-bottom: 1px solid white;
 					border-top: 1px solid white;
+
+
+					a:hover {
+					text-decoration: underline;
+
+				}
 					}
 
 					.win {
-						background-color:green;
+						background-color:#4ABA70;
 					}
 
 					.lose {
-						background-color:red;
+						background-color:#BA4A4A;
 					}
 
 					.instructions {
@@ -247,6 +337,102 @@ a {
 				
 
 			}
+
+			.profile-profile {
+				height: 290px;
+
+				.new-group-button {
+					background-color:$color1;
+					padding-left:1em;
+					padding-top:1em;
+
+					a {
+						display: inline-block;
+						background-color:$color2;
+						padding: 2px 4px 2px 4px;
+						border-radius: 3px;
+					}
+
+					a:hover {
+						color:$color1;
+					}
+				}
+
+				table {
+					width: 100%;
+					background-color:$color1;
+				}
+				tr {
+					text-align: left;
+					height: 45px;
+					border-top:1px solid black;
+					border-bottom:1px solid black;
+					font-size: 20px;
+				}
+
+				td {
+					padding-left:2em;
+					padding-top:1em;
+				}
+
+			}
+
+			.profile-groups {
+				display: block;
+				overflow-y : scroll;
+				height: 290px;
+
+
+
+				.new-group-button {
+					background-color:$color1;
+					padding-left:1.6em;
+					padding-top:1.3em;
+
+					a {
+						display: inline-block;
+						background-color:$color2;
+						padding: 2px 4px 2px 4px;
+						border-radius: 3px;
+					}
+
+					a:hover {
+						color:$color1;
+					}
+				}
+
+				table {
+					width: 100%;
+					background-color: $color1;
+					padding-top:1em;
+					padding-left: 1em;
+					padding-right: 1em;
+					border-spacing : 10px;
+
+					.group {
+						background-color: $color2;
+					}
+
+					td {
+
+						float: left;
+						line-height:10px;
+						display: inline-block;
+						color:white;
+						list-style-type: none;
+
+					}
+
+					a:hover {
+						text-decoration: underline;
+					}
+
+					img {
+						float: left;
+					}
+				}
+			}
+
 
 		}
 	}
