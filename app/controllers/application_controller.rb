@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_filter :ensure_signup_complete, except: :destroy
   before_filter :authenticate_user_from_token!
 
   protected
@@ -84,17 +83,6 @@ class ApplicationController < ActionController::Base
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
-    end
-
-    def ensure_signup_complete
-      # Ensure we don't go into an infinite loop
-      return if action_name == 'finish_signup'
-
-      # Redirect to the 'finish_signup' page if the user
-      # username hasn't been added yet
-      if current_user && !current_user.username
-        redirect_to finish_signup_path(current_user)
-      end
     end
 
 end

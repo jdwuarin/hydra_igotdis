@@ -7,9 +7,6 @@ gem 'pg', '0.15.1'
 gem 'bcrypt-ruby', '3.1.2'
 
 gem 'devise', '3.2.3'
-gem 'omniauth'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
 
 gem 'ember-rails'
 gem 'ember-source'

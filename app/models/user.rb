@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :confirmable
+         :confirmable
 
   validates :username, length: { maximum: 50, minimum: 2 }, :allow_blank => true
   validates :username, :uniqueness => {:case_sensitive => false}
