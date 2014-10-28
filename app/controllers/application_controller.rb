@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_filter :ensure_signup_complete, except: :destroy
+  before_filter :authenticate_user_from_token!
 
   protected
 
@@ -13,6 +14,21 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
   end
+
+  private
+
+    def authenticate_user_from_token!
+      authenticate_with_http_token do |token, options|
+
+        user_login = options[:user_login].presence
+        user       = user_login && (User.find_by(:email => user_login) ||
+                                    User.find_by(:username => user_login))
+
+        if user && Devise.secure_compare(user.authentication_token, token)
+          sign_in user, store: false
+        end
+      end
+    end
 
   private
 

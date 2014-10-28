@@ -15,8 +15,19 @@ class User < ActiveRecord::Base
   validates_format_of :username, :with => /\A(|[A-Za-z\d_])+\Z/
 
   after_create :create_user_tournament_scores
+  before_save  :ensure_authentication_token
 
   attr_accessor :login
+
+  def create_user_tournament_scores
+
+    active_tournaments = Tournament.where("end_date > ?", Time.now)
+
+    active_tournaments.each do |active_tournament|
+      UserTournamentScore.create(user: self, tournament: active_tournament)
+    end
+
+  end
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -29,17 +40,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def create_user_tournament_scores
-
-    active_tournaments = Tournament.where("end_date > ?", Time.now)
-
-    active_tournaments.each do |active_tournament|
-      UserTournamentScore.create(user: self, tournament: active_tournament)
-    end
-
-  end
-
-  TEMP_EMAIL_PREFIX = 'no_email@igotdis.gg'
+  TEMP_EMAIL_PREFIX = 'nomail@igotdis.gg'
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
@@ -82,5 +83,21 @@ class User < ActiveRecord::Base
     end
     user
   end
+
+  def ensure_authentication_token
+    if authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
+  end
+
+  private
+
+    def generate_authentication_token
+      loop do
+        token = Devise.friendly_token
+        break token unless User.where(authentication_token: token).first
+      end
+    end
+
 
 end

@@ -366,6 +366,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   activeadmin!
   addressable
   autoprefixer-rails

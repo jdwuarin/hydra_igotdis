@@ -14,6 +14,7 @@ gem 'omniauth-facebook'
 gem 'ember-rails'
 gem 'ember-source'
 gem 'emblem-rails'
+gem 'active_model_serializers'
 
 gem 'rails_best_practices'
 gem 'activeadmin', github: 'activeadmin'
