@@ -42,4 +42,5 @@ Hydra::Application.configure do
     domain: 'igotdis.gg'
   }
 
+  config.ember.variant = :development
 end
