@@ -29,8 +29,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
-/tmp
+/ember/dist
+/ember/tmp
 
 # dependencies
 /ember/node_modules
