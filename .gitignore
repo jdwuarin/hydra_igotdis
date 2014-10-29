@@ -4,18 +4,41 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# rails
+
 # Ignore bundler config.
-/.bundle
+/rails/.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
+/rails/db/*.sqlite3
+/rails/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
-/.sass-cache
+/rails/log/*.log
+/rails/tmp
+*.sass-cache
 
-/public/system
+/ember/node_modules
+
+/rails/public/system
 
 *.DS_Store
+
+# ember
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+
+# dependencies
+/ember/node_modules
+/ember/bower_components
+
+# misc
+/ember/connect.lock
+/ember/coverage/*
+*libpeerconnection.log
+*npm-debug.log
+/ember/testem.log
