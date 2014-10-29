@@ -27,7 +27,6 @@ class ApplicationController < ActionController::Base
 
         format.json do
 
-          byebug
           # please not that the authenticate_with_http_token only goes
           # through if there is a :login and :password parameters in the
           # request.params["user"]. Otherwise (if the user is not trying)
