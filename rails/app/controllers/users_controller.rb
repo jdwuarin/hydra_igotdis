@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :correct_user, only: [:finish_signup]
+  skip_before_action :verify_authenticity_token
 
 
   # PATCH/PUT /users/:id.:format

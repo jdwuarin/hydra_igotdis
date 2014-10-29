@@ -17,14 +17,31 @@ class ApplicationController < ActionController::Base
   private
 
     def authenticate_user_from_token!
-      authenticate_with_http_token do |token, options|
 
-        user_login = options[:user_login].presence
-        user       = user_login && (User.find_by(:email => user_login) ||
-                                    User.find_by(:username => user_login))
+      respond_to do |format|
 
-        if user && Devise.secure_compare(user.authentication_token, token)
-          sign_in user, store: false
+        # this is only used when request format is json
+        # i.e. for the admin part of the app, this is not entered
+
+        format.html { return }
+
+        format.json do
+
+          byebug
+          # please not that the authenticate_with_http_token only goes
+          # through if there is a :login and :password parameters in the
+          # request.params["user"]. Otherwise (if the user is not trying)
+          # to authenticate onseself, nothing is done.
+          authenticate_with_http_token do |token, options|
+
+            user_login = options[:user_login].presence
+            user       = user_login && (User.find_by(:email => user_login) ||
+                                        User.find_by(:username => user_login))
+
+            if user && Devise.secure_compare(user.authentication_token, token)
+              sign_in user, store: false
+            end
+          end
         end
       end
     end

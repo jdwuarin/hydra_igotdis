@@ -1,4 +1,6 @@
 class SessionsController < Devise::SessionsController
+  skip_before_action :verify_authenticity_token
+
   def create
 
     respond_to do |format|
@@ -9,9 +11,11 @@ class SessionsController < Devise::SessionsController
         # is not taken into account when authenticating.
         # which means it is not used for the model(s)
         # using this sessions_controller (i.e. the User one)
-        resource = warden.authenticate!(:scope => resource_name,
-          :store => !(request.format.xml? || request.format.json?))
-        sign_in(resource_name, resource)
+        self.resource = warden.authenticate!(
+          :scope => resource_name,
+          :store => false)
+
+        sign_in(resource_name, self.resource)
         data = {
           user_token: self.resource.authentication_token,
           user_email: self.resource.email
