@@ -7,38 +7,18 @@
 # rails
 
 # Ignore bundler config.
-/rails/.bundle
+.bundle
 
 # Ignore the default SQLite database.
-/rails/db/*.sqlite3
-/rails/db/*.sqlite3-journal
+/db/*.sqlite3
+/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/rails/log/*.log
-/rails/tmp
+/log
+/tmp
 *.sass-cache
 
-/ember/node_modules
 
-/rails/public/system
+/public/system
 
 *.DS_Store
-
-# ember
-
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# compiled output
-/ember/dist
-/ember/tmp
-
-# dependencies
-/ember/node_modules
-/ember/bower_components
-
-# misc
-/ember/connect.lock
-/ember/coverage/*
-*libpeerconnection.log
-*npm-debug.log
-/ember/testem.log
