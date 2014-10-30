@@ -3,7 +3,11 @@ Hydra::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  devise_for :users, controllers: { sessions: 'sessions' }
+  namespace :api do
+    namespace :v1 do
+      devise_for :users, controllers: { sessions: 'sessions' }
+    end
+  end
 
   root 'home#index'
   get '*path', to: 'home#index'

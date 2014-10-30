@@ -13,6 +13,16 @@ module.exports = function(environment) {
       }
     },
 
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' use.typekit.net connect.facebook.net maps.googleapis.com maps.gstatic.com www.google-analytics.com",
+      'font-src': "'self' data: use.typekit.net fonts.gstatic.com",
+      'connect-src': "'self'",
+      'img-src': "'self' www.facebook.com p.typekit.net www.google-analytics.com",
+      'style-src': "'self' 'unsafe-inline' use.typekit.net fonts.googleapis.com",
+      'frame-src': "s-static.ak.facebook.com static.ak.facebook.com www.facebook.com"
+    },
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -21,7 +31,7 @@ module.exports = function(environment) {
 
   ENV['simple-auth'] = {
     authorizer: 'simple-auth-authorizer:devise'
-  }
+  };
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
