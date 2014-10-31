@@ -1,0 +1,15 @@
+App.Tournament = DS.Model.extend({
+  name: DS.attr('string'),
+  startDate: DS.attr('date'),
+  endDate: DS.attr('date'),
+  continent: DS.attr('string'),
+  tournamentType: DS.attr('number'),
+  game: DS.attr('string'),
+  has_groups: DS.attr('boolean'),
+  group_count: DS.attr('string', { defaultValue: '' }),
+  group_naming_convention: DS.attr('string', { defaultValue: '' }),
+  description: DS.attr('string'),
+  special_mention: DS.attr('string'),
+  venue: DS.attr('string'),
+  image: DS.attr('string'),
+});
