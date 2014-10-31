@@ -8,6 +8,9 @@ gem 'bcrypt-ruby', '3.1.2'
 
 gem 'devise', '3.2.3'
 
+gem 'ember-rails'
+gem 'ember-source'
+gem 'emblem-rails'
 gem 'active_model_serializers'
 
 gem 'rails_best_practices'
