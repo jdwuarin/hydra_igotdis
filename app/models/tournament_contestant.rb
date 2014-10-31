@@ -39,7 +39,6 @@ class TournamentContestant < ActiveRecord::Base
     end
   end
 
-
   def to_s()
 
     "Tournament: " + self.tournament.name +
@@ -51,6 +50,5 @@ class TournamentContestant < ActiveRecord::Base
     end
 
   end
-
 
 end
