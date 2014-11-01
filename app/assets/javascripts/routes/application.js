@@ -32,6 +32,7 @@ App.ApplicationRoute = Ember.Route.extend({
                                  passwordConfirmation: '' });
     this.controllerFor(name).set('content', model);
     this.controllerFor(name).set('isLoginModal', false);
+    this.controllerFor(name).set('isPresent', true);
     this.controllerFor(name).set('title', 'Signup');
   },
   showLoginModal: function() {
@@ -39,7 +40,8 @@ App.ApplicationRoute = Ember.Route.extend({
     model = Ember.Object.create({login: '',
                                  password: ''});
     this.controllerFor(name).set('content', model);
-    this.controllerFor(name).set('isLoginModal', false);
-    this.controllerFor(name).set('title', 'Signup');
+    this.controllerFor(name).set('isLoginModal', true);
+    this.controllerFor(name).set('isPresent', true);
+    this.controllerFor(name).set('title', 'Login');
   }
 });

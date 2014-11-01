@@ -2,6 +2,7 @@ App.AuthenticationModalController = Ember.Controller.extend({
 
   title: "",
   isLoginModal: null,
+  isPresent: null,
 
   actions: {
     goToLogin: function() {
@@ -15,6 +16,7 @@ App.AuthenticationModalController = Ember.Controller.extend({
     login: function() {
       this.set('login', '');
       this.set('password', '');
+      this.set('isPresent', false);
     },
     signup: function() {
       // this needs to be done upon success only.
@@ -22,6 +24,7 @@ App.AuthenticationModalController = Ember.Controller.extend({
       this.set('email', '');
       this.set('password', '');
       this.set('passwordConfirmation', '');
+      this.set('isPresent', false);
     }
   }
 });

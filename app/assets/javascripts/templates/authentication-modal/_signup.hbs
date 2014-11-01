@@ -1,13 +1,13 @@
 <div class="modal-body">
 
-  <form>
+  <form {{action 'signup' on='submit'}}>
     <div class="form-group">
       <p>{{input class="form-control" placeholder="username" value=username}}</p>
       <p>{{input class="form-control" placeholder="email" value=email}}</p>
       <p>{{input type="password" class="form-control" placeholder="password" value=password}}</p>
       <p>{{input type="password" class="form-control" placeholder="password confirmation"
                  value=password-confirmation}}</p>
-      <p><button type="submit" class="btn btn-primary" {{action 'signup'}}>Sign up</button>
+      <p><button type="submit" class="btn btn-primary">Sign up</button>
     </div>
   </form>
 </div>
