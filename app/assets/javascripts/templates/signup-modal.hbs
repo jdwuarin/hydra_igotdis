@@ -1,0 +1,15 @@
+<div class="modal-body">
+  {{#my-modal title='Settings' ok='save' close='removeModal'}}
+    <form {{action 'ok' on='submit' target=view}}>
+      <div class="form-group">
+        <label>Name</label>
+        {{input class="form-control" value=name}}
+      </div>
+    </form>
+  {{/my-modal}}
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" {{action 'signup'}}>Signup</button>
+  <button type="button" class="btn btn-default" data-dismiss="modal">Login</button>
+</div>
+

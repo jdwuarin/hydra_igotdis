@@ -24,3 +24,16 @@
 App = Ember.Application.create({rootElement: '#ember-app'});
 
 //= require_tree .
+
+// this just adds a hook to the Ember views that assures
+// me that the jQuery will be run after all the child elements
+// of the view have been rendered
+Ember.View.reopen({
+  didInsertElement : function(){
+    this._super();
+    Ember.run.scheduleOnce('afterRender', this, this.afterRenderEvent);
+  },
+  afterRenderEvent : function(){
+    // implement this hook in your own subclasses and run your jQuery logic there
+  }
+});
