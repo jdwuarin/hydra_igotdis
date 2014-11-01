@@ -1,0 +1,7 @@
+{{#my-modal title='Settings' ok='save' close='removeModal'}}
+  {{#if isLoginModal}}
+    {{partial "authentication-modal/login"}}
+  {{else}}
+    {{partial "authentication-modal/signup"}}
+  {{/if}}
+{{/my-modal}}
