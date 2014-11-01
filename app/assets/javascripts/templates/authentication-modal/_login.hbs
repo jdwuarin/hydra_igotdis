@@ -1,7 +1,14 @@
 <div class="modal-body">
-    Are you sure you want to logout?
+
+  <form>
+    <div class="form-group">
+      <p>{{input class="form-control" placeholder="username/email" value=login}}</p>
+      <p>{{input type="password" class="form-control" placeholder="password" value=password}}</p>
+      <p><button type="submit" class="btn btn-primary" {{action 'login'}}>Login</button>
+    </div>
+  </form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-primary" {{action 'login'}}>Login</button>
+  {{! <a>Not part of the action yet?</a> }}
   <button type="button" class="btn btn-default" {{action 'goToSignup'}}>Signup</button>
 </div>

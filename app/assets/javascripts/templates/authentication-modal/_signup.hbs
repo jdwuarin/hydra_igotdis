@@ -1,13 +1,17 @@
 <div class="modal-body">
-    <form {{action 'ok' on='submit' target=view}}>
-      <div class="form-group">
-        <label>Name</label>
-        {{input class="form-control" value=name}}
-      </div>
-    </form>
 
+  <form>
+    <div class="form-group">
+      <p>{{input class="form-control" placeholder="username" value=username}}</p>
+      <p>{{input class="form-control" placeholder="email" value=email}}</p>
+      <p>{{input type="password" class="form-control" placeholder="password" value=password}}</p>
+      <p>{{input type="password" class="form-control" placeholder="password confirmation"
+                 value=password-confirmation}}</p>
+      <p><button type="submit" class="btn btn-primary" {{action 'signup'}}>Sign up</button>
+    </div>
+  </form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-primary" {{action 'signup'}}>Signup</button>
+  {{! <a>Already part of the action?</a> }}
   <button type="button" class="btn btn-default" {{action 'goToLogin'}}>Login</button>
 </div>

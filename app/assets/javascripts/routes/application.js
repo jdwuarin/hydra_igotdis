@@ -2,9 +2,14 @@ App.ApplicationRoute = Ember.Route.extend({
   actions: {
     showModal: function(name, content) {
       this.controllerFor(name).set('content', content);
+
       // just the specific setup for authentication modals
       if (name === 'authentication-modal') {
-        this.controllerFor(name).set('isLoginModal', content);
+        if (content === 'login'){
+          this.showLoginModal();
+        } else if(content === 'signup') {
+          this.showSignupModal();
+        }
       }
       this.render(name, {
         into: 'application',
@@ -17,5 +22,24 @@ App.ApplicationRoute = Ember.Route.extend({
         parentView: 'application'
       });
     }
+  },
+
+  showSignupModal: function() {
+    name = 'authentication-modal';
+    model = Ember.Object.create({username: '',
+                                 email: '',
+                                 password: '',
+                                 passwordConfirmation: '' });
+    this.controllerFor(name).set('content', model);
+    this.controllerFor(name).set('isLoginModal', false);
+    this.controllerFor(name).set('title', 'Signup');
+  },
+  showLoginModal: function() {
+    name = 'authentication-modal';
+    model = Ember.Object.create({login: '',
+                                 password: ''});
+    this.controllerFor(name).set('content', model);
+    this.controllerFor(name).set('isLoginModal', false);
+    this.controllerFor(name).set('title', 'Signup');
   }
 });
