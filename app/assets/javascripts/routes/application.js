@@ -1,6 +1,7 @@
 App.ApplicationRoute = Ember.Route.extend({
   actions: {
-    showModal: function(name, content) {
+    showModal: function(name, content, title) {
+
       this.controllerFor(name).set('content', content);
 
       // just the specific setup for authentication modals
@@ -10,6 +11,9 @@ App.ApplicationRoute = Ember.Route.extend({
         } else if(content === 'signup') {
           this.showSignupModal();
         }
+      }
+      if (title !== undefined){
+        this.controllerFor(name).set('title', title);
       }
       this.render(name, {
         into: 'application',

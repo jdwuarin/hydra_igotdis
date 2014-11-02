@@ -43,13 +43,16 @@ App.AuthenticationModalController = Ember.Controller.extend({
     }
   },
 
-  loginSuccess: function() {
+  loginSuccess: function(response) {
+
+    
+    this.resetStatus();
     this.clearModal();
     this.closeModal();
   },
 
-  loginFailure: function() {
-    this.clearModal();
+  loginFailure: function(response) {
+    this.resetStatus();
     this.set("loginFailed", true);
   },
 
@@ -57,16 +60,21 @@ App.AuthenticationModalController = Ember.Controller.extend({
     this.set("isSlowConnection", true);
   },
 
-  clearModal: function() {
+  resetStatus: function() {
     clearTimeout(this.get("timeout"));
+    this.setProperties({
+      isProcessing: false,
+      isSlowConnection: false
+    });
+  },
+
+  clearModal: function() {
     this.setProperties({
       login: '',
       username: '',
       email: '',
       password: '',
-      passwordConfirmation: '',
-      isProcessing: false,
-      isSlowConnection: false
+      passwordConfirmation: ''
     });
   },
 

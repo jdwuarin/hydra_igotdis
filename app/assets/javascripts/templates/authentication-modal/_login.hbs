@@ -1,11 +1,21 @@
 <div class="modal-body">
 
   {{#if loginFailed}}
-    <div class="alert alert-danger">Invalid username or password.</div>
+    <div class="alert alert-danger">Invalid username or password.
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+    </div>
   {{/if}}
 
   {{#if isSlowConnection}}
-    <div class="alert alert-info">The request seems to be taking more time than usual, please wait.</div>
+    <div class="alert alert-info">The request seems to be taking more time than usual, please wait.
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+    </div>
   {{/if}}
 
   <form {{action 'login' on='submit'}}>

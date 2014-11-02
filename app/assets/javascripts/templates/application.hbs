@@ -15,7 +15,11 @@
 <nav class="leftbar leftbar-fixed-left" role="navigation">
   <div class="top-content-area">
     <ul>
-      <a href="#"><li class="left-bar-menu"><img src="assets/tournament.png"></img>TOURNAMENTS</li></a>
+      {{#link-to 'tournaments'}}
+        <li class="left-bar-menu">
+          <img src="assets/tournament.png"></img>TOURNAMENTS
+        </li>
+      {{/link-to}}
       <a href="#"><li class="toggle-down"><p>LCS EU</p></li></a>
       <a href="#"><li class="toggle-down"><p>LCS NA</p></li></a>
       <a href="#"><li class="toggle-down"><p>GPL</p></li></a>
