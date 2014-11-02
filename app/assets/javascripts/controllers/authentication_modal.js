@@ -3,6 +3,11 @@ App.AuthenticationModalController = Ember.Controller.extend({
   title: "",
   isLoginModal: null,
   isPresent: null,
+  isProcessing: false,
+  loginFailed: false,
+  signupFailed: false,
+  isSlowConnection: false,
+  timeout: null,
 
   actions: {
     goToLogin: function() {
@@ -17,20 +22,19 @@ App.AuthenticationModalController = Ember.Controller.extend({
     },
     login: function() {
 
-      var data = {
-        user: {
-          login: this.get('login'),
-          password: this.get('password')
-        }
-      };
-
-      Ember.$.post('users/sign_in.json', data).then(function(response) {
-        alert('got a response');
+      this.setProperties({
+        loginFailed: false,
+        isProcessing: true
       });
 
-      this.clearModal();
-      this.closeModal();
+      this.set("timeout", setTimeout(this.slowConnection.bind(this), 5000));
 
+      var data = {
+        user: this.getProperties('login', 'password')
+      };
+
+      $.post('users/sign_in.json', data).then(
+        this.loginSuccess.bind(this), this.loginFailure.bind(this));
     },
     signup: function() {
       // this needs to be done upon success only.
@@ -39,12 +43,31 @@ App.AuthenticationModalController = Ember.Controller.extend({
     }
   },
 
+  loginSuccess: function() {
+    this.clearModal();
+    this.closeModal();
+  },
+
+  loginFailure: function() {
+    this.clearModal();
+    this.set("loginFailed", true);
+  },
+
+  slowConnection: function() {
+    this.set("isSlowConnection", true);
+  },
+
   clearModal: function() {
-    this.set('login', '');
-    this.set('username', '');
-    this.set('email', '');
-    this.set('password', '');
-    this.set('passwordConfirmation', '');
+    clearTimeout(this.get("timeout"));
+    this.setProperties({
+      login: '',
+      username: '',
+      email: '',
+      password: '',
+      passwordConfirmation: '',
+      isProcessing: false,
+      isSlowConnection: false
+    });
   },
 
   closeModal: function() {

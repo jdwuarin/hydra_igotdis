@@ -1,10 +1,18 @@
 <div class="modal-body">
 
+  {{#if loginFailed}}
+    <div class="alert alert-danger">Invalid username or password.</div>
+  {{/if}}
+
+  {{#if isSlowConnection}}
+    <div class="alert alert-info">The request seems to be taking more time than usual, please wait.</div>
+  {{/if}}
+
   <form {{action 'login' on='submit'}}>
     <div class="form-group">
       <p>{{input class="form-control" placeholder="username/email" value=login}}</p>
       <p>{{input type="password" class="form-control" placeholder="password" value=password}}</p>
-      <p><button type="submit" class="btn btn-primary">Login</button>
+      <p><button type="submit" class="btn btn-primary" {{bind-attr disabled="isProcessing"}}>Login</button>
     </div>
   </form>
 </div>
