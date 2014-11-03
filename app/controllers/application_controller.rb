@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   serialization_scope :view_context
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_filter :authenticate_user_from_token!
+  before_action :authenticate_user_from_token!
+  before_action :signed_in_user
 
   protected
 
@@ -33,13 +34,12 @@ class ApplicationController < ActionController::Base
           #    the request was made with a :login and :password parameters in the
           #    request.params["user"]
           # 2) Authenticate with user with the token if the user is sending
-          #    over a token with the request
+          #    over a token in the request header of the request
           # 3) Exit silently if no such params are passed on over
           authenticate_with_http_token do |token, options|
 
-            user_login = options[:user_login].presence
-            user       = user_login && (User.find_by(:email => user_login) ||
-                                        User.find_by(:username => user_login))
+            user_email = options[:user_email].presence
+            user       = user_email && (User.find_by(:email => user_email))
 
             if user && Devise.secure_compare(user.authentication_token, token)
               sign_in user, store: false
@@ -55,9 +55,9 @@ class ApplicationController < ActionController::Base
     end
 
     def signed_in_user
+      byebug
       unless user_signed_in?
-        store_location
-        redirect_to new_user_registration_path, notice: "Please sign up."
+        # redirect_to new_user_registration_path, notice: "Please sign up."
       end
     end
 
