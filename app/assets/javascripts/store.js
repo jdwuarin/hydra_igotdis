@@ -9,9 +9,8 @@ App.ApplicationAdapter = DS.ActiveModelAdapter.extend({
 
   headers: function() {
     return {
-      "something": "smth",
-    //   "Authorization": Token token=this.get("session").userToken, user_email=this.get("session").userEmail
-    // 
+      "user_token": this.get('session').userToken,
+      "user_email": this.get('session').userEmail
     };
   }.property("session")
 });

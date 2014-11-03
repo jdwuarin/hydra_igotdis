@@ -35,6 +35,26 @@
   </div>
 </nav>
 
+<div class="content">
+  {{#if 'session.justLoggedIn'}}
+    <div class="alert alert-success">Successfully logged In
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+    </div>
+  {{/if}}
 
-{{outlet}}
+  {{#if 'session.justLoggedOut'}}
+    <div class="alert alert-success">Successfully logged Out
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+    </div>
+  {{/if}}
+
+  {{outlet}}
+</div>
+
 {{outlet modal}}

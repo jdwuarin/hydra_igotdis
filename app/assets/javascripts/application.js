@@ -28,6 +28,10 @@ App.Session = Ember.Object.extend({
   isAuthenticated: false,
   userToken: "",
   userEmail: "",
+  justLoggedIn: false,
+  justLoggedOut: false,
+  inTimeout: null,
+  outTimeout: null,
 
   init: function() {
     // if userToken and userEmail are found
@@ -52,13 +56,30 @@ App.Session = Ember.Object.extend({
     this.set('userToken', userToken);
     this.set('userEmail', userEmail);
     this.set('isAuthenticated', true);
+    this.set('justLoggedIn', true);
+    this.set("inTimeout", setTimeout(
+      this.resetInTimeout.bind(this), 3000));
   },
 
   invalidate: function() {
     this.set('isAuthenticated', false);
     this.set('userToken', "");
     this.set('userEmail', "");
-  }
+    this.set('justLoggedOut', true);
+    this.set("outTimeout", setTimeout(
+      this.resetOutTimeout.bind(this), 3000));
+  },
+
+  resetInTimeout: function() {
+    this.set('justLoggedIn', false);
+    clearTimeout(this.get('inTimeout'));
+  },
+
+  resetOutTimeout: function() {
+    this.set('justLoggedOut', false);
+    clearTimeout(this.get('outTimeout'));
+  },
+
 });
 
 App.register('session:main', App.Session);

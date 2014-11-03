@@ -40,6 +40,7 @@ App.AuthenticationModalController = Ember.Controller.extend({
       // this needs to be done upon success only.
       this.clearModal();
       this.closeModal();
+      // and after, upon success, also actually login the user (or not... dunno)
     }
   },
 
