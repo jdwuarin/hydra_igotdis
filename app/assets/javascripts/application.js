@@ -23,6 +23,30 @@
 // for more details see: http://emberjs.com/guides/application/
 App = Ember.Application.create({rootElement: '#ember-app'});
 
+App.Session = Ember.Object.extend({
+
+  isAuthenticated: false,
+  userToken: "",
+  userEmail: "",
+
+  init: function() {
+    // if userToken and userEmail are found
+    // in the local storage, set isAuthenticated to true
+  },
+
+  invalidate: function() {
+    this.get('isAuthenticated', false);
+    this.get('userToken', "");
+    this.get('userEmail', "");
+  }
+});
+
+App.register('session:main', App.Session);
+App.inject('adapter', 'session', 'session:main');
+App.inject('route', 'session', 'session:main');
+App.inject('controller', 'session', 'session:main');
+App.inject('view', 'session', 'session:main');
+
 //= require_tree .
 
 // this just adds a hook to the Ember views that assures
