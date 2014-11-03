@@ -7,11 +7,11 @@ App.ApplicationStore = DS.Store.extend({
 App.ApplicationAdapter = DS.ActiveModelAdapter.extend({
   namespace: 'api/v1',
 
-  headers: {
-    "something": "smth",
-    // "Authorization": {
-    //   "token": this.get("session").userToken,
-    //   "user_email": this.get("session").userEmail
-    // }
-  }
+  headers: function() {
+    return {
+      "something": "smth",
+    //   "Authorization": Token token=this.get("session").userToken, user_email=this.get("session").userEmail
+    // 
+    };
+  }.property("session")
 });

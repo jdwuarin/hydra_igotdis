@@ -44,8 +44,7 @@ App.AuthenticationModalController = Ember.Controller.extend({
   },
 
   loginSuccess: function(response) {
-    console.log(response);
-    console.log(this.get('session').userToken);
+    this.get('session').validate(response.user_token, response.user_email);
     this.resetStatus();
     this.clearModal();
     this.closeModal();

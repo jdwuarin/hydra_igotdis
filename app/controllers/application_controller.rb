@@ -28,10 +28,13 @@ class ApplicationController < ActionController::Base
 
         format.json do
 
-          # please not that the authenticate_with_http_token only goes
-          # through if there is a :login and :password parameters in the
-          # request.params["user"]. Otherwise (if the user is not trying)
-          # to authenticate onseself, nothing is done.
+          # the authenticate_with_http_token method will either:
+          # 1) Call create on the sessions_controller if
+          #    the request was made with a :login and :password parameters in the
+          #    request.params["user"]
+          # 2) Authenticate with user with the token if the user is sending
+          #    over a token with the request
+          # 3) Exit silently if no such params are passed on over
           authenticate_with_http_token do |token, options|
 
             user_login = options[:user_login].presence
@@ -55,39 +58,6 @@ class ApplicationController < ActionController::Base
       unless user_signed_in?
         store_location
         redirect_to new_user_registration_path, notice: "Please sign up."
-      end
-    end
-
-    def store_location
-
-      require 'addressable/uri'
-      uri = Addressable::URI.parse(request.url)
-
-      query_values = uri.query_values
-      if query_values
-        query_values.delete('user_id')
-        uri.query_values = query_values
-      end
-
-      session[:return_to] = uri.to_s if request.get?
-    end
-
-    def redirect_back_or(default, flash_messages={})
-      redirect_to(session[:return_to] || default, 
-        :flash => flash_messages,
-        :params => params.delete(:user_id))
-      session.delete(:return_to)
-    end
-
-    def after_sign_in_path_for(resource)
-      if resource.class == AdminUser
-        return admin_root_path
-      end
-
-      if resource.username
-        session[:return_to] || root_path
-      else
-        finish_signup_path(resource)
       end
     end
 

@@ -32,12 +32,32 @@ App.Session = Ember.Object.extend({
   init: function() {
     // if userToken and userEmail are found
     // in the local storage, set isAuthenticated to true
+    var token = localStorage.userToken;
+    var email = localStorage.userEmail;
+    if (token !== "" && email !== ""){
+      this.set('userToken',token);
+      this.set('userEmail', email);
+      this.set('isAuthenticated', true);
+    }
+  },
+
+  // this just makes sure that the locaStorage
+  // is updated when it should be.
+  userAuthChanged: function() {
+    localStorage.userToken = this.get('userToken');
+    localStorage.userEmail = this.get('userEmail');
+  }.observes('userToken', 'userEmail'),
+
+  validate: function(userToken, userEmail){
+    this.set('userToken', userToken);
+    this.set('userEmail', userEmail);
+    this.set('isAuthenticated', true);
   },
 
   invalidate: function() {
-    this.get('isAuthenticated', false);
-    this.get('userToken', "");
-    this.get('userEmail', "");
+    this.set('isAuthenticated', false);
+    this.set('userToken', "");
+    this.set('userEmail', "");
   }
 });
 

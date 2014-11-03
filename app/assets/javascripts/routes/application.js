@@ -1,5 +1,10 @@
 App.ApplicationRoute = Ember.Route.extend({
   actions: {
+
+    invalidateSession: function() {
+      this.get('session').invalidate();
+    },
+
     showModal: function(name, content, title) {
 
       this.controllerFor(name).set('content', content);

@@ -5,8 +5,12 @@
     <div class="right-content-area">
     <ul>
       <a href="#"><li>My Profile</li></a>
-      <button {{action 'showModal' 'authentication-modal' 'login'}}>Login</button>
-      <button {{action 'showModal' 'authentication-modal' 'signup'}}>Sign up</button>
+      {{#if 'session.isAuthenticated'}}
+        <button {{action 'invalidateSession'}}>Logout</button>
+      {{else}}
+        <button {{action 'showModal' 'authentication-modal' 'login'}}>Login</button>
+        <button {{action 'showModal' 'authentication-modal' 'signup'}}>Sign up</button>
+      {{/if}}
     </ul>
     </div>
 

@@ -5,6 +5,7 @@ App.AuthenticatedRounte = App.ApplicationRoute.extend({
   actions: {
     error: function(reason, transition) {
       if (reason.status === 401){
+        this.get('session').invalidate();
         this.send('showModal', 'authentication-modal',
           'signup', "Not signed up yet?");
       } else {

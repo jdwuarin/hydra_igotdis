@@ -19,6 +19,7 @@ App.MyModalComponent = Ember.Component.extend({
   },
 
   esc_close: function(e){
+    // 27 is the escape key
     if(e.which == 27){
       e.data._self.set('isPresent', false);
     }
@@ -28,13 +29,9 @@ App.MyModalComponent = Ember.Component.extend({
     $(document).off('keyup', this.esc_close);
   },
 
-  ////////////////////////////////////
+  /////////////////////////////////////////////////////////////
 
   show: function() {
-    console.log("yes sir");
-    this.$('.modal').modal().on('shown.bs.modal', function () {
-      $('#textareaID').focus();
-    }.bind(this));
     this.$('.modal').modal().on('hidden.bs.modal', function() {
       this.sendAction('close');
     }.bind(this));
