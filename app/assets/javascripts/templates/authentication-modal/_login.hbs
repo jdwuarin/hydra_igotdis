@@ -20,7 +20,7 @@
 
   <form {{action 'login' on='submit'}}>
     <div class="form-group">
-      <p>{{input class="form-control" placeholder="username/email" value=login}}</p>
+      <p>{{input class="form-control to-focus" placeholder="username/email" value=login}}</p>
       <p>{{input type="password" class="form-control" placeholder="password" value=password}}</p>
       <p><button type="submit" class="btn btn-primary" {{bind-attr disabled="isProcessing"}}>Login</button>
     </div>

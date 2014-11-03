@@ -55,7 +55,6 @@ class ApplicationController < ActionController::Base
     end
 
     def signed_in_user
-      byebug
       unless user_signed_in?
         # redirect_to new_user_registration_path, notice: "Please sign up."
       end

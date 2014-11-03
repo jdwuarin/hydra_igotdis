@@ -3,7 +3,7 @@ App.MyModalComponent = Ember.Component.extend({
   isPresent: '',
   close: 'removeModal',
 
-  onIsPresentChange: function () {
+  IsPresentListener: function () {
     // so this is pretty sweet. isPresent is set to a certain
     // value when declaring the component (if the dev wants to)
     // I use it for the auth modal. The isPresent value is then
@@ -13,27 +13,15 @@ App.MyModalComponent = Ember.Component.extend({
     }
   }.observes('isPresent'),
 
-  // this takes care of hidding the modal when pressing escape
-  didInsertElement: function(){
-    $(document).on('keyup', { _self: this }, this.esc_close);
-  },
-
-  esc_close: function(e){
-    // 27 is the escape key
-    if(e.which == 27){
-      e.data._self.set('isPresent', false);
-    }
-  },
-
-  willDestroyElement: function(){
-    $(document).off('keyup', this.esc_close);
-  },
-
-  /////////////////////////////////////////////////////////////
 
   show: function() {
+    // this.modalChangeListener();
+    this.$('.modal').modal().on('shown.bs.modal', function() {
+      this.$('.modal').modal().find('.to-focus').focus();
+    }.bind(this));
     this.$('.modal').modal().on('hidden.bs.modal', function() {
       this.sendAction('close');
     }.bind(this));
-  }.on('didInsertElement')
+  }.on('didInsertElement'),
+
 });
