@@ -61,76 +61,61 @@ a {
 	z-index: 2;
 	color: white;
 	background: #00182D;
+	margin-bottom: 0;
+	border-bottom: 0;
 	background-image: -o-linear-gradient(-89deg, rgba(112,112,112,0.50) 0%, rgba(0,0,0,0.50) 100%);
 	background-image: -moz-linear-gradient(-89deg, rgba(112,112,112,0.50) 0%, rgba(0,0,0,0.50) 100%);
 	background-image: -ms-linear-gradient(-89deg, rgba(112,112,112,0.50) 0%, rgba(0,0,0,0.50) 100%);
 	background-image: linear-gradient(-179deg, rgba(112,112,112,0.50) 0%, rgba(0,0,0,0.50) 100%);
 
-		h1, h2 {
-			margin-top:15px;
-			margin-left: 35px;
-			position:absolute
-		}
+	h1, h2 {
+		margin-top:15px;
+		margin-left: 35px;
+		position:absolute
+	}
+
+	.left-content-area {
+	overflow: hidden;
+	width: 20%;
+	height: $nav-row-height;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	margin-left: 80px;
+	display: inline;
+	}
+
+	.left-content-logo {
+	position: absolute;
+	padding-left:45px;
+	padding-top:8px;
 
 
+	}
 
-	    .left-content-area {
-		overflow: hidden;
-		width: 20%;
-		height: $nav-row-height;
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		margin-left: 80px;
-		display: inline;
-		}
-
-		.left-content-logo {
-		position: absolute;
-		padding-left:45px;
-		padding-top:8px;
-
-
-		}
-
-		.right-content-area {
+	.right-content-area {
 		overflow: hidden;
 		float: right;
 		width: 80%;
-		margin-right: -50%;
-		height: 64px;
-
-		a {
-			display: inline-block;
-			height: 64px;
-			border-radius:15px;
-
-
-		}
-
-		a:hover {
-		background-color:rgba(24,35,46,0.5);
-
-
-		}
-	}
-
-		.right-content-area ul li {
-		display: inline;
-		padding-left: 15px;
-		padding-right: 15px;
-	}
-
-		li {
-			border-left:2px solid black;
-			line-height: 50px;
-
-		}
+		margin-right: -60%;
+		height: $nav-row-height;
 
 		ul {
-			margin:0;
-			margin-top: 7px;
+			display: inline;
+			padding-left: 15px;
+			padding-right: 15px;
+			button {
+				background-color: Transparent;
+				background-repeat:no-repeat;
+				border: none;
+				height: $nav-row-height;
+				border-radius:5px;
+			}
+			button:hover {
+				background-color:rgba(24,35,46,0.5);
+			}
 		}
+	}
 
 }
 
@@ -164,8 +149,6 @@ a {
 		li {
 			padding-top:0px;
 		}
-
-
 	}
 
 
@@ -206,8 +189,6 @@ a {
 	position: fixed;
 	margin-left: 250px;
 	margin-top:52px;
-	background-color:black;
-	background-image:url('../images/amumu.jpg');
 	background-repeat:no-repeat;
 	background-size:contain;
 	height:100%;

@@ -1,278 +1,54 @@
-body {
-  margin: 0 0 0 0;
-  font-family: 'Jockey One';
-  width: 800px; }
+/*
+Syntax error: File to import not found or unreadable: bootstrap-sprockets.
+              Load paths:
+                /Users/john-davidwuarin/Dropbox/Workspace_Ruby/hydra
+                /Users/john-davidwuarin/Dropbox/Workspace_Ruby/hydra/app/assets/stylesheets
+        on line 1 of app/assets/stylesheets/custom.css.scss
 
-a {
-  text-decoration: none;
-  color: white; }
+1: @import "bootstrap-sprockets";
+2: @import "bootstrap";
+3: @import "font-awesome";
+4: 
+5: $nav-row-height: 4em;
+6: $color1: rgba(8,17,27,1);
 
-.splash-background {
-  position: relative;
-  width: 100%;
-  height: 100%; }
-  .splash-background .dota2:hover {
-    opacity: 1; }
-  .splash-background .lol:hover {
-    opacity: 1; }
-  .splash-background .dota2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.8; }
-  .splash-background .lol {
-    position: absolute;
-    top: 0;
-    left: 360px;
-    width: 100%;
-    height: 100%;
-    opacity: 0.8; }
-
-/* NAVBAR */
-.navbar {
-  position: fixed;
-  width: 100%;
-  height: 4em;
-  left: 0;
-  z-index: 2;
-  color: white;
-  background: #00182D;
-  background-image: -o-linear-gradient(-89deg, rgba(112, 112, 112, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
-  background-image: -moz-linear-gradient(-89deg, rgba(112, 112, 112, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
-  background-image: -ms-linear-gradient(-89deg, rgba(112, 112, 112, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
-  background-image: linear-gradient(-179deg, rgba(112, 112, 112, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%); }
-  .navbar h1, .navbar h2 {
-    margin-top: 15px;
-    margin-left: 35px;
-    position: absolute; }
-  .navbar .left-content-area {
-    overflow: hidden;
-    width: 20%;
-    height: 4em;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    margin-left: 80px;
-    display: inline; }
-  .navbar .left-content-logo {
-    position: absolute;
-    padding-left: 45px;
-    padding-top: 8px; }
-  .navbar .right-content-area {
-    overflow: hidden;
-    float: right;
-    width: 80%;
-    margin-right: -50%;
-    height: 64px; }
-    .navbar .right-content-area a {
-      display: inline-block;
-      height: 64px;
-      border-radius: 15px; }
-    .navbar .right-content-area a:hover {
-      background-color: rgba(24, 35, 46, 0.5); }
-  .navbar .right-content-area ul li {
-    display: inline;
-    padding-left: 15px;
-    padding-right: 15px; }
-  .navbar li {
-    border-left: 2px solid black;
-    line-height: 50px; }
-  .navbar ul {
-    margin: 0;
-    margin-top: 7px; }
-
-/* LEFTBAR */
-.leftbar {
-  position: fixed;
-  width: 250px;
-  height: 100%;
-  z-index: 1;
-  background-color: #2e3943;
-  padding-top: 0;
-  border-color: 1px solid black;
-  margin-top: 4em; }
-  .leftbar .toggle-down {
-    display: block;
-    line-height: 30px;
-    visibility: normal;
-    /* set to hidden */
-    margin-top: 0px;
-    /* set to -58 */
-    z-index: 0;
-    /* set to 10 */ }
-    .leftbar .toggle-down p {
-      padding-left: 45px;
-      margin-top: -15px;
-      margin-bottom: 0px;
-      line-height: 30px; }
-    .leftbar .toggle-down li {
-      padding-top: 0px; }
-  .leftbar li {
-    padding-bottom: 5px;
-    list-style-type: none;
-    border-bottom: 1px solid black;
-    width: 100%;
-    line-height: 60px;
-    margin-top: -20px; }
-  .leftbar ul {
-    padding-left: 0;
-    margin: 0; }
-  .leftbar a {
-    padding-left: 20%;
-    height: 50px; }
-  .leftbar li:hover {
-    background-color: rgba(24, 35, 46, 0.5); }
-  .leftbar img {
-    padding-left: 45px;
-    padding-right: 5%;
-    margin-bottom: -9px; }
-
-/* CONTENT */
-.content {
-  position: fixed;
-  margin-left: 250px;
-  margin-top: 52px;
-  background-color: black;
-  background-image: url("../images/amumu.jpg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 100%;
-  width: 100%; }
-  .content .profile {
-    margin-top: 4em;
-    margin-left: 4em;
-    margin-right: 80px;
-    margin-bottom: 80px;
-    background-color: rgba(151, 151, 151, 0.8);
-    border-radius: 10px;
-    height: 75%;
-    width: 75%; }
-    .content .profile .profile-head {
-      height: 150px;
-      width: 100%; }
-      .content .profile .profile-head table {
-        padding-left: 40px;
-        padding-top: 40px;
-        padding-right: 40px;
-        width: 100%; }
-      .content .profile .profile-head .profile-picture {
-        display: inline-block; }
-      .content .profile .profile-head .profile-title {
-        margin-left: -20px; }
-        .content .profile .profile-head .profile-title h1, .content .profile .profile-head .profile-title h2, .content .profile .profile-head .profile-title h3 {
-          margin: 0 0 0 0;
-          color: white; }
-      .content .profile .profile-head .profile-menu {
-        padding-top: 10px; }
-        .content .profile .profile-head .profile-menu table {
-          padding-top: 40px;
-          width: 100%; }
-        .content .profile .profile-head .profile-menu td {
-          color: white;
-          width: 20%;
-          height: 40px;
-          text-align: center;
-          background-color: #2e3943; }
-          .content .profile .profile-head .profile-menu td a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            padding-top: 9px; }
-        .content .profile .profile-head .profile-menu td:hover {
-          background-color: #08111b; }
-        .content .profile .profile-head .profile-menu td .active {
-          background-color: #08111b; }
-    .content .profile .profile-body {
-      margin-top: 4em;
-      margin-bottom: 30px;
-      margin-left: 42px;
-      margin-right: 42px;
-      background-color: white; }
-      .content .profile .profile-body .profile-predictions {
-        display: block;
-        overflow-y: scroll;
-        height: 290px; }
-        .content .profile .profile-body .profile-predictions table {
-          width: 100%;
-          border-collapse: collapse;
-          height: 150px; }
-        .content .profile .profile-body .profile-predictions tbody {
-          max-height: 200px; }
-        .content .profile .profile-body .profile-predictions tr {
-          overflow-y: scroll;
-          color: white;
-          height: 45px;
-          text-align: center;
-          border-bottom: 1px solid white;
-          border-top: 1px solid white; }
-          .content .profile .profile-body .profile-predictions tr a:hover {
-            text-decoration: underline; }
-        .content .profile .profile-body .profile-predictions .win {
-          background-color: #4ABA70; }
-        .content .profile .profile-body .profile-predictions .lose {
-          background-color: #BA4A4A; }
-        .content .profile .profile-body .profile-predictions .instructions {
-          background-color: #08111b; }
-      .content .profile .profile-body .profile-profile {
-        height: 290px; }
-        .content .profile .profile-body .profile-profile .new-group-button {
-          background-color: #08111b;
-          padding-left: 1em;
-          padding-top: 1em; }
-          .content .profile .profile-body .profile-profile .new-group-button a {
-            display: inline-block;
-            background-color: #2e3943;
-            padding: 2px 4px 2px 4px;
-            border-radius: 3px; }
-          .content .profile .profile-body .profile-profile .new-group-button a:hover {
-            color: #08111b; }
-        .content .profile .profile-body .profile-profile table {
-          width: 100%;
-          background-color: #08111b; }
-        .content .profile .profile-body .profile-profile tr {
-          text-align: left;
-          height: 45px;
-          border-top: 1px solid black;
-          border-bottom: 1px solid black;
-          font-size: 20px; }
-        .content .profile .profile-body .profile-profile td {
-          padding-left: 2em;
-          padding-top: 1em; }
-      .content .profile .profile-body .profile-groups {
-        display: block;
-        overflow-y: scroll;
-        height: 290px; }
-        .content .profile .profile-body .profile-groups .new-group-button {
-          background-color: #08111b;
-          padding-left: 1.6em;
-          padding-top: 1.3em; }
-          .content .profile .profile-body .profile-groups .new-group-button a {
-            display: inline-block;
-            background-color: #2e3943;
-            padding: 2px 4px 2px 4px;
-            border-radius: 3px; }
-          .content .profile .profile-body .profile-groups .new-group-button a:hover {
-            color: #08111b; }
-        .content .profile .profile-body .profile-groups table {
-          width: 100%;
-          background-color: #08111b;
-          padding-top: 1em;
-          padding-left: 1em;
-          padding-right: 1em;
-          border-spacing: 10px; }
-          .content .profile .profile-body .profile-groups table .group {
-            background-color: #2e3943; }
-          .content .profile .profile-body .profile-groups table td {
-            float: left;
-            line-height: 10px;
-            display: inline-block;
-            color: white;
-            list-style-type: none; }
-          .content .profile .profile-body .profile-groups table a:hover {
-            text-decoration: underline; }
-          .content .profile .profile-body .profile-groups table img {
-            float: left; }
-
-/*# sourceMappingURL=custom.css.css.map */
+Backtrace:
+app/assets/stylesheets/custom.css.scss:1
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/import_node.rb:67:in `rescue in import'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/import_node.rb:45:in `import'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/import_node.rb:28:in `imported_file'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/import_node.rb:37:in `css_import?'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:217:in `visit_import'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/tree/root_node.rb:20:in `render'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/engine.rb:315:in `_render'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/engine.rb:262:in `render'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:362:in `update_stylesheet'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:201:in `each'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:283:in `block in watch'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/vendor/listen/lib/listen/multi_listener.rb:108:in `call'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/vendor/listen/lib/listen/multi_listener.rb:108:in `on_change'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/vendor/listen/lib/listen/multi_listener.rb:117:in `block in initialize_adapter'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/vendor/listen/lib/listen/adapter.rb:198:in `call'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/vendor/listen/lib/listen/adapter.rb:198:in `report_changes'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/vendor/listen/lib/listen/adapter.rb:210:in `poll_changed_dirs'
+/Users/john-davidwuarin/.rvm/gems/ruby-2.1.2@hydra/gems/sass-3.2.19/vendor/listen/lib/listen/adapters/darwin.rb:38:in `block in start'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: bootstrap-sprockets.\A               Load paths:\A                 /Users/john-davidwuarin/Dropbox/Workspace_Ruby/hydra\A                 /Users/john-davidwuarin/Dropbox/Workspace_Ruby/hydra/app/assets/stylesheets\A         on line 1 of app/assets/stylesheets/custom.css.scss\A \A 1: @import \"bootstrap-sprockets\";\A 2: @import \"bootstrap\";\A 3: @import \"font-awesome\";\A 4: \A 5: $nav-row-height: 4em;\A 6: $color1: rgba(8,17,27,1);"; }

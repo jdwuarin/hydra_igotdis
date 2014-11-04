@@ -39,6 +39,7 @@ gem 'capistrano-rvm', github: "capistrano/rvm"
 
 gem 'factory_girl_rails', '4.4.0'
 group :development, :test do
+  gem 'rb-fsevent'
   gem 'rspec-rails', '~> 3.1.0'
 end
 
@@ -49,7 +50,7 @@ group :test do
   gem 'capybara'
 end
 
-gem 'sass-rails', '4.0.1'
+gem 'sass-rails', '4.0.4'
 gem 'uglifier', '2.1.1'
 
 group :doc do

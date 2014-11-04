@@ -1,1 +1,0 @@
-dota_2_worker.rb

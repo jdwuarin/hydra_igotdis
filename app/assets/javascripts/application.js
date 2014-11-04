@@ -21,7 +21,12 @@
 //= require ./app
 
 // for more details see: http://emberjs.com/guides/application/
-App = Ember.Application.create({rootElement: '#ember-app'});
+App = Ember.Application.create({
+  rootElement: '#ember-app',
+  LOG_TRANSITIONS: true,
+  DEBUG: true,
+  LOG_VIEW_LOOKUPS: true  //the important part!
+});
 
 App.Session = Ember.Object.extend({
 

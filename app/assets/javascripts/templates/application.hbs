@@ -1,20 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-
-    <a href="#" class="left-content-area"></img><h1>IGOTDIS</h1></a>
-    <a href="#" class="left-content-logo"><img src="assets/monsterlogo.png"></a>
-    <div class="right-content-area">
-    <ul>
-      <a href="#"><li>My Profile</li></a>
-      {{#if 'session.isAuthenticated'}}
-        <button {{action 'invalidateSession'}}>Logout</button>
-      {{else}}
-        <button {{action 'showModal' 'authentication-modal' 'login'}}>Login</button>
-        <button {{action 'showModal' 'authentication-modal' 'signup'}}>Sign up</button>
-      {{/if}}
-    </ul>
-    </div>
-
-</nav>
+{{partial 'application/navbar-top'}}
 
 <nav class="leftbar leftbar-fixed-left" role="navigation">
   <div class="top-content-area">
@@ -30,7 +14,7 @@
       <a href="#"><li class="toggle-down"><p>IGN</p></li></a>
 
       <a href="#"><li><img src="assets/predictions3.png"></img>MY PREDICTIONS</li></a>
-      <a href="#"><li><img src="assets/ranking.png"></img>RANKING</li></a>
+      <a href="#"><li><img src="assets/ranking.png"></img>LADDER</li></a>
     </ul>
   </div>
 </nav>

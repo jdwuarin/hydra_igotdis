@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+    {{#link-to 'application' class="left-content-area"}}
+      </img><h1>IGOTDIS</h1>
+    {{/link-to}}
+    {{#link-to 'application' class="left-content-logo"}}
+      <img src="assets/monsterlogo.png">
+    {{/link-to}}
+    <div class="right-content-area">
+      <ul>
+        <button>My Profile</button>
+        {{#if 'session.isAuthenticated'}}
+          <button {{action 'invalidateSession'}}>Logout</button>
+        {{else}}
+          <button {{action 'showModal' 'authentication-modal' 'login'}}>Login</button>
+          <button {{action 'showModal' 'authentication-modal' 'signup'}}>Sign up</button>
+        {{/if}}
+      </ul>
+    </div>
+
+</nav>
