@@ -10,12 +10,12 @@ FactoryGirl.define do
 
   factory :LWC_ahq, parent: :team do
     name "AHQ"
-    logo "/teams/ahq_logo.png"
+    logo "teams/ahq_logo.png"
   end
 
   factory :LWC_samsung_galaxy_white, parent: :team do
     name "Samsung White"
-    logo "/teams/samsung_galaxy_white_logo.png"
+    logo "teams/samsung_galaxy_white_logo.png"
   end
 
 end

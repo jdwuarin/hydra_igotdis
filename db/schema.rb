@@ -81,9 +81,6 @@ ActiveRecord::Schema.define(version: 20141017112708) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.boolean  "is_direct_elimination_round", default: false
-    t.boolean  "finished",                    default: false
-    t.integer  "receiving_contestant_id"
-    t.integer  "invited_contestant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -143,18 +140,6 @@ ActiveRecord::Schema.define(version: 20141017112708) do
 
   add_index "user_match_predictions", ["match_id", "user_id", "prediction_type"], name: "index_ump_on_match_and_user_and_prediction_type", unique: true, using: :btree
 
-  create_table "user_round_predictions", force: true do |t|
-    t.integer  "round_id"
-    t.integer  "prediction_type"
-    t.integer  "predicted_contestant_id"
-    t.integer  "user_id"
-    t.text     "comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_round_predictions", ["round_id", "user_id"], name: "index_user_round_predictions_on_round_id_and_user_id", unique: true, using: :btree
-
   create_table "user_tournament_scores", force: true do |t|
     t.integer  "user_id"
     t.integer  "tournament_id"
@@ -162,6 +147,8 @@ ActiveRecord::Schema.define(version: 20141017112708) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "user_tournament_scores", ["user_id", "tournament_id"], name: "index_user_tournament_scores_on_user_id_and_tournament_id", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

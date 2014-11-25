@@ -483,29 +483,29 @@ quarter_final_round = FactoryGirl.create(:LWC_quarter_final,
 # omg = TournamentContestant.joins(:team).where(teams: {name: "OMG"})[0]
 
 
-# FactoryGirl.create(:LWC_quarter_final_match,
-#        round: quarter_final_round,
-#        date: DateTime.new(2014, 10, 3, 9).change(:offset => "+0200"),
-#        receiving_contestant: samsung_galaxy_white,
-#        invited_contestant: team_solomid)
+FactoryGirl.create(:LWC_quarter_final_match,
+       round: quarter_final_round,
+       date: DateTime.new(2014, 10, 3, 9).change(:offset => "+0200"),
+       receiving_contestant: samsung_galaxy_white,
+       invited_contestant: team_solomid)
 
-# FactoryGirl.create(:LWC_quarter_final_match,
-#        round: quarter_final_round,
-#        date: DateTime.new(2014, 10, 4, 6).change(:offset => "+0200"),
-#        receiving_contestant: samsung_galaxy_blue,
-#        invited_contestant: cloud9)
+FactoryGirl.create(:LWC_quarter_final_match,
+       round: quarter_final_round,
+       date: DateTime.new(2014, 10, 4, 6).change(:offset => "+0200"),
+       receiving_contestant: samsung_galaxy_blue,
+       invited_contestant: cloud9)
 
-# FactoryGirl.create(:LWC_quarter_final_match,
-#        round: quarter_final_round,
-#        date: DateTime.new(2014, 10, 5, 6).change(:offset => "+0200"),
-#        receiving_contestant: star_horn,
-#        invited_contestant: edward_gaming)
+FactoryGirl.create(:LWC_quarter_final_match,
+       round: quarter_final_round,
+       date: DateTime.new(2014, 10, 5, 6).change(:offset => "+0200"),
+       receiving_contestant: star_horn,
+       invited_contestant: edward_gaming)
 
-# FactoryGirl.create(:LWC_quarter_final_match,
-#        round: quarter_final_round,
-#        date: DateTime.new(2014, 10, 6, 9).change(:offset => "+0200"),
-#        receiving_contestant: najin_white_shield,
-#        invited_contestant: omg)
+FactoryGirl.create(:LWC_quarter_final_match,
+       round: quarter_final_round,
+       date: DateTime.new(2014, 10, 6, 9).change(:offset => "+0200"),
+       receiving_contestant: najin_white_shield,
+       invited_contestant: omg)
 
 semi_final_round = FactoryGirl.create(:LWC_semi_final,
                                       tournament: tournament)
@@ -518,17 +518,17 @@ semi_final_round = FactoryGirl.create(:LWC_semi_final,
 # star_horn = TournamentContestant.joins(:team).where(teams: {name: "Star Horn"})[0]
 # omg = TournamentContestant.joins(:team).where(teams: {name: "OMG"})[0]
 
-# FactoryGirl.create(:LWC_semi_final_match,
-#        round: semi_final_round,
-#        date: DateTime.new(2014, 10, 11, 9).change(:offset => "+0200"),
-#        receiving_contestant: samsung_galaxy_white,
-#        invited_contestant: samsung_galaxy_blue)
+FactoryGirl.create(:LWC_semi_final_match,
+       round: semi_final_round,
+       date: DateTime.new(2014, 10, 11, 9).change(:offset => "+0200"),
+       receiving_contestant: samsung_galaxy_white,
+       invited_contestant: samsung_galaxy_blue)
 
-# FactoryGirl.create(:LWC_semi_final_match,
-#        round: semi_final_round,
-#        date: DateTime.new(2014, 10, 12, 9).change(:offset => "+0200"),
-#        receiving_contestant: star_horn,
-#        invited_contestant: omg)
+FactoryGirl.create(:LWC_semi_final_match,
+       round: semi_final_round,
+       date: DateTime.new(2014, 10, 12, 9).change(:offset => "+0200"),
+       receiving_contestant: star_horn,
+       invited_contestant: omg)
 
 final_round = FactoryGirl.create(:LWC_final,
                                  tournament: tournament)
@@ -538,9 +538,9 @@ final_round = FactoryGirl.create(:LWC_final,
 # samsung_galaxy_white = TournamentContestant.joins(:team).where(teams: {name: "Samsung White"})[0]
 # star_horn = TournamentContestant.joins(:team).where(teams: {name: "Star Horn"})[0]
 
-# FactoryGirl.create(:LWC_final_match,
-#        round: final_round,
-#        date: DateTime.new(2014, 10, 19, 7).change(:offset => "+0200"),
-#        receiving_contestant: samsung_galaxy_white,
-#        invited_contestant: star_horn)
+FactoryGirl.create(:LWC_final_match,
+       round: final_round,
+       date: DateTime.new(2014, 10, 19, 7).change(:offset => "+0200"),
+       receiving_contestant: samsung_galaxy_white,
+       invited_contestant: star_horn)
 
